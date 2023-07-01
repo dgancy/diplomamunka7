@@ -42,7 +42,7 @@ export default function Login() {
           </div>
           <br />
           <div class="form-group text-center">
-            <Button type="submit" name="submit" class="btn btn-outline-warning col-2">
+            <Button type="submit" name="submit" class="btn btn-outline-warning">
               Submit
             </Button>
           </div>
