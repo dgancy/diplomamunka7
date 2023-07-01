@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import NavbarMenu from "./Components/NavbarMenu";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Login from "./Components/Login/Login";
+import Register from "./Components/Login/Register";
+import BinaryTree from "./Components/Algorithm2/BinaryTree";
+import MasterTheorem from "./Components/Algorithm2/MasterTheorem";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <NavbarMenu />
+        <Routes>
+          <Route path="/login" element={<Login />} />
+          <Route path="/signin" element={<Register />} />
+          <Route path="/binary-tree" element={<BinaryTree />} />
+          <Route path="/master-theorem" element={<MasterTheorem />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
