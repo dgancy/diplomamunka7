@@ -233,10 +233,12 @@ export default function BinaryTree() {
   }
   return (
     <form style={{ background: "#1C3A94" }}>
-      <h1 className="highpad" style={{ color: "white", textAlign: "center", paddingBottom:"20px" }}>
+      <h1
+        style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
+      >
         Binary tree solver
       </h1>
-      <div className="highpad">
+      <div>
         <div class="form-group">
           <div class="container">
             <div class="row justify-content-center text-center">
@@ -253,7 +255,7 @@ export default function BinaryTree() {
             </div>
           </div>
         </div>
-        <div className="normalpad">
+        <div>
           <div class="row justify-content-center text-center">
             <Button variant="btn btn-outline-warning" onClick={Result}>
               Kiszámol
@@ -263,14 +265,14 @@ export default function BinaryTree() {
       </div>
       <br />
       <div class="container">
-        <div className="normalpad">
+        <div>
           <div class="row justify-content-center ">
             <div class="col-2 border border-warning">
               <b id="arrayedge"></b>
             </div>
           </div>
         </div>
-        <div className="normalpad">
+        <div>
           <div class="row justify-content-center">
             <div class="col-2 border border-warning">
               <b id="arrayleft_1"></b>
@@ -281,7 +283,7 @@ export default function BinaryTree() {
             </div>
           </div>
         </div>{" "}
-        <div className="normalpad">
+        <div>
           <div class="row justify-content-center">
             <div class="col-2 border border-warning">
               <b id="arrayleft_2"></b>

@@ -5,7 +5,8 @@ import { Link } from "react-router-dom";
 
 export default function NavbarMenu() {
   return (
-    <Navbar style={{backgroundColor:"#0f1113"}}>
+    
+    <Navbar style={{ backgroundColor: "#0f1113" }} >
       <Nav.Link as={Link} to="/home">
         <a>Home</a>
       </Nav.Link>
@@ -32,7 +33,7 @@ export default function NavbarMenu() {
         <NavDropdown.Item as={Link} to={"/rbt"}>
           Red-Black tree
         </NavDropdown.Item>
-        <NavDropdown.Item as={Link} to={"/back"}>
+        <NavDropdown.Item as={Link} to={"/backtracking"}>
           Backtracking
         </NavDropdown.Item>
       </NavDropdown>
@@ -58,12 +59,18 @@ export default function NavbarMenu() {
         </NavDropdown.Item>
       </NavDropdown>
 
-      <Nav.Link style={{float:"right"}} as={Link} to={"/login"}>
-        <Button variant="outline-warning">Login</Button>
-      </Nav.Link>
-      <Nav.Link as={Link} to={"/signin"}>
-        <Button variant="warning">SignIn</Button>
-      </Nav.Link>
+
+
+        <Nav.Link as={Link} to={"/login"}>
+          <Button style={{ float: "right" }} variant="outline-warning">
+            Login
+          </Button>
+        </Nav.Link>
+        <Nav.Link as={Link} to={"/signin"}>
+          <Button class="btn btn-outline-success my-2 my-sm-0"  variant="warning">
+            SignIn
+          </Button>
+        </Nav.Link>
     </Navbar>
   );
 }

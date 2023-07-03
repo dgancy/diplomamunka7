@@ -5,6 +5,7 @@ import Login from "./Components/Login/Login";
 import Register from "./Components/Login/Register";
 import BinaryTree from "./Components/Algorithm2/BinaryTree";
 import MasterTheorem from "./Components/Algorithm2/MasterTheorem";
+import BackTracking from "./Components/Algorithm2/BackTracking";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
           <Route path="/signin" element={<Register />} />
           <Route path="/binary-tree" element={<BinaryTree />} />
           <Route path="/master-theorem" element={<MasterTheorem />} />
+          <Route path="/backtracking" element={<BackTracking />} />
         </Routes>
       </Router>
     </div>
