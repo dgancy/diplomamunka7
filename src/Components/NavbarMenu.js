@@ -17,7 +17,7 @@ export default function NavbarMenu() {
       </Nav.Link>
 
       <NavDropdown title="Algorithm II" style={{ color: "white" }}>
-        <NavDropdown.Item as={Link} to={"/rekurzios"}>
+        <NavDropdown.Item as={Link} to={"/recursion-tree"}>
           Recursion tree
         </NavDropdown.Item>
         <NavDropdown.Item as={Link} to={"/master-theorem"}>

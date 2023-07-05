@@ -147,11 +147,11 @@ export default function Hashtable() {
           finalindex = arraynumbers[j] % range;
           arrayfinal[finalindex + c1 + c2 * c2] = arrayelements[j];
         }
-      }
+      }//button deactivate
     }
 
     for (let i = 0; i < 2; i++) {
-      const row = document.createElement("tr");
+      const row = document.createElement("tr");//tablecreate with good sense of viauality
       if (i === 0) {
         for (let j = 0; j < range; j++) {
           const cell = document.createElement("td");

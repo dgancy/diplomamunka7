@@ -7,6 +7,7 @@ import BinaryTree from "./Components/Algorithm2/BinaryTree";
 import MasterTheorem from "./Components/Algorithm2/MasterTheorem";
 import BackTracking from "./Components/Algorithm2/BackTracking";
 import Hashtable from "./Components/Algorithm2/HashTable";
+import RecursionTree from "./Components/Algorithm2/RecursionTree";
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
           <Route path="/master-theorem" element={<MasterTheorem />} />
           <Route path="/backtracking" element={<BackTracking />} />
           <Route path="/hash-table" element={<Hashtable />} />
+          <Route path="/recursion-tree" element={<RecursionTree />} />
         </Routes>
       </Router>
     </div>
