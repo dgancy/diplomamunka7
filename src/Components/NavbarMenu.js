@@ -5,16 +5,15 @@ import { Link } from "react-router-dom";
 
 export default function NavbarMenu() {
   return (
-    
-    <Navbar style={{ backgroundColor: "#0f1113" }} >
+    <Navbar style={{ backgroundColor: "#0f1113" }}>
       <Nav.Link as={Link} to="/home">
-        <a>Home</a>
+        <a href="#/">Home</a>
       </Nav.Link>
       <Nav.Link as={Link} to="/learning">
-        <a>Learning</a>
+        <a href="#/">Learning</a>
       </Nav.Link>
       <Nav.Link as={Link} to="/test">
-        <a>Test</a>
+        <a href="#/">Test</a>
       </Nav.Link>
 
       <NavDropdown title="Algorithm II" style={{ color: "white" }}>
@@ -27,7 +26,7 @@ export default function NavbarMenu() {
         <NavDropdown.Item as={Link} to={"/binary-tree"}>
           Binary tree
         </NavDropdown.Item>
-        <NavDropdown.Item as={Link} to={"/hash"}>
+        <NavDropdown.Item as={Link} to={"/hash-table"}>
           Hash table
         </NavDropdown.Item>
         <NavDropdown.Item as={Link} to={"/rbt"}>
@@ -59,18 +58,16 @@ export default function NavbarMenu() {
         </NavDropdown.Item>
       </NavDropdown>
 
-
-
-        <Nav.Link as={Link} to={"/login"}>
-          <Button style={{ float: "right" }} variant="outline-warning">
-            Login
-          </Button>
-        </Nav.Link>
-        <Nav.Link as={Link} to={"/signin"}>
-          <Button class="btn btn-outline-success my-2 my-sm-0"  variant="warning">
-            SignIn
-          </Button>
-        </Nav.Link>
+      <Nav.Link as={Link} to={"/login"}>
+        <Button style={{ float: "right" }} variant="outline-warning">
+          Login
+        </Button>
+      </Nav.Link>
+      <Nav.Link as={Link} to={"/signin"}>
+        <Button class="btn btn-outline-success my-2 my-sm-0" variant="warning">
+          SignIn
+        </Button>
+      </Nav.Link>
     </Navbar>
   );
 }

@@ -116,11 +116,11 @@ export default function Backtracking() {
         <Button variant="btn btn-outline-warning" id="btnadd" onClick={Result}>
           Solve
         </Button>
+        <div  class="container" style={{ marginLeft: "100px" }}>
+          <b class="row justify-content-start text-center" style={{ color: "white", fontSize: "20px" }} id="resolved"></b>
+        </div>
+        <canvas id="tree" width={"750px"} height={"300px"}></canvas>
       </div>
-      <div class="container" style={{marginLeft:"100px"}}>
-        <b style={{ color: "white", fontSize:"20px" }} id="resolved"></b>
-      </div>
-      <canvas id="tree" width={"750px"} height={"300px"}></canvas>
     </form>
   );
 }

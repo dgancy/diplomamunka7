@@ -53,12 +53,12 @@ export default function BinaryTree() {
         if (
           OutputArrayLeft_1.length < edgemax + 1 &&
           OutputArrayRight_1.length < edgemax + 1 &&
-          state == 0
+          state === 0
         ) {
           if (SplittedArray[i] > OutputArrayEdge[OutputArrayEdge.length - 1]) {
             OutputArrayRight_1.push(SplittedArray[i]);
             OutputArrayRight_1.sort();
-          } else if (SplittedArray[i] < OutputArrayEdge[0] && state == 0) {
+          } else if (SplittedArray[i] < OutputArrayEdge[0] && state === 0) {
             OutputArrayLeft_1.push(SplittedArray[i]);
             OutputArrayLeft_1.sort();
           }
@@ -80,37 +80,37 @@ export default function BinaryTree() {
         OutputArrayEdge.sort();
         OutputArrayMiddle_1.sort();
       }
-      if (OutputArrayEdge.length == edgemax + 1) {
+      if (OutputArrayEdge.length === edgemax + 1) {
         for (let k = 0; k < 2; k++) {
           if (
             OutputArrayRight_1[k] >
               OutputArrayEdge[OutputArrayEdge.length - 1] &&
-            OutputArrayRight_1[0] != " "
+            OutputArrayRight_1[0] !== " "
           ) {
             OutputArrayRight_2.push(OutputArrayRight_1[k]);
             OutputArrayRight_1.shift();
           } else if (
             OutputArrayRight_1[k] <
               OutputArrayEdge[OutputArrayEdge.length - 1] &&
-            OutputArrayRight_1[0] != " "
+            OutputArrayRight_1[0] !== " "
           ) {
             OutputArrayMiddle_2.push(OutputArrayRight_1[k]);
             OutputArrayRight_1.shift();
           } else if (
             OutputArrayLeft_1[k] > OutputArrayEdge[0] &&
-            OutputArrayLeft_1[0] != " "
+            OutputArrayLeft_1[0] !== " "
           ) {
             OutputArrayMiddle_1.push(OutputArrayLeft_1[k]);
             OutputArrayLeft_1.shift();
           } else if (
             OutputArrayLeft_1[k] < OutputArrayEdge[0] &&
-            OutputArrayLeft_1[0] != " "
+            OutputArrayLeft_1[0] !== " "
           ) {
             OutputArrayLeft_2.push(OutputArrayLeft_1[k]);
             OutputArrayLeft_1.shift();
           }
         }
-        if (OutputArrayEdge.length == edgemax + 1) {
+        if (OutputArrayEdge.length === edgemax + 1) {
           OutputArrayLeft_1.push(OutputArrayEdge[0]);
           OutputArrayRight_1.push(OutputArrayEdge[OutputArrayEdge.length - 1]);
 
@@ -120,7 +120,7 @@ export default function BinaryTree() {
 
         state = 1;
       }
-      if (state == 1) {
+      if (state === 1) {
         if (
           SplittedArray[i] < OutputArrayLeft_1[0] &&
           SplittedArray[i] < OutputArrayEdge[0]
@@ -149,14 +149,14 @@ export default function BinaryTree() {
         }
 
         if (
-          OutputArrayLeft_1[1] != " " &&
+          OutputArrayLeft_1[1] !== " " &&
           OutputArrayLeft_2.length < edgemax &&
           OutputArrayLeft_1.length > 1
         ) {
           OutputArrayLeft_2.push(OutputArrayLeft_1[0]);
           OutputArrayLeft_1.shift();
         } else if (
-          OutputArrayLeft_1[1] != " " &&
+          OutputArrayLeft_1[1] !== " " &&
           OutputArrayMiddle_1.length < edgemax &&
           OutputArrayLeft_1.length > 1
         ) {
@@ -169,7 +169,7 @@ export default function BinaryTree() {
         OutputArrayLeft_2.sort();
 
         if (
-          OutputArrayRight_1[1] != " " &&
+          OutputArrayRight_1[1] !== " " &&
           OutputArrayRight_2.length < edgemax &&
           OutputArrayRight_1.length > 1
         ) {
@@ -178,7 +178,7 @@ export default function BinaryTree() {
           );
           OutputArrayRight_1.pop();
         } else if (
-          OutputArrayRight_1[1] != " " &&
+          OutputArrayRight_1[1] !== " " &&
           OutputArrayMiddle_2.length < edgemax &&
           OutputArrayRight_1.length > 1
         ) {

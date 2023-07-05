@@ -6,6 +6,7 @@ import Register from "./Components/Login/Register";
 import BinaryTree from "./Components/Algorithm2/BinaryTree";
 import MasterTheorem from "./Components/Algorithm2/MasterTheorem";
 import BackTracking from "./Components/Algorithm2/BackTracking";
+import Hashtable from "./Components/Algorithm2/HashTable";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/binary-tree" element={<BinaryTree />} />
           <Route path="/master-theorem" element={<MasterTheorem />} />
           <Route path="/backtracking" element={<BackTracking />} />
+          <Route path="/hash-table" element={<Hashtable />} />
         </Routes>
       </Router>
     </div>
