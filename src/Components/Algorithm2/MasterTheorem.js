@@ -12,13 +12,13 @@ function MasterTheorem() {
     );
     let epszilon = 0;
     let differencial = 0;
-    if (n_element == "n") {
+    if (n_element === "n") {
       differencial = 1;
-    } else if (n_element == "n^2") {
+    } else if (n_element === "n^2") {
       differencial = 2;
-    } else if (n_element == "n^3") {
+    } else if (n_element === "n^3") {
       differencial = 3;
-    } else if (n_element == "1") {
+    } else if (n_element === "1") {
       differencial = 0;
     }
 
@@ -30,12 +30,12 @@ function MasterTheorem() {
 
     if (a_element >= 1 && b_element > 1) {
       var eset;
-      if (logarithm_element == differencial || n_element == "1") {
+      if (logarithm_element === differencial || n_element === "1") {
         eset = 2;
       }
       if (
         logarithm_element > differencial &&
-        logarithm_element - epszilon == differencial
+        logarithm_element - epszilon === differencial
       ) {
         eset = 1;
       }
@@ -46,15 +46,16 @@ function MasterTheorem() {
     epszilon = epszilon.toFixed(3);
 
     var muvelet;
-    if (eset == 1) {
+    var final_result;
+    if (eset === 1) {
       muvelet = "-";
-      var final_result = Number(logarithm_element) - Number(epszilon);
-    } else if (eset == 3) {
+      final_result = Number(logarithm_element) - Number(epszilon);
+    } else if (eset === 3) {
       muvelet = "+";
-      var final_result = Number(logarithm_element) + Number(epszilon);
+      final_result = Number(logarithm_element) + Number(epszilon);
     }
 
-    if (a_element && b_element && n_element && eset != "2") {
+    if (a_element && b_element && n_element && eset !== "2") {
       document.getElementById("logarithm").innerHTML =
         "Képlet: " +
         "n" +
@@ -103,7 +104,7 @@ function MasterTheorem() {
         ")";
       document.getElementById("final").innerHTML = "T(n)= Θ(" + n_element + ")";
     }
-    if (a_element && b_element && n_element && eset == "2") {
+    if (a_element && b_element && n_element && eset === "2") {
       document.getElementById("logarithm").innerHTML =
         "Képlet: " +
         "n" +
@@ -178,8 +179,8 @@ function MasterTheorem() {
       <div style={{ color: "white", paddingLeft: "29%" }}>
         <br />
 
-        <b id="logarithm"></b><a> </a>
-        <b id="eset" />
+        <b id="logarithm"></b> 
+        , <b id="eset" />
         <br />
         <b id="seged" />
         <br />

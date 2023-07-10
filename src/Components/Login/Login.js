@@ -1,14 +1,13 @@
-import { hover } from "@testing-library/user-event/dist/hover";
-import React, { useEffect, useState } from "react";
+import React  from "react";//{ useEffect, useState }
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
+//import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-  const navigate = useNavigate();
+  //*const navigate = useNavigate();
   return (
-    <form>
+    <form style={{ background: "#1C3A94" }}>
       <div class="form-group ">
-        <div class="container " style={{ background: "#1C3A94" }}>
+        <div class="container " >
           <h2 style={{ color: "white" }} class="row justify-content-center">
             Login
           </h2>
@@ -42,7 +41,7 @@ export default function Login() {
           </div>
           <br />
           <div class="form-group text-center">
-            <Button type="submit" name="submit" class="btn btn-outline-warning col-2">
+            <Button type="submit" name="submit" variant="btn btn-outline-warning col-2">
               Submit
             </Button>
           </div>

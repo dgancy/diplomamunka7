@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import React from "react"; //, { useState }
+//import { useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
 export default function Register() {
-  const navigate = useNavigate();
+  //*const navigate = useNavigate();
   return (
-    <form>
+    <form style={{ background: "#1C3A94" }}>
       <div class="form-group ">
-        <div class="container" style={{ background: "#1C3A94" }}>
+        <div class="container" >
           <h2 style={{ color: "white" }} class="row justify-content-center ">
             Regisztráció
           </h2>
@@ -69,7 +69,7 @@ export default function Register() {
           </div>
           <br />
           <div class="form-group text-center">
-            <Button type="submit" name="submit" class="btn btn-outline-warning col-2">
+            <Button type="submit" name="submit" variant="btn btn-outline-warning col-1">
               Submit
             </Button>
           </div>

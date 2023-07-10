@@ -29,7 +29,7 @@ export default function NavbarMenu() {
         <NavDropdown.Item as={Link} to={"/hash-table"}>
           Hash table
         </NavDropdown.Item>
-        <NavDropdown.Item as={Link} to={"/rbt"}>
+        <NavDropdown.Item as={Link} to={"/red-black-tree"}>
           Red-Black tree
         </NavDropdown.Item>
         <NavDropdown.Item as={Link} to={"/backtracking"}>
