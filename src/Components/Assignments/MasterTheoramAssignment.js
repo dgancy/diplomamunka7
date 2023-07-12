@@ -40,7 +40,7 @@ export default function MasterTheoramAssignment() {
     }
 
     document.getElementById("questtwo").innerHTML =
-      "Oldja meg a következő feladatot Mester tétel használatával. " + fea;
+      `<b>Oldja meg a következő feladatot Mester tétel használatával. ${fea}</b>`;
   }
   //
   function Check() {
@@ -132,20 +132,22 @@ export default function MasterTheoramAssignment() {
 
   return (
     <form style={{ background: "#1C3A94" }}>
-      <h1  style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}>Mester tétel feladat generátor</h1>
+      <h1
+        style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
+      >
+        Mester tétel feladat generátor
+      </h1>
       <div class="form-group">
         <div class="row justify-content-center text-center">
           <Button variant="btn btn-outline-warning" onClick={Generate}>
             Új feladat
           </Button>
           <br />
-          <p id="leiras" />
-          <p id="feladat" />
         </div>
-        <div id="questtwo"> </div>
+        <div style={{ color: "white", textAlign:"center", padding:"10px" }} id="questtwo"> </div>
 
         <div class="container ">
-          <div class="row justify-content-center text-center">
+          <div style={{padding:"10px"}} class="row justify-content-center text-center">
             {" "}
             <div class="col-2">
               <div>
@@ -159,7 +161,7 @@ export default function MasterTheoramAssignment() {
             </div>
             <div class="col-2">
               <div>
-                <b>B-értéke :</b>
+                <b style={{ color: "white" }}>B-értéke :</b>
                 <input
                   type="text"
                   class="form-control"
@@ -169,7 +171,7 @@ export default function MasterTheoramAssignment() {
             </div>
             <div class="col-2">
               <div>
-                <b>n-értéke :</b>
+                <b style={{ color: "white" }}>n-értéke :</b>
                 <input
                   type="text"
                   class="form-control"
@@ -178,11 +180,11 @@ export default function MasterTheoramAssignment() {
               </div>
             </div>
           </div>
-          <div class="row justify-content-center text-center">
+          <div style={{padding:"10px"}} class="row justify-content-center text-center">
             {" "}
             <div class="col-2">
               {" "}
-              <b>Feladat típusa :</b>
+              <b style={{ color: "white" }}>Feladat típusa :</b>
               <select id="type" name="type" class="form-control">
                 <option> </option>
                 <option value="1-es-eset">Első eset</option>
@@ -192,7 +194,7 @@ export default function MasterTheoramAssignment() {
             </div>
             <div class="col-3">
               <div>
-                <b>Kiegészítő érték(E):</b>
+                <b style={{ color: "white" }}>Kiegészítő érték(E):</b>
                 <input
                   type="text"
                   class="form-control"
@@ -202,7 +204,7 @@ export default function MasterTheoramAssignment() {
             </div>
             <div class="col-3">
               <div>
-                <b>Képletbe helyettesítés:</b>
+                <b style={{ color: "white" }}>Képletbe helyettesítés:</b>
                 <input
                   type="text"
                   class="form-control"
@@ -211,11 +213,11 @@ export default function MasterTheoramAssignment() {
               </div>
             </div>
           </div>
-          <div class="row justify-content-center text-center">
+          <div style={{padding:"10px"}} class="row justify-content-center text-center">
             {" "}
             <div class="col-3">
               <div>
-                <b>Végeredmény:</b>
+                <b style={{ color: "white" }}>Végeredmény:</b>
                 <input
                   type="text"
                   class="form-control"
@@ -224,21 +226,21 @@ export default function MasterTheoramAssignment() {
               </div>
             </div>
           </div>
+          <br/>
         </div>
         <div class="row justify-content-center text-center">
-          <Button variant="success" onClick={Check}>
+          <Button variant="btn btn-outline-warning" onClick={Check}>
             Kiszámol
           </Button>
         </div>
-        <div id="final-0"></div>
-        <div id="final-1"></div>
-        <div id="final-2"></div>
-        <div id="final-3"></div>
       </div>
-      <div>
-        <br />
-        <b id="tree"></b>
+      <div style={{paddingLeft:"27%"}}>
+        <div style={{ color: "white" }} id="final-0"></div>
+        <div style={{ color: "white" }} id="final-1"></div>
+        <div style={{ color: "white" }} id="final-2"></div>
+        <div style={{ color: "white" }} id="final-3"></div>
       </div>
+      <br />
     </form>
   );
 }
