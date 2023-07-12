@@ -6,69 +6,69 @@ export default function Register() {
   //*const navigate = useNavigate();
   return (
     <form style={{ background: "#1C3A94" }}>
-      <div class="form-group ">
-        <div class="container" >
-          <h2 style={{ color: "white" }} class="row justify-content-center ">
+      <div className="form-group">
+        <div className="container" >
+          <h2 style={{ color: "white" }} className="row justify-content-center ">
             Regisztráció
           </h2>
           <br />
-          <div class="row justify-content-center text-center">
-            <div class="col-4 ">
+          <div className="row justify-content-center text-center">
+            <div className="col-4 ">
               <b style={{ color: "white" }} for="UsernameReg">
                 Email:
               </b>
               <input
                 type="email"
-                class="form-control"
+                className="form-control"
                 placeholder="Email"
                 name="email"
               />
             </div>
           </div>
           <br />
-          <div class="row justify-content-center text-center">
-            <div class="col-4 ">
+          <div className="row justify-content-center text-center">
+            <div className="col-4 ">
               <b style={{ color: "white" }} for="UsernameReg">
                 UserName:
               </b>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 placeholder="UserName"
                 name="username"
               />
             </div>
           </div>
           <br />
-          <div class="row justify-content-center text-center">
-            <div class="col-4">
+          <div className="row justify-content-center text-center">
+            <div className="col-4">
               <b style={{ color: "white" }} for="PasswordInput">
                 Password:
               </b>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Password"
                 name="password"
               />
             </div>
           </div>
           <br />
-          <div class="row justify-content-center text-center">
-            <div class="col-4">
+          <div className="row justify-content-center text-center">
+            <div className="col-4">
               <b style={{ color: "white" }} for="PasswordInput">
                 Password:
               </b>
               <input
                 type="password"
-                class="form-control"
+                className="form-control"
                 placeholder="Password Again"
                 name="passwordonemore"
               />
             </div>
           </div>
           <br />
-          <div class="form-group text-center">
+          <div className="form-group text-center">
             <Button type="submit" name="submit" variant="btn btn-outline-warning col-1">
               Submit
             </Button>

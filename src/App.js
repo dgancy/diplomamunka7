@@ -9,6 +9,12 @@ import BackTracking from "./Components/Algorithm2/BackTracking";
 import Hashtable from "./Components/Algorithm2/HashTable";
 import RecursionTree from "./Components/Algorithm2/RecursionTree";
 import RedBlackTree from "./Components/Algorithm2/RebBlackTree";
+import BackTrackAssignment from "./Components/Assignments/BacktrackingAssignment";
+import RecursionTreeAssignment from "./Components/Assignments/RecursionTreeAssignment";
+import MasterTheoramAssignment from "./Components/Assignments/MasterTheoramAssignment";
+import BinaryTreeAssignment from "./Components/Assignments/BinaryTreeAssignments";
+import HashTableAssignment from "./Components/Assignments/HashTableAssignment";
+import RedBlackTreeAssignment from "./Components/Assignments/RedBlackTreeAssignment";
 
 function App() {
   return (
@@ -24,6 +30,14 @@ function App() {
           <Route path="/hash-table" element={<Hashtable />} />
           <Route path="/recursion-tree" element={<RecursionTree />} />
           <Route path="/red-black-tree" element={<RedBlackTree />} />
+
+          <Route path="/recursion-tree-assignment" element={< RecursionTreeAssignment/>} />
+          <Route path="/master-theorem-assignment" element={<MasterTheoramAssignment />} />
+          <Route path="/binary-tree-assignment" element={<BinaryTreeAssignment />} />
+          <Route path="/hash-table-assignment" element={<HashTableAssignment />} />
+          <Route path="/red-black-tree-assignment" element={<RedBlackTreeAssignment />} />
+          <Route path="/backtracking-assignment" element={<BackTrackAssignment />} />
+
         </Routes>
       </Router>
     </div>
