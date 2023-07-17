@@ -1,0 +1,12 @@
+Backend
+RedBlackTreeAssignment Rework
+Database
+Login
+Register 
+Test pages
+Learning page
+Recursion tree pages need to be done 
+finalcheck
+Zoli konzi
+Javítás
+Rekonzi

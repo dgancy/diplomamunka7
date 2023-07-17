@@ -95,8 +95,9 @@ export default function BackTrackAssignment() {
   }
 
   return (
-    <form>
-      <h1>Visszalépéses feladatok</h1>
+    <form style={{ background: "#1C3A94" }}>
+      <h1 style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
+      >Visszalépéses feladatok</h1>
       <div class="form-group">
         <div class="container">
           <div class="row justify-content-center text-center">
@@ -104,15 +105,15 @@ export default function BackTrackAssignment() {
               Új feladat
             </Button>
           </div>
-          <div class="row justify-content-center text-center">
+          <div style={{padding:"10px"}} class="row justify-content-center text-center">
             <div id="leiras"></div>
-            <div id="generate"></div>
+            <div  id="generate"></div>
           </div>
         </div>
       </div>
       <div>
-        <div id="generate"></div>
-        <div class="row justify-content-center text-center">
+        <div style={{ color: "white" }} id="generate"></div>
+        <div style={{padding:"10px"}} class="row justify-content-center text-center">
           <Button id="btncheck" variant="success" onClick={Check}>
             Ellenőriz
           </Button>
