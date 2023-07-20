@@ -1,30 +1,24 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-function RecursionTreeAssignment() {
-  var T_elem;
-  var N_elem;
-  var n_rekurzios;
-  var check_N;
+function RecursionTreeTest() {
+  const navigate = useNavigate();
+  var T_elem = Math.floor(Math.random() * 40) + 1;
+  var N_elem = Math.floor(Math.random() * 10) + 1;
+  var nsup = Math.floor(Math.random() * 4) + 1;
+  var check_N = `n^${nsup}`;
+  var n_rekurzios = `n<sup>${nsup}</sup>`;
+
   function General() {
-    var nsup = Math.floor(Math.random() * 4) + 1;
-    n_rekurzios = `n<sup>${nsup}</sup>`;
-    check_N = `n^${nsup}`;
-    var quest_recursion_tree;
     if (n_rekurzios === `n<sup>4</sup>`) {
       n_rekurzios = `nlog<sup>n</sup>`;
     }
     if (n_rekurzios === `n<sup>1</sup>`) {
       n_rekurzios = `n`;
     }
-    T_elem = Math.floor(Math.random() * 40) + 1;
-    N_elem = Math.floor(Math.random() * 10) + 1;
-    quest_recursion_tree =
-      "T(n)= " + T_elem + "T(n/" + N_elem + ")+" + n_rekurzios;
-
-    document.getElementById(
-      "feladat"
-    ).innerHTML = `<b>Oldja meg a következő feladatot Rekurziós fa módszer használatával. ${quest_recursion_tree}</b>`;
+    
+    return `Oldja meg a következő feladatot Rekurziós fa módszer használatával. T(n)= ${T_elem} T( n/${N_elem} ) ${n_rekurzios}`;
   }
 
   function Check() {
@@ -49,12 +43,10 @@ function RecursionTreeAssignment() {
       one_edge_element_result = one_edge_element;
     }
     if (n_rekurzios === `n<sup>2</sup>`) {
-      one_edge_element_result =
-        `(${one_edge_element})<sup>2</sup>`;
+      one_edge_element_result = `(${one_edge_element})<sup>2</sup>`;
     }
     if (n_rekurzios === `n<sup>3</sup>`) {
-      one_edge_element_result =
-        `(${one_edge_element})<sup>3</sup>`;
+      one_edge_element_result = `(${one_edge_element})<sup>3</sup>`;
     }
     if (n_rekurzios === `nlog<sup>n</sup>`) {
       one_edge_element_result = `(${one_edge_element})<sup>n</sup>`;
@@ -101,30 +93,15 @@ function RecursionTreeAssignment() {
     if (user_leaf_number !== levelszameredmeny) {
       mistakes.push(`Hibás eredmény! Levelek száma: ${levelszameredmeny}`);
     }
-    document.getElementById("final-0").innerHTML = `<b>${mistakes[0]}</b>`;
-    document.getElementById("final-1").innerHTML = `<b>${mistakes[1]}</b>`;
-    document.getElementById("final-2").innerHTML = `<b>${mistakes[2]}</b>`;
-    document.getElementById("final-3").innerHTML = `<b>${mistakes[3]}</b>`;
+    navigate("/master-theorem-test");
   }
 
   return (
-    <form style={{ background: "#1C3A94" }}>
-      <h1
-        style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
-      >
-        Rekurzios fa feladat generátor
-      </h1>
-      <div className="form-group">
-        <div className="row justify-content-center text-center">
-          <Button variant="btn btn-outline-warning" onClick={General}>
-            Új feladat
-          </Button>
-          <br />
-        </div>
-        <p
-          style={{ color: "white", textAlign: "center", padding: "10px" }}
-          id="feladat"
-        />
+    <form style={{ background: "#2F4BA1" }}>
+      <div className="form-group" style={{ padding: "15px" }}>
+        <p style={{ color: "white", textAlign: "center", padding: "10px" }}>
+          {General()}
+        </p>
         <div className="container ">
           <div
             style={{ padding: "10px" }}
@@ -182,7 +159,11 @@ function RecursionTreeAssignment() {
                 <b style={{ color: "white" }}>
                   Az i-edik szinten található csúcsok száma:
                 </b>
-                <input type="text" className="form-control" id="quest1-csucsszam" />{" "}
+                <input
+                  type="text"
+                  className="form-control"
+                  id="quest1-csucsszam"
+                />{" "}
               </div>
             </div>
           </div>
@@ -227,19 +208,13 @@ function RecursionTreeAssignment() {
             className="row justify-content-center text-center"
           >
             <Button variant="btn btn-outline-warning" onClick={Check}>
-              Kiszámol
+              Következő
             </Button>
           </div>
-        </div>
-        <div style={{ paddingLeft: "27%" }}>
-          <div style={{ color: "white" }} id="final-0"></div>
-          <div style={{ color: "white" }} id="final-1"></div>
-          <div style={{ color: "white" }} id="final-2"></div>
-          <div style={{ color: "white" }} id="final-3"></div>
         </div>
       </div>
       <br />
     </form>
   );
 }
-export default RecursionTreeAssignment;
+export default RecursionTreeTest;

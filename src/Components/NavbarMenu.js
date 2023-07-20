@@ -68,6 +68,11 @@ export default function NavbarMenu() {
           SignIn
         </Button>
       </Nav.Link>
+
+      <Nav.Link as={Link} to="/inwork">
+        <a  href="#/">In-work</a>
+      </Nav.Link>
+
     </Navbar>
   );
 }
