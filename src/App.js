@@ -23,7 +23,7 @@ import BinaryTreeTest from "./Components/Test/BinaryTreeTest";
 
 function App() {
   return (
-    <div>
+    <>
       <Router>
         <NavbarMenu />
         <Routes>
@@ -52,7 +52,7 @@ function App() {
 
         </Routes>
       </Router>
-    </div>
+    </>
   );
 }
 

@@ -17,7 +17,7 @@ function Generate() {
         if (i === 0 || i === 2) {
             input.innerHTML += ' <input type="text" name="' + i + '"  className="normalpad" size="2" id="inp' + i + '">    <br/><br/>    ';
         } else if (i === 1) {
-            input.innerHTML += ' <input type="text" name="' + i + '"  className="normalpad" size="2" id="inp' + i + '">    <a> </a>    ';
+            input.innerHTML += ' <input type="text" name="' + i + '"  className="normalpad" size="2" id="inp' + i + '">';
         }
         else {
             input.innerHTML += ' <input type="text" name="' + i + '"  className="allinput"  size="2" id="inp' + i + '">';

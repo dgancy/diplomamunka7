@@ -27,7 +27,7 @@ export default function BinaryTreeTest() {
           i +
           '"  className="normalpad" size="2" id="inp' +
           i +
-          '">    <a> </a>    ';
+          '">';
       } else {
         input.innerHTML +=
           ' <input type="text" name="' +
