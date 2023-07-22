@@ -8,6 +8,41 @@ export default function MasterTheoramTest() {
   var b_elem;
   var n;
   var nsup;
+
+  function first_answer_n() {
+    return `1`;
+  }
+  function second_answer_n() {
+    return `n`;
+  }
+  function third_answer_n() {
+    return `n<sup>2</sup>`;
+  }
+  function fourth_answer_n() {
+    return `n<sup>3</sup>`;
+  }
+
+  function fifth_answer_n() {
+    return `nlogn`;
+  }
+  
+  const epszilon_numbers=[];
+  epszilon_numbers.push();
+
+  for (let i = 0; i < 4; i++) {
+    var number = Math.floor(Math.random() * 10) + 1;
+    if (numbers_of_answers.length < 4) {
+      if (!numbers_of_answers.includes(number)) {
+        numbers_of_answers.push(number);
+      }
+    }
+  }
+
+
+  function epszilon_one(){
+    return `0.`;
+  }
+
   function Generate() {
     var eset = Math.floor(Math.random() * 3) + 1;
     var fea;
@@ -125,11 +160,11 @@ export default function MasterTheoramTest() {
     if (user_master_result !== n) {
       mistakes.push(` Hibás eredmény! A helyes eredmény: O( ${n} )`);
     }
-navigate("/binary-tree-test");
+    navigate("/binary-tree-test");
   }
 
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#2F4BA1" }}>
       <div className="form-group" style={{ padding: "15px" }}>
         <div
           style={{ color: "white", textAlign: "center", padding: "10px" }}
@@ -167,11 +202,18 @@ navigate("/binary-tree-test");
             <div className="col-2">
               <div>
                 <b style={{ color: "white" }}>n-értéke :</b>
-                <input
-                  type="text"
-                  className="form-control"
+                <select
                   id="quest2-f(n)-elem"
-                />{" "}
+                  className="form-control"
+                  type="text"
+                >
+                  <option></option>
+                  <option>{first_answer_n()}</option>
+                  <option>{second_answer_n()}</option>
+                  <option>{third_answer_n()}</option>
+                  <option>{fourth_answer_n()}</option>
+                  <option>{fifth_answer_n()}</option>
+                </select>
               </div>
             </div>
           </div>
@@ -230,8 +272,8 @@ navigate("/binary-tree-test");
           <br />
         </div>
         <div className="row justify-content-center text-center">
-          <Button variant="btn btn-outline-warning" onClick={Check}>
-            Kiszámol
+          <Button variant="btn btn-warning" onClick={Check}>
+            Következő
           </Button>
         </div>
       </div>

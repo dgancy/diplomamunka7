@@ -239,24 +239,24 @@ export default function BinaryTree() {
         Binary tree solver
       </h1>
       <div>
-        <div class="form-group">
-          <div class="container">
-            <div class="row justify-content-center text-center">
-              <div class="col-2">
+        <div className="form-group">
+          <div className="container">
+            <div className="row justify-content-center text-center">
+              <div className="col-2">
                 <b style={{ color: "white" }}>Fokszam: </b>
-                <input type="number" class="form-control" id="fok" />{" "}
+                <input type="number" className="form-control" id="fok" />{" "}
               </div>
-              <div class="col-2">
+              <div className="col-2">
                 {" "}
                 <b style={{ color: "white" }}>Elements: </b>
-                <input type="number" class="form-control" id="elements" />
-                <small class="form-text text-white">(Input items)</small>
+                <input type="number" className="form-control" id="elements" />
+                <small className="form-text text-white">(Input items)</small>
               </div>
             </div>
           </div>
         </div>
         <div>
-          <div class="row justify-content-center text-center">
+          <div className="row justify-content-center text-center">
             <Button variant="btn btn-outline-warning" onClick={Result}>
               Kiszámol
             </Button>
@@ -264,37 +264,37 @@ export default function BinaryTree() {
         </div>
       </div>
       <br />
-      <div class="container">
+      <div className="container">
         <div>
-          <div class="row justify-content-center ">
-            <div class="col-2 border border-warning">
+          <div className="row justify-content-center ">
+            <div className="col-2 border border-warning">
               <b id="arrayedge"></b>
             </div>
           </div>
         </div>
         <div>
-          <div class="row justify-content-center">
-            <div class="col-2 border border-warning">
+          <div className="row justify-content-center">
+            <div className="col-2 border border-warning">
               <b id="arrayleft_1"></b>
             </div>
-            <div class="col-2"></div>
-            <div class="col-2 border border-warning">
+            <div className="col-2"></div>
+            <div className="col-2 border border-warning">
               <b id="arrayright_1"></b>
             </div>
           </div>
         </div>{" "}
         <div>
-          <div class="row justify-content-center">
-            <div class="col-2 border border-warning">
+          <div className="row justify-content-center">
+            <div className="col-2 border border-warning">
               <b id="arrayleft_2"></b>
             </div>
-            <div class="col-2 border border-warning">
+            <div className="col-2 border border-warning">
               <b id="arraymiddle_1"></b>
             </div>
-            <div class="col-2 border border-warning">
+            <div className="col-2 border border-warning">
               <b id="arraymiddle_2"></b>
             </div>
-            <div class="col-2 border border-warning">
+            <div className="col-2 border border-warning">
               <b id="arrayright_2"></b>
             </div>
           </div>

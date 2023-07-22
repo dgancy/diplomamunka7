@@ -132,44 +132,44 @@ function MasterTheorem() {
       >
         Mester-tétel
       </h1>
-      <div class="form-group">
-        <div class="container">
-          <div class="row justify-content-center text-center">
-            <div class="col-2">
+      <div className="form-group">
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-2">
               <b style={{ color: "white" }}>A:</b>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="A_element"
                 placeholder="A elem"
               />{" "}
-              <small class="form-text text-white">(T elem szorzata)</small>
+              <small className="form-text text-white">(T elem szorzata)</small>
             </div>
-            <div class="col-2">
+            <div className="col-2">
               {" "}
               <b style={{ color: "white" }}>B:</b>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="B_element"
                 placeholder="B elem"
               />
-              <small class="form-text text-white">(n elem szorzata)</small>
+              <small className="form-text text-white">(n elem szorzata)</small>
             </div>
-            <div class="col-2">
+            <div className="col-2">
               {" "}
               <b style={{ color: "white" }}>f(n): </b>
               <input
                 type="text"
-                class="form-control"
+                className="form-control"
                 id="N_element"
                 placeholder="n elem"
               />
-              <small class="form-text text-white">(n kitevős tag)</small>
+              <small className="form-text text-white">(n kitevős tag)</small>
             </div>
           </div>
           <br />
-          <div class="row justify-content-center text-center">
+          <div className="row justify-content-center text-center">
             <Button variant="btn btn-outline-warning" onClick={Result}>
               Kiszámol
             </Button>

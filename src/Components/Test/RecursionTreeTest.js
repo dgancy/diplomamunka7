@@ -10,6 +10,63 @@ function RecursionTreeTest() {
   var check_N = `n^${nsup}`;
   var n_rekurzios = `n<sup>${nsup}</sup>`;
 
+  const numbers_of_answers = [];
+  numbers_of_answers.push(N_elem);
+
+  for (let i = 0; i < 4; i++) {
+    var number = Math.floor(Math.random() * 10) + 1;
+    if (numbers_of_answers.length < 4) {
+      if (!numbers_of_answers.includes(number)) {
+        numbers_of_answers.push(number);
+      }
+    }
+  }
+  var change_position = Math.floor(Math.random() * 3) + 1;
+  console.log("change:" + change_position);
+  var change_element = numbers_of_answers[0];
+  numbers_of_answers[0] = numbers_of_answers[change_position];
+  numbers_of_answers[change_position] = change_element;
+  console.log("numbers:" + numbers_of_answers);
+
+  function first_answer_one_edge() {
+    return `(n/${numbers_of_answers[0]})<sup>i</sup>`;
+  }
+  function second_answer_one_edge() {
+    return `(n/${numbers_of_answers[1]})<sup>i</sup>`;
+  }
+  function third_answer_one_edge() {
+    return `(n/${numbers_of_answers[2]})<sup>i</sup>`;
+  }
+  function fourth_answer_one_edge() {
+    return `(n/${numbers_of_answers[3]})<sup>i</sup>`;
+  }
+
+  const numbers_of_answers_edge_number = [];
+  numbers_of_answers_edge_number.push(T_elem);
+
+  for (let i = 0; i < 4; i++) {
+    var number = 0;
+    number = Math.floor(Math.random() * 10) + 1;
+    if (numbers_of_answers_edge_number.length < 4) {
+      if (!numbers_of_answers_edge_number.includes(number)) {
+        numbers_of_answers_edge_number.push(number);
+      }
+    }
+  }
+
+  function first_answer_edge_number() {
+    return `${numbers_of_answers_edge_number[0]}<sup>i</sup>`;
+  }
+  function second_answer_edge_number() {
+    return `${numbers_of_answers_edge_number[1]}<sup>i</sup>`;
+  }
+  function third_answer_edge_number() {
+    return `${numbers_of_answers_edge_number[2]}<sup>i</sup>`;
+  }
+  function fourth_answer_edge_number() {
+    return `${numbers_of_answers_edge_number[3]}<sup>i</sup>`;
+  }
+
   function General() {
     if (n_rekurzios === `n<sup>4</sup>`) {
       n_rekurzios = `nlog<sup>n</sup>`;
@@ -17,7 +74,7 @@ function RecursionTreeTest() {
     if (n_rekurzios === `n<sup>1</sup>`) {
       n_rekurzios = `n`;
     }
-    
+
     return `Oldja meg a következő feladatot Rekurziós fa módszer használatával. T(n)= ${T_elem} T( n/${N_elem} ) ${n_rekurzios}`;
   }
 
@@ -109,34 +166,34 @@ function RecursionTreeTest() {
           >
             {" "}
             <div className="col-2">
-              <div>
-                <b style={{ color: "white" }}>T-értéke :</b>
-                <input
-                  type="number"
-                  className="form-control"
-                  id="quest1-T-elem"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>T-értéke :</b>
+              <input
+                type="number"
+                className="form-control"
+                id="quest1-T-elem"
+              />{" "}
             </div>
             <div className="col-2">
-              <div>
-                <b style={{ color: "white" }}>N-értéke :</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest1-N-elem"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>N-értéke :</b>
+              <input
+                type="text"
+                className="form-control"
+                id="quest1-N-elem"
+              />{" "}
             </div>
             <div className="col-2">
-              <div>
-                <b style={{ color: "white" }}>n-értéke :</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest1-f(n)-elem"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>n-értéke :</b>
+              <select
+                id="quest1-f(n)-elem"
+                className="form-control"
+                type="text"
+              >
+                <option></option>
+                <option>n</option>
+                <option>n&sup2;</option>
+                <option>n&sup3;</option>
+                <option>nlogn</option>
+              </select>
             </div>
           </div>
           <div
@@ -145,26 +202,32 @@ function RecursionTreeTest() {
           >
             {" "}
             <div className="col-2">
-              <div>
-                <b style={{ color: "white" }}>1 csúcs költsége:</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest1-1-csucs"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>Egy csúcs költsége:</b>
+
+              <select id="quest1-1-csucs" className="form-control" type="text">
+                <option></option>
+                <option>{first_answer_one_edge()}</option>
+                <option>{second_answer_one_edge()}</option>
+                <option>{third_answer_one_edge()}</option>
+                <option>{fourth_answer_one_edge()}</option>
+              </select>
             </div>
             <div className="col-4">
-              <div>
-                <b style={{ color: "white" }}>
-                  Az i-edik szinten található csúcsok száma:
-                </b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest1-csucsszam"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>
+                i.-k szinten található csúcsok száma:
+              </b>
+
+              <select
+                id="quest1-csucsszam"
+                className="form-control"
+                type="text"
+              >
+                <option></option>
+                <option>{first_answer_edge_number()}</option>
+                <option>{second_answer_edge_number()}</option>
+                <option>{third_answer_edge_number()}</option>
+                <option>{fourth_answer_edge_number()}</option>
+              </select>
             </div>
           </div>
           <div
@@ -173,47 +236,40 @@ function RecursionTreeTest() {
           >
             {" "}
             <div className="col-3">
-              <div>
-                <b style={{ color: "white" }}>Az i-edik szint összköltsége:</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest1-szintkoltseg"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>i.-k szint összköltsége:</b>
+              <input
+                type="text"
+                className="form-control"
+                id="quest1-szintkoltseg"
+              />{" "}
             </div>
             <div className="col-2">
-              <div>
-                <b style={{ color: "white" }}>A fa magassága:</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest1-famagassaga"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>A fa magassága:</b>
+              <input
+                type="text"
+                className="form-control"
+                id="quest1-famagassaga"
+              />{" "}
             </div>
             <div className="col-2">
-              <div>
-                <b style={{ color: "white" }}>Levelek száma:</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest1-levelekszama"
-                />{" "}
-              </div>
+              <b style={{ color: "white" }}>Levelek száma:</b>
+              <input
+                type="text"
+                className="form-control"
+                id="quest1-levelekszama"
+              />{" "}
             </div>
           </div>
           <div
             style={{ padding: "10px" }}
             className="row justify-content-center text-center"
           >
-            <Button variant="btn btn-outline-warning" onClick={Check}>
+            <Button variant="btn btn-warning" onClick={Check}>
               Következő
             </Button>
           </div>
         </div>
       </div>
-      <br />
     </form>
   );
 }
