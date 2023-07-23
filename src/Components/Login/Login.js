@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 //import { useNavigate } from "react-router-dom";
 
 export default function Login() {
-
+  //*const navigate = useNavigate();
   return (
     <form style={{ background: "#1C3A94" }}>
       <div class="form-group ">
