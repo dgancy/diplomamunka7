@@ -1,19 +1,53 @@
 import React from "react";
-import Button from "react-bootstrap/Button";
+import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
-export default function BinaryTree() {
-  var SplittedArray = [];
+export default function BinaryTreeTest() {
+const navigate=useNavigate();
 
-  function Result() {
-    var a = document.getElementById("fok").value;
-    var edgemax = 2 * a - 2;
-    //document.getElementById("edgemax").innerHTML = edgemax;
-    //document.getElementById("childmax").innerHTML = (2 * a);
+  var array = [];
+  var fokszam = 2;
 
-    var b = document.getElementById("elements").value;
-    SplittedArray.push(b);
-    var OutputArrayEdge = [];
+  function Generate() {
+    var hossz = Math.floor(Math.random() * 3) + 9;
+
+    for (let i = 0; i < hossz; i++) {
+      array.push(Math.floor(Math.random() * 100));
+    }
+
+    console.log("hossz: " + hossz);
+    console.log("array: " + array);
+
+    return `Adott az alábbi B-fa, amelynek minimális fokszáma ${fokszam}. A következő számsoron alkalmazza a tanultakat. [ ${array} ].`;
+  }
+
+  function Check() {
+    console.log("array-check: " + array);
+
+    var edgearray = [];
+    edgearray = document.getElementById("inp0").value.split(",");
+
+    var leftarrayone = [];
+    leftarrayone = document.getElementById("inp1").value.split(",");
+    var leftarraytwo = [];
+    leftarraytwo = document.getElementById("inp3").value.split(",");
+    var leftarraythree = [];
+    leftarraythree = document.getElementById("inp4").value.split(",");
+
+    var rightarrayone = [];
+    rightarrayone = document.getElementById("inp2").value.split(",");
+    var rightarraytwo = [];
+    rightarraytwo = document.getElementById("inp5").value.split(",");
+    var rightarraythree = [];
+    rightarraythree = document.getElementById("inp6").value.split(",");
+
+    parseInt(edgearray);
+
     var Change = [];
+    var edgemax = 2 * fokszam - 2;
+    var state = 0;
+
+    var OutputArrayEdge = [];
     var OutputArrayRight_1 = [];
     var OutputArrayLeft_1 = [];
     var OutputArrayRight_2 = [];
@@ -21,45 +55,36 @@ export default function BinaryTree() {
     var OutputArrayMiddle_1 = [];
     var OutputArrayMiddle_2 = [];
 
-    var state = 0;
-
-    console.log(SplittedArray);
-
-    for (let i = 0; i < SplittedArray.length; i++) {
+    for (let i = 0; i < array.length; i++) {
       if (i < 3) {
         if (i < edgemax) {
-          OutputArrayEdge.push(SplittedArray[i]);
-        } else if ((i = edgemax)) {
-          console.log("checkedge: " + OutputArrayEdge);
-
-          OutputArrayEdge.push(SplittedArray[i]);
+          OutputArrayEdge.push(array[i]);
+        } else if (i === edgemax) {
+          OutputArrayEdge.push(array[i]);
           OutputArrayEdge.sort();
-          console.log("checkedgetwo: " + OutputArrayEdge);
-
           Change.push(OutputArrayEdge[edgemax - 1]);
           OutputArrayLeft_1.push(OutputArrayEdge[0]);
           OutputArrayRight_1.push(OutputArrayEdge[edgemax]);
           OutputArrayEdge = Change;
-          console.log("checkedgethree: " + OutputArrayEdge);
         }
       } else {
         if (
-          SplittedArray[i] > OutputArrayEdge[0] &&
-          SplittedArray[i] < OutputArrayEdge[OutputArrayEdge.length] &&
+          array[i] > OutputArrayEdge[0] &&
+          array[i] < OutputArrayEdge[OutputArrayEdge.length] &&
           OutputArrayEdge.length > 1
         ) {
-          OutputArrayMiddle_1.push(SplittedArray[i]);
+          OutputArrayMiddle_1.push(array[i]);
         }
         if (
           OutputArrayLeft_1.length < edgemax + 1 &&
           OutputArrayRight_1.length < edgemax + 1 &&
           state === 0
         ) {
-          if (SplittedArray[i] > OutputArrayEdge[OutputArrayEdge.length - 1]) {
-            OutputArrayRight_1.push(SplittedArray[i]);
+          if (array[i] > OutputArrayEdge[OutputArrayEdge.length - 1]) {
+            OutputArrayRight_1.push(array[i]);
             OutputArrayRight_1.sort();
-          } else if (SplittedArray[i] < OutputArrayEdge[0] && state === 0) {
-            OutputArrayLeft_1.push(SplittedArray[i]);
+          } else if (array[i] < OutputArrayEdge[0] && state === 0) {
+            OutputArrayLeft_1.push(array[i]);
             OutputArrayLeft_1.sort();
           }
         }
@@ -79,7 +104,7 @@ export default function BinaryTree() {
         OutputArrayMiddle_1.push(Change);
         OutputArrayEdge.sort();
         OutputArrayMiddle_1.sort();
-      }
+      } //ellenorzo feladat 9,2,5,7,6,5,4,1
       if (OutputArrayEdge.length === edgemax + 1) {
         for (let k = 0; k < 2; k++) {
           if (
@@ -121,30 +146,26 @@ export default function BinaryTree() {
         state = 1;
       }
       if (state === 1) {
-        if (
-          SplittedArray[i] < OutputArrayLeft_1[0] &&
-          SplittedArray[i] < OutputArrayEdge[0]
-        ) {
-          OutputArrayLeft_2.push(SplittedArray[i]);
+        if (array[i] < OutputArrayLeft_1[0] && array[i] < OutputArrayEdge[0]) {
+          OutputArrayLeft_2.push(array[i]);
           OutputArrayLeft_2.sort();
         } else if (
-          SplittedArray[i] > OutputArrayLeft_1[OutputArrayLeft_1.length - 1] &&
-          SplittedArray[i] < OutputArrayEdge[0]
+          array[i] > OutputArrayLeft_1[OutputArrayLeft_1.length - 1] &&
+          array[i] < OutputArrayEdge[0]
         ) {
-          OutputArrayMiddle_1.push(SplittedArray[i]);
+          OutputArrayMiddle_1.push(array[i]);
           OutputArrayMiddle_1.sort();
         } else if (
-          SplittedArray[i] < OutputArrayRight_1[0] &&
-          SplittedArray[i] > OutputArrayEdge[OutputArrayEdge.length - 1]
+          array[i] < OutputArrayRight_1[0] &&
+          array[i] > OutputArrayEdge[OutputArrayEdge.length - 1]
         ) {
-          OutputArrayMiddle_2.push(SplittedArray[i]);
+          OutputArrayMiddle_2.push(array[i]);
           OutputArrayMiddle_2.sort();
         } else if (
-          SplittedArray[i] <
-            OutputArrayRight_1[OutputArrayRight_1.length - 1] &&
-          SplittedArray[i] > OutputArrayEdge[OutputArrayEdge.length - 1]
+          array[i] < OutputArrayRight_1[OutputArrayRight_1.length - 1] &&
+          array[i] > OutputArrayEdge[OutputArrayEdge.length - 1]
         ) {
-          OutputArrayRight_2.push(SplittedArray[i]);
+          OutputArrayRight_2.push(array[i]);
           OutputArrayRight_2.sort();
         }
 
@@ -202,7 +223,6 @@ export default function BinaryTree() {
         OutputArrayMiddle_1.splice(m, OutputArrayMiddle_1.length);
       }
     }
-
     OutputArrayEdge.sort();
     OutputArrayRight_1.sort();
     OutputArrayLeft_1.sort();
@@ -211,96 +231,114 @@ export default function BinaryTree() {
     OutputArrayMiddle_1.sort();
     OutputArrayMiddle_2.sort();
 
+    parseInt(edgearray);
+
+    var points = 0;
+    for (let i = 0; i < OutputArrayEdge.length; i++) {
+      if (edgearray[i] === OutputArrayEdge[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OutputArrayLeft_1.length; i++) {
+      if (leftarrayone[i] === OutputArrayLeft_1[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OutputArrayLeft_2.length; i++) {
+      if (leftarraytwo[i] === OutputArrayLeft_2[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OutputArrayMiddle_1.length; i++) {
+      if (leftarraythree[i] === OutputArrayMiddle_1[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OutputArrayMiddle_1.length; i++) {
+      if (rightarraytwo[i] === OutputArrayMiddle_1[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OutputArrayRight_1.length; i++) {
+      if (rightarrayone[i] === OutputArrayRight_1[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OutputArrayRight_2.length; i++) {
+      if (rightarraythree[i] === OutputArrayRight_2[i]) {
+        points += 1;
+      }
+    }
+
+    console.log(edgearray);
+
     console.log("Edgemax: " + edgemax);
-    console.log("Edge: " + OutputArrayEdge);
+    console.log("Edge:" + OutputArrayEdge);
     console.log("Left1: " + OutputArrayLeft_1);
     console.log("Left2: " + OutputArrayLeft_2);
     console.log("Right1: " + OutputArrayRight_1);
     console.log("Right2: " + OutputArrayRight_2);
     console.log("Middle1: " + OutputArrayMiddle_1);
     console.log("Middle2: " + OutputArrayMiddle_2);
-
-    //document.getElementById("array1").innerHTML = SplittedArray;
-    document.getElementById("arrayedge").innerHTML = OutputArrayEdge;
-    document.getElementById("arrayright_1").innerHTML = OutputArrayRight_1;
-    document.getElementById("arrayright_2").innerHTML = OutputArrayRight_2;
-    document.getElementById("arrayleft_1").innerHTML = OutputArrayLeft_1;
-    document.getElementById("arrayleft_2").innerHTML = OutputArrayLeft_2;
-    document.getElementById("arraymiddle_1").innerHTML = OutputArrayMiddle_1;
-    document.getElementById("arraymiddle_2").innerHTML = OutputArrayMiddle_2;
-
-    /**/
+  
+  navigate("/hash-table-test");
   }
+
   return (
     <form style={{ background: "#1C3A94" }}>
-      <h1
-        style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
-      >
-        Binary tree solver
-      </h1>
-      <div>
-        <div className="form-group">
-          <div className="container">
-            <div className="row justify-content-center text-center">
-              <div className="col-2">
-                <b style={{ color: "white" }}>Fokszam: </b>
-                <input type="number" className="form-control" id="fok" />{" "}
-              </div>
-              <div className="col-2">
-                {" "}
-                <b style={{ color: "white" }}>Elements: </b>
-                <input type="number" className="form-control" id="elements" />
-                <small className="form-text text-white">(Input items)</small>
-              </div>
+      <div className="form-group" style={{ padding: "15px" }}>
+        <div style={{ color: "white", textAlign: "center", padding: "10px" }}>
+          {" "}
+          {Generate()}
+        </div>
+
+        <div className="container">
+          <div className="row justify-content-center">
+            <div className="col-2">
+              <input id="inp0" type="text" className="form-control"></input>
+            </div>
+          </div>
+          <div className="row justify-content-center" style={{ padding: "15px" }}>
+            <div className="col-2" >
+              {" "}
+              <input id="inp1" type="text" className="form-control"></input>
+            </div>
+            <div className="col-2">
+              {" "}
+            </div>
+            <div className="col-2">
+              {" "}
+              <input id="inp2" type="text" className="form-control"></input>
+            </div>
+          </div>
+          <div className="row justify-content-center" style={{ padding: "15px" }}>
+            <div className="col-2">
+              {" "}
+              <input id="inp3" type="text" className="form-control"></input>
+            </div>
+            <div className="col-2">
+              {" "}
+              <input id="inp4" type="text" className="form-control"></input>
+            </div>
+            <div className="col-2">
+              {" "}
+              <input id="inp5" type="text" className="form-control"></input>
+            </div>
+            <div className="col-2">
+              {" "}
+              <input id="inp6" type="text" className="form-control"></input>
             </div>
           </div>
         </div>
-        <div>
-          <div className="row justify-content-center text-center">
-            <Button variant="btn btn-outline-warning" onClick={Result}>
-              Kiszámol
+
+        <div className="row justify-content-center text-center">
+          <div>
+            <Button variant="warning" onClick={Check}>
+              Következő
             </Button>
           </div>
         </div>
       </div>
-      <br />
-      <div className="container">
-        <div>
-          <div className="row justify-content-center ">
-            <div className="col-2 border border-warning">
-              <b id="arrayedge"></b>
-            </div>
-          </div>
-        </div>
-        <div>
-          <div className="row justify-content-center">
-            <div className="col-2 border border-warning">
-              <b id="arrayleft_1"></b>
-            </div>
-            <div className="col-2"></div>
-            <div className="col-2 border border-warning">
-              <b id="arrayright_1"></b>
-            </div>
-          </div>
-        </div>{" "}
-        <div>
-          <div className="row justify-content-center">
-            <div className="col-2 border border-warning">
-              <b id="arrayleft_2"></b>
-            </div>
-            <div className="col-2 border border-warning">
-              <b id="arraymiddle_1"></b>
-            </div>
-            <div className="col-2 border border-warning">
-              <b id="arraymiddle_2"></b>
-            </div>
-            <div className="col-2 border border-warning">
-              <b id="arrayright_2"></b>
-            </div>
-          </div>
-        </div>
-      </div>
-      <br />
     </form>
   );
 }

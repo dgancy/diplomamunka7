@@ -79,25 +79,25 @@ export default function Backtracking() {
       >
         Backpropagation
       </h1>
-      <div class="form-group">
-        <div class="container">
-          <div class="row justify-content-center text-center">
-            <div class="col-2">
+      <div className="form-group">
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-2">
               <b style={{ color: "white" }}>Solution Initiative: </b>
-              <input type="text" class="form-control" id="addarray" />{" "}
-              <small class="form-text text-white">(For e.: 1,2,4)</small>
+              <input type="text" className="form-control" id="addarray" />{" "}
+              <small className="form-text text-white">(For e.: 1,2,4)</small>
             </div>
-            <div class="col-2">
+            <div className="col-2">
               {" "}
               <b style={{ color: "white" }}>Note: </b>
-              <input type="text" class="form-control" id="addnumber" />
-              <small class="form-text text-white">(For e.: 7)</small>
+              <input type="text" className="form-control" id="addnumber" />
+              <small className="form-text text-white">(For e.: 7)</small>
             </div>
-            <div class="col-2">
+            <div className="col-2">
               <b style={{ color: "white" }} for="type">
                 Question Type:{" "}
               </b>
-              <select id="type" class="form-control" name="type">
+              <select id="type" className="form-control" name="type">
                 <option> </option>
                 <option value="ElsőFiú" id="hash">
                   First Son
@@ -112,15 +112,15 @@ export default function Backtracking() {
           </div>
         </div>
       </div>
-      <div class="row justify-content-center text-center">
+      <div className="row justify-content-center text-center">
         <Button variant="btn btn-outline-warning" id="btnadd" onClick={Result}>
           Solve
         </Button>
-        <div  class="container" style={{ marginLeft: "100px" }}>
-          <b class="row justify-content-start text-center" style={{ color: "white", fontSize: "20px" }} id="resolved"></b>
+      </div>
+        <div className="container" style={{ marginLeft: "100px" }}>
+          <b className="row justify-content-start text-center" style={{ color: "white", fontSize: "20px" }} id="resolved"></b>
         </div>
         <canvas id="tree" width={"750px"} height={"300px"}></canvas>
-      </div>
     </form>
   );
 }

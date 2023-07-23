@@ -1,10 +1,10 @@
 a{
     font-family: Arial, Helvetica, sans-serif;
 }
-a:link {
+.navelement{
   color: white;
 }
-a:link:hover{
+.navelement:hover{
     color:gold;
     text-decoration:"underline";
 }

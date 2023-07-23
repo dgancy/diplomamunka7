@@ -7,60 +7,43 @@ export default function RecursionTree() {
     var N = document.getElementById("B_element").value;
     var n = document.getElementById("N_element").value;
 
-    var n_elem = "( n/" + N + " ) " + "<sup>i</sup>"; //hiba javitas
-    var magassag = "log" + "<sub>" + N + "</sub>" + "n";
-    var levelszameredmeny = "n" + "log" + "<sub>" + N + "</sub>" + T;
+    var n_elem = `(n/ ${N}) <sup>i</sup>`; //hiba javitas
+    var magassag = `log<sub>${N}</sub> n`;
+    var levelszameredmeny = `nlog<sub>${N}</sub> ${T}`;
 
     if (n === "n2") {
-      n_elem = "(" + n_elem + ")" + "<sup>2</sup>";
+      n_elem = `(${n_elem})<sup>2</sup>`;
     }
     if (n === "n3") {
-      n_elem = "(" + n_elem + ")" + "<sup>3</sup>";
+      n_elem = `(${n_elem})<sup>3</sup>`;
     }
     if (n === "n4") {
-      n_elem = "(" + n_elem + ")" + "<sup>4</sup>";
+      n_elem = `(${n_elem})<sup>4</sup>`;
     }
     if (n === "n5") {
-      n_elem = "(" + n_elem + ")" + "<sup>5</sup>";
+      n_elem = `(${n_elem})<sup>5</sup>`;
     }
 
-    document.getElementById("one-edge").innerHTML =
-      "Egy csúcs költsége: " + n_elem;
-    document.getElementById("edge-number").innerHTML =
-      "Az i-edik szinten a csúcsok száma: " + T + "<sup>i</sup>";
-    document.getElementById("tree-high").innerHTML =
-      "Az i-edik szint összköltsége: " + "( n/" + N + " ) " + "<sup>i</sup>";
-    document.getElementById("leaf-number").innerHTML =
-      "Levelek száma: " +
-      T +
-      "<sup>" +
-      magassag +
-      "</sup>" +
-      " = " +
-      levelszameredmeny;
-    document.getElementById("leaf-high").innerHTML =
-      "A fa magassága: " + magassag;
-    document.getElementById("final").innerHTML =
-      "Összeképlet: " +
-      "T(n) = " +
-      "<sub>" +
-      "i=0" +
-      "</sub>" +
-      " Σ " +
-      "<sup>" +
-      "log" +
-      "<sub>" +
-      N +
-      "</sub>" +
-      "</sup>" +
-      "<sup>i-1</sup>" +
-      " " +
-      T +
-      "<sup>i</sup>" +
-      " * " +
-      n_elem +
-      " * " +
-      levelszameredmeny;
+    document.getElementById(
+      "one-edge"
+    ).innerHTML = `Egy csúcs költsége: ${n_elem}`;
+    document.getElementById(
+      "edge-number"
+    ).innerHTML = `Az i-edik szinten a csúcsok száma: ${T}<sup>i</sup>`;
+    document.getElementById(
+      "tree-high"
+    ).innerHTML = `Az i-edik szint összköltsége: ( n/${N} )<sup>i</sup>`;
+    document.getElementById("leaf-number").innerHTML = `Levelek száma:
+      ${T}
+      <sup>
+      ${magassag}
+      </sup> = ${levelszameredmeny}`;
+    document.getElementById(
+      "leaf-high"
+    ).innerHTML = `A fa magassága: ${magassag}`;
+    document.getElementById(
+      "final"
+    ).innerHTML = `Összeképlet: T(n) = <sub>i=0</sub> Σ <sup>log<sub>${N}</sub></sup><sup> i-1</sup> ${T}<sup>i</sup> * ${n_elem} * ${levelszameredmeny}`;
   }
 
   return (
