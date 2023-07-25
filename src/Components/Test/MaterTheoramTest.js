@@ -157,7 +157,7 @@ export default function MasterTheoramTest() {
   }
 
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#1C3A94", height:"425px" }}>
       <div className="form-group" style={{ padding: "15px" }}>
         <div
           style={{ color: "white", textAlign: "center", padding: "10px" }}

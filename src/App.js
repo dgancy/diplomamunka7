@@ -15,7 +15,6 @@ import MasterTheoramAssignment from "./Components/Assignments/MasterTheoramAssig
 import BinaryTreeAssignment from "./Components/Assignments/BinaryTreeAssignments";
 import HashTableAssignment from "./Components/Assignments/HashTableAssignment";
 import RedBlackTreeAssignment from "./Components/Assignments/RedBlackTreeAssignment";
-import InWork from "./Components/InWork";
 import TestPage from "./Components/Test/TestPage";
 import RecursionTreeTest from "./Components/Test/RecursionTreeTest";
 import MasterTheoramTest from "./Components/Test/MaterTheoramTest";
@@ -53,7 +52,6 @@ function App() {
           <Route path="/hash-table-test" element={<HashTableTest />} />
           <Route path="/backtracking-test" element={<BackTrackingTest />} />
 
-          <Route path="/inwork" element={<InWork />} />
 
         </Routes>
       </Router>

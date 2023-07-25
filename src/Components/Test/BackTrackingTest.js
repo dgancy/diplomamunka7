@@ -83,7 +83,7 @@ export default function BackTrackingTest() {
   }
 
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#1C3A94", height: "300px" }}>
       <div style={{ padding: "15px" }} class="form-group">
         <div class="container">
           <div class="row justify-content-center text-center"></div>
@@ -102,19 +102,13 @@ export default function BackTrackingTest() {
           <input id="inp0" class="form-control col-1"></input>
         </div>
       </div>
-      <div>
-        <div
-          style={{ paddingBottom: "20px" }}
-          class="row justify-content-center text-center"
-        >
-          <Button
-            id="btncheck"
-            variant="btn btn-outline-warning"
-            onClick={Check}
-          >
-            Következő
-          </Button>
-        </div>
+      <div
+        style={{ paddingBottom: "20px" }}
+        class="row justify-content-center text-center"
+      >
+        <Button id="btncheck" variant="btn btn-outline-warning" onClick={Check}>
+          Következő
+        </Button>
       </div>
     </form>
   );

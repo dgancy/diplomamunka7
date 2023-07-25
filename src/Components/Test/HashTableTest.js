@@ -206,7 +206,7 @@ export default function HashTableTest() {
    */
 
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#1C3A94", height: "300px" }}>
       <div
         className="form-group"
         style={{ paddingBottom: "15px", paddingTop: "15px" }}
@@ -215,7 +215,7 @@ export default function HashTableTest() {
           <div className="row justify-content-center text-center">
             <div style={{ color: "white" }}>{Generate()}</div>
             <div style={{ padding: "20px" }} className="container">
-              <div className="row">
+              <div style={{padding:"20px"}} className="row">
                 <input
                   type="text"
                   id="inp0"
@@ -292,7 +292,7 @@ export default function HashTableTest() {
             </div>
           </div>
           <div>
-            <div className="row justify-content-center text-center">
+            <div style={{padding:"20px"}} className="row justify-content-center text-center">
               <Button
                 id="btncheck"
                 variant="btn btn-outline-warning"

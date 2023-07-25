@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 export default function NavbarMenu() {
   return (
-    <Navbar style={{ backgroundColor: "#0f1113" }}>
+    <Navbar className="justify-content-end" style={{ backgroundColor: "#0f1113" }}>
       <Nav.Link as={Link} to="/">
         <Nav.Item className="navelement">Home</Nav.Item>
       </Nav.Link>
@@ -105,20 +105,11 @@ export default function NavbarMenu() {
           Backtracking assignment
         </NavDropdown.Item>
       </NavDropdown>
-
-      <Nav.Link as={Link} to={"/login"}>
-        <Button style={{ float: "right" }} variant="outline-warning">
-          Login
-        </Button>
+      <Nav.Link  as={Link} to={"/login"}>
+        <Button variant="warning">Login</Button>
       </Nav.Link>
       <Nav.Link as={Link} to={"/signin"}>
-        <Button className="btn btn-warning my-2 my-sm-0" variant="warning">
-          SignIn
-        </Button>
-      </Nav.Link>
-
-      <Nav.Link as={Link} to="/inwork">
-        <Nav.Item className="navelement">In-work</Nav.Item>
+        <Button className="btn btn-outline-warning">SignIn</Button>
       </Nav.Link>
     </Navbar>
   );
