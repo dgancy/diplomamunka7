@@ -106,7 +106,7 @@ export default function BackTrackingTest() {
         style={{ paddingBottom: "20px" }}
         class="row justify-content-center text-center"
       >
-        <Button id="btncheck" variant="btn btn-outline-warning" onClick={Check}>
+        <Button id="btncheck" variant="warning" onClick={Check}>
           Következő
         </Button>
       </div>

@@ -1,7 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-export default function RedBlackTreeAssignment() {
+export default function RedBlackTreeTest() {
   var array = [];
   var direction = [];
   var colors = [];
@@ -23,11 +23,7 @@ export default function RedBlackTreeAssignment() {
 
     console.log("hossz: " + hossz);
     console.log("array: " + array);
-    document.getElementById("generate").innerHTML =
-      "Oldja meg a piros-fekete fa használtával a feladatot, a következő adatsorra: " +
-      "[ " +
-      array +
-      " ].";
+    return `Oldja meg a piros-fekete fa használtával a feladatot, a következő adatsorra: [ ${array} ].`;
   }
 
   function Kirajzol() {
@@ -376,17 +372,10 @@ export default function RedBlackTreeAssignment() {
 
   return (
     <form style={{ background: "#1C3A94", padding: "20px" }}>
-      <h1
-        style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
-      >
-        Piros-fekete fa feladatok
-      </h1>
       <div className="form-group">
         <div className="container">
-          <div className="row justify-content-center text-center">
-            <Button variant="outline-warning" id="btngen" onClick={Generate}>
-              Új feladat
-            </Button>
+          <div className="row justify-content-center text-center" style={{color:"white"}}>
+            {Generate()}
           </div>
           <div className="row justify-content-center text-center">
             <div id="generate"></div>
@@ -403,11 +392,11 @@ export default function RedBlackTreeAssignment() {
           <input
             type="number"
             id="element"
-            className="form-control col-2"
+            className="form-control col-1"
           ></input>
         </div>
         <div
-          style={{ padding: "20px" }}
+          style={{ padding: "10px" }}
           className="row justify-content-center text-center"
         >
           <div className="">
@@ -432,8 +421,6 @@ export default function RedBlackTreeAssignment() {
             Befejez
           </Button>
         </div>
-        <b id="final" />
-        <b id="final-quest-five"></b>
       </div>
     </form>
   );
