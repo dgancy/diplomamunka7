@@ -1,23 +1,24 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function HashTableTest() {
+  const navigate = useNavigate();
   var charakters = [];
   let type;
-  var hossz;
-  var elemszam;
+  var hossz = Math.floor(Math.random() * 10) + 3;
+  var elemszam = Math.floor(Math.random() * 5) + 3;
   var numbers = [];
   var numbersh2 = [];
   var c1;
   var c2;
 
+  for (let i = 0; i < hossz; i++) {}
+
   function Generate() {
     var chars = "QWERTZUIOPLKJHGFDSAYXCVBNM";
     var h1 = "";
     var különbözet = 0;
-    var input = document.getElementById("gen");
-    hossz = Math.floor(Math.random() * 10) + 5;
-    elemszam = Math.floor(Math.random() * 5) + 3;
     //var cs = hossz * 70;
 
     type = Math.floor(Math.random() * 100) % 4;
@@ -55,11 +56,8 @@ export default function HashTableTest() {
         }
         h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + ", ";
       }
-      document.getElementById(
-        "hossz"
-      ).innerHTML = `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat 
-          ${type} hasítás alkalmazásával.<br/>`;
-      document.getElementById("h").innerHTML = h1 + " .";
+      return `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat 
+          ${type} hasítás alkalmazásával ${h1}.`;
     } else if (type === "square") {
       var oneortwo = Math.floor(Math.random() * 1);
       if (oneortwo === 0) {
@@ -75,10 +73,7 @@ export default function HashTableTest() {
         }
         h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + ", ";
       }
-      document.getElementById(
-        "hossz"
-      ).innerHTML = `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat ${type} ( ${c1} , ${c2} ) hasítás alkalmazásával.`;
-      document.getElementById("h").innerHTML = h1 + " .";
+      return `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat ${type} ( ${c1} , ${c2} ) hasítás alkalmazásával ${h1}.`;
     } else if (type === "double") {
       for (let i = 0; i < elemszam; i++) {
         if (i === elemszam) {
@@ -106,29 +101,10 @@ export default function HashTableTest() {
           numbersh2[i] +
           " ";
       }
-      document.getElementById("hossz").innerHTML =
-        "Szúrja be egy " +
-        hossz +
-        " hosszúságú hash táblába a következő objektumokat " +
-        type +
-        " hasítás alkalmazásával.";
-      document.getElementById("h").innerHTML = h1 + " .";
+      return `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat ${type} hasítás alkalmazásával. ${h1}.`;
     }
     console.log("H1: " + h1);
-
-    for (var i = 0; i < hossz; i++) {
-      input.innerHTML +=
-        '<input type="text" placeholder="' +
-        i +
-        '" name="' +
-        i +
-        '" size="4" id="inp' +
-        i +
-        '">';
-    }
-
     console.log("first:" + charakters);
-    document.getElementById("btngen").disabled = true;
   }
 
   function Check() {
@@ -223,56 +199,119 @@ export default function HashTableTest() {
         "final"
       ).innerHTML = `Hibás megoldás, a helyes megoldás: [ ${arrayfinal} ].`;
     }
+    navigate("/backtracking-test")
   }
-
   /*
+            
    */
+
   return (
     <form style={{ background: "#1C3A94" }}>
-      <div class="form-group" style={{ padding: "15px" }}>
-        <div class="container">
-          <div class="row justify-content-center text-center" >
-            <Button
-              variant="btn btn-outline-warning"
-              id="btngen"
-              onClick={Generate}
-              hidden
-            >
-              New Assignment
-            </Button>
+      <div
+        className="form-group"
+        style={{ paddingBottom: "15px", paddingTop: "15px" }}
+      >
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div style={{ color: "white" }}>{Generate()}</div>
+            <div style={{ padding: "20px" }} className="container">
+              <div className="row">
+                <input
+                  type="text"
+                  id="inp0"
+                  className="form-control col-1"
+                  placeholder="0"
+                ></input>
+                <input
+                  type="text"
+                  id="inp1"
+                  className="form-control col-1"
+                  placeholder="1"
+                ></input>
+                <input
+                  type="text"
+                  id="inp2"
+                  className="form-control col-1"
+                  placeholder="2"
+                ></input>
+                <input
+                  type="text"
+                  id="inp3"
+                  className="form-control col-1"
+                  placeholder="3"
+                ></input>
+                <input
+                  type="text"
+                  id="inp4"
+                  className="form-control col-1"
+                  placeholder="4"
+                ></input>
+                <input
+                  type="text"
+                  id="inp5"
+                  className="form-control col-1"
+                  placeholder="5"
+                ></input>
+                <input
+                  type="text"
+                  id="inp6"
+                  className="form-control col-1"
+                  placeholder="6"
+                ></input>
+                <input
+                  type="text"
+                  id="inp7"
+                  className="form-control col-1"
+                  placeholder="7"
+                ></input>
+                <input
+                  type="text"
+                  id="inp8"
+                  className="form-control col-1"
+                  placeholder="8"
+                ></input>
+                <input
+                  type="text"
+                  id="inp9"
+                  className="form-control col-1"
+                  placeholder="9"
+                ></input>
+                <input
+                  type="text"
+                  id="inp10"
+                  className="form-control col-1"
+                  placeholder="10"
+                ></input>
+                <input
+                  type="text"
+                  id="inp11"
+                  className="form-control col-1"
+                  placeholder="11"
+                ></input>
+              </div>
+            </div>
           </div>
-          <div class="row justify-content-center text-center">
-            <b id="hossz" style={{ color: "white" }}></b>
+          <div>
+            <div className="row justify-content-center text-center">
+              <Button
+                id="btncheck"
+                variant="btn btn-outline-warning"
+                onClick={Check}
+              >
+                Solve
+              </Button>
+            </div>
             <br />
-            <b id="h" style={{ color: "white" }}></b>
+            <b
+              style={{
+                color: "white",
+                textAlign: "center",
+                paddingLeft: "40%",
+              }}
+              id="final"
+            />
           </div>
-          <div
-            style={{
-              paddingLeft: "15%",
-              paddingTop: "2%",
-              paddingBottom: "2%",
-              paddingRight: "15%",
-            }}
-            id="gen"
-          ></div>
         </div>
-      </div>
-      <div>
-        <div id="generate"></div>
-        <div class="row justify-content-center text-center">
-          <Button
-            id="btncheck"
-            variant="btn btn-outline-warning"
-            onClick={Check}
-          >
-            Solve
-          </Button>
-        </div>
-        <br />
-        <b
-          style={{ color: "white", textAlign: "center", paddingLeft: "40%" }}
-          id="final"
-        />
       </div>
       <br />
     </form>

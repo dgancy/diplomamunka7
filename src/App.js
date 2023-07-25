@@ -21,6 +21,7 @@ import RecursionTreeTest from "./Components/Test/RecursionTreeTest";
 import MasterTheoramTest from "./Components/Test/MaterTheoramTest";
 import BinaryTreeTest from "./Components/Test/BinaryTreeTest";
 import HashTableTest from "./Components/Test/HashTableTest";
+import BackTrackingTest from "./Components/Test/BackTrackingTest";
 
 function App() {
   return (
@@ -50,6 +51,7 @@ function App() {
           <Route path="/master-theorem-test" element={<MasterTheoramTest />} />
           <Route path="/binary-tree-test" element={<BinaryTreeTest />} />
           <Route path="/hash-table-test" element={<HashTableTest />} />
+          <Route path="/backtracking-test" element={<BackTrackingTest />} />
 
           <Route path="/inwork" element={<InWork />} />
 

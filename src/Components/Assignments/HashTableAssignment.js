@@ -255,7 +255,6 @@ export default function HashTableAssignment() {
         </div>
       </div>
       <div>
-        <div id="generate"></div>
         <div class="row justify-content-center text-center">
           <Button
             id="btncheck"
