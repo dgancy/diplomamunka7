@@ -44,7 +44,7 @@ export default function RedBlackTreeTest() {
   }
 
   return (
-    <form style={{ background: "#000024", paddingTop: "20px" }}>
+    <form style={{ background: "#000027", paddingTop: "20px" }}>
       <div className="form-group">
         <div className="container">
           <div
@@ -107,7 +107,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft:"90px"
+              marginLeft: "90px",
             }}
           ></input>
         </div>
@@ -124,7 +124,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft:"100px",
+              marginLeft: "100px",
               marginRight: "160px",
             }}
           ></input>
@@ -410,6 +410,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "black",
               marginLeft: "15px",
+              marginRight: "15px",
             }}
           ></input>
           <input
@@ -515,7 +516,6 @@ export default function RedBlackTreeTest() {
               marginLeft: "30px",
             }}
           ></input>
-          
         </div>
       </div>
       <div>

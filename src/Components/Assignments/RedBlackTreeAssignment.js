@@ -375,7 +375,7 @@ export default function RedBlackTreeAssignment() {
   }
 
   return (
-    <form style={{ background: "#1C3A94", padding: "20px" }}>
+    <form style={{ background: "#000027", padding: "20px" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >

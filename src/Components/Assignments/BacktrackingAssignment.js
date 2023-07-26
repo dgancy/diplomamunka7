@@ -95,7 +95,7 @@ export default function BackTrackAssignment() {
   }
 
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#000027" }}>
       <h1 style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >Visszalépéses feladatok</h1>
       <div class="form-group">

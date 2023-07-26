@@ -556,7 +556,7 @@ export default function RedBlackTree() {
  */
 
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#000027" }}>
       <h1 style={{ color: "white", textAlign: "left", padding: "20px" }}>
         Red-Black tree
       </h1>

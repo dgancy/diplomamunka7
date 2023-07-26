@@ -206,7 +206,7 @@ export default function HashTableTest() {
    */
 
   return (
-    <form style={{ background: "#1C3A94", height: "300px" }}>
+    <form style={{ background: "#000027", height: "300px" }}>
       <div
         className="form-group"
         style={{ paddingBottom: "15px", paddingTop: "15px" }}

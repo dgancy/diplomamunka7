@@ -9,7 +9,7 @@ export default function TestPage() {
         navigate("/recursion-tree-test");
     }
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#000027" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >

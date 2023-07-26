@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 export default function Login() {
   //*const navigate = useNavigate();
   return (
-    <form style={{ background: "#1C3A94" }}>
+    <form style={{ background: "#000027" }}>
       <div class="form-group ">
         <div class="container " >
           <h2 style={{ color: "white" }} class="row justify-content-center">
