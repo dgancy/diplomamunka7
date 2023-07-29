@@ -333,7 +333,7 @@ const navigate=useNavigate();
 
         <div className="row justify-content-center text-center">
           <div>
-            <Button variant="warning" onClick={Check}>
+            <Button variant="outline-warning" onClick={Check}>
               Következő
             </Button>
           </div>

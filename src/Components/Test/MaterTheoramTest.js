@@ -265,7 +265,7 @@ export default function MasterTheoramTest() {
           <br />
         </div>
         <div className="row justify-content-center text-center">
-          <Button variant="btn btn-warning" onClick={Check}>
+          <Button variant="outline-warning" onClick={Check}>
             Következő
           </Button>
         </div>

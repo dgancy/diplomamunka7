@@ -295,7 +295,7 @@ export default function HashTableTest() {
             <div style={{padding:"20px"}} className="row justify-content-center text-center">
               <Button
                 id="btncheck"
-                variant="warning"
+                variant="outline-warning"
                 onClick={Check}
               >
                 Következő

@@ -264,7 +264,7 @@ function RecursionTreeTest() {
             style={{ padding: "10px" }}
             className="row justify-content-center text-center"
           >
-            <Button variant="btn btn-warning" onClick={Check}>
+            <Button variant="outline-warning" onClick={Check}>
               Következő
             </Button>
           </div>

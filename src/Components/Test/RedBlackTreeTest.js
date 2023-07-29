@@ -1,7 +1,9 @@
 import React from "react";
 import { Button } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 
 export default function RedBlackTreeTest() {
+  const navigate = useNavigate();
   var array = [];
   var userarray = [];
   var usercolors = [];
@@ -42,6 +44,9 @@ export default function RedBlackTreeTest() {
     console.log(IdColors);
     console.log("UColors: " + usercolors);
   }
+  function Check() {
+    navigate("/test");
+  }
 
   return (
     <form style={{ background: "#000027", paddingTop: "20px" }}>
@@ -66,7 +71,7 @@ export default function RedBlackTreeTest() {
             className="form-control"
             style={{
               height: "40px",
-              width: "70px",
+              width: "80px",
               marginTop: "9px",
               marginRight: "10px",
             }}
@@ -107,7 +112,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "90px",
+              marginLeft: "25px",
             }}
           ></input>
         </div>
@@ -124,8 +129,8 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "100px",
-              marginRight: "160px",
+              marginLeft: "17px",
+              marginRight: "520px",
             }}
           ></input>
           <input
@@ -137,7 +142,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "300px",
             }}
           ></input>
         </div>
@@ -154,8 +158,8 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "100px",
-              marginRight: "110px",
+              marginRight: "220px",
+              marginLeft: "17px",
             }}
           ></input>
           <input
@@ -167,8 +171,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "80px",
-              marginRight: "140px",
+              marginRight: "220px",
             }}
           ></input>
           <input
@@ -180,8 +183,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "60px",
-              marginRight: "70px",
+              marginRight: "230px",
             }}
           ></input>
           <input
@@ -193,12 +195,11 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "120px",
             }}
           ></input>
         </div>
         <div
-          className="row justify-content-center text-center col-sm"
+          className="row justify-content-start text-start col"
           style={{ paddingBottom: "10px", paddingTop: "10px" }}
         >
           <input
@@ -210,8 +211,8 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "30px",
-              marginLeft: "100px",
+              marginRight: "75px",
+              marginLeft: "60px",
             }}
           ></input>
           <input
@@ -223,8 +224,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "75px",
             }}
           ></input>
           <input
@@ -236,8 +236,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "75px",
             }}
           ></input>
           <input
@@ -249,8 +248,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "75px",
             }}
           ></input>
           <input
@@ -262,8 +260,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "75px",
             }}
           ></input>
           <input
@@ -275,8 +272,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "75px",
             }}
           ></input>
           <input
@@ -288,8 +284,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
-              marginRight: "30px",
+              marginRight: "75px",
             }}
           ></input>
           <input
@@ -301,7 +296,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
             }}
           ></input>
         </div>
@@ -317,9 +311,8 @@ export default function RedBlackTreeTest() {
             style={{
               borderRadius: "50px",
               width: "75px",
+              marginLeft: "17px",
               borderColor: "black",
-              marginRight: "15px",
-              marginLeft: "100px",
             }}
           ></input>
           <input
@@ -331,8 +324,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -344,8 +336,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -357,8 +348,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -370,8 +360,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -383,8 +372,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -396,8 +384,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -409,8 +396,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -422,8 +408,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "15px",
-              marginLeft: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -435,8 +420,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -448,8 +432,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -461,8 +444,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -474,8 +456,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -487,8 +468,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -500,8 +480,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "15px",
-              marginRight: "15px",
+              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -513,7 +492,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "30px",
+              marginLeft: "1px",
             }}
           ></input>
         </div>
@@ -523,7 +502,9 @@ export default function RedBlackTreeTest() {
           className="row justify-content-center text-center"
           style={{ padding: "20px" }}
         >
-          <Button variant="outline-warning">Befejez</Button>
+          <Button variant="outline-warning" onClick={Check}>
+            Befejez
+          </Button>
         </div>
       </div>
     </form>
