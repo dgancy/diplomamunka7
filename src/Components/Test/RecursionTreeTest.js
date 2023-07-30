@@ -13,8 +13,9 @@ function RecursionTreeTest() {
   const numbers_of_answers = [];
   numbers_of_answers.push(N_elem);
 
+  var number;
   for (let i = 0; i < 4; i++) {
-    var number = Math.floor(Math.random() * 10) + 1;
+    number = Math.floor(Math.random() * 10) + 1;
     if (numbers_of_answers.length < 4) {
       if (!numbers_of_answers.includes(number)) {
         numbers_of_answers.push(number);
@@ -45,7 +46,7 @@ function RecursionTreeTest() {
   numbers_of_answers_edge_number.push(T_elem);
 
   for (let i = 0; i < 4; i++) {
-    var number = 0;
+    number = 0;
     number = Math.floor(Math.random() * 10) + 1;
     if (numbers_of_answers_edge_number.length < 4) {
       if (!numbers_of_answers_edge_number.includes(number)) {
@@ -65,6 +66,45 @@ function RecursionTreeTest() {
   }
   function fourth_answer_edge_number() {
     return `${numbers_of_answers_edge_number[3]}<sup>i</sup>`;
+  }
+
+  const numbers_of_answers_tree_height = [];
+  numbers_of_answers_tree_height.push(N_elem);
+
+  for (let i = 0; i < 4; i++) {
+    number = 0;
+    number = Math.floor(Math.random() * 10) + 1;
+    if (numbers_of_answers_tree_height.length < 4) {
+      if (!numbers_of_answers_tree_height.includes(number)) {
+        numbers_of_answers_tree_height.push(number);
+      }
+    }
+  }
+
+  function first_answer_tree_height() {
+    return `log${numbers_of_answers_tree_height[0]}n`;
+  }
+  function second_answer_tree_height() {
+    return `log${numbers_of_answers_tree_height[1]}n`;
+  }
+  function third_answer_tree_height() {
+    return `log${numbers_of_answers_tree_height[2]}n`;
+  }
+  function fourth_answer_tree_height() {
+    return `log${numbers_of_answers_tree_height[3]}n`;
+  }
+
+  function first_answer_leaf_number() {
+    return `${numbers_of_answers_edge_number[0]} log${numbers_of_answers_tree_height[0]}n = nlog${numbers_of_answers_edge_number[0]} ${numbers_of_answers_tree_height[0]}`;
+  }
+  function second_answer_leaf_number() {
+    return `${numbers_of_answers_edge_number[1]} log${numbers_of_answers_tree_height[1]}n = nlog${numbers_of_answers_edge_number[1]} ${numbers_of_answers_tree_height[1]}`;
+  }
+  function third_answer_leaf_number() {
+    return `${numbers_of_answers_edge_number[2]} log${numbers_of_answers_tree_height[2]}n = nlog${numbers_of_answers_edge_number[2]} ${numbers_of_answers_tree_height[2]}`;
+  }
+  function fourth_answer_leaf_number() {
+    return `${numbers_of_answers_edge_number[3]} log${numbers_of_answers_tree_height[3]}n = nlog${numbers_of_answers_edge_number[3]} ${numbers_of_answers_tree_height[3]}`;
   }
 
   function General() {
@@ -154,7 +194,7 @@ function RecursionTreeTest() {
   }
 
   return (
-    <form style={{ background: "#000027",height:"425px" }}>
+    <form style={{ background: "#000027", height: "425px" }}>
       <div className="form-group" style={{ padding: "15px" }}>
         <p style={{ color: "white", textAlign: "center", padding: "10px" }}>
           {General()}
@@ -176,7 +216,7 @@ function RecursionTreeTest() {
             <div className="col-2">
               <b style={{ color: "white" }}>N-értéke :</b>
               <input
-                type="text"
+                type="number"
                 className="form-control"
                 id="quest1-N-elem"
               />{" "}
@@ -237,27 +277,46 @@ function RecursionTreeTest() {
             {" "}
             <div className="col-3">
               <b style={{ color: "white" }}>i.-k szint összköltsége:</b>
-              <input
-                type="text"
-                className="form-control"
+              <select
                 id="quest1-szintkoltseg"
-              />{" "}
+                className="form-control"
+                type="text"
+              >
+                <option></option>
+                <option>{first_answer_one_edge()}</option>
+                <option>{second_answer_one_edge()}</option>
+                <option>{third_answer_one_edge()}</option>
+                <option>{fourth_answer_one_edge()}</option>
+              </select>
             </div>
             <div className="col-2">
               <b style={{ color: "white" }}>A fa magassága:</b>
-              <input
-                type="text"
-                className="form-control"
+              <select
                 id="quest1-famagassaga"
-              />{" "}
+                className="form-control"
+                type="text"
+              >
+                <option></option>
+                <option>{first_answer_tree_height()}</option>
+                <option>{second_answer_tree_height()}</option>
+                <option>{third_answer_tree_height()}</option>
+                <option>{fourth_answer_tree_height()}</option>
+              </select>
             </div>
             <div className="col-2">
               <b style={{ color: "white" }}>Levelek száma:</b>
-              <input
-                type="text"
-                className="form-control"
+              
+              <select
                 id="quest1-levelekszama"
-              />{" "}
+                className="form-control"
+                type="text"
+              >
+                <option></option>
+                <option>{first_answer_leaf_number()}</option>
+                <option>{second_answer_leaf_number()}</option>
+                <option>{third_answer_leaf_number()}</option>
+                <option>{fourth_answer_leaf_number()}</option>
+              </select>
             </div>
           </div>
           <div

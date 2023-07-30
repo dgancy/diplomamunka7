@@ -16,7 +16,7 @@ export default function TestPage() {
         TestPage
       </h1>
       <div className="row justify-content-center text-center">
-        <Button onClick={TestBegin} variant="btn btn-warning">Új Feladatsor</Button>
+        <Button onClick={TestBegin} variant="outline-warning">Új Feladatsor</Button>
       </div>
       <br/>
     </form>
