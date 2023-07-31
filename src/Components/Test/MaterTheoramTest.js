@@ -26,15 +26,9 @@ export default function MasterTheoramTest() {
     return `nlogn`;
   }
   
-  /*const epszilon_numbers=[];
+  const epszilon_numbers=[];
   epszilon_numbers.push();
 
-
-
-
-  function epszilon_one(){
-    return `0.`;
-  }*/
 
   function Generate() {
     var eset = Math.floor(Math.random() * 3) + 1;
@@ -186,7 +180,7 @@ export default function MasterTheoramTest() {
               <div>
                 <b style={{ color: "white" }}>B-értéke :</b>
                 <input
-                  type="text"
+                  type="number"
                   className="form-control"
                   id="quest2-b-elem"
                 />{" "}

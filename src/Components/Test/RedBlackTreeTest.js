@@ -22,7 +22,6 @@ export default function RedBlackTreeTest() {
         array.push(arrayRandomNumber);
       }
     }
-
     console.log("hossz: " + hossz);
     console.log("array: " + array);
     return `Oldja meg a piros-fekete fa használtával a feladatot, a következő adatsorra: [ ${array} ].`;
@@ -30,22 +29,111 @@ export default function RedBlackTreeTest() {
 
   function BlackEdge() {
     var IdColors = document.getElementById("idcolor").value;
-    document.getElementById("inp" + IdColors).style.background = "black";
-    document.getElementById("inp" + IdColors).style.color = "white";
-    usercolors[IdColors] = "black";
-    console.log(IdColors);
-    console.log("UColors: " + usercolors);
+    if (IdColors !== "") {
+      document.getElementById("inp" + IdColors).style.background = "black";
+      document.getElementById("inp" + IdColors).style.color = "white";
+      usercolors[IdColors] = "black";
+      console.log(IdColors);
+      console.log("UColors: " + usercolors);
+    }
   }
   function RedEdge() {
     var IdColors = document.getElementById("idcolor").value;
-    document.getElementById("inp" + IdColors).style.background = "red";
-    document.getElementById("inp" + IdColors).style.color = "white";
-    usercolors[IdColors] = "red";
-    console.log(IdColors);
-    console.log("UColors: " + usercolors);
+    if (IdColors !== "") {
+      document.getElementById("inp" + IdColors).style.background = "red";
+      document.getElementById("inp" + IdColors).style.color = "white";
+      usercolors[IdColors] = "red";
+      console.log(IdColors);
+      console.log("UColors: " + usercolors);
+    }
   }
   function Check() {
-    navigate("/test");
+    for (let i = 0; i < userarray.length; i++) {
+      var changer = document.getElementById("inp" + i).value;
+      if (changer !== "") {
+        userarray[i] = changer;
+      }
+    }
+    console.log("user: " + userarray);
+
+    var errorColor = "Jó megoldás";
+    var errorNumbers = "Jó megoldás";
+    if (usercolors[0] === "red") {
+      errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+    }
+    if (usercolors.length > 3) {
+      if (usercolors[0] === "black" && usercolors[1] === "black") {
+        if (usercolors[3] === "black" || usercolors[4] === "black") {
+          errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+        }
+      } else if (usercolors[2] === "black") {
+        if (usercolors[5] === "black" || usercolors[6] === "black") {
+          errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+        }
+      }
+      if (usercolors[1] === "black") {
+        if (usercolors[3] === "black") {
+          if (usercolors[7] === "black" || usercolors[8] === "black") {
+            errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+          }
+        } else if (usercolors[4] === "black") {
+          if (usercolors[9] === "black" || usercolors[10] === "black") {
+            errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+          }
+        }
+      }
+
+      if (usercolors[2] === "black") {
+        if (usercolors[5] === "black") {
+          if (usercolors[11] === "black" || usercolors[12] === "black") {
+            errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+          }
+        } else if (usercolors[6] === "black") {
+          if (usercolors[13] === "black" || usercolors[14] === "black") {
+            errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+          }
+        }
+      }
+
+      let non_white_element = 0;
+      for (let i = 0; i < usercolors.length; i++) {
+        if (usercolors[i] !== "white") {
+          non_white_element += 1;
+        }
+      }
+
+      if (non_white_element === 0) {
+        errorColor = "Hibás megolodás, hiba oka: Nincs szinezés";
+      }
+
+      let non_nil = 0;
+      for (let i = 0; i < userarray.length; i++) {
+        if (userarray[i] !== "NIL") {
+          non_nil += 1;
+        }
+      }
+      errorNumbers = "Hibás megoldás, hiba oka: Hiányos számsor";
+
+      if (non_nil !== 0) {
+        for (let i = 0; i < 14; i++) {
+          if (
+            userarray[i] > userarray[i * i + 1] &&
+            userarray[i] < userarray[i * 2 + 2]
+          ) {
+          } else {
+            errorNumbers = "Hibás megolodás, hiba oka: Hibás számsor";
+          }
+        }
+      }
+
+      var errors;
+      if (errorNumbers === "Hibás megoldás, hiba oka: Hiányos számsor" && errorColor === "Hibás megolodás, hiba oka: Nincs szinezés") {
+        errors = "Hiányos számsor és szinzés";
+      }
+
+      console.log(errors);
+      navigate("/test");
+    }
   }
 
   return (
@@ -112,7 +200,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "25px",
+              marginLeft: "1%",
             }}
           ></input>
         </div>
@@ -129,8 +217,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "17px",
-              marginRight: "520px",
+              marginRight: "27%",
             }}
           ></input>
           <input
@@ -158,8 +245,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "220px",
-              marginLeft: "17px",
+              marginRight: "12%",
             }}
           ></input>
           <input
@@ -171,7 +257,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "220px",
+              marginRight: "12%",
             }}
           ></input>
           <input
@@ -183,7 +269,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "230px",
+              marginRight: "12%",
             }}
           ></input>
           <input
@@ -199,7 +285,7 @@ export default function RedBlackTreeTest() {
           ></input>
         </div>
         <div
-          className="row justify-content-start text-start col"
+          className="row justify-content-center text-center col"
           style={{ paddingBottom: "10px", paddingTop: "10px" }}
         >
           <input
@@ -211,8 +297,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "75px",
-              marginLeft: "60px",
+              marginRight: "4%",
             }}
           ></input>
           <input
@@ -224,7 +309,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "75px",
+              marginRight: "4%",
             }}
           ></input>
           <input
@@ -236,7 +321,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "75px",
+              marginRight: "4%",
             }}
           ></input>
           <input
@@ -248,7 +333,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "75px",
+              marginRight: "4%",
             }}
           ></input>
           <input
@@ -260,7 +345,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "75px",
+              marginRight: "4%",
             }}
           ></input>
           <input
@@ -272,7 +357,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "75px",
+              marginRight: "4%",
             }}
           ></input>
           <input
@@ -284,7 +369,7 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginRight: "75px",
+              marginRight: "4%",
             }}
           ></input>
           <input
@@ -311,7 +396,6 @@ export default function RedBlackTreeTest() {
             style={{
               borderRadius: "50px",
               width: "75px",
-              marginLeft: "17px",
               borderColor: "black",
             }}
           ></input>
@@ -324,7 +408,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -336,7 +419,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -348,7 +430,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -360,7 +441,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -372,7 +452,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -384,7 +463,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -396,7 +474,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -408,7 +485,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -420,7 +496,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -432,7 +507,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -444,7 +518,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -456,7 +529,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -468,7 +540,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -480,7 +551,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
           <input
@@ -492,7 +562,6 @@ export default function RedBlackTreeTest() {
               borderRadius: "50px",
               width: "75px",
               borderColor: "black",
-              marginLeft: "1px",
             }}
           ></input>
         </div>

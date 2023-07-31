@@ -30,16 +30,16 @@ function RecursionTreeTest() {
   console.log("numbers:" + numbers_of_answers);
 
   function first_answer_one_edge() {
-    return `(n/${numbers_of_answers[0]})<sup>i</sup>`;
+    return `(n/${numbers_of_answers[0]})`;
   }
   function second_answer_one_edge() {
-    return `(n/${numbers_of_answers[1]})<sup>i</sup>`;
+    return `(n/${numbers_of_answers[1]})`;
   }
   function third_answer_one_edge() {
-    return `(n/${numbers_of_answers[2]})<sup>i</sup>`;
+    return `(n/${numbers_of_answers[2]})`;
   }
   function fourth_answer_one_edge() {
-    return `(n/${numbers_of_answers[3]})<sup>i</sup>`;
+    return `(n/${numbers_of_answers[3]})`;
   }
 
   const numbers_of_answers_edge_number = [];
@@ -56,16 +56,16 @@ function RecursionTreeTest() {
   }
 
   function first_answer_edge_number() {
-    return `${numbers_of_answers_edge_number[0]}<sup>i</sup>`;
+    return `${numbers_of_answers_edge_number[0]}`;
   }
   function second_answer_edge_number() {
-    return `${numbers_of_answers_edge_number[1]}<sup>i</sup>`;
+    return `${numbers_of_answers_edge_number[1]}`;
   }
   function third_answer_edge_number() {
-    return `${numbers_of_answers_edge_number[2]}<sup>i</sup>`;
+    return `${numbers_of_answers_edge_number[2]}`;
   }
   function fourth_answer_edge_number() {
-    return `${numbers_of_answers_edge_number[3]}<sup>i</sup>`;
+    return `${numbers_of_answers_edge_number[3]}`;
   }
 
   const numbers_of_answers_tree_height = [];
@@ -140,13 +140,13 @@ function RecursionTreeTest() {
       one_edge_element_result = one_edge_element;
     }
     if (n_rekurzios === `n<sup>2</sup>`) {
-      one_edge_element_result = `(${one_edge_element})<sup>2</sup>`;
+      one_edge_element_result = `(${one_edge_element})`;
     }
     if (n_rekurzios === `n<sup>3</sup>`) {
-      one_edge_element_result = `(${one_edge_element})<sup>3</sup>`;
+      one_edge_element_result = `(${one_edge_element})`;
     }
     if (n_rekurzios === `nlog<sup>n</sup>`) {
-      one_edge_element_result = `(${one_edge_element})<sup>n</sup>`;
+      one_edge_element_result = `(${one_edge_element})`;
     }
 
     var mistakes = [];
@@ -246,10 +246,10 @@ function RecursionTreeTest() {
 
               <select id="quest1-1-csucs" className="form-control" type="text">
                 <option></option>
-                <option>{first_answer_one_edge()}</option>
-                <option>{second_answer_one_edge()}</option>
-                <option>{third_answer_one_edge()}</option>
-                <option>{fourth_answer_one_edge()}</option>
+                <option>{first_answer_one_edge()}&#8305;</option>
+                <option>{second_answer_one_edge()}&#8305;</option>
+                <option>{third_answer_one_edge()}&#8305;</option>
+                <option>{fourth_answer_one_edge()}&#8305;</option>
               </select>
             </div>
             <div className="col-4">
@@ -263,10 +263,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option>{first_answer_edge_number()}</option>
-                <option>{second_answer_edge_number()}</option>
-                <option>{third_answer_edge_number()}</option>
-                <option>{fourth_answer_edge_number()}</option>
+                <option>{first_answer_edge_number()}&#8305;</option>
+                <option>{second_answer_edge_number()}&#8305;</option>
+                <option>{third_answer_edge_number()}&#8305;</option>
+                <option>{fourth_answer_edge_number()}&#8305;</option>
               </select>
             </div>
           </div>
@@ -283,10 +283,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option>{first_answer_one_edge()}</option>
-                <option>{second_answer_one_edge()}</option>
-                <option>{third_answer_one_edge()}</option>
-                <option>{fourth_answer_one_edge()}</option>
+                <option>{first_answer_one_edge()}&#8305;</option>
+                <option>{second_answer_one_edge()}&#8305;</option>
+                <option>{third_answer_one_edge()}&#8305;</option>
+                <option>{fourth_answer_one_edge()}&#8305;</option>
               </select>
             </div>
             <div className="col-2">

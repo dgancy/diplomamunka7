@@ -1,10 +1,11 @@
 Backend
-RedBlackTreeAssignment Rework --
-Database
 Login
 Register 
+Database
+RedBlackTreeAssignment Rework --pipa
 Test pages --pipa
 Learning page
+Chatbot
 Recursion tree pages need to be done 
 finalcheck
 Zoli konzi
