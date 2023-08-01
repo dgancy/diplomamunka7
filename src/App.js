@@ -22,12 +22,14 @@ import BinaryTreeTest from "./Components/Test/BinaryTreeTest";
 import HashTableTest from "./Components/Test/HashTableTest";
 import BackTrackingTest from "./Components/Test/BackTrackingTest";
 import RedBlackTreeTest from "./Components/Test/RedBlackTreeTest";
+import ChatBot from "./Components/ChatBot";
 
 function App() {
   return (
     <>
       <Router>
         <NavbarMenu />
+        <ChatBot/>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />

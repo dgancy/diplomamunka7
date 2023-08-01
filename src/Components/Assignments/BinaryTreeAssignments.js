@@ -265,7 +265,7 @@ function Check() {
 }
 
     return (
-        <form>
+        <form style={{ background: "#000027", height:"100vh" }}>
             <h1>Bfa feladatok</h1>
             <div class="form-group">
                 <div

@@ -140,7 +140,7 @@ export default function RedBlackTreeTest() {
       }
 
       if (errorColor === "Jó megoldás" && errorNumbers === "Jó megoldás") {
-        
+
       }
 
       console.log(errors);
@@ -148,7 +148,7 @@ export default function RedBlackTreeTest() {
   }
 
   return (
-    <form style={{ background: "#000027", paddingTop: "20px" }}>
+    <form style={{ background: "#000027", height:"100vh" }}>
       <div className="form-group">
         <div className="container">
           <div

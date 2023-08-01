@@ -285,7 +285,7 @@ const navigate=useNavigate();
   }
 
   return (
-    <form style={{ background: "#000027", height: "300px" }}>
+    <form style={{ background: "#000027", height:"100vh" }}>
       <div className="form-group" style={{ padding: "15px" }}>
         <div style={{ color: "white", textAlign: "center", padding: "10px" }}>
           {" "}

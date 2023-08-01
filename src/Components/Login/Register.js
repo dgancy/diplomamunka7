@@ -5,7 +5,7 @@ import { Button } from "react-bootstrap";
 export default function Register() {
   //*const navigate = useNavigate();
   return (
-    <form style={{ background: "#000027" }}>
+    <form style={{ background: "#000027", height:"100vh" }}>
       <div className="form-group">
         <div className="container" >
           <h2 style={{ color: "white" }} className="row justify-content-center ">
