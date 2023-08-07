@@ -109,13 +109,13 @@ function RecursionTreeTest() {
 
   function General() {
     if (n_rekurzios === `n<sup>4</sup>`) {
-      n_rekurzios = `nlog<sup>n</sup>`;
+      n_rekurzios = `nlogn`;
     }
     if (n_rekurzios === `n<sup>1</sup>`) {
       n_rekurzios = `n`;
     }
-
     return `Oldja meg a következő feladatot Rekurziós fa módszer használatával. T(n)= ${T_elem} T( n/${N_elem} ) ${n_rekurzios}`;
+
   }
 
   function Check() {
@@ -190,6 +190,7 @@ function RecursionTreeTest() {
     if (user_leaf_number !== levelszameredmeny) {
       mistakes.push(`Hibás eredmény! Levelek száma: ${levelszameredmeny}`);
     }
+    console.log(mistakes);
     navigate("/master-theorem-test");
   }
 

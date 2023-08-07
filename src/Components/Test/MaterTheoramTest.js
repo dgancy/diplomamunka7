@@ -194,12 +194,11 @@ export default function MasterTheoramTest() {
                   className="form-control"
                   type="text"
                 >
-                  <option></option>
-                  <option>{first_answer_n()}</option>
-                  <option>{second_answer_n()}</option>
-                  <option>{third_answer_n()}</option>
-                  <option>{fourth_answer_n()}</option>
-                  <option>{fifth_answer_n()}</option>
+                <option></option>
+                <option>n</option>
+                <option>n&sup2;</option>
+                <option>n&sup3;</option>
+                <option>nlogn</option>
                 </select>
               </div>
             </div>

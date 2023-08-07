@@ -11,3 +11,5 @@ finalcheck
 Zoli konzi
 Javítás
 Rekonzi
+
+test pages= adatátvitel, mint gond, check functions ellenőrzése, hibakódok továbbadása.
