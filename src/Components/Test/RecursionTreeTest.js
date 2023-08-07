@@ -194,7 +194,7 @@ function RecursionTreeTest() {
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <div className="form-group" style={{ padding: "15px" }}>
         <p style={{ color: "white", textAlign: "center", padding: "10px" }}>
           {General()}
@@ -305,7 +305,7 @@ function RecursionTreeTest() {
             </div>
             <div className="col-2">
               <b style={{ color: "white" }}>Levelek száma:</b>
-              
+
               <select
                 id="quest1-levelekszama"
                 className="form-control"

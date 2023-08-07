@@ -40,7 +40,7 @@ export default function RedBlackTreeTest() {
   function RedEdge() {
     var IdColors = document.getElementById("idcolor").value;
     if (IdColors !== "") {
-      document.getElementById("inp" + IdColors).style.background = "red";
+      document.getElementById("inp" + IdColors).style.background = "#700000";
       document.getElementById("inp" + IdColors).style.color = "white";
       usercolors[IdColors] = "red";
       console.log(IdColors);
