@@ -71,7 +71,7 @@ function MasterTheorem() {
         logarithm_element +
         "</sup>" +
         ")";
-      document.getElementById("eset").innerHTML = "Eset: " + eset;
+      document.getElementById("eset").innerHTML = " Eset: " + eset;
       document.getElementById("seged").innerHTML =
         "Epszilon érték(ε): : " + epszilon;
       document.getElementById("seged").innerHTML =
@@ -102,7 +102,13 @@ function MasterTheorem() {
         final_result +
         "</sup>" +
         ")";
-      document.getElementById("final").innerHTML = "T(n)= Θ(" + n_element + ")";
+      if (n_element === "2" || n_element === "3") {
+        document.getElementById("final").innerHTML =
+          "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
+      } else {
+        document.getElementById("final").innerHTML =
+          "Megoldás: T(n)= Θ(" + n_element + ")";
+      }
     }
     if (a_element && b_element && n_element && eset === "2") {
       document.getElementById("logarithm").innerHTML =
@@ -121,12 +127,18 @@ function MasterTheorem() {
         "</sup>" +
         ")";
       document.getElementById("eset").innerHTML = "Eset: " + eset;
-      document.getElementById("final").innerHTML =
-        "Megoldás: T(n)= Θ(" + n_element + ")";
+      if (n_element === "2" || n_element === "3") {
+        document.getElementById("final").innerHTML =
+          "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
+      } else {
+        document.getElementById("final").innerHTML =
+          "Megoldás: T(n)= Θ(" + n_element + ")";
+      }
+      console.log("nelem: " + n_element);
     }
   }
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
@@ -159,12 +171,13 @@ function MasterTheorem() {
             <div className="col-2">
               {" "}
               <b style={{ color: "white" }}>f(n): </b>
-              <input
-                type="text"
-                className="form-control"
-                id="N_element"
-                placeholder="n elem"
-              />
+              <select className="form-control" id="N_element">
+                <option value="1">1</option>
+                <option value="n">n</option>
+                <option value="2">n&sup2;</option>
+                <option value="3">n&sup3;</option>
+                <option value="nlogn">nlogn</option>
+              </select>
               <small className="form-text text-white">(n kitevős tag)</small>
             </div>
           </div>
@@ -176,17 +189,23 @@ function MasterTheorem() {
           </div>
         </div>
       </div>
-      <div style={{ color: "white", paddingLeft: "29%" }}>
+      <div style={{ color: "white", paddingLeft: "40%" }}>
         <br />
 
-        <b id="logarithm"></b> 
-        , <b id="eset" />
+        <b id="logarithm"></b>
+        <b id="eset" />
         <br />
         <b id="seged" />
         <br />
         <b id="result" />
         <br />
-        <b id="final" style={{textDecorationLine:"underline", textDecorationStyle:"double"}} />
+        <b
+          id="final"
+          style={{
+            textDecorationLine: "underline",
+            textDecorationStyle: "double",
+          }}
+        />
       </div>
       <br />
     </form>

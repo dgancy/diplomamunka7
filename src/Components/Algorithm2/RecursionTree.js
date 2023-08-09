@@ -97,7 +97,7 @@ export default function RecursionTree() {
           </div>
         </div>
       </div>
-      <div style={{ color: "white" }}>
+      <div style={{ color: "white", paddingLeft:"40%" }}>
         <br />
         <b id="one-edge"></b>
         <br />
