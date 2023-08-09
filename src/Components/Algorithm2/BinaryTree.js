@@ -3,123 +3,156 @@ import Button from "react-bootstrap/Button";
 
 export default function BinaryTree() {
   var AllArray = [];
-  var Change = [];
+  //var Change = [];
 
   function Result() {
     var a = document.getElementById("fok").value;
     console.log("fok:" + a);
-    var edgemax = 2 * a - 2;
-    //document.getElementById("edgemax").innerHTML = edgemax;
-    //document.getElementById("childmax").innerHTML = (2 * a);
+    var edgemax = 2 * a - 1;
+    var childmax = 2 * a;
 
-    var OutputArrayEdge = [];
-    var OutputArrayRight_1 = [];
-    var OutputArrayLeft_1 = [];
-    var OutputArrayRight_2 = [];
-    var OutputArrayLeft_2 = [];
-    var OutputArrayMiddle_1 = [];
-    var OutputArrayMiddle_2 = [];
+    var OpArrayEdge = [];
+    var OpArrayRight_1 = [];
+    var OpArrayLeft_1 = [];
+    var OpArrayRight_2 = [];
+    var OpArrayLeft_2 = [];
+    var OpArrayMiddle = [];
+    var OpArrayMiddle_1 = [];
+    var OpArrayMiddle_2 = [];
 
     var new_element = document.getElementById("elements").value;
     AllArray.push(new_element);
     console.log("AllArray: " + AllArray);
 
     for (let i = 0; i < AllArray.length; i++) {
-      if (i <= 2) {
-        if (i < edgemax) {
-          OutputArrayEdge.push(AllArray[i]);
-          OutputArrayEdge.sort(function (a, b) {
-            return a - b;
-          });
-        } else if (i === edgemax) {
-          console.log("checkedge: " + OutputArrayEdge);
-
-          OutputArrayEdge.push(AllArray[i]);
-          OutputArrayEdge.sort(function (a, b) {
-            return a - b;
-          });
-          console.log("checkedgetwo: " + OutputArrayEdge);
-
-          Change.push(OutputArrayEdge[edgemax - 1]);
-          if (Change.length === 2) {
-            Change.pop();
-          }
-          console.log(Change);
-          OutputArrayLeft_1.push(OutputArrayEdge[0]);
-          OutputArrayRight_1.push(OutputArrayEdge[edgemax]);
-          OutputArrayEdge = Change;
-          console.log("checkedgethree: " + OutputArrayEdge);
+      if (
+        OpArrayEdge.length <= edgemax &&
+        OpArrayLeft_1.length < 1 &&
+        OpArrayRight_1.length < 1 &&
+        i < 3
+      ) {
+        OpArrayEdge.push(AllArray[i]);
+        OpArrayEdge.sort(function (a, b) {
+          return a - b;
+        });
+        if (OpArrayEdge.length === edgemax) {
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayRight_1.push(OpArrayEdge[edgemax - 1]);
+          OpArrayEdge.pop();
+          OpArrayEdge.shift();
+          console.log("lefutok");
         }
-      } else {
+      }
+      if (
+        OpArrayEdge.length <= edgemax &&
+        OpArrayLeft_1.length <= childmax &&
+        OpArrayRight_1.length <= childmax &&
+        OpArrayMiddle.length <= childmax &&
+        i > 2 &&
+        i < 7
+      ) {
+        if (OpArrayEdge[0] > AllArray[i]) {
+          OpArrayLeft_1.push(AllArray[i]);
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+          console.log("meginbalra");
+        }
+        if (OpArrayEdge[OpArrayEdge.length - 1] < AllArray[i]) {
+          OpArrayRight_1.push(AllArray[i]);
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
+          console.log("meginjobbra");
+        }
+        if (OpArrayLeft_1.length === childmax) {
+          OpArrayMiddle.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayEdge.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (OpArrayRight_1.length === childmax) {
+          OpArrayMiddle.push(OpArrayRight_1[0]);
+          OpArrayRight_1.shift();
+          OpArrayEdge.push(OpArrayRight_1[0]);
+          OpArrayRight_1.shift();
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle.sort(function (a, b) {
+            return a - b;
+          });
+        }
+      }
+      if (
+        OpArrayEdge.length <= edgemax &&
+        OpArrayLeft_1.length <= childmax &&
+        OpArrayRight_1.length <= childmax &&
+        OpArrayMiddle.length <= childmax &&
+        i > 6
+      ) {
         if (
-          AllArray[i] > OutputArrayEdge[0] &&
-          AllArray[i] < OutputArrayEdge[OutputArrayEdge.length] &&
-          OutputArrayEdge.length > 1
+          OpArrayEdge.length === edgemax &&
+          OpArrayMiddle.length === childmax - 1
         ) {
-          OutputArrayMiddle_1.push(AllArray[i]);
+          OpArrayMiddle_2.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+          OpArrayLeft_2.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
+          OpArrayEdge.pop();
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
         }
         if (
-          AllArray[i] > OutputArrayEdge[OutputArrayEdge.length - 1] &&
-          OutputArrayRight_1.length < edgemax + 1
+          OpArrayEdge.length === edgemax &&
+          OpArrayLeft_1.length === edgemax - 1
         ) {
-          OutputArrayRight_1.push(AllArray[i]);
-          OutputArrayRight_1.sort(function (a, b) {
-            return a - b;
-          });
-        } else if (
-          AllArray[i] < OutputArrayEdge[0] &&
-          OutputArrayLeft_1.length < edgemax + 1
-        ) {
-          OutputArrayLeft_1.push(AllArray[i]);
-          OutputArrayLeft_1.sort(function (a, b) {
-            return a - b;
-          });
-        }
-
-        if (OutputArrayLeft_1.length > edgemax) {
-          Change = OutputArrayLeft_1.splice(edgemax - 1, 1);
-          OutputArrayEdge.push(Change);
-          Change = OutputArrayLeft_1.splice(edgemax - 1, 1);
-          OutputArrayMiddle_1.push(Change);
-          OutputArrayEdge.sort(function (a, b) {
-            return a - b;
-          });
-          OutputArrayMiddle_1.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (OutputArrayRight_1.length > edgemax) {
-          Change = OutputArrayRight_1.splice(edgemax - 1, 1);
-          OutputArrayEdge.push(Change);
-          Change = OutputArrayRight_1.splice(0, 1);
-          OutputArrayMiddle_1.push(Change);
-          OutputArrayEdge.sort(function (a, b) {
-            return a - b;
-          });
-          OutputArrayMiddle_1.sort(function (a, b) {
-            return a - b;
-          });
+          OpArrayMiddle_2.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+          OpArrayLeft_2.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
+          OpArrayEdge.pop();
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
         }
       }
     }
 
     console.log("Edgemax: " + edgemax);
-    console.log("Edge: " + OutputArrayEdge);
-    console.log("Left1: " + OutputArrayLeft_1);
-    console.log("Left2: " + OutputArrayLeft_2);
-    console.log("Right1: " + OutputArrayRight_1);
-    console.log("Right2: " + OutputArrayRight_2);
-    console.log("Middle1: " + OutputArrayMiddle_1);
-    console.log("Middle2: " + OutputArrayMiddle_2);
+    console.log("Edge: " + OpArrayEdge);
+    console.log("Left1: " + OpArrayLeft_1);
+    console.log("Left2: " + OpArrayLeft_2);
+    console.log("Right1: " + OpArrayRight_1);
+    console.log("Right2: " + OpArrayRight_2);
+    console.log("Middle: " + OpArrayMiddle);
+    console.log("Middle1: " + OpArrayMiddle_1);
+    console.log("Middle2: " + OpArrayMiddle_2);
 
     //document.getElementById("array1").innerHTML = AllArray;
-    document.getElementById("arrayedge").innerHTML = OutputArrayEdge;
-    document.getElementById("arrayright_1").innerHTML = OutputArrayRight_1;
-    document.getElementById("arrayright_2").innerHTML = OutputArrayRight_2;
-    document.getElementById("arrayleft_1").innerHTML = OutputArrayLeft_1;
-    document.getElementById("arrayleft_2").innerHTML = OutputArrayLeft_2;
-    document.getElementById("arraymiddle_1").innerHTML = OutputArrayMiddle_1;
-    document.getElementById("arraymiddle_2").innerHTML = OutputArrayMiddle_2;
+    document.getElementById("arrayedge").innerHTML = OpArrayEdge;
+    document.getElementById("arrayright_1").innerHTML = OpArrayRight_1;
+    document.getElementById("arrayright_2").innerHTML = OpArrayRight_2;
+    document.getElementById("arrayleft_1").innerHTML = OpArrayLeft_1;
+    document.getElementById("arrayleft_2").innerHTML = OpArrayLeft_2;
+    document.getElementById("arraymiddle").innerHTML = OpArrayMiddle;
+    document.getElementById("arraymiddle_1").innerHTML = OpArrayMiddle_1;
+    document.getElementById("arraymiddle_2").innerHTML = OpArrayMiddle_2;
 
     /**/
   }
@@ -157,7 +190,7 @@ export default function BinaryTree() {
         </div>
       </div>
       <br />
-      <div className="container">
+      <div className="container" style={{ textAlign: "center" }}>
         <div style={{ padding: "1%" }}>
           <div className="row justify-content-center ">
             <div className="col-2 border border-warning">
@@ -173,7 +206,12 @@ export default function BinaryTree() {
             >
               <b id="arrayleft_1"></b>
             </div>
-            <div className="col-2"></div>
+            <div
+              className="col-2 border border-warning"
+              style={{ marginRight: "2%" }}
+            >
+              <b id="arraymiddle"></b>
+            </div>
             <div className="col-2 border border-warning">
               <b id="arrayright_1"></b>
             </div>
