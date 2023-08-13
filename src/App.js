@@ -33,6 +33,7 @@ function App() {
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
+          
           <Route path="/binary-tree" element={<BinaryTree />} />
           <Route path="/master-theorem" element={<MasterTheorem />} />
           <Route path="/backtracking" element={<BackTracking />} />

@@ -3,7 +3,7 @@ import Button from "react-bootstrap/Button";
 
 export default function BinaryTree() {
   var AllArray = [];
-  //var Change = [];
+  var Change = [];
 
   function Result() {
     var a = document.getElementById("fok").value;
@@ -98,11 +98,42 @@ export default function BinaryTree() {
         i > 6
       ) {
         if (
-          OpArrayEdge.length === edgemax &&
+          AllArray[i] > OpArrayEdge[0] &&
+          AllArray[i] < OpArrayEdge[1] &&
           OpArrayMiddle.length === childmax - 1
         ) {
           OpArrayMiddle_2.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
           OpArrayMiddle.pop();
+          OpArrayEdge.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+
+          OpArrayLeft_2 = OpArrayLeft_1;
+          OpArrayLeft_1=OpArrayEdge[0];
+          OpArrayEdge.shift();
+
+          OpArrayRight_2=OpArrayRight_1;
+          OpArrayRight_1=OpArrayEdge[OpArrayEdge.length-1];
+          OpArrayEdge.pop();
+
+          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
+          OpArrayEdge.pop();
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
+        }
+        if (
+          AllArray[i] > OpArrayEdge[0] &&
+          AllArray[i] < OpArrayEdge[1] &&
+          OpArrayLeft_1.length === childmax - 1
+        ) {
+          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+
           OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
           OpArrayMiddle.pop();
           OpArrayLeft_2.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
@@ -116,20 +147,27 @@ export default function BinaryTree() {
         }
         if (
           OpArrayEdge.length === edgemax &&
-          OpArrayLeft_1.length === edgemax - 1
+          OpArrayRight_1.length === childmax
         ) {
-          OpArrayMiddle_2.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
-          OpArrayMiddle.pop();
-          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
-          OpArrayMiddle.pop();
-          OpArrayLeft_2.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
-          OpArrayLeft_1.pop();
-          OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
-          OpArrayRight_1.pop();
-          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
-          OpArrayEdge.pop();
-          OpArrayLeft_1.push(OpArrayEdge[0]);
-          OpArrayEdge.shift();
+        }
+
+        if (AllArray[i] < OpArrayEdge[0]) {
+          OpArrayLeft_1.push(AllArray[i]);
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] < OpArrayEdge[1]) {
+          OpArrayMiddle.push(AllArray[i]);
+          OpArrayMiddle.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (AllArray[i] > OpArrayEdge[1]) {
+          OpArrayRight_1.push(AllArray[i]);
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
         }
       }
     }
