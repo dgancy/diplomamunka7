@@ -73,11 +73,11 @@ export default function Backtracking() {
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
-        Backpropagation
+        Backtracking
       </h1>
       <div className="form-group">
         <div className="container">
@@ -117,10 +117,16 @@ export default function Backtracking() {
           Solve
         </Button>
       </div>
+      <div style={{ marginLeft: "35%", marginTop:"2%" }}>
         <div className="container" style={{ marginLeft: "100px" }}>
-          <b className="row justify-content-start text-center" style={{ color: "white", fontSize: "20px" }} id="resolved"></b>
+          <b
+            className="row justify-content-start text-center"
+            style={{ color: "white", fontSize: "20px" }}
+            id="resolved"
+          ></b>
         </div>
         <canvas id="tree" width={"750px"} height={"300px"}></canvas>
+      </div>
     </form>
   );
 }

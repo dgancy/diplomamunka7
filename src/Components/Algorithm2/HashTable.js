@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 
 export default function Hashtable() {
   function Begin() {
+    document.getElementById("solvebtn").style.visibility = "visible";
+
     var elementnumber = document.getElementById("elementnumber").value;
     var type = document.getElementById("type").value;
     var range = document.getElementById("range").value;
@@ -59,7 +61,6 @@ export default function Hashtable() {
           '" placeholder="Érték">    <br/>    ';
       }
     }
-    document.querySelector('#button').disabled = true;
   }
 
   function Solve() {
@@ -147,11 +148,11 @@ export default function Hashtable() {
           finalindex = arraynumbers[j] % range;
           arrayfinal[finalindex + c1 + c2 * c2] = arrayelements[j];
         }
-      }//button deactivate
+      } //button deactivate
     }
 
     for (let i = 0; i < 2; i++) {
-      const row = document.createElement("tr");//tablecreate with good sense of viauality
+      const row = document.createElement("tr"); //tablecreate with good sense of viauality
       if (i === 0) {
         for (let j = 0; j < range; j++) {
           const cell = document.createElement("td");
@@ -186,24 +187,24 @@ export default function Hashtable() {
 */
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "90vh" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
         Hash tábla
       </h1>
-      <div class="form-group">
-        <div class="container">
-          <div class="row justify-content-center text-center">
-            <div class="col-2">
+      <div className="form-group">
+        <div className="container">
+          <div className="row justify-content-center text-center">
+            <div className="col-2">
               <b style={{ color: "white" }}>Hash tábla hossza :</b>
-              <input type="number" class="form-control" id="range" />{" "}
-              <small class="form-text text-white">(T elem szorzata)</small>
+              <input type="number" className="form-control" id="range" />{" "}
+              <small className="form-text text-white">(T elem szorzata)</small>
             </div>
-            <div class="col-2">
+            <div className="col-2">
               {" "}
               <b style={{ color: "white" }}>Feladat típusa :</b>
-              <select id="type" name="type" class="form-control">
+              <select id="type" name="type" className="form-control">
                 <option> </option>
                 <option value="simple" id="hash">
                   Szimpla
@@ -213,13 +214,13 @@ export default function Hashtable() {
                 <option value="double">Dupla</option>
               </select>
             </div>
-            <div class="col-2">
+            <div className="col-2">
               {" "}
               <b style={{ color: "white" }}>Elem darabszáma : </b>
-              <input type="number" class="form-control" id="elementnumber" />
+              <input type="number" className="form-control" id="elementnumber" />
             </div>
           </div>
-          <div class="row justify-content-center text-center">
+          <div className="row justify-content-center text-center">
             <Button variant="btn btn-outline-warning col-1" onClick={Begin}>
               Add
             </Button>
@@ -229,18 +230,26 @@ export default function Hashtable() {
       <div>
         <div style={{ display: "none" }} id="c1c2">
           <b style={{ color: "white" }}>c1 : </b>
-          <input type="text" id="c1" class="col-1"></input>
+          <input type="text" id="c1" className="col-1"></input>
           <b style={{ color: "white" }}>c2 : </b>
-          <input type="text" id="c2" class="col-1"></input>
+          <input type="text" id="c2" className="col-1"></input>
           <br />
         </div>
-        <div style={{ color: "white", textAlign:"center", paddingBottom:"20px" }} id="generate"></div>
-        <div class="row justify-content-center text-center">
-          <Button variant="btn btn-outline-warning col-1" onClick={Solve}>
+        <div
+          style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
+          id="generate"
+        ></div>
+        <div className="row justify-content-center text-center">
+          <Button
+            variant="btn btn-outline-warning col-1"
+            id="solvebtn"
+            onClick={Solve}
+            style={{visibility:"hidden"}}
+          >
             Megold
           </Button>
         </div>
-        <b style={{ color: "black", textAlign:"center"}} id="final" />
+        <b style={{ color: "black", textAlign: "center" }} id="final" />
       </div>
       <br />
     </form>

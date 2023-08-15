@@ -518,7 +518,10 @@ export default function RedBlackTree() {
         }
       }
       if (i % 2 === 1 && colors[i] === "red" && i <= 6 && i >= 3) {
-        if (colors[(i - 1) / 2] === "red" && resultarray[(i - 1) / 2] !== "NIL") {
+        if (
+          colors[(i - 1) / 2] === "red" &&
+          resultarray[(i - 1) / 2] !== "NIL"
+        ) {
           colors[(i - 1) / 2] = "black";
           console.log("váltok");
         }
@@ -541,7 +544,13 @@ export default function RedBlackTree() {
           element.className = "tree-black";
         } else element.className = "tree-red";
         element.innerHTML = resultarray[i];
-        if (i === 0 || i === 2 || i === 6 || i === 14 || i === resultarray.length) {
+        if (
+          i === 0 ||
+          i === 2 ||
+          i === 6 ||
+          i === 14 ||
+          i === resultarray.length
+        ) {
           document.getElementById("tree").appendChild(element);
           document.getElementById("tree").appendChild(breaks);
         } else document.getElementById("tree").appendChild(element);
@@ -556,27 +565,31 @@ export default function RedBlackTree() {
  */
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
-      <h1 style={{ color: "white", textAlign: "left", padding: "20px" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
+      <h1
+        style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
+      >
         Red-Black tree
       </h1>
       <div class="form-group">
         <div class="container">
-          <div class="row justify-content-start text-center">
+          <div class="row justify-content-center text-center">
             {" "}
-            <div class="col-4">
+            <div class="col-4 ">
               <b style={{ color: "white" }}>Add Elements :</b>
               <input type="text" class="form-control" id="addnumber" />{" "}
               <small class="form-text text-white">(pl.: 1,12,43,23,13)</small>
               <br />
             </div>
           </div>
-          <Button variant="btn btn-outline-warning col-1" onClick={Rbtadd}>
-            Solve
-          </Button>
+          <div className="row justify-content-center text-center">
+            <Button variant="outline-warning col-1" onClick={Rbtadd}>
+              Solve
+            </Button>
+          </div>
         </div>
       </div>
-      <div>
+      <div className="row justify-content-center text-center">
         <br />
         <b id="tree"></b>
       </div>
