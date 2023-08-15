@@ -13,3 +13,6 @@ Javítás
 Rekonzi
 
 test pages= adatátvitel, mint gond, check functions ellenőrzése, hibakódok továbbadása.
+alap oldalak= master + recursion infó hiány, binary done kis hidden visible kell, hashtable done csak igazítani kell, rbtree debugging
+feladatos oldalak= bug fix, fix, dropdown fix, rbt befejezése, többi ok.
+
