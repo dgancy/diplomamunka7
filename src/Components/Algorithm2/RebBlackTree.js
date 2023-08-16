@@ -9,555 +9,230 @@ export default function RedBlackTree() {
     array = a.split(",");
 
     var parsedarray = [];
-    var edge = 0;
-    var firstline = [];
-    var secondlineleft = [];
-    var secondlineright = [];
-    var thirdlineleftleft = [];
-    var thirdlineleftright = [];
-    var thirdlinerightleft = [];
-    var thirdlinerightright = [];
-    var fourthline = [16];
-    var leftn = 0;
-    var rightn = 0;
-    var change = 0;
-
     var color = [];
 
     for (var i = 0; i < array.length; i++) {
       parsedarray.push(parseInt(array[i]));
-      color.push("0"); //0 gray 1 red
+      color.push("1"); //0 gray 1 red
     }
+    color[0] = 0;
+    
+    var secondLine = [];
+    var thirdLine = [];
+    var fourthLine = [];
+    var fifthLine = [];
 
-    edge = array[0];
+    //var change=0;
 
-    for (let i = 1; i < array.length; i++) {
-      if (i < 3 && firstline.length <= 2) {
-        if (array[i] < edge && leftn < 3) {
-          leftn += 1;
-          firstline.push(array[i]);
-        }
-        if (array[i] > edge || (array[i] === edge && rightn < 3)) {
-          rightn += 1;
-          firstline.push(array[i]);
-        }
-        firstline.sort();
-        if (rightn === 2 && leftn === 0) {
-          change = edge;
-          edge = firstline[0];
-          firstline[0] = change;
-          rightn -= 1;
-          leftn += 1;
-        }
-        if (leftn === 2 && rightn === 0) {
-          change = edge;
-          edge = firstline[1];
-          firstline[1] = change;
-          leftn -= 1;
-          rightn += 1;
-        }
-        change = 0;
-      } else if (i >= 3) {
-        if (array[i] < edge && secondlineleft.length < 2) {
-          if (array[i] < firstline[0] && leftn > 0) {
-            leftn += 1;
-            secondlineleft.push(array[i]);
-          } else if (array[i] > firstline[0] && leftn > 0) {
-            secondlineleft.push(array[i]);
+    for (let i = 0; i < 2; i++) {
+      secondLine.push("NIL");
+      for (let j = 0; j < 2; j++) {
+        thirdLine.push("NIL");
+        for (let n = 0; n < 2; n++) {
+          fourthLine.push("NIL");
+          for (let m = 0; m < 2; m++) {
+            fifthLine.push("NIL");
           }
         }
-        if (array[i] > edge && secondlineright.length < 2) {
-          if (array[i] < firstline[1] && rightn > 0) {
-            secondlineright.push(array[i]);
-          } else if (array[i] > firstline[1] && rightn > 0) {
-            rightn += 1;
-            secondlineright.push(array[i]);
-          }
-        }
-
-        secondlineleft.sort();
-        secondlineright.sort();
-
-        if (
-          firstline[1] < secondlineright[0] &&
-          firstline[1] < secondlineright[1]
-        ) {
-          change = firstline[1];
-          firstline[1] = secondlineright[0];
-          secondlineright[0] = change;
-        }
-        if (
-          firstline[1] > secondlineright[0] &&
-          firstline[1] > secondlineright[1]
-        ) {
-          change = firstline[1];
-          firstline[1] = secondlineright[1];
-          secondlineright[1] = change;
-        }
-
-        if (
-          firstline[0] < secondlineleft[0] &&
-          firstline[0] < secondlineleft[1]
-        ) {
-          change = firstline[0];
-          firstline[0] = secondlineleft[0];
-          secondlineleft[0] = change;
-        }
-        if (
-          firstline[0] > secondlineleft[0] &&
-          firstline[0] > secondlineleft[1]
-        ) {
-          change = firstline[0];
-          firstline[0] = secondlineleft[1];
-          secondlineleft[1] = change;
-        }
-        secondlineleft.sort();
-        secondlineright.sort();
-        if (secondlineleft.length === 2 || secondlineright === 2) {
-          if (array[i] < edge && array[i] < firstline[0]) {
-            if (array[i] < secondlineleft[0] && thirdlineleftleft.length < 2) {
-              thirdlineleftleft.push(array[i]);
-            } else if (
-              array[i] > secondlineleft[0] &&
-              thirdlineleftleft.length < 2
-            ) {
-              thirdlineleftleft.push(array[i]);
-            }
-          }
-
-          if (array[i] < edge && array[i] > firstline[0]) {
-            if (array[i] < secondlineleft[1] && thirdlineleftright.length < 2) {
-              thirdlineleftright.push(array[i]);
-            } else if (
-              array[i] > secondlineleft[1] &&
-              thirdlineleftright.length < 2
-            ) {
-              thirdlineleftright.push(array[i]);
-            }
-          }
-
-          if (array[i] > edge && array[i] < firstline[1]) {
-            if (
-              array[i] < secondlineright[0] &&
-              thirdlinerightleft.length < 2
-            ) {
-              thirdlinerightleft.push(array[i]);
-            } else if (
-              array[i] > secondlineright[0] &&
-              thirdlinerightleft.length < 2
-            ) {
-              thirdlinerightleft.push(array[i]);
-            }
-          }
-
-          if (array[i] > edge && array[i] > firstline[1]) {
-            if (
-              array[i] < secondlineright[1] &&
-              thirdlinerightright.length < 2
-            ) {
-              thirdlinerightright.push(array[i]);
-            } else if (
-              array[i] > secondlineright[1] &&
-              thirdlinerightright.length < 2
-            ) {
-              thirdlinerightright.push(array[i]);
-            }
-          }
-        }
-        if (
-          array[i] < edge &&
-          array[i] < firstline[0] &&
-          array[i] < secondlineleft[0] &&
-          array[i] < thirdlineleftleft[0]
-        ) {
-          fourthline[0] = array[i];
-        } else fourthline[0] = "NIL";
-
-        if (
-          array[i] < edge &&
-          array[i] < firstline[0] &&
-          array[i] < secondlineleft[0] &&
-          array[i] > thirdlineleftleft[0]
-        ) {
-          fourthline[1] = array[i];
-        } else fourthline[1] = "NIL";
-
-        if (
-          array[i] < edge &&
-          array[i] < firstline[0] &&
-          array[i] > secondlineleft[0] &&
-          array[i] < thirdlineleftright[0]
-        ) {
-          fourthline[2] = array[i];
-        } else fourthline[2] = "NIL";
-
-        if (
-          array[i] < edge &&
-          array[i] < firstline[0] &&
-          array[i] > secondlineleft[1] &&
-          array[i] > thirdlineleftright[0]
-        ) {
-          fourthline[3] = array[i];
-        } else fourthline[3] = "NIL";
-
-        if (
-          array[i] < edge &&
-          array[i] > firstline[0] &&
-          array[i] < secondlineleft[1] &&
-          array[i] < thirdlineleftright[0]
-        ) {
-          fourthline[4] = array[i];
-        } else fourthline[4] = "NIL";
-
-        if (
-          array[i] < edge &&
-          array[i] > firstline[0] &&
-          array[i] < secondlineleft[1] &&
-          array[i] > thirdlineleftright[1]
-        ) {
-          fourthline[5] = array[i];
-        } else fourthline[5] = "NIL";
-
-        if (
-          array[i] < edge &&
-          array[i] > firstline[0] &&
-          array[i] > secondlineleft[1] &&
-          array[i] < thirdlineleftright[1]
-        ) {
-          fourthline[6] = array[i];
-        } else fourthline[6] = "NIL";
-
-        if (
-          array[i] < edge &&
-          array[i] > firstline[0] &&
-          array[i] > secondlineleft[1] &&
-          array[i] > thirdlineleftright[1]
-        ) {
-          fourthline[7] = array[i];
-        } else fourthline[7] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] < firstline[1] &&
-          array[i] < secondlineright[0] &&
-          array[i] < thirdlinerightleft[0]
-        ) {
-          fourthline[8] = array[i];
-        } else fourthline[8] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] < firstline[1] &&
-          array[i] < secondlineright[0] &&
-          array[i] > thirdlinerightleft[0]
-        ) {
-          fourthline[9] = array[i];
-        } else fourthline[9] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] < firstline[1] &&
-          array[i] > secondlineright[0] &&
-          array[i] < thirdlinerightleft[1]
-        ) {
-          fourthline[10] = array[i];
-        } else fourthline[10] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] < firstline[1] &&
-          array[i] > secondlineright[0] &&
-          array[i] > thirdlinerightleft[1]
-        ) {
-          fourthline[11] = array[i];
-        } else fourthline[11] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] > firstline[1] &&
-          array[i] < secondlineright[1] &&
-          array[i] < thirdlinerightright[0]
-        ) {
-          fourthline[12] = array[i];
-        } else fourthline[12] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] > firstline[1] &&
-          array[i] < secondlineright[1] &&
-          array[i] > thirdlinerightright[0]
-        ) {
-          fourthline[13] = array[i];
-        } else fourthline[13] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] > firstline[1] &&
-          array[i] > secondlineright[1] &&
-          array[i] < thirdlinerightright[1]
-        ) {
-          fourthline[14] = array[i];
-        } else fourthline[14] = "NIL";
-
-        if (
-          array[i] > edge &&
-          array[i] > firstline[1] &&
-          array[i] > secondlineright[1] &&
-          array[i] > thirdlinerightright[1]
-        ) {
-          fourthline[15] = array[i];
-        } else fourthline[15] = "NIL";
-      }
-      change = 0;
-
-      firstline.sort();
-      secondlineleft.sort();
-      thirdlineleftleft.sort();
-      thirdlineleftright.sort();
-      thirdlinerightleft.sort();
-      thirdlinerightright.sort();
-    }
-    var resultarray = [];
-
-    if (edge !== "") {
-      resultarray.push(edge);
-      if (firstline.length < 1) {
-        firstline[0] = "NIL";
-        firstline[1] = "NIL";
-      } else if (firstline.length === 1) {
-        if (firstline[0] < edge) {
-          firstline[1] = "NIL";
-        } else {
-          change = firstline[0];
-          firstline[0] = "NIL";
-          firstline[1] = change;
-        }
-      }
-    }
-    if (firstline[0] !== "") {
-      resultarray.push(firstline[0]);
-      if (secondlineleft.length < 1) {
-        secondlineleft[0] = "NIL";
-        secondlineleft[1] = "NIL";
-      } else if (secondlineleft.length === 1) {
-        if (secondlineleft[0] < firstline[0] && secondlineleft[0] < edge) {
-          secondlineleft[1] = "NIL";
-        } else {
-          change = secondlineleft[0];
-          secondlineleft[0] = "NIL";
-          secondlineleft[1] = change;
-        }
-      }
-    }
-    if (firstline[1] !== "") {
-      resultarray.push(firstline[1]);
-      if (secondlineright.length < 1) {
-        secondlineright[0] = "NIL";
-        secondlineright[1] = "NIL";
-      } else if (secondlineright.length === 1) {
-        if (secondlineright[0] < firstline[1] && secondlineright[0] > edge) {
-          secondlineright[1] = "NIL";
-        } else {
-          change = secondlineright[0];
-          secondlineright[0] = "NIL";
-          secondlineright[1] = change;
-        }
-      }
-    }
-    if (secondlineleft[0] !== "" && firstline[0] !== "NIL") {
-      resultarray.push(secondlineleft[0]);
-      if (thirdlineleftleft.length < 1) {
-        thirdlineleftleft[0] = "NIL";
-        thirdlineleftleft[1] = "NIL";
-      } else if (thirdlineleftleft.length === 1) {
-        if (
-          thirdlineleftleft[0] < secondlineleft[0] &&
-          thirdlineleftleft[0] < firstline[0]
-        ) {
-          thirdlineleftleft[1] = "NIL";
-        } else {
-          change = thirdlineleftleft[0];
-          thirdlineleftleft[0] = "NIL";
-          thirdlineleftleft[1] = change;
-        }
-      }
-    }
-    if (secondlineleft[1] !== "" && firstline[0] !== "NIL") {
-      resultarray.push(secondlineleft[1]);
-      if (thirdlineleftright.length < 1) {
-        thirdlineleftright[0] = "NIL";
-        thirdlineleftright[1] = "NIL";
-      } else if (thirdlineleftright.length === 1) {
-        if (
-          thirdlineleftright[0] < secondlineleft[1] &&
-          thirdlineleftright[0] > firstline[0]
-        ) {
-          thirdlineleftright[1] = "NIL";
-        } else {
-          change = thirdlineleftright[0];
-          thirdlineleftright[0] = "NIL";
-          thirdlineleftright[1] = change;
-        }
-      }
-    }
-    if (secondlineright[0] !== "" && firstline[1] !== "NIL") {
-      resultarray.push(secondlineright[0]);
-      if (thirdlinerightleft.length < 1) {
-        thirdlinerightleft[0] = "NIL";
-        thirdlinerightleft[1] = "NIL";
-      } else if (thirdlinerightleft.length === 1) {
-        if (
-          thirdlinerightleft[0] < secondlineright[0] &&
-          thirdlinerightleft[0] < firstline[1]
-        ) {
-          thirdlinerightleft[1] = "NIL";
-        } else {
-          change = thirdlinerightleft[0];
-          thirdlinerightleft[0] = "NIL";
-          thirdlinerightleft[1] = change;
-        }
-      }
-    }
-    if (secondlineright[1] !== "" && firstline[1] !== "NIL") {
-      resultarray.push(secondlineright[1]);
-      if (thirdlinerightright.length < 1) {
-        thirdlinerightright[0] = "NIL";
-        thirdlinerightright[1] = "NIL";
-      } else if (thirdlinerightright.length === 1) {
-        if (
-          thirdlinerightright[0] < secondlineright[1] &&
-          thirdlinerightright[0] > firstline[1]
-        ) {
-          thirdlinerightright[1] = "NIL";
-        } else {
-          change = thirdlinerightright[0];
-          thirdlinerightright[0] = "NIL";
-          thirdlinerightright[1] = change;
-        }
       }
     }
 
-    if (secondlineleft[0] !== "NIL") {
-      resultarray.push(thirdlineleftleft[0]);
-      resultarray.push(thirdlineleftleft[1]);
-    }
-    if (secondlineleft[1] !== "NIL") {
-      resultarray.push(thirdlineleftright[0]);
-      resultarray.push(thirdlineleftright[1]);
-    }
-    if (secondlineright[0] !== "NIL") {
-      resultarray.push(thirdlinerightleft[0]);
-      resultarray.push(thirdlinerightleft[1]);
-    }
-    if (secondlineright[1] !== "NIL") {
-      resultarray.push(thirdlinerightright[0]);
-      resultarray.push(thirdlinerightright[1]);
-    }
+    var edge = parsedarray[0];
 
-    console.log(array);
-    console.log("left: " + leftn);
-    console.log("right: " + rightn);
-    console.log("edge: " + edge);
-    console.log("firstline: " + firstline);
-    console.log("secondlineleft: " + secondlineleft);
-    console.log("secondlineright: " + secondlineright);
-    console.log("thirdlineleftleft: " + thirdlineleftleft);
-    console.log("thirdlineleftright: " + thirdlineleftright);
-    console.log("thirdlinerightleft: " + thirdlinerightleft);
-    console.log("thirdlinerightright: " + thirdlinerightright);
-    console.log("fourth: " + fourthline);
+    for (let i = 0; i < parsedarray.length; i++) {
+      if (parsedarray[i] < edge && secondLine[0] === "NIL") {
+        secondLine[0] = parsedarray[i];
+      } else if (parsedarray[i] > edge && secondLine[1] === "NIL") {
+        secondLine[1] = parsedarray[i];
+      }
 
-    var colors = [];
-    colors.push("black");
-    for (var q = 1; q < resultarray.length; q++) {
-      colors.push("red");
-    }
-
-    for (var i = 1; i < resultarray.length; i++) {
-      if (i > 6 && i <= 14 && resultarray[i] !== "NIL") {
-        if (i % 2 === 0 && colors[i] === "red") {
-          //console.log("beléptem1" + i);
-          if (colors[i / 2 - 1] === "red" && colors[i / 2] === "red") {
-            //console.log("beléptem2");
-            if (colors[1] === "black" && i < 10) {
-              //console.log("beléptem3");
-              colors[1] = "red";
-              colors[i / 2 - 1] = "black";
-              colors[i / 2] = "black";
-            } else if (colors[2] === "black" && i > 10) {
-              colors[2] = "red";
-              colors[i / 2 - 1] = "black";
-              colors[i / 2] = "black";
-            }
-          }
+      if (parsedarray[i] < edge) {
+        if (
+          secondLine[0] !== "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] < secondLine[0] &&
+          thirdLine[0] === "NIL"
+        ) {
+          thirdLine[0] = parsedarray[i];
+        } else if (
+          secondLine[0] !== "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] > secondLine[0] &&
+          thirdLine[1] === "NIL"
+        ) {
+          thirdLine[1] = parsedarray[i];
         }
-        if (i % 2 === 1 && colors[i] === "red") {
-          //console.log("beléptem4" + i);
+
+        if (
+          secondLine[0] !== "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] < secondLine[0] &&
+          thirdLine[0] !== "NIL"
+        ) {
           if (
-            colors[(i - 1) / 2] === "red" &&
-            colors[(i - 1) / 2 - 1] === "red"
+            parsedarray[i] < thirdLine[0] &&
+            fourthLine[0] === "NIL" &&
+            thirdLine[1] !== "NIL"
           ) {
-            //console.log("beléptem5");
-            if (colors[1] === "black" && i < 10) {
-              //console.log("beléptem6");
-              colors[1] = "red";
-              colors[(i - 1) / 2 - 1] = "black";
-              colors[(i - 1) / 2] = "black";
-            } else if (colors[2] === "black" && i > 10) {
-              colors[2] = "red";
-              colors[(i - 1) / 2 - 1] = "black";
-              colors[(i - 1) / 2] = "black";
-            }
+            fourthLine[0] = parsedarray[i];
+          } else if (
+            parsedarray[i] > thirdLine[0] &&
+            parsedarray[i] < thirdLine[1] &&
+            fourthLine[1] === "NIL" &&
+            thirdLine[1] !== "NIL"
+          ) {
+            fourthLine[1] = parsedarray[i];
+          }
+
+          if (parsedarray[i] < thirdLine[0] && thirdLine[1] === "NIL") {
+            thirdLine[1] = secondLine[0];
+            secondLine[0] = thirdLine[0];
+            thirdLine[0] = parsedarray[i];
+          }
+          if (
+            parsedarray[i] > thirdLine[0] &&
+            parsedarray[i] < thirdLine[1] &&
+            thirdLine[1] === "NIL"
+          ) {
+            thirdLine[0] = secondLine[0];
+            secondLine[0] = thirdLine[1];
+            thirdLine[1] = parsedarray[i];
           }
         }
-      }
-      if (i % 2 === 0 && colors[i] === "red" && i <= 6 && i >= 3) {
-        if (colors[i / 2 - 1] === "red" && resultarray[i / 2 - 1] !== "NIL") {
-          colors[i / 2 - 1] = "black";
-          console.log("váltok");
+
+        if (
+          secondLine[0] !== "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] > secondLine[0] &&
+          parsedarray[i] < secondLine[1] &&
+          thirdLine[1] !== "NIL"
+        ) {
+          if (
+            parsedarray[i] < thirdLine[1] &&
+            parsedarray[i] > thirdLine[0] &&
+            fourthLine[2] === "NIL" &&
+            thirdLine[0] !== "NIL" &&
+            thirdLine[1] !== "NIL"
+          ) {
+            fourthLine[2] = parsedarray[i];
+          } else if (
+            parsedarray[i] > thirdLine[1] &&
+            parsedarray[i] < thirdLine[2] &&
+            fourthLine[3] === "NIL" &&
+            thirdLine[2] !== "NIL" &&
+            thirdLine[1] !== "NIL"
+          ) {
+            fourthLine[3] = parsedarray[i];
+          }
+
+          if (parsedarray[i] < thirdLine[1] && thirdLine[0] === "NIL") {
+            thirdLine[0] = secondLine[0];
+            secondLine[0] = thirdLine[2];
+            thirdLine[2] = parsedarray[i];
+          }
+          if (
+            parsedarray[i] > thirdLine[1] &&
+            parsedarray[i] < secondLine[1] &&
+            thirdLine[0] === "NIL"
+          ) {
+            thirdLine[0] = secondLine[0];
+            secondLine[0] = thirdLine[3];
+            thirdLine[3] = parsedarray[i];
+          }
+        }
+
+        if (
+          secondLine[0] === "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] < secondLine[0]
+        ) {
+          secondLine[1] = edge;
+          edge = secondLine[0];
+          secondLine[0] = parsedarray[i];
+        } else if (
+          secondLine[0] === "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] > secondLine[0]
+        ) {
+          secondLine[0] = edge;
+          edge = parsedarray[i];
         }
       }
-      if (i % 2 === 1 && colors[i] === "red" && i <= 6 && i >= 3) {
+
+      if (parsedarray[i] > edge) {
         if (
-          colors[(i - 1) / 2] === "red" &&
-          resultarray[(i - 1) / 2] !== "NIL"
+          secondLine[0] !== "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] < secondLine[1] &&
+          thirdLine[2] === "NIL"
         ) {
-          colors[(i - 1) / 2] = "black";
-          console.log("váltok");
+          thirdLine[2] = parsedarray[i];
+        } else if (
+          secondLine[0] !== "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] > secondLine[1] &&
+          thirdLine[3] === "NIL"
+        ) {
+          thirdLine[3] = parsedarray[i];
+        }
+        if (parsedarray[i] < secondLine[1]) {
+          if (
+            parsedarray[i] < thirdLine[2] &&
+            fourthLine[4] === "NIL" &&
+            thirdLine[2] !== "NIL"
+          ) {
+            fourthLine[4] = parsedarray[i];
+          } else if (
+            parsedarray[i] > thirdLine[2] &&
+            parsedarray[i] < thirdLine[3] &&
+            fourthLine[5] === "NIL" &&
+            thirdLine[2] !== "NIL" &&
+            thirdLine[3] !== "NIL"
+          ) {
+            fourthLine[5] = parsedarray[i];
+          }
+        }
+        if (parsedarray[i] > secondLine[1]) {
+          if (
+            parsedarray[i] < thirdLine[3] &&
+            fourthLine[6] === "NIL" &&
+            thirdLine[4] !== "NIL" &&
+            thirdLine[3] !== "NIL"
+          ) {
+            fourthLine[6] = parsedarray[i];
+          } else if (
+            parsedarray[i] > thirdLine[3] &&
+            fourthLine[7] === "NIL" &&
+            thirdLine[2] !== "NIL" &&
+            thirdLine[3] !== "NIL"
+          ) {
+            fourthLine[7] = parsedarray[i];
+          }
+        }
+        if (
+          secondLine[0] === "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] < secondLine[1]
+        ) {
+          secondLine[0] = edge;
+          edge = parsedarray[i];
+        } else if (
+          secondLine[0] === "NIL" &&
+          secondLine[1] !== "NIL" &&
+          parsedarray[i] > secondLine[1]
+        ) {
+          secondLine[0] = edge;
+          edge = secondLine[1];
+          secondLine[1] = parsedarray[i];
         }
       }
     }
 
-    if (colors[0] === "red") {
-      colors[0] = "black";
-    }
-
-    for (var i = 0; i < resultarray.length; i++) {
-      //43,23,76,98,32,65,10,2,12,34,33,89,66,1
-      if (edge !== "") {
-        var element;
-        var breaks;
-        element = document.createElement("b");
-        breaks = document.createElement("br");
-
-        if (resultarray[i] === "NIL" || colors[i] === "black") {
-          element.className = "tree-black";
-        } else element.className = "tree-red";
-        element.innerHTML = resultarray[i];
-        if (
-          i === 0 ||
-          i === 2 ||
-          i === 6 ||
-          i === 14 ||
-          i === resultarray.length
-        ) {
-          document.getElementById("tree").appendChild(element);
-          document.getElementById("tree").appendChild(breaks);
-        } else document.getElementById("tree").appendChild(element);
-      }
-    }
-    console.log("ResultArray:" + resultarray);
-    console.log("Colors: " + colors);
+    console.log("Edge: " + edge);
+    console.log("SecondLine: " + secondLine);
+    console.log("ThirdLine: " + thirdLine);
+    console.log("FourthLine: " + fourthLine);
+    console.log("FifthLine: " + fifthLine);
   }
 
   /*
@@ -571,14 +246,16 @@ export default function RedBlackTree() {
       >
         Red-Black tree
       </h1>
-      <div class="form-group">
-        <div class="container">
-          <div class="row justify-content-center text-center">
+      <div className="form-group">
+        <div className="container">
+          <div className="row justify-content-center text-center">
             {" "}
-            <div class="col-4 ">
+            <div className="col-4 ">
               <b style={{ color: "white" }}>Add Elements :</b>
-              <input type="text" class="form-control" id="addnumber" />{" "}
-              <small class="form-text text-white">(pl.: 1,12,43,23,13)</small>
+              <input type="text" className="form-control" id="addnumber" />{" "}
+              <small className="form-text text-white">
+                (pl.: 1,12,43,23,13)
+              </small>
               <br />
             </div>
           </div>
