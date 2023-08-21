@@ -9,13 +9,12 @@ export default function RedBlackTree() {
     array = a.split(",");
 
     var parsedarray = [];
+    var colorHelperArray = [];
     var color = [];
 
     for (var i = 0; i < array.length; i++) {
       parsedarray.push(parseInt(array[i]));
-      color.push("1"); //0 gray 1 red
     }
-    color[0] = 0;
 
     var secondLine = [];
     var thirdLine = [];
@@ -83,7 +82,6 @@ export default function RedBlackTree() {
           ) {
             fourthLine[1] = parsedarray[i];
           }
-
           /*if (parsedarray[i] < thirdLine[0] && thirdLine[1] === "NIL") {
             thirdLine[1] = secondLine[0];
             secondLine[0] = thirdLine[0];
@@ -124,7 +122,6 @@ export default function RedBlackTree() {
           ) {
             fourthLine[3] = parsedarray[i];
           }
-
           /*if (parsedarray[i] < thirdLine[1] && thirdLine[0] === "NIL") {
             thirdLine[0] = secondLine[0];
             secondLine[0] = thirdLine[2];
@@ -294,6 +291,96 @@ export default function RedBlackTree() {
             }
           }
         }
+
+        if (
+          thirdLine[0] !== "NIL" &&
+          fourthLine[0] !== "NIL" &&
+          fourthLine[1] === "NIL" &&
+          fifthLine[0] !== "NIL"
+        ) {
+          fourthLine[1] = thirdLine[0];
+          thirdLine[0] = fourthLine[0];
+          fourthLine[0] = fifthLine[0];
+          fifthLine[0] = "NIL";
+        }
+
+        if (
+          thirdLine[0] !== "NIL" &&
+          fourthLine[0] !== "NIL" &&
+          fourthLine[1] === "NIL" &&
+          fifthLine[1] !== "NIL"
+        ) {
+          fourthLine[1] = thirdLine[0];
+          thirdLine[0] = fifthLine[1];
+          fifthLine[1] = "NIL";
+        }
+
+        if (
+          thirdLine[0] !== "NIL" &&
+          fourthLine[1] !== "NIL" &&
+          fourthLine[0] === "NIL" &&
+          fifthLine[2] !== "NIL"
+        ) {
+          fourthLine[0] = thirdLine[0];
+          thirdLine[0] = fifthLine[2];
+          fifthLine[2] = "NIL";
+        }
+        if (
+          thirdLine[0] !== "NIL" &&
+          fourthLine[1] !== "NIL" &&
+          fourthLine[0] === "NIL" &&
+          fifthLine[3] !== "NIL"
+        ) {
+          fourthLine[0] = thirdLine[0];
+          thirdLine[0] = fourthLine[1];
+          fourthLine[1] = fifthLine[3];
+          fifthLine[3] = "NIL";
+        }
+
+        if (
+          thirdLine[1] !== "NIL" &&
+          fourthLine[2] !== "NIL" &&
+          fourthLine[3] === "NIL" &&
+          fifthLine[4] !== "NIL"
+        ) {
+          fourthLine[3] = thirdLine[1];
+          thirdLine[1] = fourthLine[2];
+          fourthLine[2] = fifthLine[4];
+          fifthLine[4] = "NIL";
+        }
+
+        if (
+          thirdLine[1] !== "NIL" &&
+          fourthLine[2] !== "NIL" &&
+          fourthLine[3] === "NIL" &&
+          fifthLine[5] !== "NIL"
+        ) {
+          fourthLine[3] = thirdLine[1];
+          thirdLine[1] = fifthLine[5];
+          fifthLine[5] = "NIL";
+        }
+
+        if (
+          thirdLine[1] !== "NIL" &&
+          fourthLine[3] !== "NIL" &&
+          fourthLine[2] === "NIL" &&
+          fifthLine[6] !== "NIL"
+        ) {
+          fourthLine[2] = thirdLine[1];
+          thirdLine[1] = fifthLine[6];
+          fifthLine[6] = "NIL";
+        }
+        if (
+          thirdLine[1] !== "NIL" &&
+          fourthLine[3] !== "NIL" &&
+          fourthLine[2] === "NIL" &&
+          fifthLine[7] !== "NIL"
+        ) {
+          fourthLine[2] = thirdLine[1];
+          thirdLine[1] = fourthLine[3];
+          fourthLine[3] = fifthLine[7];
+          fifthLine[7] = "NIL";
+        }
       }
 
       if (parsedarray[i] > edge) {
@@ -346,7 +433,6 @@ export default function RedBlackTree() {
             fourthLine[7] = parsedarray[i];
           }
         }
-        //eleeje
         if (parsedarray[i] < secondLine[1] && secondLine[1] !== "NIL") {
           if (parsedarray[i] < thirdLine[2] && thirdLine[2] !== "NIL") {
             if (parsedarray[i] < fourthLine[4] && fourthLine[4] !== "NIL") {
@@ -401,53 +487,11 @@ export default function RedBlackTree() {
             if (parsedarray[i] < fourthLine[7] && fourthLine[7] !== "NIL") {
               fifthLine[14] = parsedarray[i];
             }
-            if (              
-              parsedarray[i] > fourthLine[7] &&
-              fourthLine[7] !== "NIL"
-            ) {
+            if (parsedarray[i] > fourthLine[7] && fourthLine[7] !== "NIL") {
               fifthLine[15] = parsedarray[i];
             }
           }
         }
-
-        if (
-          parsedarray[i] > secondLine[0] &&
-          secondLine[0] !== "NIL" &&
-          parsedarray[i] < secondLine[1] &&
-          secondLine[1] !== "NIL"
-        ) {
-          if (parsedarray[i] < thirdLine[1] && thirdLine[1] !== "NIL") {
-            if (parsedarray[i] < fourthLine[2] && fourthLine[2] !== "NIL") {
-              fifthLine[4] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[2] &&
-              fourthLine[2] !== "NIL" &&
-              parsedarray[i] < fourthLine[3] &&
-              fourthLine[3] !== "NIL"
-            ) {
-              fifthLine[5] = parsedarray[i];
-            }
-          }
-          if (
-            parsedarray[i] > thirdLine[1] &&
-            thirdLine[1] !== "NIL" &&
-            parsedarray[i] < thirdLine[2] &&
-            thirdLine[2] !== "NIL"
-          ) {
-            if (parsedarray[i] < fourthLine[3] && fourthLine[3] !== "NIL") {
-              fifthLine[6] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[3] &&
-              fourthLine[3] !== "NIL" &&
-              parsedarray[i] < fourthLine[4] &&
-              fourthLine[4] !== "NIL"
-            ) {
-              fifthLine[7] = parsedarray[i];
-            }
-          }
-        } //itt a vege
 
         if (
           secondLine[0] === "NIL" &&
@@ -494,8 +538,165 @@ export default function RedBlackTree() {
             }
           }
         }
+
+        if (
+          thirdLine[2] !== "NIL" &&
+          fourthLine[4] !== "NIL" &&
+          fourthLine[5] === "NIL" &&
+          fifthLine[8] !== "NIL"
+        ) {
+          fourthLine[5] = thirdLine[2];
+          thirdLine[2] = fourthLine[4];
+          fourthLine[4] = fifthLine[8];
+          fifthLine[8] = "NIL";
+        }
+
+        if (
+          thirdLine[2] !== "NIL" &&
+          fourthLine[4] !== "NIL" &&
+          fourthLine[5] === "NIL" &&
+          fifthLine[9] !== "NIL"
+        ) {
+          fourthLine[5] = thirdLine[2];
+          thirdLine[2] = fifthLine[9];
+          fifthLine[9] = "NIL";
+        }
+
+        if (
+          thirdLine[2] !== "NIL" &&
+          fourthLine[5] !== "NIL" &&
+          fourthLine[4] === "NIL" &&
+          fifthLine[10] !== "NIL"
+        ) {
+          fourthLine[4] = thirdLine[2];
+          thirdLine[2] = fifthLine[10];
+          fifthLine[10] = "NIL";
+        }
+        if (
+          thirdLine[2] !== "NIL" &&
+          fourthLine[5] !== "NIL" &&
+          fourthLine[4] === "NIL" &&
+          fifthLine[11] !== "NIL"
+        ) {
+          fourthLine[4] = thirdLine[2];
+          thirdLine[2] = fourthLine[5];
+          fourthLine[5] = fifthLine[11];
+          fifthLine[11] = "NIL";
+        }
+
+        if (
+          thirdLine[3] !== "NIL" &&
+          fourthLine[6] !== "NIL" &&
+          fourthLine[7] === "NIL" &&
+          fifthLine[12] !== "NIL"
+        ) {
+          fourthLine[7] = thirdLine[3];
+          thirdLine[3] = fourthLine[6];
+          fourthLine[6] = fifthLine[12];
+          fifthLine[12] = "NIL";
+        }
+
+        if (
+          thirdLine[3] !== "NIL" &&
+          fourthLine[6] !== "NIL" &&
+          fourthLine[7] === "NIL" &&
+          fifthLine[13] !== "NIL"
+        ) {
+          fourthLine[7] = thirdLine[3];
+          thirdLine[3] = fifthLine[13];
+          fifthLine[13] = "NIL";
+        }
+
+        if (
+          thirdLine[3] !== "NIL" &&
+          fourthLine[7] !== "NIL" &&
+          fourthLine[6] === "NIL" &&
+          fifthLine[14] !== "NIL"
+        ) {
+          fourthLine[6] = thirdLine[3];
+          thirdLine[3] = fifthLine[14];
+          fifthLine[14] = "NIL";
+        }
+        if (
+          thirdLine[3] !== "NIL" &&
+          fourthLine[7] !== "NIL" &&
+          fourthLine[6] === "NIL" &&
+          fifthLine[15] !== "NIL"
+        ) {
+          fourthLine[6] = thirdLine[3];
+          thirdLine[3] = fourthLine[7];
+          fourthLine[7] = fifthLine[15];
+          fifthLine[15] = "NIL";
+        }
       }
     }
+
+    function containsNumber(str) {
+      return /[0-9]/.test(str);
+    }
+
+    if (!containsNumber(secondLine)) {
+      colorHelperArray.push(edge);
+    }
+    if (!containsNumber(thirdLine)) {
+      colorHelperArray = colorHelperArray.concat(edge, secondLine);
+    }
+    if (!containsNumber(fourthLine)) {
+      colorHelperArray = colorHelperArray.concat(
+        edge,
+        secondLine,
+        thirdLine,
+        fourthLine
+      );
+    }
+    if (containsNumber(fourthLine)) {
+      colorHelperArray = colorHelperArray.concat(
+        edge,
+        secondLine,
+        thirdLine,
+        fourthLine,
+        fifthLine
+      );
+    }
+
+    console.log(colorHelperArray);
+
+    color.push("0");
+
+    for (let i = 1; i < colorHelperArray.length; i++) {
+      if (colorHelperArray[i] !== "NIL") {
+        color[i] = "1";
+      } else {
+        color[i] = "0";
+      }
+    }
+
+    for (var i = 0; i < colorHelperArray.length; i++) {
+      //43,23,76,98,32,65,10,2,12,34,33,89,66,1
+      if (edge !== "") {
+        var element;
+        var breaks;
+        element = document.createElement("b");
+        breaks = document.createElement("br");
+
+        if (colorHelperArray[i] === "NIL" || color[i] === "0") {
+          element.className = "tree-black";
+        } else element.className = "tree-red";
+        element.innerHTML = colorHelperArray[i];
+        if (
+          i === 0 ||
+          i === 2 ||
+          i === 6 ||
+          i === 14 ||
+          i === colorHelperArray.length
+        ) {
+          document.getElementById("tree").appendChild(element);
+          document.getElementById("tree").appendChild(breaks);
+        } else document.getElementById("tree").appendChild(element);
+      }
+    }
+
+    console.log(color); //0 gray 1 red
 
     console.log("Edge: " + edge);
     console.log("SecondLine: " + secondLine);
