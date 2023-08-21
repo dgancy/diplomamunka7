@@ -16,7 +16,7 @@ export default function RedBlackTree() {
       color.push("1"); //0 gray 1 red
     }
     color[0] = 0;
-    
+
     var secondLine = [];
     var thirdLine = [];
     var fourthLine = [];
@@ -84,7 +84,7 @@ export default function RedBlackTree() {
             fourthLine[1] = parsedarray[i];
           }
 
-          if (parsedarray[i] < thirdLine[0] && thirdLine[1] === "NIL") {
+          /*if (parsedarray[i] < thirdLine[0] && thirdLine[1] === "NIL") {
             thirdLine[1] = secondLine[0];
             secondLine[0] = thirdLine[0];
             thirdLine[0] = parsedarray[i];
@@ -97,7 +97,7 @@ export default function RedBlackTree() {
             thirdLine[0] = secondLine[0];
             secondLine[0] = thirdLine[1];
             thirdLine[1] = parsedarray[i];
-          }
+          }*/
         }
 
         if (
@@ -125,7 +125,7 @@ export default function RedBlackTree() {
             fourthLine[3] = parsedarray[i];
           }
 
-          if (parsedarray[i] < thirdLine[1] && thirdLine[0] === "NIL") {
+          /*if (parsedarray[i] < thirdLine[1] && thirdLine[0] === "NIL") {
             thirdLine[0] = secondLine[0];
             secondLine[0] = thirdLine[2];
             thirdLine[2] = parsedarray[i];
@@ -138,7 +138,115 @@ export default function RedBlackTree() {
             thirdLine[0] = secondLine[0];
             secondLine[0] = thirdLine[3];
             thirdLine[3] = parsedarray[i];
+          }*/
+        }
+
+        if (parsedarray[i] < secondLine[0] && secondLine[0] !== "NIL") {
+          if (parsedarray[i] < thirdLine[0] && thirdLine[0] !== "NIL") {
+            if (parsedarray[i] < fourthLine[0] && fourthLine[0] !== "NIL") {
+              fifthLine[0] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[0] &&
+              fourthLine[0] !== "NIL" &&
+              parsedarray[i] < fourthLine[1] &&
+              fourthLine[1] !== "NIL"
+            ) {
+              fifthLine[1] = parsedarray[i];
+            }
           }
+          if (
+            parsedarray[i] > thirdLine[0] &&
+            thirdLine[0] !== "NIL" &&
+            parsedarray[i] < thirdLine[1] &&
+            thirdLine[1] !== "NIL"
+          ) {
+            if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
+              fifthLine[2] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[1] &&
+              fourthLine[1] !== "NIL" &&
+              parsedarray[i] < fourthLine[2] &&
+              fourthLine[2] !== "NIL"
+            ) {
+              fifthLine[3] = parsedarray[i];
+            }
+          }
+          if (
+            parsedarray[i] > thirdLine[1] &&
+            thirdLine[1] !== "NIL" &&
+            parsedarray[i] < thirdLine[2] &&
+            thirdLine[2] !== "NIL"
+          ) {
+            if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
+              fifthLine[2] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[1] &&
+              fourthLine[1] !== "NIL" &&
+              parsedarray[i] < fourthLine[2] &&
+              fourthLine[2] !== "NIL"
+            ) {
+              fifthLine[3] = parsedarray[i];
+            }
+          }
+        }
+        if (
+          parsedarray[i] > secondLine[0] &&
+          secondLine[0] !== "NIL" &&
+          parsedarray[i] < secondLine[1] &&
+          secondLine[1] !== "NIL"
+        ) {
+          if (parsedarray[i] < thirdLine[1] && thirdLine[1] !== "NIL") {
+            if (parsedarray[i] < fourthLine[2] && fourthLine[2] !== "NIL") {
+              fifthLine[4] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[2] &&
+              fourthLine[2] !== "NIL" &&
+              parsedarray[i] < fourthLine[3] &&
+              fourthLine[3] !== "NIL"
+            ) {
+              fifthLine[5] = parsedarray[i];
+            }
+          }
+          if (
+            parsedarray[i] > thirdLine[1] &&
+            thirdLine[1] !== "NIL" &&
+            parsedarray[i] < thirdLine[2] &&
+            thirdLine[2] !== "NIL"
+          ) {
+            if (parsedarray[i] < fourthLine[3] && fourthLine[3] !== "NIL") {
+              fifthLine[6] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[3] &&
+              fourthLine[3] !== "NIL" &&
+              parsedarray[i] < fourthLine[4] &&
+              fourthLine[4] !== "NIL"
+            ) {
+              fifthLine[7] = parsedarray[i];
+            }
+          }
+          /*if (
+            parsedarray[i] > thirdLine[1] &&
+            thirdLine[1] !== "NIL" &&
+            parsedarray[i] < thirdLine[2] &&
+            thirdLine[2] !== "NIL"
+          ) {
+            if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
+              fifthLine[2] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[1] &&
+              fourthLine[1] !== "NIL" &&
+              parsedarray[i] < fourthLine[2] &&
+              fourthLine[2] !== "NIL"
+            ) {
+              fifthLine[3] = parsedarray[i];
+            }
+          }*/
         }
 
         if (
@@ -156,6 +264,35 @@ export default function RedBlackTree() {
         ) {
           secondLine[0] = edge;
           edge = parsedarray[i];
+        }
+
+        if (secondLine[0] !== "NIL") {
+          if (thirdLine[0] !== "NIL" && thirdLine[1] === "NIL") {
+            if (fourthLine[0] !== "NIL") {
+              thirdLine[1] = secondLine[0];
+              secondLine[0] = thirdLine[0];
+              thirdLine[0] = fourthLine[0];
+              fourthLine[0] = "NIL";
+            }
+            if (fourthLine[1] !== "NIL") {
+              thirdLine[1] = secondLine[0];
+              secondLine[0] = fourthLine[1];
+              fourthLine[1] = "NIL";
+            }
+          }
+          if (thirdLine[1] !== "NIL" && thirdLine[0] === "NIL") {
+            if (fourthLine[2] !== "NIL") {
+              thirdLine[0] = secondLine[0];
+              secondLine[0] = fourthLine[2];
+              fourthLine[2] = "NIL";
+            }
+            if (fourthLine[3] !== "NIL") {
+              thirdLine[0] = secondLine[0];
+              secondLine[0] = thirdLine[1];
+              thirdLine[1] = fourthLine[3];
+              fourthLine[3] = "NIL";
+            }
+          }
         }
       }
 
@@ -209,6 +346,109 @@ export default function RedBlackTree() {
             fourthLine[7] = parsedarray[i];
           }
         }
+        //eleeje
+        if (parsedarray[i] < secondLine[1] && secondLine[1] !== "NIL") {
+          if (parsedarray[i] < thirdLine[2] && thirdLine[2] !== "NIL") {
+            if (parsedarray[i] < fourthLine[4] && fourthLine[4] !== "NIL") {
+              fifthLine[8] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[4] &&
+              fourthLine[4] !== "NIL" &&
+              parsedarray[i] < fourthLine[5] &&
+              fourthLine[5] !== "NIL"
+            ) {
+              fifthLine[9] = parsedarray[i];
+            }
+          }
+          if (
+            parsedarray[i] > thirdLine[2] &&
+            thirdLine[2] !== "NIL" &&
+            parsedarray[i] < thirdLine[3] &&
+            thirdLine[3] !== "NIL"
+          ) {
+            if (parsedarray[i] < fourthLine[5] && fourthLine[5] !== "NIL") {
+              fifthLine[10] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[5] &&
+              fourthLine[5] !== "NIL" &&
+              parsedarray[i] < fourthLine[6] &&
+              fourthLine[6] !== "NIL"
+            ) {
+              fifthLine[11] = parsedarray[i];
+            }
+          }
+          if (
+            parsedarray[i] > thirdLine[2] &&
+            thirdLine[2] !== "NIL" &&
+            parsedarray[i] < thirdLine[3] &&
+            thirdLine[3] !== "NIL"
+          ) {
+            if (parsedarray[i] < fourthLine[6] && fourthLine[6] !== "NIL") {
+              fifthLine[12] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[6] &&
+              fourthLine[6] !== "NIL" &&
+              parsedarray[i] < fourthLine[7] &&
+              fourthLine[7] !== "NIL"
+            ) {
+              fifthLine[13] = parsedarray[i];
+            }
+          }
+          if (parsedarray[i] > thirdLine[3] && thirdLine[3] !== "NIL") {
+            if (parsedarray[i] < fourthLine[7] && fourthLine[7] !== "NIL") {
+              fifthLine[14] = parsedarray[i];
+            }
+            if (              
+              parsedarray[i] > fourthLine[7] &&
+              fourthLine[7] !== "NIL"
+            ) {
+              fifthLine[15] = parsedarray[i];
+            }
+          }
+        }
+
+        if (
+          parsedarray[i] > secondLine[0] &&
+          secondLine[0] !== "NIL" &&
+          parsedarray[i] < secondLine[1] &&
+          secondLine[1] !== "NIL"
+        ) {
+          if (parsedarray[i] < thirdLine[1] && thirdLine[1] !== "NIL") {
+            if (parsedarray[i] < fourthLine[2] && fourthLine[2] !== "NIL") {
+              fifthLine[4] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[2] &&
+              fourthLine[2] !== "NIL" &&
+              parsedarray[i] < fourthLine[3] &&
+              fourthLine[3] !== "NIL"
+            ) {
+              fifthLine[5] = parsedarray[i];
+            }
+          }
+          if (
+            parsedarray[i] > thirdLine[1] &&
+            thirdLine[1] !== "NIL" &&
+            parsedarray[i] < thirdLine[2] &&
+            thirdLine[2] !== "NIL"
+          ) {
+            if (parsedarray[i] < fourthLine[3] && fourthLine[3] !== "NIL") {
+              fifthLine[6] = parsedarray[i];
+            }
+            if (
+              parsedarray[i] > fourthLine[3] &&
+              fourthLine[3] !== "NIL" &&
+              parsedarray[i] < fourthLine[4] &&
+              fourthLine[4] !== "NIL"
+            ) {
+              fifthLine[7] = parsedarray[i];
+            }
+          }
+        } //itt a vege
+
         if (
           secondLine[0] === "NIL" &&
           secondLine[1] !== "NIL" &&
@@ -224,6 +464,35 @@ export default function RedBlackTree() {
           secondLine[0] = edge;
           edge = secondLine[1];
           secondLine[1] = parsedarray[i];
+        }
+
+        if (secondLine[1] !== "NIL") {
+          if (thirdLine[2] !== "NIL" && thirdLine[3] === "NIL") {
+            if (fourthLine[4] !== "NIL") {
+              thirdLine[3] = secondLine[1];
+              secondLine[1] = thirdLine[2];
+              thirdLine[2] = fourthLine[4];
+              fourthLine[4] = "NIL";
+            }
+            if (fourthLine[5] !== "NIL") {
+              thirdLine[3] = secondLine[1];
+              secondLine[1] = fourthLine[5];
+              fourthLine[5] = "NIL";
+            }
+          }
+          if (thirdLine[3] !== "NIL" && thirdLine[2] === "NIL") {
+            if (fourthLine[6] !== "NIL") {
+              thirdLine[2] = secondLine[1];
+              secondLine[1] = fourthLine[6];
+              fourthLine[6] = "NIL";
+            }
+            if (fourthLine[7] !== "NIL") {
+              thirdLine[2] = secondLine[1];
+              secondLine[1] = thirdLine[3];
+              thirdLine[3] = fourthLine[7];
+              fourthLine[7] = "NIL";
+            }
+          }
         }
       }
     }
