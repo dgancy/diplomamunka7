@@ -635,11 +635,14 @@ export default function RedBlackTree() {
       return /[0-9]/.test(str);
     }
 
+    var state = 0;
+
     if (!containsNumber(secondLine)) {
-      colorHelperArray.push(edge);
+      colorHelperArray.push(edge, secondLine);
     }
     if (!containsNumber(thirdLine)) {
-      colorHelperArray = colorHelperArray.concat(edge, secondLine);
+      colorHelperArray = colorHelperArray.concat(edge, secondLine, thirdLine);
+      state = 3;
     }
     if (!containsNumber(fourthLine)) {
       colorHelperArray = colorHelperArray.concat(
@@ -648,6 +651,7 @@ export default function RedBlackTree() {
         thirdLine,
         fourthLine
       );
+      state = 4;
     }
     if (containsNumber(fourthLine)) {
       colorHelperArray = colorHelperArray.concat(
@@ -657,8 +661,8 @@ export default function RedBlackTree() {
         fourthLine,
         fifthLine
       );
+      state = 5;
     }
-
     console.log(colorHelperArray);
 
     color.push("0");
@@ -668,6 +672,79 @@ export default function RedBlackTree() {
         color[i] = "1";
       } else {
         color[i] = "0";
+      }
+    }
+
+    if (state === 3) {
+      if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
+        color[1] = "0";
+      }
+      if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
+        color[2] = "0";
+      }
+    }
+    if (state === 4) {
+      if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
+        color[1] = "0";
+      }
+      if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
+        color[2] = "0";
+      }
+      if ((color[7] === "1" || color[8] === "1") && color[3] === "1") {
+        color[3] = "0";
+      }
+      if ((color[9] === "1" || color[10] === "1") && color[4] === "1") {
+        color[4] = "0";
+      }
+      if ((color[11] === "1" || color[12] === "1") && color[5] === "1") {
+        color[5] = "0";
+      }
+      if ((color[13] === "1" || color[14] === "1") && color[6] === "1") {
+        color[6] = "0";
+      }
+    }
+    if (state === 5) {
+      if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
+        color[1] = "0";
+      }
+      if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
+        color[2] = "0";
+      }
+      if ((color[7] === "1" || color[8] === "1") && color[3] === "1") {
+        color[3] = "0";
+      }
+      if ((color[9] === "1" || color[10] === "1") && color[4] === "1") {
+        color[4] = "0";
+      }
+      if ((color[11] === "1" || color[12] === "1") && color[5] === "1") {
+        color[5] = "0";
+      }
+      if ((color[13] === "1" || color[14] === "1") && color[6] === "1") {
+        color[6] = "0";
+      }
+      if ((color[15] === "1" || color[16] === "1") && color[7] === "1") {
+        color[7] = "0";
+      }
+      if ((color[17] === "1" || color[18] === "1") && color[8] === "1") {
+        color[8] = "0";
+      }
+      if ((color[19] === "1" || color[20] === "1") && color[9] === "1") {
+        color[9] = "0";
+      }
+      if ((color[21] === "1" || color[22] === "1") && color[10] === "1") {
+        color[10] = "0";
+      }
+      if ((color[23] === "1" || color[24] === "1") && color[11] === "1") {
+        color[11] = "0";
+      }
+      if ((color[25] === "1" || color[26] === "1") && color[12] === "1") {
+        color[12] = "0";
+      }
+      if ((color[27] === "1" || color[28] === "1") && color[13] === "1") {
+        color[13] = "0";
+      }
+      if ((color[29] === "1" || color[30] === "1") && color[14] === "1") {
+        color[14] = "0";
       }
     }
 
@@ -683,6 +760,7 @@ export default function RedBlackTree() {
           element.className = "tree-black";
         } else element.className = "tree-red";
         element.innerHTML = colorHelperArray[i];
+
         if (
           i === 0 ||
           i === 2 ||
@@ -738,7 +816,7 @@ export default function RedBlackTree() {
       </div>
       <div className="row justify-content-center text-center">
         <br />
-        <b id="tree"></b>
+        <b id="tree" style={{ height: "400px", width: "1200px" }}></b>
       </div>
     </form>
   );

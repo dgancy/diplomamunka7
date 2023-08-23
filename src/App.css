@@ -11,21 +11,25 @@ a {
 }
 
 .tree-red {
+  box-sizing: border-box;
+  width: 65px;
+  height: 65px;
   font-family: Georgia;
-  font-size: x-large;
+  font-size: 25px;
   color: azure;
   background-color: rgb(121, 0, 0);
   border: 2px solid gold;
   border-radius: 50%;
-  text-align: center;
 }
 .tree-black {
+  box-sizing: border-box;
+  width: 65px;
+  height: 65px;
   font-family: Georgia;
-  font-size: x-large;
+  font-size: 25px;
   color: azure;
   background-color: rgb(0, 0, 0);
   border: 2px solid gold;
   border-radius: 50%;
   border-style: solid;
-  text-align: center;
 }
