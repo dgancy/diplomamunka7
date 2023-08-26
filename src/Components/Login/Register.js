@@ -1,137 +1,111 @@
-import React, { useState } from "react"; //
-//import { useNavigate } from "react-router-dom";
+import React, { useState } from "react";
+import { NavLink, useNavigate } from "react-router-dom";
+import { createUserWithEmailAndPassword } from "firebase/auth";
+import { auth } from "../../firebase";
 import { Button } from "react-bootstrap";
 
-export default function Register() {
-  //*const navigate = useNavigate();
+const SignUp = () => {
+  const navigate = useNavigate();
 
-  const [data, setData] = useState({
-    email: "",
-    username: "",
-    password: "",
-    passwordonemore: "",
-  });
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
 
-  const { username, password, email, passwordonemore } = data;
-
-  const changeHandler = (e) => {
-    setData({ ...data, [e.target.name]: [e.target.value] });
-  };
-
-  const submitHandler = (e) => {
+  const onSubmit = async (e) => {
     e.preventDefault();
-    console.log(data);
-  };
 
-  const send = () => {
-    const result = fetch(
-      `http://localhost:80/login/name/${username}/password/${password}`,
-      {
-        method: "POST",
-        // mode: "cors",
-        headers: {
-          "Content-Type": "text/plain",
-        },
-      }
-    );
-    result.then((value) => {
-      value.json().then((res) => {
-        console.log(res);
+    await createUserWithEmailAndPassword(auth, email, password)
+      .then((userCredential) => {
+        // Signed in
+        const user = userCredential.user;
+        console.log(user);
+        navigate("/login");
+        // ...
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.log(errorCode, errorMessage);
+        // ..
       });
-    });
   };
 
   return (
-    <form
-      style={{ background: "#000027", height: "100vh" }}
-      onSubmit={submitHandler}
-    >
-      <div className="form-group">
-        <div className="container">
-          <h2
-            style={{ color: "white" }}
-            className="row justify-content-center "
-          >
-            Regisztráció
-          </h2>
-          <br />
-          <div className="row justify-content-center text-center">
-            <div className="col-4 ">
-              <b style={{ color: "white" }} htmlFor="UsernameReg">
-                Email:
-              </b>
-              <input
-                type="email"
-                className="form-control"
-                placeholder="Email"
-                name="email"
-                value={email}
-                onChange={changeHandler}
-              />
-            </div>
+    <main>
+      <section>
+        <div>
+          <div>
+            <form style={{ background: "#000027", height: "100vh" }}>
+              <div class="form-group ">
+                <div class="container ">
+                  <h2
+                    style={{ color: "white" }}
+                    class="row justify-content-center"
+                  >
+                    Regisztráció
+                  </h2>
+                  <br />
+                  <div class="row justify-content-center text-center">
+                    <div class="col-4 ">
+                      <b style={{ color: "white" }} for="exampleInputEmail1">
+                        Email cím:
+                      </b>
+                      <input
+                        type="email"
+                        class="form-control"
+                        label="Email address"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        required
+                        placeholder="Az email címed"
+                      />
+                    </div>
+                  </div>
+                  <br />
+
+                  <div class="row justify-content-center text-center">
+                    <div class="col-4">
+                      <b style={{ color: "white" }} for="exampleInputPassword1">
+                        Jelszó:
+                      </b>
+                      <input
+                        type="password"
+                        class="form-control"
+                        label="Create password"
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)}
+                        required
+                        placeholder="Találj ki egy jelszót"
+                      />
+                    </div>
+                  </div>
+                  <br />
+                  <div class="form-group text-center">
+                    <Button
+                      type="submit"
+                      variant="btn btn-outline-warning col-2"
+                      onClick={onSubmit}
+                    >
+                      Regisztrálok!
+                    </Button>
+                  </div>
+                  <br />
+
+                  <div class="form-group text-center">
+                    <p style={{ color: "white" }}>
+                      Már van fiókod?{" "}
+                      <NavLink to="/login" style={{ color: "#FFC107" }}>
+                        Jelentkezz be!
+                      </NavLink>
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
-          <br />
-          <div className="row justify-content-center text-center">
-            <div className="col-4 ">
-              <b style={{ color: "white" }} htmlFor="UsernameReg">
-                UserName:
-              </b>
-              <input
-                type="text"
-                className="form-control"
-                placeholder="UserName"
-                name="username"
-                value={username}
-                onChange={changeHandler}
-              />
-            </div>
-          </div>
-          <br />
-          <div className="row justify-content-center text-center">
-            <div className="col-4">
-              <b style={{ color: "white" }} htmlFor="PasswordInput">
-                Password:
-              </b>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password"
-                name="password"
-                value={password}
-                onChange={changeHandler}
-              />
-            </div>
-          </div>
-          <br />
-          <div className="row justify-content-center text-center">
-            <div className="col-4">
-              <b style={{ color: "white" }} htmlFor="PasswordInput">
-                Password:
-              </b>
-              <input
-                type="password"
-                className="form-control"
-                placeholder="Password Again"
-                name="passwordonemore"
-                value={passwordonemore}
-                onChange={changeHandler}
-              />
-            </div>
-          </div>
-          <br />
-          <div className="form-group text-center">
-            <Button
-              type="submit"
-              name="submit"
-              variant="btn btn-outline-warning col-1"
-              onClick={send}
-            >
-              Submit
-            </Button>
-          </div>
-          <br />
         </div>
-      </div>
-    </form>
+      </section>
+    </main>
   );
-}
+};
+
+export default SignUp;

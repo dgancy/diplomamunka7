@@ -23,6 +23,7 @@ import HashTableTest from "./Components/Test/HashTableTest";
 import BackTrackingTest from "./Components/Test/BackTrackingTest";
 import RedBlackTreeTest from "./Components/Test/RedBlackTreeTest";
 import ChatBot from "./Components/ChatBot";
+import Home from "./Components/Home";
 
 function App() {
   return (
@@ -47,6 +48,8 @@ function App() {
           <Route path="/hash-table-assignment" element={<HashTableAssignment />} />
           <Route path="/red-black-tree-assignment" element={<RedBlackTreeAssignment />} />
           <Route path="/backtracking-assignment" element={<BackTrackAssignment />} />
+
+          <Route path="/home" element={<Home />} />
 
           <Route path="/test" element={<TestPage />} />
 
