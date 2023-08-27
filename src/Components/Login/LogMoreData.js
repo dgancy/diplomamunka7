@@ -1,12 +1,13 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
-var userLakhely;
-
 export default function LogMoreData() {
   function MoreData() {
+    var userLakhely;
     userLakhely = document.getElementById("Lakhely").value;
     console.log(userLakhely);
+
+    localStorage.setItem("lakhely", userLakhely);
   }
 
   return (
@@ -35,4 +36,3 @@ export default function LogMoreData() {
     </form>
   );
 }
-export{userLakhely};
