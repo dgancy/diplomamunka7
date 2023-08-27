@@ -1,10 +1,11 @@
 Backend
-Login
-Register 
-Database --
 
+Login --pipa
+Register --pipa
+Database -- not yet
 RedBlackTreeAssignment Rework --pipa
 Test pages --pipa
+
 Learning page
 Chatbot --napolva
 Recursion tree pages need to be done 

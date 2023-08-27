@@ -24,17 +24,18 @@ import BackTrackingTest from "./Components/Test/BackTrackingTest";
 import RedBlackTreeTest from "./Components/Test/RedBlackTreeTest";
 import ChatBot from "./Components/ChatBot";
 import Home from "./Components/Home";
+import LogMoreData from "./Components/Login/LogMoreData";
 
 function App() {
   return (
     <>
       <Router>
         <NavbarMenu />
-        <ChatBot/>
+        <ChatBot />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
-          
+
           <Route path="/binary-tree" element={<BinaryTree />} />
           <Route path="/master-theorem" element={<MasterTheorem />} />
           <Route path="/backtracking" element={<BackTracking />} />
@@ -42,12 +43,30 @@ function App() {
           <Route path="/recursion-tree" element={<RecursionTree />} />
           <Route path="/red-black-tree" element={<RedBlackTree />} />
 
-          <Route path="/recursion-tree-assignment" element={< RecursionTreeAssignment/>} />
-          <Route path="/master-theorem-assignment" element={<MasterTheoramAssignment />} />
-          <Route path="/binary-tree-assignment" element={<BinaryTreeAssignment />} />
-          <Route path="/hash-table-assignment" element={<HashTableAssignment />} />
-          <Route path="/red-black-tree-assignment" element={<RedBlackTreeAssignment />} />
-          <Route path="/backtracking-assignment" element={<BackTrackAssignment />} />
+          <Route
+            path="/recursion-tree-assignment"
+            element={<RecursionTreeAssignment />}
+          />
+          <Route
+            path="/master-theorem-assignment"
+            element={<MasterTheoramAssignment />}
+          />
+          <Route
+            path="/binary-tree-assignment"
+            element={<BinaryTreeAssignment />}
+          />
+          <Route
+            path="/hash-table-assignment"
+            element={<HashTableAssignment />}
+          />
+          <Route
+            path="/red-black-tree-assignment"
+            element={<RedBlackTreeAssignment />}
+          />
+          <Route
+            path="/backtracking-assignment"
+            element={<BackTrackAssignment />}
+          />
 
           <Route path="/home" element={<Home />} />
 
@@ -60,7 +79,7 @@ function App() {
           <Route path="/backtracking-test" element={<BackTrackingTest />} />
           <Route path="/red-black-tree-test" element={<RedBlackTreeTest />} />
 
-
+          <Route path="/logdata" element={<LogMoreData />}/>
         </Routes>
       </Router>
     </>
