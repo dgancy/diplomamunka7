@@ -1,14 +1,11 @@
-import { userLakhely } from "../src/Components/Login/LogMoreData";
-
 var admin = require("firebase-admin");
 var serviceAccount = require("./serviceAccountKeys.json");
 
 admin.initializeApp({
-  credential: admin.credential.cert(serviceAccount)
+  credential: admin.credential.cert(serviceAccount),
 });
 
 console.log("hi");
-console.log(userLakhely);
 
 const db = admin.firestore();
 
