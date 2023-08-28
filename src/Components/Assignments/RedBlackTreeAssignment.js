@@ -22,7 +22,9 @@ export default function RedBlackTreeTest() {
     }
     console.log("hossz: " + hossz);
     console.log("array: " + array);
-    return `Oldja meg a piros-fekete fa használtával a feladatot, a következő adatsorra: [ ${array} ].`;
+    document.getElementById(
+      "questionOne"
+    ).innerHTML = `Oldja meg a piros-fekete fa használtával a feladatot, a következő adatsorra: [ ${array} ].`;
   }
 
   function BlackEdge() {
@@ -50,6 +52,8 @@ export default function RedBlackTreeTest() {
       var changer = document.getElementById("inp" + i).value;
       if (changer !== "") {
         userarray[i] = changer;
+      } else {
+        userarray[i] = "NIL";
       }
     }
     console.log("user: " + userarray);
@@ -140,7 +144,6 @@ export default function RedBlackTreeTest() {
       }
 
       if (errorColor === "Jó megoldás" && errorNumbers === "Jó megoldás") {
-
       }
 
       console.log(errors);
@@ -148,18 +151,26 @@ export default function RedBlackTreeTest() {
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
+      <br />
       <div className="form-group">
         <div className="container">
+          <h1 style={{ color: "white" , paddingBottom: "15px", textAlign:"center" }}>
+            Piros-fekete fa feladat
+          </h1>
           <div
             className="row justify-content-center text-center"
             style={{ color: "white" }}
           >
-            {Generate()}
+            <Button variant="outline-warning" onClick={Generate}>
+              Új feladat
+            </Button>
           </div>
           <div className="row justify-content-center text-center">
-            <div id="generate"></div>
-            <div id="leiras"></div>
+            <b
+              id="questionOne"
+              style={{ color: "white", paddingTop: "15px" }}
+            ></b>
           </div>
         </div>
         <br />

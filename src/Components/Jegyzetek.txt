@@ -1,11 +1,10 @@
 Backend
-
 Login --pipa
 Register --pipa
-Database -- not yet
+Database --pipa kinda
+
 RedBlackTreeAssignment Rework --pipa
 Test pages --pipa
-
 Learning page
 Chatbot --napolva
 Recursion tree pages need to be done 
@@ -16,5 +15,5 @@ Rekonzi
 
 test pages= adatátvitel, mint gond, check functions ellenőrzése, hibakódok továbbadása.
 alap oldalak= master + recursion infó hiány, binary done kis hidden visible kell, hashtable done csak igazítani kell, rbtree css kell
-feladatos oldalak= bug fix, fix, dropdown fix, rbt befejezése, többi ok.
+feladatos oldalak= bug fix, fix, dropdown fix, rbt befejezése, többi ok., hast tábla ok,backtrack ok,   rbt-t fent inkább és done, 
 

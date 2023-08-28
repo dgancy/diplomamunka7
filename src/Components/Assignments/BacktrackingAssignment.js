@@ -5,7 +5,6 @@ export default function BackTrackAssignment() {
   var type;
   var kezdmo = [];
   var ÖsszesCimlet;
-
   function Generate() {
     type = Math.floor(Math.random() * 3);
     if (type === 0) {
@@ -21,24 +20,17 @@ export default function BackTrackAssignment() {
     } else if (type === 5) {
       type = "Visszaállit";
     }
-    ÖsszesCimlet = Math.floor(Math.random() * 10) + 1;
+    document.getElementById("hideShow").style.visibility = "visible";
 
-    var number = Math.floor(Math.random() * 3) + 1;
+    ÖsszesCimlet = Math.floor(Math.random() * 15) + 1;
+    var number = Math.floor(Math.random() * 3) + 2;
     for (let i = 0; i <= number; i++) {
-      var help = Math.floor(Math.random() * 9) + 1 + "";
-      kezdmo.push(help);
+      var help = Math.floor(Math.random() * 8) + 1 + "";
+      if (!kezdmo.includes(help)) {
+        kezdmo.push(help);
+      }
     }
-    var j = 0;
-    var input = document.getElementById("generate");
-
-    input.innerHTML +=
-      type +
-      ": " +
-      ' <input type="text" name="' +
-      j +
-      '"   size="2" id="inp' +
-      j +
-      '">    <br/>   ';
+    document.getElementById("assignmentType").innerHTML = type + " : ";
     kezdmo.sort();
     document.getElementById("leiras").innerHTML =
       "Visszalépéses keresést alkalmazunk a pénzváltás problémára. Egy megoldáskezdemény áll rendelkezésünkre: < " +
@@ -50,6 +42,7 @@ export default function BackTrackAssignment() {
     console.log(ÖsszesCimlet);
     console.log(kezdmo);
     console.log(type);
+    kezdmo = [];
   }
 
   function Check() {
@@ -95,31 +88,59 @@ export default function BackTrackAssignment() {
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
-      <h1 style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
-      >Visszalépéses feladatok</h1>
+    <form style={{ background: "#000027", height: "100vh" }}>
+      <h1
+        style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
+      >
+        Visszalépéses feladatok
+      </h1>
       <div class="form-group">
         <div class="container">
           <div class="row justify-content-center text-center">
-            <Button variant="success" id="btngen" onClick={Generate}>
+            <Button variant="outline-warning" id="btngen" onClick={Generate}>
               Új feladat
             </Button>
           </div>
-          <div style={{padding:"10px"}} class="row justify-content-center text-center">
+          <div
+            style={{ padding: "10px", color: "white" }}
+            class="row justify-content-center text-center"
+          >
             <div id="leiras"></div>
-            <div  id="generate"></div>
           </div>
+          <div
+            id="generate"
+            className="justify-content-center text-center"
+            style={{ color: "white" }}
+          ></div>
         </div>
       </div>
-      <div>
+      <div id="hideShow" style={{ visibility: "hidden" }}>
         <div style={{ color: "white" }} id="generate"></div>
-        <div style={{padding:"10px"}} class="row justify-content-center text-center">
-          <Button id="btncheck" variant="success" onClick={Check}>
+        <div
+          style={{ padding: "10px" }}
+          className="row justify-content-center text-center"
+        >
+          <b
+            style={{ color: "white", marginRight: "10px", marginTop: "5px" }}
+            id="assignmentType"
+          ></b>
+          <input
+            id="inp0"
+            className="form-control col-1"
+            style={{ marginRight: "4%" }}
+          ></input>
+        </div>
+        <div className="row justify-content-center text-center">
+          <Button id="btncheck" variant="outline-warning" onClick={Check}>
             Ellenőriz
           </Button>
         </div>
-        <b id="final" />
       </div>
+      <b
+        className="row justify-content-center text-center"
+        id="final"
+        style={{ color: "white", paddingTop: "10px" }}
+      ></b>
     </form>
   );
 }

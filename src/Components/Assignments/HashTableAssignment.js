@@ -16,8 +16,8 @@ export default function HashTableAssignment() {
     var h1 = "";
     var különbözet = 0;
     var input = document.getElementById("gen");
-    hossz = Math.floor(Math.random() * 10) + 5;
-    elemszam = Math.floor(Math.random() * 5) + 3;
+    hossz = Math.floor(Math.random() * 8) + 4;
+    elemszam = Math.floor(Math.random() * 4) + 4;
     //var cs = hossz * 70;
 
     type = Math.floor(Math.random() * 100) % 4;
@@ -116,7 +116,7 @@ export default function HashTableAssignment() {
     }
     console.log("H1: " + h1);
 
-    for (var i = 0; i < hossz; i++) {
+    for (var i = 0; i < 11; i++) {
       input.innerHTML +=
         '<input type="text" placeholder="' +
         i +
@@ -197,7 +197,7 @@ export default function HashTableAssignment() {
 
     var userresult = [];
 
-    for (let i = 0; i < hossz; i++) {
+    for (let i = 0; i < 11; i++) {
       if (document.getElementById("inp" + i).value !== " ") {
         userresult[i] = document.getElementById("inp" + i).value;
         if (userresult[i] === "") {
@@ -228,7 +228,7 @@ export default function HashTableAssignment() {
   /*
    */
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
@@ -244,14 +244,21 @@ export default function HashTableAssignment() {
             >
               New Assignment
             </Button>
-            
           </div>
-          <div class="row justify-content-center text-center">
+          <div class="row justify-content-center text-center" style={{paddingTop:"15px"}}>
             <b id="hossz" style={{ color: "white" }}></b>
-            <br/>
+            <br />
             <b id="h" style={{ color: "white" }}></b>
           </div>
-          <div style={{paddingLeft:"15%", paddingTop:"2%", paddingBottom:"2%", paddingRight:"15%"}} id="gen"></div>
+          <div
+            style={{
+              paddingLeft: "15%",
+              paddingTop: "2%",
+              paddingBottom: "2%",
+              paddingRight: "10%",
+            }}
+            id="gen"
+          ></div>
         </div>
       </div>
       <div>
