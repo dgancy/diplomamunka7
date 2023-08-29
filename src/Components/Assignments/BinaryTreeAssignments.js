@@ -1,280 +1,575 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
+var fokszam = 2;
 export default function BinaryTreeAssignment() {
-  var array = [];
-  var fokszam = 2;
+  var AllArray = [];
 
   function Generate() {
     var hossz = Math.floor(Math.random() * 3) + 9;
-    var input = document.getElementById("generate");
 
     for (let i = 0; i < hossz; i++) {
-      array.push(Math.floor(Math.random() * 100));
-    }
-
-    for (let i = 0; i < 7; i++) {
-      if (i === 0 || i === 2) {
-        input.innerHTML +=
-          ' <input type="text" name="' +
-          i +
-          '"  size="2" id="inp' +
-          i +
-          '">    <br/><br/>    ';
-      } else if (i === 1) {
-        input.innerHTML +=
-          ' <input type="text" name="' +
-          i +
-          '"  size="2" id="inp' +
-          i +
-          '">';
-      } else {
-        input.innerHTML +=
-          ' <input type="text" name="' +
-          i +
-          '"  size="2" id="inp' +
-          i +
-          '">';
-      }
+      AllArray.push(Math.floor(Math.random() * 100));
     }
 
     console.log("hossz: " + hossz);
-    console.log("array: " + array);
+    console.log("AllArray: " + AllArray);
 
     document.getElementById(
-      "quest"
-    ).innerHTML = `Adott az alábbi B-fa, amelynek minimális fokszáma ${fokszam}. A következő számsoron alkalmazza a tanultakat. [ ${array} ].`;
-    document.getElementById("btngen").disabled = true;
-
-    document.getElementById("inp1").style.marginRight = "35px";
-    document.getElementById("inp2").style.marginLeft = "35px";
+      "question"
+    ).innerHTML = `Adott az alábbi B-fa, amelynek minimális fokszáma ${fokszam}. A következő számsoron alkalmazza a tanultakat. [ ${AllArray} ].`;
   }
 
   function Check() {
-    console.log("array-check: " + array);
+    console.log("array-check: " + AllArray);
 
-    var edgearray = [];
-    edgearray = document.getElementById("inp0").value.split(",");
+    var userEdgeArray = [];
+    userEdgeArray = document.getElementById("inp0").value.split(",");
 
-    var leftarrayone = [];
-    leftarrayone = document.getElementById("inp1").value.split(",");
-    var leftarraytwo = [];
-    leftarraytwo = document.getElementById("inp3").value.split(",");
-    var leftarraythree = [];
-    leftarraythree = document.getElementById("inp4").value.split(",");
+    var userLeftArrayOne = [];
+    userLeftArrayOne = document.getElementById("inp1").value.split(",");
+    var userMiddleArray = [];
+    userMiddleArray = document.getElementById("inp2").value.split(",");
+    var userRightArrayOne = [];
+    userRightArrayOne = document.getElementById("inp3").value.split(",");
 
-    var rightarrayone = [];
-    rightarrayone = document.getElementById("inp2").value.split(",");
-    var rightarraytwo = [];
-    rightarraytwo = document.getElementById("inp5").value.split(",");
-    var rightarraythree = [];
-    rightarraythree = document.getElementById("inp6").value.split(",");
+    var userLeftArrayTwoZero = [];
+    userLeftArrayTwoZero = document.getElementById("inp4").value.split(",");
+    var userLeftArrayTwoOne = [];
+    userLeftArrayTwoOne = document.getElementById("inp5").value.split(",");
+    var userLeftArrayTwoTwo = [];
+    userLeftArrayTwoTwo = document.getElementById("inp6").value.split(",");
 
-    parseInt(edgearray);
+    var userMiddleArrayTwoZero = [];
+    userMiddleArrayTwoZero = document.getElementById("inp7").value.split(",");
+    var userMiddleArrayTwoOne = [];
+    userMiddleArrayTwoOne = document.getElementById("inp8").value.split(",");
 
-    var Change = [];
-    var edgemax = 2 * fokszam - 2;
-    var state = 0;
+    var userRightArrayTwoZero = [];
+    userRightArrayTwoZero = document.getElementById("inp9").value.split(",");
+    var userRightArrayTwoOne = [];
+    userRightArrayTwoOne = document.getElementById("inp10").value.split(",");
+    var userRightArrayTwoTwo = [];
+    userRightArrayTwoTwo = document.getElementById("inp11").value.split(",");
 
-    var OutputArrayEdge = [];
-    var OutputArrayRight_1 = [];
-    var OutputArrayLeft_1 = [];
-    var OutputArrayRight_2 = [];
-    var OutputArrayLeft_2 = [];
-    var OutputArrayMiddle_1 = [];
-    var OutputArrayMiddle_2 = [];
+    var edgemax = 2 * fokszam - 1;
+    var childmax = 2 * fokszam;
 
-    for (let i = 0; i < array.length; i++) {
-      if (i < 3) {
-        if (i < edgemax) {
-          OutputArrayEdge.push(array[i]);
-        } else if (i === edgemax) {
-          OutputArrayEdge.push(array[i]);
-          OutputArrayEdge.sort();
-          Change.push(OutputArrayEdge[edgemax - 1]);
-          OutputArrayLeft_1.push(OutputArrayEdge[0]);
-          OutputArrayRight_1.push(OutputArrayEdge[edgemax]);
-          OutputArrayEdge = Change;
+    var OpArrayEdge = [];
+    var OpArrayRight_1 = [];
+    var OpArrayLeft_1 = [];
+    var OpArrayRight_2 = [];
+    var OpArrayLeft_2 = [];
+    var OpArrayMiddle = [];
+    var OpArrayMiddle_1 = [];
+    var OpArrayMiddle_12 = [];
+    var OpArrayMiddle_14 = [];
+    var OpArrayMiddle_2 = [];
+    var OpArrayMiddle_26 = [];
+    var OpArrayMiddle_28 = [];
+
+    var new_element = document.getElementById("elements").value;
+    AllArray.push(new_element);
+    console.log("AllArray: " + AllArray);
+
+    for (let i = 0; i < AllArray.length; i++) {
+      if (
+        OpArrayEdge.length <= edgemax &&
+        OpArrayLeft_1.length < 1 &&
+        OpArrayRight_1.length < 1 &&
+        i < 3
+      ) {
+        OpArrayEdge.push(AllArray[i]);
+        OpArrayEdge.sort(function (a, b) {
+          return a - b;
+        });
+        if (OpArrayEdge.length === edgemax) {
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayRight_1.push(OpArrayEdge[edgemax - 1]);
+          OpArrayEdge.pop();
+          OpArrayEdge.shift();
         }
-      } else {
+      }
+      if (
+        OpArrayEdge.length <= edgemax &&
+        OpArrayLeft_1.length <= childmax &&
+        OpArrayRight_1.length <= childmax &&
+        OpArrayMiddle.length <= childmax &&
+        i > 2 &&
+        i < 7
+      ) {
+        document.getElementById("oparraymiddle").style.visibility = "visible";
+
+        if (OpArrayEdge[0] > AllArray[i]) {
+          OpArrayLeft_1.push(AllArray[i]);
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (OpArrayEdge[OpArrayEdge.length - 1] < AllArray[i]) {
+          OpArrayRight_1.push(AllArray[i]);
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (OpArrayLeft_1.length === childmax) {
+          OpArrayMiddle.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayEdge.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (OpArrayRight_1.length === childmax) {
+          OpArrayMiddle.push(OpArrayRight_1[0]);
+          OpArrayRight_1.shift();
+          OpArrayEdge.push(OpArrayRight_1[0]);
+          OpArrayRight_1.shift();
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle.sort(function (a, b) {
+            return a - b;
+          });
+        }
+      }
+      if (
+        OpArrayEdge.length <= edgemax &&
+        OpArrayLeft_1.length <= childmax &&
+        OpArrayRight_1.length <= childmax &&
+        OpArrayMiddle.length <= childmax &&
+        i > 6 &&
+        OpArrayLeft_2.length === 0 &&
+        OpArrayMiddle_2.length === 0
+      ) {
         if (
-          array[i] > OutputArrayEdge[0] &&
-          array[i] < OutputArrayEdge[OutputArrayEdge.length] &&
-          OutputArrayEdge.length > 1
+          AllArray[i] > OpArrayEdge[0] &&
+          AllArray[i] < OpArrayEdge[OpArrayEdge.length - 1] &&
+          OpArrayMiddle.length === childmax - 1 &&
+          OpArrayEdge.length === edgemax - 1
         ) {
-          OutputArrayMiddle_1.push(array[i]);
+          OpArrayMiddle_2.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+          OpArrayEdge.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayMiddle.pop();
+
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_2.sort(function (a, b) {
+            return a - b;
+          });
+
+          OpArrayLeft_2 = OpArrayLeft_1;
+          OpArrayLeft_1 = OpArrayEdge[0];
+          OpArrayEdge.shift();
+
+          OpArrayRight_2 = OpArrayRight_1;
+          OpArrayRight_1 = OpArrayEdge[OpArrayEdge.length - 1];
+          OpArrayEdge.pop();
+
+          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
+          OpArrayEdge.pop();
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
         }
         if (
-          OutputArrayLeft_1.length < edgemax + 1 &&
-          OutputArrayRight_1.length < edgemax + 1 &&
-          state === 0
+          AllArray[i] < OpArrayEdge[0] &&
+          OpArrayLeft_1.length === childmax - 1 &&
+          OpArrayEdge.length === edgemax - 1
         ) {
-          if (array[i] > OutputArrayEdge[OutputArrayEdge.length - 1]) {
-            OutputArrayRight_1.push(array[i]);
-            OutputArrayRight_1.sort();
-          } else if (array[i] < OutputArrayEdge[0] && state === 0) {
-            OutputArrayLeft_1.push(array[i]);
-            OutputArrayLeft_1.sort();
+          OpArrayMiddle_1.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayEdge.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayLeft_2.push(OpArrayLeft_1[OpArrayMiddle.length - 1]);
+          OpArrayLeft_1.pop();
+
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+
+          OpArrayLeft_1.push(OpArrayEdge[OpArrayEdge[0]]);
+          OpArrayEdge.shift();
+          OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
+          OpArrayEdge.pop();
+
+          if (OpArrayMiddle.length > 1) {
+            for (let m = 0; m < OpArrayMiddle.length - 1; m++) {
+              if (OpArrayMiddle[m] < OpArrayEdge[0]) {
+                if (OpArrayMiddle[m] < OpArrayLeft_1[0]) {
+                  OpArrayLeft_2.push(OpArrayMiddle[m]);
+                  OpArrayMiddle.shift();
+                } else if (
+                  OpArrayMiddle[m] > OpArrayLeft_1[OpArrayLeft_1.length - 1]
+                ) {
+                  OpArrayMiddle_1.push(OpArrayMiddle[m]);
+                  OpArrayMiddle.shift();
+                }
+              } else if (
+                OpArrayMiddle[m] > OpArrayEdge[OpArrayEdge.length - 1]
+              ) {
+                if (OpArrayMiddle[m] < OpArrayRight_1[0]) {
+                  OpArrayMiddle_2.push(OpArrayMiddle[m]);
+                  OpArrayMiddle.pop();
+                } else if (
+                  OpArrayMiddle[m] > OpArrayRight_1[OpArrayRight_1.length - 1]
+                ) {
+                  OpArrayRight_2.push(OpArrayMiddle[m]);
+                  OpArrayMiddle.pop();
+                }
+              }
+            }
+          } else if (OpArrayMiddle.length === 1) {
+            if (OpArrayMiddle[0] < OpArrayEdge[0]) {
+              OpArrayMiddle_1.push(OpArrayMiddle[0]);
+              OpArrayMiddle.pop();
+            } else if (OpArrayMiddle[0] > OpArrayEdge[0]) {
+              OpArrayMiddle_2.push(OpArrayMiddle[0]);
+              OpArrayMiddle.pop();
+            }
           }
         }
-      }
-      if (OutputArrayLeft_1.length > edgemax) {
-        Change = OutputArrayLeft_1.splice(edgemax - 1, 1);
-        OutputArrayEdge.push(Change);
-        Change = OutputArrayLeft_1.splice(edgemax - 1, 1);
-        OutputArrayMiddle_1.push(Change);
-        OutputArrayEdge.sort();
-        OutputArrayMiddle_1.sort();
-      }
-      if (OutputArrayRight_1.length > edgemax) {
-        Change = OutputArrayRight_1.splice(edgemax - 1, 1);
-        OutputArrayEdge.push(Change);
-        Change = OutputArrayRight_1.splice(0, 1);
-        OutputArrayMiddle_1.push(Change);
-        OutputArrayEdge.sort();
-        OutputArrayMiddle_1.sort();
-      } //ellenorzo feladat 9,2,5,7,6,5,4,1
-      if (OutputArrayEdge.length === edgemax + 1) {
-        for (let k = 0; k < 2; k++) {
-          if (
-            OutputArrayRight_1[k] >
-              OutputArrayEdge[OutputArrayEdge.length - 1] &&
-            OutputArrayRight_1[0] !== " "
-          ) {
-            OutputArrayRight_2.push(OutputArrayRight_1[k]);
-            OutputArrayRight_1.shift();
-          } else if (
-            OutputArrayRight_1[k] <
-              OutputArrayEdge[OutputArrayEdge.length - 1] &&
-            OutputArrayRight_1[0] !== " "
-          ) {
-            OutputArrayMiddle_2.push(OutputArrayRight_1[k]);
-            OutputArrayRight_1.shift();
-          } else if (
-            OutputArrayLeft_1[k] > OutputArrayEdge[0] &&
-            OutputArrayLeft_1[0] !== " "
-          ) {
-            OutputArrayMiddle_1.push(OutputArrayLeft_1[k]);
-            OutputArrayLeft_1.shift();
-          } else if (
-            OutputArrayLeft_1[k] < OutputArrayEdge[0] &&
-            OutputArrayLeft_1[0] !== " "
-          ) {
-            OutputArrayLeft_2.push(OutputArrayLeft_1[k]);
-            OutputArrayLeft_1.shift();
+
+        if (
+          AllArray[i] > OpArrayEdge[OpArrayEdge.length - 1] &&
+          OpArrayRight_1.length === childmax - 1 &&
+          OpArrayEdge.length === edgemax - 1
+        ) {
+          OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+          OpArrayEdge.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+          OpArrayMiddle_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+
+          OpArrayEdge.sort(function (a, b) {
+            return a - b;
+          });
+
+          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
+          OpArrayEdge.pop();
+          OpArrayLeft_2.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.shift();
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
+
+          if (OpArrayMiddle.length > 1) {
+            for (let m = 0; m < OpArrayMiddle.length - 1; m++) {
+              if (OpArrayMiddle[m] < OpArrayEdge[0]) {
+                if (OpArrayMiddle[m] < OpArrayLeft_1[0]) {
+                  OpArrayLeft_2.push(OpArrayMiddle[m]);
+                } else if (
+                  OpArrayMiddle[m] > OpArrayLeft_1[OpArrayLeft_1.length - 1]
+                ) {
+                  OpArrayMiddle_1.push(OpArrayMiddle[m]);
+                }
+              } else if (
+                OpArrayMiddle[m] > OpArrayEdge[OpArrayEdge.length - 1]
+              ) {
+                if (OpArrayMiddle[m] < OpArrayRight_1[0]) {
+                  OpArrayMiddle_2.push(OpArrayMiddle[m]);
+                  OpArrayMiddle.pop();
+                } else if (
+                  OpArrayMiddle[m] > OpArrayRight_1[OpArrayRight_1.length - 1]
+                ) {
+                  OpArrayRight_2.push(OpArrayMiddle[m]);
+                  OpArrayMiddle.pop();
+                }
+              }
+            }
+          } else if (OpArrayMiddle.length === 1) {
+            if (OpArrayMiddle[0] < OpArrayEdge[0]) {
+              OpArrayMiddle_1.push(OpArrayMiddle[0]);
+              OpArrayMiddle.pop();
+            } else if (OpArrayMiddle[0] > OpArrayEdge[0]) {
+              OpArrayMiddle_2.push(OpArrayMiddle[0]);
+              OpArrayMiddle.pop();
+            }
           }
         }
-        if (OutputArrayEdge.length === edgemax + 1) {
-          OutputArrayLeft_1.push(OutputArrayEdge[0]);
-          OutputArrayRight_1.push(OutputArrayEdge[OutputArrayEdge.length - 1]);
 
-          OutputArrayEdge.pop();
-          OutputArrayEdge.shift();
+        if (
+          OpArrayEdge.length === edgemax &&
+          OpArrayRight_1.length === childmax
+        ) {
         }
 
-        state = 1;
+        if (AllArray[i] < OpArrayEdge[0]) {
+          OpArrayLeft_1.push(AllArray[i]);
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] < OpArrayEdge[1]) {
+          OpArrayMiddle.push(AllArray[i]);
+          OpArrayMiddle.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (AllArray[i] > OpArrayEdge[1]) {
+          OpArrayRight_1.push(AllArray[i]);
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
+        }
       }
-      if (state === 1) {
-        if (array[i] < OutputArrayLeft_1[0] && array[i] < OutputArrayEdge[0]) {
-          OutputArrayLeft_2.push(array[i]);
-          OutputArrayLeft_2.sort();
-        } else if (
-          array[i] > OutputArrayLeft_1[OutputArrayLeft_1.length - 1] &&
-          array[i] < OutputArrayEdge[0]
+      if (
+        OpArrayEdge.length <= edgemax &&
+        OpArrayLeft_1.length <= childmax &&
+        OpArrayRight_1.length <= childmax &&
+        OpArrayMiddle.length <= childmax &&
+        i > 6
+      ) {
+        document.getElementById("oparraymiddle").style.visibility = "hidden";
+
+        if (
+          OpArrayLeft_2.length === childmax - 1 &&
+          AllArray[i] < OpArrayLeft_1[0]
         ) {
-          OutputArrayMiddle_1.push(array[i]);
-          OutputArrayMiddle_1.sort();
-        } else if (
-          array[i] < OutputArrayRight_1[0] &&
-          array[i] > OutputArrayEdge[OutputArrayEdge.length - 1]
+          OpArrayMiddle_1.push(OpArrayLeft_2[OpArrayLeft_2.length - 1]);
+          OpArrayLeft_2.pop();
+          OpArrayLeft_1.push(OpArrayLeft_2[OpArrayLeft_2.length - 1]);
+          OpArrayLeft_2.pop();
+
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_1.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          OpArrayMiddle_1.length === childmax - 1 &&
+          AllArray[i] > OpArrayLeft_1[0] &&
+          AllArray[i] < OpArrayLeft_1[1]
         ) {
-          OutputArrayMiddle_2.push(array[i]);
-          OutputArrayMiddle_2.sort();
-        } else if (
-          array[i] < OutputArrayRight_1[OutputArrayRight_1.length - 1] &&
-          array[i] > OutputArrayEdge[OutputArrayEdge.length - 1]
+          OpArrayMiddle_12.push(OpArrayMiddle_1[OpArrayMiddle_1.length - 1]);
+          OpArrayMiddle_1.pop();
+          OpArrayLeft_1.push(OpArrayMiddle_1[OpArrayMiddle_1.length - 1]);
+          OpArrayMiddle_1.pop();
+
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_12.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          OpArrayMiddle_12.length === childmax - 1 &&
+          AllArray[i] > OpArrayLeft_1[1] &&
+          AllArray[i] < OpArrayLeft_1[2]
         ) {
-          OutputArrayRight_2.push(array[i]);
-          OutputArrayRight_2.sort();
+          OpArrayMiddle_14.push(OpArrayMiddle_12[OpArrayMiddle_12.length - 1]);
+          OpArrayMiddle_12.pop();
+          OpArrayLeft_1.push(OpArrayMiddle_12[OpArrayMiddle_12.length - 1]);
+          OpArrayMiddle_12.pop();
+
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_14.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          OpArrayMiddle_14.length === childmax - 1 &&
+          AllArray[i] > OpArrayLeft_1[2]
+        ) {
+          OpArrayMiddle_12.push(OpArrayMiddle_14[0]);
+          OpArrayMiddle_14.shift();
+          OpArrayLeft_1.push(OpArrayMiddle_14[0]);
+          OpArrayMiddle_14.shift();
+
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_12.sort(function (a, b) {
+            return a - b;
+          });
         }
 
         if (
-          OutputArrayLeft_1[1] !== " " &&
-          OutputArrayLeft_2.length < edgemax &&
-          OutputArrayLeft_1.length > 1
+          OpArrayMiddle_2.length === childmax - 1 &&
+          AllArray[i] < OpArrayRight_1[0]
         ) {
-          OutputArrayLeft_2.push(OutputArrayLeft_1[0]);
-          OutputArrayLeft_1.shift();
-        } else if (
-          OutputArrayLeft_1[1] !== " " &&
-          OutputArrayMiddle_1.length < edgemax &&
-          OutputArrayLeft_1.length > 1
-        ) {
-          OutputArrayMiddle_1.push(
-            OutputArrayLeft_1[OutputArrayLeft_1.length - 1]
-          );
-          OutputArrayLeft_1.pop();
+          OpArrayMiddle_26.push(OpArrayMiddle_2[OpArrayMiddle_2.length - 1]);
+          OpArrayMiddle_2.pop();
+          OpArrayRight_1.push(OpArrayMiddle_2[OpArrayMiddle_2.length - 1]);
+          OpArrayMiddle_2.pop();
+
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_26.sort(function (a, b) {
+            return a - b;
+          });
         }
-        OutputArrayLeft_1.sort();
-        OutputArrayLeft_2.sort();
+        if (
+          OpArrayMiddle_26.length === childmax - 1 &&
+          AllArray[i] > OpArrayRight_1[0] &&
+          AllArray[i] < OpArrayRight_1[1]
+        ) {
+          OpArrayMiddle_28.push(OpArrayMiddle_26[OpArrayMiddle_26.length - 1]);
+          OpArrayMiddle_26.pop();
+          OpArrayRight_1.push(OpArrayMiddle_26[OpArrayMiddle_26.length - 1]);
+          OpArrayMiddle_26.pop();
+
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_28.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          OpArrayMiddle_28.length === childmax - 1 &&
+          AllArray[i] > OpArrayRight_1[2] &&
+          AllArray[i] < OpArrayRight_1[3]
+        ) {
+          OpArrayRight_2.push(OpArrayMiddle_28[OpArrayMiddle_28.length - 1]);
+          OpArrayMiddle_28.pop();
+          OpArrayRight_1.push(OpArrayMiddle_28[OpArrayMiddle_28.length - 1]);
+          OpArrayMiddle_28.pop();
+
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayRight_2.sort(function (a, b) {
+            return a - b;
+          });
+        }
 
         if (
-          OutputArrayRight_1[1] !== " " &&
-          OutputArrayRight_2.length < edgemax &&
-          OutputArrayRight_1.length > 1
+          OpArrayRight_2.length === childmax - 1 &&
+          AllArray[i] > OpArrayRight_1[OpArrayRight_1.length - 1]
         ) {
-          OutputArrayRight_2.push(
-            OutputArrayRight_1[OutputArrayRight_1.length - 1]
-          );
-          OutputArrayRight_1.pop();
-        } else if (
-          OutputArrayRight_1[1] !== " " &&
-          OutputArrayMiddle_2.length < edgemax &&
-          OutputArrayRight_1.length > 1
-        ) {
-          OutputArrayMiddle_2.push(OutputArrayRight_1[0]);
-          OutputArrayRight_1.shift();
+          OpArrayMiddle_14.push(OpArrayRight_2[0]);
+          OpArrayRight_2.shift();
+          OpArrayRight_1.push(OpArrayRight_2[0]);
+          OpArrayRight_2.shift();
+
+          OpArrayRight_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_14.sort(function (a, b) {
+            return a - b;
+          });
         }
 
-        OutputArrayRight_1.sort();
-        OutputArrayMiddle_2.sort();
-      }
-    }
-    for (let m = 0; m < OutputArrayMiddle_1.length; m++) {
-      if (OutputArrayMiddle_1[m] > OutputArrayEdge[0]) {
-        OutputArrayMiddle_2.push(OutputArrayMiddle_1[m]);
-        OutputArrayMiddle_1.splice(m, OutputArrayMiddle_1.length);
-      }
-    }
-    for (let m = 0; m < OutputArrayMiddle_2.length; m++) {
-      if (OutputArrayMiddle_2[m] < OutputArrayEdge[OutputArrayEdge.length]) {
-        OutputArrayMiddle_1.push(OutputArrayMiddle_2[m]);
-        OutputArrayMiddle_1.splice(m, OutputArrayMiddle_1.length);
-      }
-    }
-    OutputArrayEdge.sort();
-    OutputArrayRight_1.sort();
-    OutputArrayLeft_1.sort();
-    OutputArrayRight_2.sort();
-    OutputArrayLeft_2.sort();
-    OutputArrayMiddle_1.sort();
-    OutputArrayMiddle_2.sort();
+        if (AllArray[i] < OpArrayEdge[0] && AllArray[i] < OpArrayLeft_1[0]) {
+          OpArrayLeft_2.push(AllArray[i]);
 
-    parseInt(edgearray);
+          OpArrayLeft_2.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          AllArray[i] < OpArrayEdge[0] &&
+          AllArray[i] > OpArrayLeft_1[0] &&
+          AllArray[i] < OpArrayLeft_1[1]
+        ) {
+          OpArrayMiddle_1.push(AllArray[i]);
+
+          OpArrayMiddle_1.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          AllArray[i] < OpArrayEdge[0] &&
+          AllArray[i] > OpArrayLeft_1[1] &&
+          AllArray[i] < OpArrayLeft_1[2]
+        ) {
+          OpArrayMiddle_12.push(AllArray[i]);
+
+          OpArrayMiddle_12.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (AllArray[i] < OpArrayEdge[0] && AllArray[i] > OpArrayLeft_1[2]) {
+          OpArrayMiddle_14.push(AllArray[i]);
+
+          OpArrayMiddle_14.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] < OpArrayRight_1[0]) {
+          OpArrayMiddle_2.push(AllArray[i]);
+
+          OpArrayMiddle_2.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          AllArray[i] > OpArrayEdge[0] &&
+          AllArray[i] > OpArrayRight_1[0] &&
+          AllArray[i] < OpArrayRight_1[1]
+        ) {
+          OpArrayMiddle_26.push(AllArray[i]);
+
+          OpArrayMiddle_26.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (
+          AllArray[i] > OpArrayEdge[0] &&
+          AllArray[i] > OpArrayRight_1[1] &&
+          AllArray[i] < OpArrayRight_1[2]
+        ) {
+          OpArrayMiddle_28.push(AllArray[i]);
+
+          OpArrayMiddle_28.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] > OpArrayRight_1[2]) {
+          OpArrayRight_2.push(AllArray[i]);
+
+          OpArrayRight_2.sort(function (a, b) {
+            return a - b;
+          });
+        }
+      }
+    }
 
     var points = 0;
-    for (let i = 0; i < OutputArrayEdge.length; i++) {
-      if (edgearray[i] === OutputArrayEdge[i]) {
+    for (let i = 0; i < OpArrayEdge.length; i++) {
+      if (userEdgeArray[i] === OpArrayEdge[i]) {
         points += 1;
       }
     }
-    for (let i = 0; i < OutputArrayLeft_1.length; i++) {
-      if (leftarrayone[i] === OutputArrayLeft_1[i]) {
+    for (let i = 0; i < OpArrayLeft_1.length; i++) {
+      if (userLeftArrayOne[i] === OpArrayLeft_1[i]) {
         points += 1;
       }
     }
-    for (let i = 0; i < OutputArrayLeft_2.length; i++) {
-      if (leftarraytwo[i] === OutputArrayLeft_2[i]) {
+    for (let i = 0; i < OpArrayMiddle.length; i++) {
+      if (userMiddleArray[i] === OpArrayMiddle[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OpArrayRight_1.length; i++) {
+      if (userRightArrayOne[i] === OpArrayRight_1[i]) {
+        points += 1;
+      }
+    }
+    
+    
+    
+    for (let i = 0; i < OpArrayLeft_2.length; i++) {
+      if (userLeftArrayTwoZero[i] === OpArrayLeft_2[i]) {
         points += 1;
       }
     }
@@ -288,39 +583,18 @@ export default function BinaryTreeAssignment() {
         points += 1;
       }
     }
-    for (let i = 0; i < OutputArrayRight_1.length; i++) {
-      if (rightarrayone[i] === OutputArrayRight_1[i]) {
-        points += 1;
-      }
-    }
     for (let i = 0; i < OutputArrayRight_2.length; i++) {
       if (rightarraythree[i] === OutputArrayRight_2[i]) {
         points += 1;
       }
     }
 
-    if (points === array.length && array.length !== 0) {
-      console.log(points);
-      console.log("Jó megoldás!");
-      document.getElementById("final-0").innerHTML = "Jó megoldás!";
-    } else {
-      console.log("Hibás megoldás, a helyes megoldás!");
-      document.getElementById("final-0").innerHTML =
-        "Hibás megoldás! A helyes megoldás: <br/>";
-      document.getElementById("final-1").innerHTML = OutputArrayEdge;
-      document.getElementById("final-2-1").innerHTML = OutputArrayLeft_1;
-      document.getElementById("final-2-2").innerHTML = OutputArrayRight_1;
-      document.getElementById("final-3-1").innerHTML = OutputArrayLeft_2;
-      document.getElementById("final-3-2").innerHTML = OutputArrayMiddle_1;
-      document.getElementById("final-3-3").innerHTML = OutputArrayMiddle_2;
-      document.getElementById("final-3-4").innerHTML = OutputArrayRight_2;
-    }
-
     console.log(edgearray);
 
     console.log("Edgemax: " + edgemax);
-    console.log("Edge:" + OutputArrayEdge);
-    console.log("Left1: " + OutputArrayLeft_1);
+    console.log("Edge:" + OpArrayEdge);
+    console.log("Left1: " + OpArrayLeft_1);
+    console.log("Middle: " + OpArrayLeft_1);
     console.log("Left2: " + OutputArrayLeft_2);
     console.log("Right1: " + OutputArrayRight_1);
     console.log("Right2: " + OutputArrayRight_2);
@@ -330,72 +604,88 @@ export default function BinaryTreeAssignment() {
 
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
-      <h1 style={{ color: "white", textAlign: "center", padding: "10px" }}>
-        Bfa feladatok
+      <h1 style={{ color: "white", textAlign: "center", paddingTop: "10px" }}>
+        Bináris kereső fa
       </h1>
-      <div className="form-group">
-        <div className="row justify-content-center text-center">
-          <Button variant="outline-warning" id="btngen" onClick={Generate}>
+      <div className="form-group" style={{ padding: "15px" }}>
+        <div style={{ color: "white", textAlign: "center", padding: "10px" }}>
+          {" "}
+          <Button variant="outline-warning" onClick={Generate}>
             Új feladat
           </Button>
-          <br />
         </div>
-        <div className="row justify-content-center text-center">
-          <b
-            id="quest"
-            style={{ color: "white", textAlign: "center", padding: "10px" }}
-          />
-        </div>
-        <div className="container ">
-          <div className="row justify-content-center text-center">
-            {" "}
-            <div className="col-2">
-              <div></div>
+        <b
+          style={{ color: "white", padding: "15px" }}
+          className="row justify-content-center"
+          id="question"
+        ></b>
+        <div className="container">
+          <div className="row justify-content-center">
+            <div style={{ width: "150px", paddingBottom: "15px" }}>
+              <input id="inp0" type="text" className="form-control"></input>
+            </div>
+          </div>
+          <div
+            className="row justify-content-center"
+            style={{ padding: "15px" }}
+          >
+            <div style={{ width: "200px", marginRight: "6%" }}>
+              {" "}
+              <input id="inp1" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "200px", marginRight: "6%" }}>
+              {" "}
+              <input id="inp2" type="text" className="form-control"></input>
+            </div>{" "}
+            <div style={{ width: "200px" }}>
+              {" "}
+              <input id="inp3" type="text" className="form-control"></input>
+            </div>
+          </div>
+          <div
+            className="row justify-content-center"
+            style={{ padding: "15px" }}
+          >
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp4" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp5" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp6" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp7" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp8" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp9" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp10" type="text" className="form-control"></input>
+            </div>
+            <div style={{ width: "100px", margin: "4px" }}>
+              {" "}
+              <input id="inp11" type="text" className="form-control"></input>
             </div>
           </div>
         </div>
 
         <div className="row justify-content-center text-center">
-          <div id="generate" />
-        </div>
-        <div className="row justify-content-center text-center">
           <div>
             <Button variant="outline-warning" onClick={Check}>
-              Kiszámol
+              Következő
             </Button>
-          </div>
-        </div>
-        <div className="container">
-          <div id="final-0"></div>
-          <div className="row justify-content-center text-center">
-            <div className="col-2">
-              <div id="final-1" className="border border-warning"></div>
-            </div>
-          </div>
-          <div className="row justify-content-center text-center ">
-            <div className="col-2">
-              <div id="final-2-1" className="border border-warning"></div>
-            </div>
-            <div className="col-2">
-              <div id="final"></div>
-            </div>
-            <div className="col-2">
-              <div id="final-2-2" className="border border-warning"></div>
-            </div>
-          </div>
-          <div className="row justify-content-center text-center ">
-            <div className="col-2">
-              <div id="final-3-1" className="border border-warning"></div>
-            </div>
-            <div className="col-2">
-              <div id="final-3-2" className="border border-warning"></div>
-            </div>
-            <div className="col-2">
-              <div id="final-3-3" className="border border-warning"></div>
-            </div>
-            <div className="col-2">
-              <div id="final-3-4" className="border border-warning"></div>
-            </div>
           </div>
         </div>
       </div>
