@@ -21,7 +21,7 @@ export default function BinaryTreeAssignment() {
   }
 
   function Check() {
-    console.log("array-check: " + AllArray);
+    console.log("array-check: " + AllArray); //ha nem empty
 
     var userEdgeArray = [];
     userEdgeArray = document.getElementById("inp0").value.split(",");
@@ -56,20 +56,21 @@ export default function BinaryTreeAssignment() {
     var childmax = 2 * fokszam;
 
     var OpArrayEdge = [];
-    var OpArrayRight_1 = [];
     var OpArrayLeft_1 = [];
-    var OpArrayRight_2 = [];
-    var OpArrayLeft_2 = [];
     var OpArrayMiddle = [];
+    var OpArrayRight_1 = [];
+
+    var OpArrayLeft_2 = [];
     var OpArrayMiddle_1 = [];
     var OpArrayMiddle_12 = [];
+
     var OpArrayMiddle_14 = [];
     var OpArrayMiddle_2 = [];
+
     var OpArrayMiddle_26 = [];
     var OpArrayMiddle_28 = [];
+    var OpArrayRight_2 = [];
 
-    var new_element = document.getElementById("elements").value;
-    AllArray.push(new_element);
     console.log("AllArray: " + AllArray);
 
     for (let i = 0; i < AllArray.length; i++) {
@@ -98,7 +99,7 @@ export default function BinaryTreeAssignment() {
         i > 2 &&
         i < 7
       ) {
-        document.getElementById("oparraymiddle").style.visibility = "visible";
+        document.getElementById("inputPlatform").style.visibility = "visible";
 
         if (OpArrayEdge[0] > AllArray[i]) {
           OpArrayLeft_1.push(AllArray[i]);
@@ -332,8 +333,6 @@ export default function BinaryTreeAssignment() {
         OpArrayMiddle.length <= childmax &&
         i > 6
       ) {
-        document.getElementById("oparraymiddle").style.visibility = "hidden";
-
         if (
           OpArrayLeft_2.length === childmax - 1 &&
           AllArray[i] < OpArrayLeft_1[0]
@@ -565,41 +564,67 @@ export default function BinaryTreeAssignment() {
         points += 1;
       }
     }
-    
-    
-    
+
     for (let i = 0; i < OpArrayLeft_2.length; i++) {
       if (userLeftArrayTwoZero[i] === OpArrayLeft_2[i]) {
         points += 1;
       }
     }
-    for (let i = 0; i < OutputArrayMiddle_1.length; i++) {
-      if (leftarraythree[i] === OutputArrayMiddle_1[i]) {
+    for (let i = 0; i < OpArrayMiddle_1.length; i++) {
+      if (userLeftArrayTwoOne[i] === OpArrayMiddle_1[i]) {
         points += 1;
       }
     }
-    for (let i = 0; i < OutputArrayMiddle_1.length; i++) {
-      if (rightarraytwo[i] === OutputArrayMiddle_1[i]) {
-        points += 1;
-      }
-    }
-    for (let i = 0; i < OutputArrayRight_2.length; i++) {
-      if (rightarraythree[i] === OutputArrayRight_2[i]) {
+    for (let i = 0; i < OpArrayMiddle_12.length; i++) {
+      if (userLeftArrayTwoTwo[i] === OpArrayMiddle_12[i]) {
         points += 1;
       }
     }
 
-    console.log(edgearray);
+    for (let i = 0; i < OpArrayMiddle_14.length; i++) {
+      if (userMiddleArrayTwoZero[i] === OpArrayMiddle_14[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OpArrayMiddle_2.length; i++) {
+      if (userMiddleArrayTwoOne[i] === OpArrayMiddle_2[i]) {
+        points += 1;
+      }
+    }
+
+    for (let i = 0; i < OpArrayMiddle_26.length; i++) {
+      if (userRightArrayTwoZero[i] === OpArrayMiddle_26[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OpArrayMiddle_28.length; i++) {
+      if (userRightArrayTwoOne[i] === OpArrayMiddle_28[i]) {
+        points += 1;
+      }
+    }
+    for (let i = 0; i < OpArrayRight_2.length; i++) {
+      if (userRightArrayTwoTwo[i] === OpArrayRight_2[i]) {
+        points += 1;
+      }
+    }
 
     console.log("Edgemax: " + edgemax);
+
     console.log("Edge:" + OpArrayEdge);
     console.log("Left1: " + OpArrayLeft_1);
-    console.log("Middle: " + OpArrayLeft_1);
-    console.log("Left2: " + OutputArrayLeft_2);
-    console.log("Right1: " + OutputArrayRight_1);
-    console.log("Right2: " + OutputArrayRight_2);
-    console.log("Middle1: " + OutputArrayMiddle_1);
-    console.log("Middle2: " + OutputArrayMiddle_2);
+    console.log("Middle: " + OpArrayMiddle);
+    console.log("Right1: " + OpArrayRight_1);
+
+    console.log("Left20: " + OpArrayLeft_2);
+    console.log("Left21: " + OpArrayMiddle_1);
+    console.log("Left22: " + OpArrayMiddle_12);
+
+    console.log("Middle20: " + OpArrayMiddle_14);
+    console.log("Middle21: " + OpArrayMiddle_2);
+
+    console.log("Right20: " + OpArrayMiddle_26);
+    console.log("Right21: " + OpArrayMiddle_28);
+    console.log("Right22: " + OpArrayRight_2);
   }
 
   return (
@@ -619,7 +644,7 @@ export default function BinaryTreeAssignment() {
           className="row justify-content-center"
           id="question"
         ></b>
-        <div className="container">
+        <div id="inputPlatform" className="container" hidden>
           <div className="row justify-content-center">
             <div style={{ width: "150px", paddingBottom: "15px" }}>
               <input id="inp0" type="text" className="form-control"></input>
@@ -684,7 +709,7 @@ export default function BinaryTreeAssignment() {
         <div className="row justify-content-center text-center">
           <div>
             <Button variant="outline-warning" onClick={Check}>
-              Következő
+              Ellenőriz
             </Button>
           </div>
         </div>
