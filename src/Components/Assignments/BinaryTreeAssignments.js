@@ -21,7 +21,7 @@ export default function BinaryTreeAssignment() {
   }
 
   function Check() {
-    console.log("array-check: " + AllArray);
+    console.log("array-check: " + AllArray); //ha nem empty
 
     var userEdgeArray = [];
     userEdgeArray = document.getElementById("inp0").value.split(",");
@@ -56,7 +56,6 @@ export default function BinaryTreeAssignment() {
     var childmax = 2 * fokszam;
 
     var OpArrayEdge = [];
-
     var OpArrayLeft_1 = [];
     var OpArrayMiddle = [];
     var OpArrayRight_1 = [];
@@ -331,7 +330,6 @@ export default function BinaryTreeAssignment() {
         OpArrayMiddle.length <= childmax &&
         i > 6
       ) {
-
         if (
           OpArrayLeft_2.length === childmax - 1 &&
           AllArray[i] < OpArrayLeft_1[0]
@@ -608,6 +606,7 @@ export default function BinaryTreeAssignment() {
     }
 
     console.log("Edgemax: " + edgemax);
+
     console.log("Edge:" + OpArrayEdge);
 
     console.log("Left1: " + OpArrayLeft_1);
@@ -643,7 +642,7 @@ export default function BinaryTreeAssignment() {
           className="row justify-content-center"
           id="question"
         ></b>
-        <div className="container">
+        <div id="inputPlatform" className="container" hidden>
           <div className="row justify-content-center">
             <div style={{ width: "150px", paddingBottom: "15px" }}>
               <input id="inp0" type="text" className="form-control"></input>
@@ -708,7 +707,7 @@ export default function BinaryTreeAssignment() {
         <div className="row justify-content-center text-center">
           <div>
             <Button variant="outline-warning" onClick={Check}>
-              Következő
+              Ellenőriz
             </Button>
           </div>
         </div>
