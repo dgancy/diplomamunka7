@@ -5,7 +5,7 @@ export default function ChatBot() {
   const code = "atment";
 
   const dataTransfer = async () => {
-    let result = await fetch("http://localhost:8080/message", {
+    const result = await fetch("http://localhost:8080/message", {
       method: "POST",
       mode: "cors",
       credentials: "include",
