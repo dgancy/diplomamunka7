@@ -31,7 +31,6 @@ function App() {
     <>
       <Router>
         <NavbarMenu />
-        <ChatBot />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
@@ -80,6 +79,8 @@ function App() {
           <Route path="/red-black-tree-test" element={<RedBlackTreeTest />} />
 
           <Route path="/logdata" element={<LogMoreData />}/>
+
+          <Route path="/trans" element={<ChatBot />}/>
         </Routes>
       </Router>
     </>
