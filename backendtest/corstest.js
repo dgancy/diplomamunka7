@@ -1,19 +1,26 @@
-const express = require("express");
-const cors = require("cors");
+const express = require('express');
+const cors = require('cors');
 
 const app = express();
 
+const corsOptions = {
+  origin: 'http://localhost:3000',
+  credentials: true, 
+};
+
+app.use(cors(corsOptions));
+
 app.use((req, res, next) => {
-  res.header("Access-Control-Allow-Origin", "http://localhost:8080");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
+  res.setHeader('Access-Control-Allow-Credentials', 'true'); // Allow credentials
+  // Other headers as needed
   next();
 });
 
-app.get("/message", (req, res) => {
-  res.json({ message: "Hello from server!"});
+app.post('/message', (req, res) => {
+  res.status(200).json({ message: 'Message received' });
 });
 
 app.listen(8080, () => {
-  console.log(`Server is running on port 8080.`);
+  console.log('Server is running on http://localhost:8080');
 });
