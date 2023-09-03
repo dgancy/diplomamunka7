@@ -2,7 +2,10 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 export default function ChatBot() {
-  const code = "atment";
+  const dataToSend = {
+    key1: "value1",
+    key2: "value2",
+  };
 
   const dataTransfer = async () => {
     const result = await fetch("http://localhost:8080/message", {
@@ -12,11 +15,9 @@ export default function ChatBot() {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({
-        code: code,
-      }),
+      body: JSON.stringify(dataToSend),
     });
-    console.log("test: " + code);
+    console.log("test: " + dataToSend);
   };
 
   return (
