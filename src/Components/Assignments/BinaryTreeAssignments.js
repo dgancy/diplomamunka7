@@ -71,8 +71,6 @@ export default function BinaryTreeAssignment() {
     var OpArrayMiddle_28 = [];
     var OpArrayRight_2 = [];
 
-    console.log("AllArray: " + AllArray);
-
     for (let i = 0; i < AllArray.length; i++) {
       if (
         OpArrayEdge.length <= edgemax &&
@@ -99,7 +97,6 @@ export default function BinaryTreeAssignment() {
         i > 2 &&
         i < 7
       ) {
-        document.getElementById("inputPlatform").style.visibility = "visible";
 
         if (OpArrayEdge[0] > AllArray[i]) {
           OpArrayLeft_1.push(AllArray[i]);
@@ -611,16 +608,17 @@ export default function BinaryTreeAssignment() {
     console.log("Edgemax: " + edgemax);
 
     console.log("Edge:" + OpArrayEdge);
+
     console.log("Left1: " + OpArrayLeft_1);
-    console.log("Middle: " + OpArrayMiddle);
+    console.log("Middle1: " + OpArrayMiddle);
     console.log("Right1: " + OpArrayRight_1);
 
     console.log("Left20: " + OpArrayLeft_2);
     console.log("Left21: " + OpArrayMiddle_1);
     console.log("Left22: " + OpArrayMiddle_12);
 
-    console.log("Middle20: " + OpArrayMiddle_14);
-    console.log("Middle21: " + OpArrayMiddle_2);
+    console.log("Middle20: " + OpArrayMiddle_1);
+    console.log("Middle21: " + OpArrayMiddle_12);
 
     console.log("Right20: " + OpArrayMiddle_26);
     console.log("Right21: " + OpArrayMiddle_28);

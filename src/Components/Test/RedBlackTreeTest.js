@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function RedBlackTreeTest() {
   const navigate = useNavigate();
+
   var array = [];
   var userarray = [];
   var usercolors = [];
@@ -127,7 +128,10 @@ export default function RedBlackTreeTest() {
       }
 
       var errors;
-      if (errorNumbers === "Hibás megoldás, hiba oka: Hiányos számsor" && errorColor === "Hibás megolodás, hiba oka: Nincs szinezés") {
+      if (
+        errorNumbers === "Hibás megoldás, hiba oka: Hiányos számsor" &&
+        errorColor === "Hibás megolodás, hiba oka: Nincs szinezés"
+      ) {
         errors = "Hiányos számsor és szinzés";
       }
 
@@ -137,7 +141,7 @@ export default function RedBlackTreeTest() {
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <div className="form-group">
         <div className="container">
           <div
