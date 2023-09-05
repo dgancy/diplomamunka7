@@ -760,7 +760,21 @@ export default function RedBlackTree() {
           element.className = "tree-black";
         } else element.className = "tree-red";
         element.innerHTML = colorHelperArray[i];
-
+        if (i === 1) {
+          element.classList.add("horizontal-space");
+        }
+        if (i > 2 && i < 6) {
+          element.classList.add("horizontal-space-second-line");
+        }
+        if (i > 6 && i < 15) {
+          element.classList.add("horizontal-space-third-line");
+        }
+        if (i > 14) {
+          element.classList.add("horizontal-space-fourth-line");
+        }
+        if (i === 7) {
+          element.classList.add("horizontal-space-third-line-fix");
+        }
         if (
           i === 0 ||
           i === 2 ||

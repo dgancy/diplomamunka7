@@ -28,6 +28,28 @@ export default function BinaryTree() {
     AllArray.push(new_element);
     console.log("AllArray: " + AllArray);
 
+    if (AllArray.length > 0) {
+      document.getElementById("showZero").style.display = "block";
+    }
+    if (AllArray.length > 2) {
+      document.getElementById("showOne").style.display = "block";
+      document.getElementById("showOne").style.marginLeft = "0%";
+      document.getElementById("showThree").style.display = "block";
+    }
+    if (AllArray.length > 4) {
+      document.getElementById("showTwo").style.display = "block";
+    }
+    if (AllArray.length > 6) {
+      document.getElementById("showFour").style.display = "block";
+      document.getElementById("showFive").style.display = "block";
+      document.getElementById("showSix").style.display = "block";
+      document.getElementById("showSeven").style.display = "block";
+      document.getElementById("showEight").style.display = "block";
+      document.getElementById("showNine").style.display = "block";
+      document.getElementById("showTen").style.display = "block";
+      document.getElementById("showEleven").style.display = "block";
+    }
+
     for (let i = 0; i < AllArray.length; i++) {
       if (
         OpArrayEdge.length <= edgemax &&
@@ -54,8 +76,6 @@ export default function BinaryTree() {
         i > 2 &&
         i < 7
       ) {
-        document.getElementById("oparraymiddle").style.visibility = "visible";
-
         if (OpArrayEdge[0] > AllArray[i]) {
           OpArrayLeft_1.push(AllArray[i]);
           OpArrayLeft_1.sort(function (a, b) {
@@ -288,8 +308,6 @@ export default function BinaryTree() {
         OpArrayMiddle.length <= childmax &&
         i > 6
       ) {
-        document.getElementById("oparraymiddle").style.visibility = "hidden";
-
         if (
           OpArrayLeft_2.length === childmax - 1 &&
           AllArray[i] < OpArrayLeft_1[0]
@@ -356,7 +374,7 @@ export default function BinaryTree() {
             return a - b;
           });
         }
-        
+
         if (
           OpArrayMiddle_2.length === childmax - 1 &&
           AllArray[i] < OpArrayRight_1[0]
@@ -375,7 +393,8 @@ export default function BinaryTree() {
         }
         if (
           OpArrayMiddle_26.length === childmax - 1 &&
-          AllArray[i] > OpArrayRight_1[0] && AllArray[i]<OpArrayRight_1[1]
+          AllArray[i] > OpArrayRight_1[0] &&
+          AllArray[i] < OpArrayRight_1[1]
         ) {
           OpArrayMiddle_28.push(OpArrayMiddle_26[OpArrayMiddle_26.length - 1]);
           OpArrayMiddle_26.pop();
@@ -391,7 +410,8 @@ export default function BinaryTree() {
         }
         if (
           OpArrayMiddle_28.length === childmax - 1 &&
-          AllArray[i] > OpArrayRight_1[2] && AllArray[i]<OpArrayRight_1[3]
+          AllArray[i] > OpArrayRight_1[2] &&
+          AllArray[i] < OpArrayRight_1[3]
         ) {
           OpArrayRight_2.push(OpArrayMiddle_28[OpArrayMiddle_28.length - 1]);
           OpArrayMiddle_28.pop();
@@ -408,7 +428,7 @@ export default function BinaryTree() {
 
         if (
           OpArrayRight_2.length === childmax - 1 &&
-          AllArray[i] > OpArrayRight_1[OpArrayRight_1.length-1]
+          AllArray[i] > OpArrayRight_1[OpArrayRight_1.length - 1]
         ) {
           OpArrayMiddle_14.push(OpArrayRight_2[0]);
           OpArrayRight_2.shift();
@@ -561,7 +581,11 @@ export default function BinaryTree() {
       <div className="container" style={{ textAlign: "center" }}>
         <div style={{ padding: "1%" }}>
           <div className="row justify-content-center ">
-            <div className="col-2 border border-warning">
+            <div
+              id="showZero"
+              style={{ display: "none" }}
+              className="col-2 border border-warning"
+            >
               <b id="arrayedge"></b>
             </div>
           </div>
@@ -570,18 +594,23 @@ export default function BinaryTree() {
           <div className="row justify-content-center">
             <div
               className="col-2 border border-warning"
-              style={{ marginRight: "7%" }}
+              style={{ marginRight: "7%", display: "none" }}
+              id="showOne"
             >
               <b id="arrayleft_1"></b>
             </div>
             <div
               className="col-2 border border-warning"
-              style={{ marginRight: "7%" }}
-              id="oparraymiddle"
+              style={{ marginRight: "7%", display: "none" }}
+              id="showTwo"
             >
               <b id="arraymiddle"></b>
             </div>
-            <div className="col-2 border border-warning">
+            <div
+              id="showThree"
+              style={{ display: "none" }}
+              className="col-2 border border-warning"
+            >
               <b id="arrayright_1"></b>
             </div>
           </div>
@@ -590,49 +619,57 @@ export default function BinaryTree() {
           <div className="row justify-content-center">
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showFour"
             >
               <b id="arrayleft_2"></b>
             </div>
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showFive"
             >
               <b id="arraymiddle_1"></b>
             </div>
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showSix"
             >
               <b id="arraymiddle_12"></b>
             </div>
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showSeven"
             >
               <b id="arraymiddle_14"></b>
             </div>
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showEight"
             >
               <b id="arraymiddle_2"></b>
             </div>
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showNine"
             >
               <b id="arraymiddle_26"></b>
             </div>
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showTen"
             >
               <b id="arraymiddle_28"></b>
             </div>
             <div
               className="col-1 border border-warning"
-              style={{ marginRight: "1%" }}
+              style={{ marginRight: "1%", display: "none" }}
+              id="showEleven"
             >
               <b id="arrayright_2"></b>
             </div>

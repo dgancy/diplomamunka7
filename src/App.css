@@ -11,25 +11,39 @@ a {
 }
 
 .tree-red {
-  box-sizing: border-box;
-  width: 65px;
-  height: 65px;
-  font-family: Georgia;
-  font-size: 25px;
-  color: azure;
-  background-color: rgb(121, 0, 0);
-  border: 2px solid gold;
-  border-radius: 50%;
+  width: 40px; /* Adjust the width to control the size of the circle */
+  height: 40px; /* Adjust the height to control the size of the circle */
+  background-color: #8c0000;
+  color: white;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%; /* Make it a circle by setting border-radius to 50% */
+  border: 1px solid gold;
+  display: inline-block;
+  margin: 5px; /* Add margin for spacing between nodes */
 }
 .tree-black {
-  box-sizing: border-box;
-  width: 65px;
-  height: 65px;
-  font-family: Georgia;
-  font-size: 25px;
-  color: azure;
-  background-color: rgb(0, 0, 0);
-  border: 2px solid gold;
+  width: 40px; /* Adjust the width to control the size of the circle */
+  height: 40px; /* Adjust the height to control the size of the circle */
+  background-color: #000000;
+  color: white;
+  text-align: center;
+  line-height: 40px;
   border-radius: 50%;
-  border-style: solid;
+  border: 1px solid gold; /* Make it a circle by setting border-radius to 50% */
+  display: inline-block;
+  margin: 5px; /* Add margin for spacing between nodes */
+}
+
+.horizontal-space {
+  margin-right: 29.4%; /* Adjust the margin as needed for the desired spacing */
+}
+.horizontal-space-second-line {
+  margin-right: 12.6%; /* Adjust the margin as needed for the desired spacing */
+}
+.horizontal-space-third-line {
+  margin-right:4.5%; /* Adjust the margin as needed for the desired spacing */
+}
+.horizontal-space-third-line-fix{
+  margin-left: 4%;
 }
