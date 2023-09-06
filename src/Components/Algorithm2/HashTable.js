@@ -89,8 +89,6 @@ export default function Hashtable() {
     }
 
     var range = document.getElementById("range").value;
-    const tbl = document.createElement("table");
-    const tblBody = document.createElement("tbody");
     var finalindex;
 
     for (let j = 0; j < range; j++) {
@@ -150,9 +148,15 @@ export default function Hashtable() {
         }
       } //button deactivate
     }
+    
+    const tableContainer = document.createElement("div");
+    tableContainer.setAttribute("class", "table-container");
+
+    const tbl = document.createElement("table");
+    const tblBody = document.createElement("tbody");
 
     for (let i = 0; i < 2; i++) {
-      const row = document.createElement("tr"); //tablecreate with good sense of viauality
+      const row = document.createElement("tr");
       if (i === 0) {
         for (let j = 0; j < range; j++) {
           const cell = document.createElement("td");
@@ -173,7 +177,7 @@ export default function Hashtable() {
     }
     tbl.appendChild(tblBody);
     document.body.appendChild(tbl);
-    tbl.setAttribute("class", "hashtable");
+    tbl.setAttribute("class", "table-container");
 
     console.log("Index: " + arrayindex);
     console.log("H1: " + arrayelements);
@@ -217,7 +221,11 @@ export default function Hashtable() {
             <div className="col-2">
               {" "}
               <b style={{ color: "white" }}>Elem darabszáma : </b>
-              <input type="number" className="form-control" id="elementnumber" />
+              <input
+                type="number"
+                className="form-control"
+                id="elementnumber"
+              />
             </div>
           </div>
           <div className="row justify-content-center text-center">
@@ -244,12 +252,11 @@ export default function Hashtable() {
             variant="btn btn-outline-warning col-1"
             id="solvebtn"
             onClick={Solve}
-            style={{visibility:"hidden"}}
+            style={{ visibility: "hidden" }}
           >
             Megold
           </Button>
         </div>
-        <b style={{ color: "black", textAlign: "center" }} id="final" />
       </div>
       <br />
     </form>
