@@ -90,7 +90,7 @@ export default function BinaryTree() {
             return a - b;
           });
         }
-        if (OpArrayLeft_1.length === childmax-1) {
+        if (OpArrayLeft_1.length === childmax - 1) {
           OpArrayMiddle.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
           OpArrayLeft_1.pop();
           OpArrayEdge.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
@@ -122,8 +122,50 @@ export default function BinaryTree() {
         OpArrayMiddle.length <= childmax &&
         i > 6
       ) {
+        //nincs lekezelve amikor még csak lefele kell neki az adatokat adnia fel nélkül.
+        if (
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+          OpArrayLeft_1.length === childmax - 1
+        ) {
+          OpArrayMiddle_12.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayLeft_2.push(OpArrayLeft_1[0]);
+          OpArrayLeft_1.shift();
 
-//nincs lekezelve amikor még csak lefele kell neki az adatokat adnia fel nélkül.
+          OpArrayLeft_1.push(AllArray[i]);
+          
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_12.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayLeft_2.sort(function (a, b) {
+            return a - b;
+          });
+        }
+        /*if (
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+          OpArrayLeft_1.length === childmax - 1
+        ) {
+          OpArrayMiddle_12.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayLeft_2.push(OpArrayLeft_1[0]);
+          OpArrayLeft_1.shift();
+
+          OpArrayLeft_1.push(AllArray[i]);
+          
+          OpArrayLeft_1.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayMiddle_12.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayLeft_2.sort(function (a, b) {
+            return a - b;
+          });
+        }*/
+
 
 
         if (

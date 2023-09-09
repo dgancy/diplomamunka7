@@ -14,7 +14,7 @@ export default function ChatBot() {
       },
       body: JSON.stringify(dataToSend),
     });
-    console.log("test: " + dataToSend);
+    console.log("test: " + dataToSend.key1);
   };
 
   return (

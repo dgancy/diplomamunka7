@@ -1,6 +1,9 @@
 const express = require("express");
 const cors = require("cors");
 
+var admin = require("firebase-admin");
+var serviceAccount = require("./serviceAccountKeys.json");
+
 const app = express();
 app.use(express.json());
 
@@ -26,9 +29,38 @@ app.get("/message", (req, res) => {
   const queryParameters = req.query;
   console.log("Data received from frontend:", JSON.stringify(queryParameters));
 
-  res
-    .status(200)
-    .json({ message: "GET request received ", data: queryParameters });
+  res.status(200).json({
+    message: "GET request received ",
+    data: JSON.stringify(queryParameters),
+  });
+
+  //new hope
+  admin.initializeApp({
+    credential: admin.credential.cert(serviceAccount),
+  });
+
+  const db = admin.firestore();
+
+  const data = {
+    id: JSON.stringify(queryParameters),
+    name: "Upupdate",
+  };
+
+  db.collection("test")
+    .doc(data.id.toString())
+    .set(data)
+    .then(() => {
+      console.log("Data uploaded to Firestore successfully");
+      res.status(200).json({
+        message: "GET request received",
+        data: JSON.stringify(queryParameters),
+      });
+    })
+    .catch((error) => {
+      console.error("Error uploading data to Firestore:", error);
+      res.status(500).json({ error: "Internal server error" });
+    });
+  //new hope end
 });
 
 app.listen(8080, () => {
