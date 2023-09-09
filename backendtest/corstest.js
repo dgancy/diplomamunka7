@@ -29,21 +29,17 @@ app.get("/message", (req, res) => {
   const queryParameters = req.query;
   console.log("Data received from frontend:", JSON.stringify(queryParameters));
 
-  res.status(200).json({
-    message: "GET request received ",
-    data: JSON.stringify(queryParameters),
-  });
-
-  //new hope
   admin.initializeApp({
     credential: admin.credential.cert(serviceAccount),
   });
 
+  console.log("Firebase initialized");
   const db = admin.firestore();
+  console.log("Firestore instance obtained");
 
   const data = {
     id: JSON.stringify(queryParameters),
-    name: "Upupdate",
+    name: "New Hope Update",
   };
 
   db.collection("test")
@@ -62,6 +58,11 @@ app.get("/message", (req, res) => {
     });
   //new hope end
 });
+
+
+
+
+  //new hope
 
 app.listen(8080, () => {
   console.log("Server is running on http://localhost:8080");
