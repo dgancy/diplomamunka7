@@ -22,15 +22,26 @@ import BinaryTreeTest from "./Components/Test/BinaryTreeTest";
 import HashTableTest from "./Components/Test/HashTableTest";
 import BackTrackingTest from "./Components/Test/BackTrackingTest";
 import RedBlackTreeTest from "./Components/Test/RedBlackTreeTest";
-import ChatBot from "./Components/ChatBot";
+import ChatBottest from "./Components/ChatBottest";
 import Home from "./Components/Home";
 import LogMoreData from "./Components/Login/LogMoreData";
+
+
+import Chatbot from "react-chatbot-kit";
+import ActionProvider from "./Components/Chatbot/ActionProvider";
+import config from "./Components/Chatbot/config";
+import MessageParser from "./Components/Chatbot/MessageParser";
 
 function App() {
   return (
     <>
       <Router>
         <NavbarMenu />
+        <Chatbot
+        config={config}
+        messageParser={MessageParser}
+        actionProvider={ActionProvider}
+      />
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
@@ -80,7 +91,7 @@ function App() {
 
           <Route path="/logdata" element={<LogMoreData />}/>
 
-          <Route path="/trans" element={<ChatBot />}/>
+          <Route path="/trans" element={<ChatBottest />}/>
         </Routes>
       </Router>
     </>

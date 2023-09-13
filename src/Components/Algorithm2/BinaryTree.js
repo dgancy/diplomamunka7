@@ -591,7 +591,7 @@ export default function BinaryTree() {
         }
       }
     }
-
+console.log("Array hossz: " + AllArray.length)
     console.log("Edgemax: " + edgemax);
     console.log("Edge: " + OpArrayEdge);
     console.log("Left1: " + OpArrayLeft_1);

@@ -23,11 +23,11 @@ export default function BackTrackingTest() {
     type = "Visszaállit";
   }
   function Generate() {
-    ÖsszesCimlet = Math.floor(Math.random() * 10) + 1;
+    ÖsszesCimlet = Math.floor(Math.random() * 4) + 9;
 
-    var number = Math.floor(Math.random() * 4) + 2;
+    var number = Math.floor(Math.random() * 3) + 2;
     for (let i = 0; i <= number; i++) {
-      var help = Math.floor(Math.random() * 9) + 1 + "";
+      var help = Math.floor(Math.random() * 8) + 1 + "";
       if (!kezdmo.includes(help)) {
         kezdmo.push(help);
       }
@@ -84,27 +84,27 @@ export default function BackTrackingTest() {
 
   return (
     <form style={{ background: "#000027", height:"100vh" }}>
-      <div style={{ padding: "15px" }} class="form-group">
-        <div class="container">
-          <div class="row justify-content-center text-center"></div>
+      <div style={{ padding: "15px" }} className="form-group">
+        <div className="container">
+          <div className="row justify-content-center text-center"></div>
           <div
             style={{ padding: "10px", color: "white" }}
-            class="row justify-content-center text-center"
+            className="row justify-content-center text-center"
           >
             {Generate()}
           </div>
         </div>
         <div
-          class="row justify-content-center text-center"
+          className="row justify-content-center text-center"
           style={{ padding: "10px" }}
         >
           <b style={{ color: "white", padding: "5px" }}>{type} : </b>
-          <input id="inp0" class="form-control col-1"></input>
+          <input id="inp0" className="form-control col-1"></input>
         </div>
       </div>
       <div
         style={{ paddingBottom: "20px" }}
-        class="row justify-content-center text-center"
+        className="row justify-content-center text-center"
       >
         <Button id="btncheck" variant="outline-warning" onClick={Check}>
           Következő

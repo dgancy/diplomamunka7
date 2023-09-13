@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 function RecursionTreeTest() {
   const navigate = useNavigate();
   var T_elem = Math.floor(Math.random() * 40) + 1;
-  var N_elem = Math.floor(Math.random() * 10) + 1;
+  var N_elem = Math.floor(Math.random() * 9) + 1;
   var nsup = Math.floor(Math.random() * 4) + 1;
   var check_N = `n^${nsup}`;
   var n_rekurzios = `n<sup>${nsup}</sup>`;
