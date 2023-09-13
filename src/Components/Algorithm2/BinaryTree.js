@@ -132,8 +132,14 @@ export default function BinaryTree() {
           OpArrayLeft_2.push(OpArrayLeft_1[0]);
           OpArrayLeft_1.shift();
 
-          OpArrayLeft_1.push(AllArray[i]);
-          
+          if (parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0])) {
+            OpArrayLeft_2.push(AllArray[i]);
+          }
+
+          if (parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[0])) {
+            OpArrayMiddle_12.push(AllArray[i]);
+          }
+
           OpArrayLeft_1.sort(function (a, b) {
             return a - b;
           });
@@ -144,29 +150,33 @@ export default function BinaryTree() {
             return a - b;
           });
         }
-        /*if (
-          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
-          OpArrayLeft_1.length === childmax - 1
-        ) {
-          OpArrayMiddle_12.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
-          OpArrayLeft_1.pop();
-          OpArrayLeft_2.push(OpArrayLeft_1[0]);
-          OpArrayLeft_1.shift();
 
-          OpArrayLeft_1.push(AllArray[i]);
-          
-          OpArrayLeft_1.sort(function (a, b) {
-            return a - b;
-          });
+        if (
+          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+          OpArrayRight_1.length === childmax - 1
+        ) {
+          OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+          OpArrayLeft_2.push(OpArrayRight_1[0]);
+          OpArrayRight_1.shift();
+
+          if (parseInt(AllArray[i]) < parseInt(OpArrayRight_1[0])) {
+            OpArrayMiddle_26.push(AllArray[i]);
+          }
+
+          if (parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0])) {
+            OpArrayRight_2.push(AllArray[i]);
+          }
+
           OpArrayMiddle_12.sort(function (a, b) {
             return a - b;
           });
           OpArrayLeft_2.sort(function (a, b) {
             return a - b;
           });
-        }*/
+        }
 
-
+        
 
         if (
           parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
@@ -611,7 +621,7 @@ export default function BinaryTree() {
   return (
     <form style={{ background: "#000027", height: "100vh", color: "white" }}>
       <h1 style={{ textAlign: "center", paddingBottom: "20px" }}>
-        Binary tree solver
+        Bfa megoldó
       </h1>
       <div>
         <div className="form-group">
