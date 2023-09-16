@@ -13,9 +13,9 @@ Zoli konzi
 Javítás
 Rekonzi
 
-test pages= adatátvitel, mint gond, check functions ellenőrzése, hibakódok továbbadása.
+----test pages= adatátvitel, mint gond, check functions ellenőrzése, hibakódok továbbadása.
 
-alap oldalak= master + recursion infó hiány,binary tree hát nem jó
+alap oldalak= master + recursion infó hiány,----binary tree hát nem jó
 
 feladatos oldalak= bug fix, fix, dropdown fix, rbt befejezése, többi ok., hast tábla ok,backtrack ok,   rbt-t fent inkább és done, 
 

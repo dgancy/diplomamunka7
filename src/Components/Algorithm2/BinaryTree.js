@@ -28,28 +28,6 @@ export default function BinaryTree() {
     AllArray.push(new_element);
     console.log("AllArray: " + AllArray);
 
-    if (AllArray.length > 0) {
-      document.getElementById("showZero").style.display = "block";
-    }
-    if (AllArray.length > 2) {
-      document.getElementById("showOne").style.display = "block";
-      document.getElementById("showOne").style.marginLeft = "0%";
-      document.getElementById("showThree").style.display = "block";
-    }
-    if (AllArray.length > 4) {
-      document.getElementById("showTwo").style.display = "block";
-    }
-    if (AllArray.length > 6) {
-      document.getElementById("showFour").style.display = "block";
-      document.getElementById("showFive").style.display = "block";
-      document.getElementById("showSix").style.display = "block";
-      document.getElementById("showSeven").style.display = "block";
-      document.getElementById("showEight").style.display = "block";
-      document.getElementById("showNine").style.display = "block";
-      document.getElementById("showTen").style.display = "block";
-      document.getElementById("showEleven").style.display = "block";
-    }
-
     for (let i = 0; i < AllArray.length; i++) {
       if (
         OpArrayEdge.length <= edgemax &&
@@ -120,7 +98,7 @@ export default function BinaryTree() {
         OpArrayLeft_1.length <= childmax &&
         OpArrayRight_1.length <= childmax &&
         OpArrayMiddle.length <= childmax &&
-        i > 6
+        i >= 6
       ) {
         //nincs lekezelve amikor még csak lefele kell neki az adatokat adnia fel nélkül.
         if (
@@ -132,17 +110,6 @@ export default function BinaryTree() {
           OpArrayLeft_2.push(OpArrayLeft_1[0]);
           OpArrayLeft_1.shift();
 
-          if (parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0])) {
-            OpArrayLeft_2.push(AllArray[i]);
-          }
-
-          if (parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[0])) {
-            OpArrayMiddle_12.push(AllArray[i]);
-          }
-
-          OpArrayLeft_1.sort(function (a, b) {
-            return a - b;
-          });
           OpArrayMiddle_12.sort(function (a, b) {
             return a - b;
           });
@@ -157,64 +124,94 @@ export default function BinaryTree() {
         ) {
           OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
           OpArrayRight_1.pop();
-          OpArrayLeft_2.push(OpArrayRight_1[0]);
+          OpArrayMiddle_26.push(OpArrayRight_1[0]);
           OpArrayRight_1.shift();
 
-          if (parseInt(AllArray[i]) < parseInt(OpArrayRight_1[0])) {
-            OpArrayMiddle_26.push(AllArray[i]);
-          }
-
-          if (parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0])) {
-            OpArrayRight_2.push(AllArray[i]);
-          }
-
-          OpArrayMiddle_12.sort(function (a, b) {
+          OpArrayMiddle_26.sort(function (a, b) {
             return a - b;
           });
-          OpArrayLeft_2.sort(function (a, b) {
+          OpArrayRight_2.sort(function (a, b) {
             return a - b;
           });
         }
 
-        
-
         if (
           parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) <
-            parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
           OpArrayMiddle.length === childmax - 1 &&
           OpArrayEdge.length === edgemax - 1
         ) {
-          OpArrayMiddle_2.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
+          OpArrayRight_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
+
+          OpArrayLeft_1.push(OpArrayMiddle[0]);
+          OpArrayMiddle.shift();
+          OpArrayRight_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
           OpArrayMiddle.pop();
-          OpArrayEdge.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
-          OpArrayMiddle.pop();
-          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
-          OpArrayMiddle.pop();
+          OpArrayEdge.push(OpArrayMiddle[0]);
+          OpArrayMiddle.shift();
 
           OpArrayEdge.sort(function (a, b) {
             return a - b;
           });
-          OpArrayMiddle_1.sort(function (a, b) {
+          OpArrayLeft_1.sort(function (a, b) {
             return a - b;
           });
-          OpArrayMiddle_2.sort(function (a, b) {
+          OpArrayRight_1.sort(function (a, b) {
             return a - b;
           });
 
-          OpArrayLeft_2 = OpArrayLeft_1;
-          OpArrayLeft_1 = OpArrayEdge[0];
-          OpArrayEdge.shift();
+          if (OpArrayLeft_1.length === childmax) {
+            OpArrayLeft_2.push(OpArrayLeft_1[0]);
+            OpArrayLeft_1.shift();
+            OpArrayLeft_2.push(OpArrayLeft_1[0]);
+            OpArrayLeft_1.shift();
+            OpArrayMiddle_12.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+            OpArrayLeft_1.pop();
+          }
+          if (OpArrayRight_1.length === childmax) {
+            OpArrayMiddle_26.push(OpArrayRight_1[0]);
+            OpArrayRight_1.shift();
+            OpArrayMiddle_26.push(OpArrayRight_1[0]);
+            OpArrayRight_1.shift();
+            OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+            OpArrayRight_1.pop();
+          }
 
-          OpArrayRight_2 = OpArrayRight_1;
-          OpArrayRight_1 = OpArrayEdge[OpArrayEdge.length - 1];
-          OpArrayEdge.pop();
+          document.getElementById("showTwo").style.display = "none";
+          document.getElementById("showEight").style.display = "none";
+          document.getElementById("showNine").style.display = "none";
 
-          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
-          OpArrayEdge.pop();
-          OpArrayLeft_1.push(OpArrayEdge[0]);
-          OpArrayEdge.shift();
+          if (AllArray[i] < OpArrayEdge[0]) {
+            if (AllArray[i] < OpArrayLeft_1[0]) {
+              OpArrayLeft_2.push(AllArray[i]);
+            } else {
+              OpArrayMiddle_12.push(AllArray[i]);
+            }
+            OpArrayLeft_2.sort(function (a, b) {
+              return a - b;
+            });
+            OpArrayMiddle_12.sort(function (a, b) {
+              return a - b;
+            });
+          }
+          if (AllArray[i] > OpArrayEdge[0]) {
+            if (AllArray[i] < OpArrayRight_1[0]) {
+              OpArrayMiddle_26.push(AllArray[i]);
+            } else {
+              OpArrayRight_2.push(AllArray[i]);
+            }
+            OpArrayMiddle_26.sort(function (a, b) {
+              return a - b;
+            });
+            OpArrayRight_2.sort(function (a, b) {
+              return a - b;
+            });
+          }
         }
+
         if (
           parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
           OpArrayLeft_1.length === childmax - 1 &&
@@ -337,7 +334,12 @@ export default function BinaryTree() {
           }
         }
 
-        if (parseInt(AllArray[i]) < parseInt(OpArrayEdge[0])) {
+        if (
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+          OpArrayLeft_2.length === 0 &&
+          OpArrayMiddle_1.length === 0 &&
+          OpArrayMiddle_12.length === 0
+        ) {
           OpArrayLeft_1.push(AllArray[i]);
           OpArrayLeft_1.sort(function (a, b) {
             return a - b;
@@ -352,20 +354,23 @@ export default function BinaryTree() {
             return a - b;
           });
         }
-        if (parseInt(AllArray[i]) > parseInt(OpArrayEdge[1])) {
+        if (
+          parseInt(AllArray[i]) >
+          parseInt(
+            OpArrayEdge[1] &&
+              OpArrayRight_2.length === 0 &&
+              OpArrayMiddle_28.length === 0 &&
+              OpArrayMiddle_26.length === 0
+          )
+        ) {
           OpArrayRight_1.push(AllArray[i]);
           OpArrayRight_1.sort(function (a, b) {
             return a - b;
           });
         }
       }
-      if (
-        OpArrayEdge.length <= edgemax &&
-        OpArrayLeft_1.length <= childmax &&
-        OpArrayRight_1.length <= childmax &&
-        OpArrayMiddle.length <= childmax &&
-        i > 6
-      ) {
+      if (i > 6) {
+        console.log("beleptem ezzel : " + AllArray[i]);
         if (
           OpArrayLeft_2.length === childmax - 1 &&
           parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0])
@@ -538,8 +543,10 @@ export default function BinaryTree() {
           });
         }
         if (
-          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[2])
+          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayMiddle[0]) &&
+          OpArrayMiddle_14.length !== 0
         ) {
           OpArrayMiddle_14.push(AllArray[i]);
 
@@ -549,7 +556,9 @@ export default function BinaryTree() {
         }
         if (
           parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayRight_1[0])
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
+          parseInt(AllArray[i]) > parseInt(OpArrayMiddle[0]) &&
+          OpArrayMiddle_2.length !== 0
         ) {
           OpArrayMiddle_2.push(AllArray[i]);
 
@@ -581,7 +590,8 @@ export default function BinaryTree() {
         }
         if (
           parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) > parseInt(OpArrayRight_1[2])
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayRight_1[OpArrayRight_1.length - 1])
         ) {
           OpArrayRight_2.push(AllArray[i]);
 
@@ -591,7 +601,29 @@ export default function BinaryTree() {
         }
       }
     }
-console.log("Array hossz: " + AllArray.length)
+    if (OpArrayEdge.length > 0) {
+      document.getElementById("showZero").style.display = "block";
+    }
+    if (OpArrayRight_1.length > 0 || OpArrayLeft_1.length > 0) {
+      document.getElementById("showOne").style.display = "block";
+      document.getElementById("showOne").style.marginLeft = "0%";
+      document.getElementById("showThree").style.display = "block";
+    }
+    if (OpArrayMiddle.length > 0) {
+      document.getElementById("showTwo").style.display = "block";
+    }
+    if (AllArray.length > 7) {
+      document.getElementById("showFour").style.display = "block";
+      document.getElementById("showFive").style.display = "block";
+      document.getElementById("showSix").style.display = "block";
+      document.getElementById("showSeven").style.display = "block";
+      document.getElementById("showEight").style.display = "block";
+      document.getElementById("showNine").style.display = "block";
+      document.getElementById("showTen").style.display = "block";
+      document.getElementById("showEleven").style.display = "block";
+    }
+
+    console.log("Array hossz: " + AllArray.length);
     console.log("Edgemax: " + edgemax);
     console.log("Edge: " + OpArrayEdge);
     console.log("Left1: " + OpArrayLeft_1);
