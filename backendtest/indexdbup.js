@@ -12,4 +12,4 @@ const data = {
   name: "Gancy",
 };
 
-db.collection("test").doc(data.id.toString()).set(data);
+db.collection("users").doc(data.id.toString()).set(data);

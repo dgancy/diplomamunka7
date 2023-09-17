@@ -4,21 +4,30 @@ import { auth } from "../../firebase";
 import { NavLink, useNavigate } from "react-router-dom";
 import { Button } from "react-bootstrap";
 
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-
 const LogIn = () => {
-  const auth = getAuth();
-
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
+  const dataTransfer = async () => {
+    const result = await fetch("http://localhost:8080/message", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({key1: email}),
+    });
+    console.log("test: " + email);
+  };
 
   const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
-        // Signed in
         const user = userCredential.user;
+        dataTransfer();
         navigate("/home");
         console.log(user);
       })
@@ -27,28 +36,6 @@ const LogIn = () => {
         const errorMessage = error.message;
         console.log(errorCode, errorMessage);
       });
-
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const email = user.email;
-        console.log("User's email:", email);
-
-        const dataTransfer = async () => {
-          const result = await fetch("http://localhost:8080/message", {
-            method: "POST",
-            mode: "cors",
-            credentials: "include",
-            headers: {
-              "Content-Type": "application/json",
-            },
-            body: JSON.stringify(email),
-          });
-          console.log("test: " + email);
-        };
-      } else {
-        console.log("No user is signed in.");
-      }
-    });
   };
 
   return (

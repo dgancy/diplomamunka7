@@ -9,7 +9,7 @@ console.log("hi");
 
 const db = admin.firestore();
 
-let testRef = db.collection("test");
+let testRef = db.collection("users");
 
 testRef.get().then((querySnapshot) => {
   querySnapshot.forEach((document) => {

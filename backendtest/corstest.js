@@ -37,10 +37,10 @@ app.post("/message", (req, res) => {
 
   const data = {
     id: requestData.key1,
-    name: "New Hope Update Again",
+    name: "New Hope Update",
   };
 
-  db.collection("test")
+  db.collection("users")
     .doc(data.id.toString())
     .set(data)
     .then(() => {
@@ -59,7 +59,7 @@ app.post("/message", (req, res) => {
 
 app.get("/message", (req, res) => {
   const requestData = req.query;
-  res.status(200).json({ message: "Message received" + requestData.key1 });
+  res.status(200).json({ message: "Message received : " + requestData.key1 });
 });
 
 app.listen(8080, () => {
