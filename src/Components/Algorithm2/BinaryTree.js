@@ -613,14 +613,16 @@ export default function BinaryTree() {
       document.getElementById("showTwo").style.display = "block";
     }
     if (AllArray.length > 7) {
-      document.getElementById("showFour").style.display = "block";
-      document.getElementById("showFive").style.display = "block";
-      document.getElementById("showSix").style.display = "block";
-      document.getElementById("showSeven").style.display = "block";
-      document.getElementById("showEight").style.display = "block";
-      document.getElementById("showNine").style.display = "block";
-      document.getElementById("showTen").style.display = "block";
-      document.getElementById("showEleven").style.display = "block";
+      if (OpArrayLeft_2.length > 0) {
+        document.getElementById("showFour").style.border = "2px solid gold";
+      }
+      document.getElementById("showFive").style.border = "2px solid gold";
+      document.getElementById("showSix").style.border = "2px solid gold";
+      document.getElementById("showSeven").style.border = "2px solid gold";
+      document.getElementById("showEight").style.border = "2px solid gold";
+      document.getElementById("showNine").style.border = "2px solid gold";
+      document.getElementById("showTen").style.border = "2px solid gold";
+      document.getElementById("showEleven").style.border = "2px solid gold";
     }
 
     console.log("Array hossz: " + AllArray.length);
@@ -689,8 +691,8 @@ export default function BinaryTree() {
           <div className="row justify-content-center ">
             <div
               id="showZero"
-              style={{ display: "none" }}
-              className="col-2 border border-warning"
+              style={{ border: "solid gold", display: "none" }}
+              className="col-2"
             >
               <b id="arrayedge"></b>
             </div>
@@ -699,23 +701,31 @@ export default function BinaryTree() {
         <div style={{ padding: "1%" }}>
           <div className="row justify-content-center">
             <div
-              className="col-2 border border-warning"
-              style={{ marginRight: "7%", display: "none" }}
+              className="col-2"
+              style={{
+                border: "solid gold",
+                marginRight: "7%",
+                display: "none",
+              }}
               id="showOne"
             >
               <b id="arrayleft_1"></b>
             </div>
             <div
-              className="col-2 border border-warning"
-              style={{ marginRight: "7%", display: "none" }}
+              className="col-2"
+              style={{
+                border: "solid gold",
+                marginRight: "7%",
+                display: "none",
+              }}
               id="showTwo"
             >
               <b id="arraymiddle"></b>
             </div>
             <div
               id="showThree"
-              style={{ display: "none" }}
-              className="col-2 border border-warning"
+              style={{ border: "solid gold", display: "none" }}
+              className="col-2"
             >
               <b id="arrayright_1"></b>
             </div>
@@ -724,57 +734,73 @@ export default function BinaryTree() {
         <div style={{ padding: "1%" }}>
           <div className="row justify-content-center">
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showFour"
             >
               <b id="arrayleft_2"></b>
             </div>
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showFive"
             >
               <b id="arraymiddle_1"></b>
             </div>
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showSix"
             >
               <b id="arraymiddle_12"></b>
             </div>
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showSeven"
             >
               <b id="arraymiddle_14"></b>
             </div>
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showEight"
             >
               <b id="arraymiddle_2"></b>
             </div>
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showNine"
             >
               <b id="arraymiddle_26"></b>
             </div>
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showTen"
             >
               <b id="arraymiddle_28"></b>
             </div>
             <div
-              className="col-1 border border-warning"
-              style={{ marginRight: "1%", display: "none" }}
+              className="col-1"
+              style={{
+                marginRight: "1%",
+              }}
               id="showEleven"
             >
               <b id="arrayright_2"></b>
