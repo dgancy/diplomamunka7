@@ -77,34 +77,34 @@ export default function Backtracking() {
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
-        Backtracking
+        Visszalépéses keresés
       </h1>
       <div className="form-group">
         <div className="container">
           <div className="row justify-content-center text-center">
             <div className="col-2">
-              <b style={{ color: "white" }}>Solution Initiative: </b>
-              <input type="text" className="form-control" id="addarray" />{" "}
-              <small className="form-text text-white">(For e.: 1,2,4)</small>
-            </div>
-            <div className="col-2">
               {" "}
-              <b style={{ color: "white" }}>Note: </b>
+              <b style={{ color: "white" }}>Érmék száma (db): </b>
               <input type="text" className="form-control" id="addnumber" />
               <small className="form-text text-white">(For e.: 7)</small>
             </div>
             <div className="col-2">
+              <b style={{ color: "white" }}>Megoldáskezdemény: </b>
+              <input type="text" className="form-control" id="addarray" />{" "}
+              <small className="form-text text-white">(For e.: 1,2,4)</small>
+            </div>
+            <div className="col-2">
               <b style={{ color: "white" }} for="type">
-                Question Type:{" "}
+                Feladat típusa:{" "}
               </b>
               <select id="type" className="form-control" name="type">
                 <option> </option>
                 <option value="ElsőFiú" id="hash">
-                  First Son
+                  Első gyerek
                 </option>
-                <option value="Apa">Father</option>
-                <option value="Testvér">Sibling</option>
-                <option value="Megoldás">Result</option>
+                <option value="Apa">Apa</option>
+                <option value="Testvér">Testvér</option>
+                <option value="Megoldás">Megoldás</option>
                 <option value="LehetségesMegoldás">LehetségesMegoldás</option>
                 <option value="Visszaállit">Visszaállit</option>
               </select>
@@ -114,7 +114,7 @@ export default function Backtracking() {
       </div>
       <div className="row justify-content-center text-center">
         <Button variant="btn btn-outline-warning" id="btnadd" onClick={Result}>
-          Solve
+          Kidolgoz
         </Button>
       </div>
       <div style={{ marginLeft: "35%", marginTop:"2%" }}>

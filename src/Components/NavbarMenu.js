@@ -5,59 +5,62 @@ import { Link } from "react-router-dom";
 
 export default function NavbarMenu() {
   return (
-    <Navbar className="justify-content-end" style={{ backgroundColor: "#0f1113" }}>
+    <Navbar
+      className="justify-content-end"
+      style={{ backgroundColor: "#0f1113" }}
+    >
       <Nav.Link as={Link} to="/">
-        <Nav.Item className="navelement">Home</Nav.Item>
+        <Nav.Item className="navelement">Kezdőlap</Nav.Item>
       </Nav.Link>
       <Nav.Link as={Link} to="/learning">
-        <Nav.Item className="navelement">Learning</Nav.Item>
+        <Nav.Item className="navelement">Jegyzetek</Nav.Item>
       </Nav.Link>
       <Nav.Link as={Link} to="/test">
-        <Nav.Item className="navelement">Test</Nav.Item>
+        <Nav.Item className="navelement">Teszt</Nav.Item>
       </Nav.Link>
 
-      <NavDropdown title={<span className="navelement">Algorithm II</span>}>
+      <NavDropdown title={<span className="navelement">Algoritmus II</span>}>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/recursion-tree"}
         >
-          Recursion tree
+          Recurziós-fa
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/master-theorem"}
         >
-          Master theorem
+          Mester-tétel
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/binary-tree"}
         >
-          Binary tree
+          Bináris kereső fa
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/hash-table"}
         >
-          Hash table
+          Hash tábla
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/red-black-tree"}
         >
-          Red-Black tree
+          Piros-fekete fa
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/backtracking"}
         >
-          Backtracking
+          Visszalépéses keresés
         </NavDropdown.Item>
       </NavDropdown>
 
@@ -67,49 +70,49 @@ export default function NavbarMenu() {
           as={Link}
           to={"/recursion-tree-assignment"}
         >
-          Recursion tree assignment
+          Rekurziós-fa
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/master-theorem-assignment"}
         >
-          Master theorem assignment
+          Mester tétel
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/binary-tree-assignment"}
         >
-          Binary tree assignment
+          Bináris keresés-fa
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/hash-table-assignment"}
         >
-          Hash table assignment
+          Hash tábla
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/red-black-tree-assignment"}
         >
-          Red-Black tree assignment
+          Piros-fekete fa
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
           to={"/backtracking-assignment"}
         >
-          Backtracking assignment
+          Visszalépéses keresés{" "}
         </NavDropdown.Item>
       </NavDropdown>
-      <Nav.Link  as={Link} to={"/login"}>
-        <Button variant="warning">Login</Button>
+      <Nav.Link as={Link} to={"/login"}>
+        <Button variant="warning">Belépés</Button>
       </Nav.Link>
       <Nav.Link as={Link} to={"/signin"}>
-        <Button className="btn btn-outline-warning">SignIn</Button>
+        <Button className="btn btn-outline-warning">Regisztráció</Button>
       </Nav.Link>
     </Navbar>
   );

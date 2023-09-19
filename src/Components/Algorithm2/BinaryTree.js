@@ -3,7 +3,26 @@ import Button from "react-bootstrap/Button";
 
 export default function BinaryTree() {
   var AllArray = [];
-  //var Change = [];
+
+  function Delete() {
+    var del_element = document.getElementById("elements").value;
+
+    for (let i = 0; i < AllArray.length - 1; i++) {
+      if (AllArray[i] === del_element) {
+        AllArray[i] = AllArray[AllArray.length - 1];
+        AllArray.pop();
+        console.log(AllArray);
+      }
+    }
+    Result();
+  }
+
+  function Add() {
+    var new_element = document.getElementById("elements").value;
+    AllArray.push(new_element);
+    console.log("AllArray: " + AllArray);
+    Result();
+  }
 
   function Result() {
     var a = document.getElementById("fok").value;
@@ -23,10 +42,6 @@ export default function BinaryTree() {
     var OpArrayMiddle_26 = [];
     var OpArrayMiddle_28 = [];
     var OpArrayMiddle_2 = [];
-
-    var new_element = document.getElementById("elements").value;
-    AllArray.push(new_element);
-    console.log("AllArray: " + AllArray);
 
     for (let i = 0; i < AllArray.length; i++) {
       if (
@@ -68,7 +83,7 @@ export default function BinaryTree() {
             return a - b;
           });
         }
-        if (OpArrayLeft_1.length === childmax - 1) {
+        if (OpArrayLeft_1.length === childmax) {
           OpArrayMiddle.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
           OpArrayLeft_1.pop();
           OpArrayEdge.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
@@ -612,17 +627,31 @@ export default function BinaryTree() {
     if (OpArrayMiddle.length > 0) {
       document.getElementById("showTwo").style.display = "block";
     }
-    if (AllArray.length > 7) {
+    if (AllArray.length >= 7) {
       if (OpArrayLeft_2.length > 0) {
         document.getElementById("showFour").style.border = "2px solid gold";
       }
-      document.getElementById("showFive").style.border = "2px solid gold";
-      document.getElementById("showSix").style.border = "2px solid gold";
-      document.getElementById("showSeven").style.border = "2px solid gold";
-      document.getElementById("showEight").style.border = "2px solid gold";
-      document.getElementById("showNine").style.border = "2px solid gold";
-      document.getElementById("showTen").style.border = "2px solid gold";
-      document.getElementById("showEleven").style.border = "2px solid gold";
+      if (OpArrayMiddle_1.length > 0) {
+        document.getElementById("showFive").style.border = "2px solid gold";
+      }
+      if (OpArrayMiddle_12.length > 0) {
+        document.getElementById("showSix").style.border = "2px solid gold";
+      }
+      if (OpArrayMiddle_14.length > 0) {
+        document.getElementById("showSeven").style.border = "2px solid gold";
+      }
+      if (OpArrayMiddle_2.length > 0) {
+        document.getElementById("showEight").style.border = "2px solid gold";
+      }
+      if (OpArrayMiddle_26.length > 0) {
+        document.getElementById("showNine").style.border = "2px solid gold";
+      }
+      if (OpArrayMiddle_28.length > 0) {
+        document.getElementById("showTen").style.border = "2px solid gold";
+      }
+      if (OpArrayRight_2.length > 0) {
+        document.getElementById("showEleven").style.border = "2px solid gold";
+      }
     }
 
     console.log("Array hossz: " + AllArray.length);
@@ -655,14 +684,14 @@ export default function BinaryTree() {
   return (
     <form style={{ background: "#000027", height: "100vh", color: "white" }}>
       <h1 style={{ textAlign: "center", paddingBottom: "20px" }}>
-        Bfa megoldó
+        Bináris kereső-fa
       </h1>
       <div>
         <div className="form-group">
           <div className="container">
             <div className="row justify-content-center text-center">
               <div className="col-2">
-                <b style={{ color: "white" }}>Fokszam: </b>
+                <b style={{ color: "white" }}>Fokszám: </b>
                 <select className="form-control" id="fok">
                   <option value="2">2</option>
                   <option value="3">3</option>
@@ -670,7 +699,7 @@ export default function BinaryTree() {
               </div>
               <div className="col-2">
                 {" "}
-                <b style={{ color: "white" }}>Elements: </b>
+                <b style={{ color: "white" }}>Elem: </b>
                 <input type="number" className="form-control" id="elements" />
                 <small className="form-text text-white">(Input items)</small>
               </div>
@@ -679,8 +708,15 @@ export default function BinaryTree() {
         </div>
         <div>
           <div className="row justify-content-center text-center">
-            <Button variant="btn btn-outline-warning" onClick={Result}>
-              Kiszámol
+            <Button variant="btn btn-outline-warning" onClick={Add}>
+              Hozzáad
+            </Button>
+            <Button
+              style={{ marginLeft: "5%" }}
+              variant="btn btn-outline-warning"
+              onClick={Delete}
+            >
+              Töröl
             </Button>
           </div>
         </div>

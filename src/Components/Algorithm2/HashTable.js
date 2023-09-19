@@ -254,7 +254,7 @@ export default function Hashtable() {
             onClick={Solve}
             style={{ visibility: "hidden" }}
           >
-            Megold
+            Kidolgoz
           </Button>
         </div>
       </div>

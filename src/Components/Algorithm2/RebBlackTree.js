@@ -806,14 +806,14 @@ export default function RedBlackTree() {
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
-        Red-Black tree
+        Piros-fekete fa
       </h1>
       <div className="form-group">
         <div className="container">
           <div className="row justify-content-center text-center">
             {" "}
             <div className="col-4 ">
-              <b style={{ color: "white" }}>Add Elements :</b>
+              <b style={{ color: "white" }}>Elem hozzáadás :</b>
               <input type="text" className="form-control" id="addnumber" />{" "}
               <small className="form-text text-white">
                 (pl.: 1,12,43,23,13)
@@ -823,12 +823,15 @@ export default function RedBlackTree() {
           </div>
           <div className="row justify-content-center text-center">
             <Button variant="outline-warning col-1" onClick={Rbtadd}>
-              Solve
+              Kidolgoz
             </Button>
           </div>
         </div>
       </div>
       <div className="row justify-content-center text-center">
+      <svg style={{height:"50px", width:"200px"}}>
+        <line x1="100" y1="20" x2="250" y2="80" style={{stroke:'gold', strokeWidth:2}} />
+      </svg>
         <br />
         <b id="tree" style={{ height: "400px", width: "1200px" }}></b>
       </div>

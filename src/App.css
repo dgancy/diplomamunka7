@@ -51,7 +51,7 @@ a {
 .table-container {
   text-decoration: bold;
   position: fixed;
-  top: 50%;
+  top: 80%;
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
