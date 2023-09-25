@@ -4,6 +4,63 @@ import { Button } from "react-bootstrap";
 export default function RedBlackTree() {
   var array = [];
 
+  const Line = ({ x1, y1, x2, y2 }) => (
+    <line
+      x1={x1}
+      y1={y1}
+      x2={x2}
+      y2={y2}
+      style={{ stroke: "gold", strokeWidth: 2 }}
+    />
+  );
+
+  const lines = [
+    <Line key="line1" x1="600" y1="20" x2="400" y2="80" />, //1
+    <Line key="line2" x1="600" y1="20" x2="800" y2="80" />, //2
+
+    <Line key="line3" x1="400" y1="80" x2="290" y2="130" />, //3
+    <Line key="line4" x1="400" y1="80" x2="500" y2="130" />, //4
+
+    <Line key="line5" x1="300" y1="120" x2="240" y2="180" />, //5
+    <Line key="line6" x1="300" y1="110" x2="350" y2="180" />, //6
+
+    <Line key="line7" x1="500" y1="130" x2="450" y2="180" />, //7
+    <Line key="line8" x1="500" y1="130" x2="550" y2="180" />, //8
+
+    <Line key="line9" x1="800" y1="80" x2="700" y2="130" />, //9
+    <Line key="line10" x1="800" y1="80" x2="900" y2="130" />, //10
+
+    <Line key="line11" x1="700" y1="130" x2="650" y2="180" />, //11
+    <Line key="line12" x1="700" y1="130" x2="750" y2="180" />, //12
+
+    <Line key="line13" x1="880" y1="130" x2="840" y2="180" />, //13
+    <Line key="line14" x1="900" y1="130" x2="950" y2="180" />, //14
+
+    <Line key="line15" x1="240" y1="180" x2="220" y2="220" />, //15
+    <Line key="line16" x1="260" y1="180" x2="280" y2="220" />, //16
+
+    <Line key="line17" x1="350" y1="180" x2="320" y2="220" />, //17
+    <Line key="line18" x1="350" y1="180" x2="380" y2="220" />, //18
+
+    <Line key="line19" x1="440" y1="180" x2="420" y2="220" />, //19
+    <Line key="line20" x1="450" y1="180" x2="480" y2="220" />, //20
+
+    <Line key="line21" x1="540" y1="180" x2="520" y2="220" />, //21
+    <Line key="line22" x1="550" y1="180" x2="580" y2="220" />, //22
+
+    <Line key="line23" x1="640" y1="180" x2="620" y2="220" />, //23
+    <Line key="line24" x1="650" y1="180" x2="680" y2="220" />, //24
+
+    <Line key="line25" x1="740" y1="180" x2="720" y2="220" />, //25
+    <Line key="line26" x1="750" y1="180" x2="780" y2="220" />, //26
+
+    <Line key="line27" x1="840" y1="180" x2="820" y2="220" />, //27
+    <Line key="line28" x1="850" y1="180" x2="880" y2="220" />, //28
+
+    <Line key="line29" x1="940" y1="180" x2="920" y2="220" />, //29
+    <Line key="line30" x1="950" y1="180" x2="980" y2="220" />, //30
+  ];
+
   function Rbtadd() {
     var a = document.getElementById("addnumber").value;
     array = a.split(",");
@@ -639,10 +696,13 @@ export default function RedBlackTree() {
 
     if (!containsNumber(secondLine)) {
       colorHelperArray.push(edge, secondLine);
+      state = 1;
+      console.log("im in");
     }
     if (!containsNumber(thirdLine)) {
       colorHelperArray = colorHelperArray.concat(edge, secondLine, thirdLine);
       state = 3;
+      console.log("why")
     }
     if (!containsNumber(fourthLine)) {
       colorHelperArray = colorHelperArray.concat(
@@ -829,11 +889,27 @@ export default function RedBlackTree() {
         </div>
       </div>
       <div className="row justify-content-center text-center">
-      <svg style={{height:"50px", width:"200px"}}>
-        <line x1="100" y1="20" x2="250" y2="80" style={{stroke:'gold', strokeWidth:2}} />
-      </svg>
         <br />
-        <b id="tree" style={{ height: "400px", width: "1200px" }}></b>
+        <svg
+          id="tree-line"
+          style={{
+            position: "absolute",
+            top: "80%",
+            height: "400px",
+            width: "1200px",
+          }}
+        >
+          {lines}
+        </svg>
+        <b
+          id="tree"
+          style={{
+            position: "absolute",
+            top: "80%",
+            height: "400px",
+            width: "1200px",
+          }}
+        ></b>
       </div>
     </form>
   );

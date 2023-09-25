@@ -3,7 +3,34 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function BinaryTreeTest() {
-const navigate=useNavigate();
+  const navigate = useNavigate();
+
+  const Line = ({ x1, y1, x2, y2 }) => (
+    <line
+      x1={x1}
+      y1={y1}
+      x2={x2}
+      y2={y2}
+      style={{ stroke: "gold", strokeWidth: 2 }}
+    />
+  );
+
+  const lines = [
+    <Line key="line1" x1="480" y1="37" x2="390" y2="75" />, //1
+    <Line key="line2" x1="660" y1="37" x2="750" y2="75" />, //2
+    <Line key="line3" x1="570" y1="37" x2="570" y2="75" />, //3
+
+    <Line key="line4" x1="300" y1="100" x2="250" y2="140" />, //4
+    <Line key="line5" x1="340" y1="100" x2="340" y2="140" />, //5
+    <Line key="line6" x1="400" y1="100" x2="430" y2="140" />, //6
+
+    <Line key="line7" x1="535" y1="100" x2="510" y2="140" />, //7
+    <Line key="line8" x1="600" y1="100" x2="625" y2="140" />, //8
+
+    <Line key="line9" x1="760" y1="100" x2="710" y2="140" />, //9
+    <Line key="line10" x1="800" y1="100" x2="800" y2="140" />, //10
+    <Line key="line11" x1="860" y1="100" x2="890" y2="140" />, //11
+  ];
 
   var array = [];
   var fokszam = 2;
@@ -280,51 +307,101 @@ const navigate=useNavigate();
     console.log("Right2: " + OutputArrayRight_2);
     console.log("Middle1: " + OutputArrayMiddle_1);
     console.log("Middle2: " + OutputArrayMiddle_2);
-  
-  navigate("/hash-table-test");
+
+    navigate("/hash-table-test");
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <div className="form-group" style={{ padding: "15px" }}>
         <div style={{ color: "white", textAlign: "center", padding: "10px" }}>
           {" "}
           {Generate()}
         </div>
-
-        <div className="container">
-          <div className="row justify-content-center">
-            <div className="col-2">
+        <br />
+        <svg
+          id="tree-line"
+          style={{
+            position: "absolute",
+            top: "65%",
+            left: "5%",
+            height: "400px",
+            width: "1200px",
+          }}
+        >
+          {lines}
+        </svg>
+        <div
+          className="container"
+          style={{
+            position: "absolute",
+            top: "65%",
+            left: "5%",
+            height: "400px",
+            width: "1200px",
+          }}
+        >
+          <div
+            className="row justify-content-center"
+            style={{ paddingBottom: "15px" }}
+          >
+            <div className="col-3">
               <input id="inp0" type="text" className="form-control"></input>
             </div>
           </div>
-          <div className="row justify-content-center" style={{ padding: "15px" }}>
-            <div className="col-2" >
+          <div
+            className="row justify-content-center"
+            style={{ padding: "15px" }}
+          >
+            <div className="col-2">
               {" "}
               <input id="inp1" type="text" className="form-control"></input>
             </div>
-            <div className="col-2">
+            <div
+              className="col-2"
+              style={{ marginRight: "4%", marginLeft: "4%" }}
+            >
               {" "}
+              <input id="inpmid1" type="text" className="form-control"></input>
             </div>
             <div className="col-2">
               {" "}
               <input id="inp2" type="text" className="form-control"></input>
             </div>
           </div>
-          <div className="row justify-content-center" style={{ padding: "15px" }}>
-            <div className="col-2">
+          <div
+            className="row justify-content-center"
+            style={{ padding: "15px" }}
+          >
+            <div className="col-1">
               {" "}
               <input id="inp3" type="text" className="form-control"></input>
             </div>
-            <div className="col-2">
+            <div className="col-1">
               {" "}
               <input id="inp4" type="text" className="form-control"></input>
             </div>
-            <div className="col-2">
+            <div className="col-1">
               {" "}
               <input id="inp5" type="text" className="form-control"></input>
             </div>
-            <div className="col-2">
+            <div className="col-1">
+              {" "}
+              <input id="inp6" type="text" className="form-control"></input>
+            </div>
+            <div className="col-1">
+              {" "}
+              <input id="inp3" type="text" className="form-control"></input>
+            </div>
+            <div className="col-1">
+              {" "}
+              <input id="inp4" type="text" className="form-control"></input>
+            </div>
+            <div className="col-1">
+              {" "}
+              <input id="inp5" type="text" className="form-control"></input>
+            </div>
+            <div className="col-1">
               {" "}
               <input id="inp6" type="text" className="form-control"></input>
             </div>

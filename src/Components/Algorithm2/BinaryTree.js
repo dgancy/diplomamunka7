@@ -3,6 +3,33 @@ import Button from "react-bootstrap/Button";
 
 export default function BinaryTree() {
   var AllArray = [];
+  //perfetto mefisto, márcsak otthon bekell vonalazni rendesen
+  const Line = ({ x1, y1, x2, y2 }) => (
+    <line
+      x1={x1}
+      y1={y1}
+      x2={x2}
+      y2={y2}
+      style={{ stroke: "gold", strokeWidth: 2 }}
+    />
+  );
+
+  const lines = [
+    <Line key="line1" x1="480" y1="37" x2="390" y2="62" />, //1
+    <Line key="line2" x1="660" y1="37" x2="750" y2="62" />, //2
+    <Line key="line3" x1="570" y1="37" x2="570" y2="62" />, //3
+
+    <Line key="line4" x1="250" y1="89" x2="200" y2="112" />, //4
+    <Line key="line5" x1="305" y1="89" x2="305" y2="112" />, //5
+    <Line key="line6" x1="350" y1="89" x2="400" y2="112" />, //6
+
+    <Line key="line7" x1="525" y1="89" x2="500" y2="112" />, //7
+    <Line key="line8" x1="600" y1="89" x2="625" y2="112" />, //8
+
+    <Line key="line9" x1="800" y1="89" x2="750" y2="112" />, //9
+    <Line key="line10" x1="840" y1="89" x2="840" y2="112" />, //10
+    <Line key="line11" x1="900" y1="89" x2="950" y2="112" />, //11
+  ];
 
   function Delete() {
     var del_element = document.getElementById("elements").value;
@@ -113,7 +140,7 @@ export default function BinaryTree() {
         OpArrayLeft_1.length <= childmax &&
         OpArrayRight_1.length <= childmax &&
         OpArrayMiddle.length <= childmax &&
-        i >= 6
+        i > 6
       ) {
         //nincs lekezelve amikor még csak lefele kell neki az adatokat adnia fel nélkül.
         if (
@@ -181,7 +208,7 @@ export default function BinaryTree() {
           if (OpArrayLeft_1.length === childmax) {
             OpArrayLeft_2.push(OpArrayLeft_1[0]);
             OpArrayLeft_1.shift();
-            OpArrayLeft_2.push(OpArrayLeft_1[0]);
+            OpArrayEdge.push(OpArrayLeft_1[0]);
             OpArrayLeft_1.shift();
             OpArrayMiddle_12.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
             OpArrayLeft_1.pop();
@@ -189,7 +216,7 @@ export default function BinaryTree() {
           if (OpArrayRight_1.length === childmax) {
             OpArrayMiddle_26.push(OpArrayRight_1[0]);
             OpArrayRight_1.shift();
-            OpArrayMiddle_26.push(OpArrayRight_1[0]);
+            OpArrayEdge.push(OpArrayRight_1[0]);
             OpArrayRight_1.shift();
             OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
             OpArrayRight_1.pop();
@@ -512,7 +539,7 @@ export default function BinaryTree() {
           parseInt(AllArray[i]) >
             parseInt(OpArrayRight_1[OpArrayRight_1.length - 1])
         ) {
-          OpArrayMiddle_14.push(OpArrayRight_2[0]);
+          OpArrayMiddle_28.push(OpArrayRight_2[0]);
           OpArrayRight_2.shift();
           OpArrayRight_1.push(OpArrayRight_2[0]);
           OpArrayRight_2.shift();
@@ -524,97 +551,106 @@ export default function BinaryTree() {
             return a - b;
           });
         }
-
-        if (
-          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0])
-        ) {
-          OpArrayLeft_2.push(AllArray[i]);
-
-          OpArrayLeft_2.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[0]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[1])
-        ) {
-          OpArrayMiddle_1.push(AllArray[i]);
-
-          OpArrayMiddle_1.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[1]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[2])
-        ) {
-          OpArrayMiddle_12.push(AllArray[i]);
-
-          OpArrayMiddle_12.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayMiddle[0]) &&
-          OpArrayMiddle_14.length !== 0
-        ) {
-          OpArrayMiddle_14.push(AllArray[i]);
-
-          OpArrayMiddle_14.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
-          parseInt(AllArray[i]) > parseInt(OpArrayMiddle[0]) &&
-          OpArrayMiddle_2.length !== 0
-        ) {
-          OpArrayMiddle_2.push(AllArray[i]);
-
-          OpArrayMiddle_2.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayRight_1[1])
-        ) {
-          OpArrayMiddle_26.push(AllArray[i]);
-
-          OpArrayMiddle_26.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) > parseInt(OpArrayRight_1[1]) &&
-          parseInt(AllArray[i]) < parseInt(OpArrayRight_1[2])
-        ) {
-          OpArrayMiddle_28.push(AllArray[i]);
-
-          OpArrayMiddle_28.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-          parseInt(AllArray[i]) >
-            parseInt(OpArrayRight_1[OpArrayRight_1.length - 1])
-        ) {
-          OpArrayRight_2.push(AllArray[i]);
-
-          OpArrayRight_2.sort(function (a, b) {
-            return a - b;
-          });
-        }
       }
+
+      if (
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0]) &&
+        OpArrayLeft_2.length < childmax
+      ) {
+        OpArrayLeft_2.push(AllArray[i]);
+
+        OpArrayLeft_2.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[1]) &&
+        OpArrayMiddle_1.length < childmax
+      ) {
+        OpArrayMiddle_1.push(AllArray[i]);
+
+        OpArrayMiddle_1.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[1]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[2]) &&
+        OpArrayMiddle_12.length < childmax
+      ) {
+        OpArrayMiddle_12.push(AllArray[i]);
+
+        OpArrayMiddle_12.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayMiddle[0]) &&
+        OpArrayMiddle_14.length !== 0 &&
+        OpArrayMiddle_14.length < childmax
+      ) {
+        OpArrayMiddle_14.push(AllArray[i]);
+
+        OpArrayMiddle_14.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayMiddle[0]) &&
+        OpArrayMiddle_2.length !== 0 &&
+        OpArrayMiddle_2.length < childmax
+      ) {
+        OpArrayMiddle_2.push(AllArray[i]);
+
+        OpArrayMiddle_2.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[1]) &&
+        OpArrayMiddle_26.length < childmax
+      ) {
+        OpArrayMiddle_26.push(AllArray[i]);
+
+        OpArrayMiddle_26.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayRight_1[1]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[2]) &&
+        OpArrayMiddle_28.length < childmax
+      ) {
+        OpArrayMiddle_28.push(AllArray[i]);
+
+        OpArrayMiddle_28.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) >
+          parseInt(OpArrayRight_1[OpArrayRight_1.length - 1]) &&
+        OpArrayRight_2.length < childmax
+      ) {
+        OpArrayRight_2.push(AllArray[i]);
+
+        OpArrayRight_2.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      //az alsó szinten levőket helyre rakni
     }
     if (OpArrayEdge.length > 0) {
       document.getElementById("showZero").style.display = "block";
@@ -663,7 +699,11 @@ export default function BinaryTree() {
     console.log("Right2: " + OpArrayRight_2);
     console.log("Middle: " + OpArrayMiddle);
     console.log("Middle1: " + OpArrayMiddle_1);
+    console.log("Middle12: " + OpArrayMiddle_1);
+    console.log("Middle14: " + OpArrayMiddle_1);
     console.log("Middle2: " + OpArrayMiddle_2);
+    console.log("Middle26: " + OpArrayMiddle_2);
+    console.log("Middle28: " + OpArrayMiddle_2);
 
     //document.getElementById("array1").innerHTML = AllArray;
     document.getElementById("arrayedge").innerHTML = OpArrayEdge;
@@ -722,7 +762,29 @@ export default function BinaryTree() {
         </div>
       </div>
       <br />
-      <div className="container" style={{ textAlign: "center" }}>
+      <svg
+        id="tree-line"
+        style={{
+          position: "absolute",
+          top: "80%",
+          left: "5%",
+          height: "400px",
+          width: "1200px",
+        }}
+      >
+        {lines}
+      </svg>
+      <div
+        className="container"
+        style={{
+          textAlign: "center",
+          position: "absolute",
+          top: "80%",
+          left: "5%",
+          height: "400px",
+          width: "1200px",
+        }}
+      >
         <div style={{ padding: "1%" }}>
           <div className="row justify-content-center ">
             <div
