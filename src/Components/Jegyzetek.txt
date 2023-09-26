@@ -1,18 +1,19 @@
 Backend
 Login --pipa
 Register --pipa
-Database --pipa kinda
-
-RedBlackTreeAssignment Rework --pipa
-Test pages --pipa
+Database --pipa 
+Hibakódok
+Chatbot --kell
+Test pages --pipa meg nem
+   
 Learning page
-Chatbot --napolva
 Recursion tree pages need to be done 
 finalcheck
 Zoli konzi
 Javítás
 Rekonzi
 
+RedBlackTreeAssignment Rework --pipa
 ----test pages= adatátvitel, mint gond, check functions ellenőrzése, hibakódok továbbadása.
 
 alap oldalak= master + recursion infó hiány,----binary tree hát nem jó,alakul

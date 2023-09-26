@@ -320,27 +320,28 @@ export default function BinaryTreeTest() {
         </div>
         <br />
         <svg
-          id="tree-line"
-          style={{
-            position: "absolute",
-            top: "65%",
-            left: "5%",
-            height: "400px",
-            width: "1200px",
-          }}
-        >
-          {lines}
-        </svg>
-        <div
-          className="container"
-          style={{
-            position: "absolute",
-            top: "65%",
-            left: "5%",
-            height: "400px",
-            width: "1200px",
-          }}
-        >
+        id="tree-line"
+        style={{
+          position: "absolute",
+          top: "80%",
+          left: "5%",
+          height: "400px",
+          width: "1200px",
+        }}
+      >
+        {lines}
+      </svg>
+      <div
+        className="container"
+        style={{
+          textAlign: "center",
+          position: "absolute",
+          top: "80%",
+          left: "5%",
+          height: "400px",
+          width: "1200px",
+        }}
+      >
           <div
             className="row justify-content-center"
             style={{ paddingBottom: "15px" }}
