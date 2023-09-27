@@ -763,28 +763,32 @@ export default function BinaryTree() {
       </div>
       <br />
       <svg
-        id="tree-line"
-        style={{
-          position: "absolute",
-          top: "80%",
-          left: "5%",
-          height: "400px",
-          width: "1200px",
-        }}
-      >
-        {lines}
-      </svg>
-      <div
-        className="container"
-        style={{
-          textAlign: "center",
-          position: "absolute",
-          top: "80%",
-          left: "5%",
-          height: "400px",
-          width: "1200px",
-        }}
-      >
+  id="tree-line"
+  style={{
+    position: "absolute",
+    top: "65%", /* Add this line */
+    transform: "translateY(-50%)", /* Add this line */
+    left: "50%",
+    transform: "translateX(-50%)",
+    paddingBottom: "25px",
+    height: "350px",
+    width: "1400px",
+  }}
+>
+  {lines}
+</svg>
+<div
+  style={{
+    position: "absolute",
+    top: "65%", /* Add this line */
+    transform: "translateY(-50%)", /* Add this line */
+    left: "50%",
+    transform: "translateX(-50%)",
+    paddingBottom: "25px",
+    width: "1400px",
+    height: "350px",
+  }}
+>
         <div style={{ padding: "1%" }}>
           <div className="row justify-content-center ">
             <div

@@ -313,35 +313,39 @@ export default function BinaryTreeTest() {
 
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
-      <div className="form-group" style={{ padding: "15px" }}>
+      <div className="form-group">
         <div style={{ color: "white", textAlign: "center", padding: "10px" }}>
           {" "}
           {Generate()}
         </div>
         <br />
         <svg
-        id="tree-line"
-        style={{
-          position: "absolute",
-          top: "80%",
-          left: "5%",
-          height: "400px",
-          width: "1200px",
-        }}
-      >
-        {lines}
-      </svg>
-      <div
-        className="container"
-        style={{
-          textAlign: "center",
-          position: "absolute",
-          top: "80%",
-          left: "5%",
-          height: "400px",
-          width: "1200px",
-        }}
-      >
+  id="tree-line"
+  style={{
+    position: "absolute",
+    top: "65%", /* Add this line */
+    transform: "translateY(-50%)", /* Add this line */
+    left: "50%",
+    transform: "translateX(-50%)",
+    paddingBottom: "25px",
+    height: "350px",
+    width: "1400px",
+  }}
+>
+  {lines}
+</svg>
+<div
+  style={{
+    position: "absolute",
+    top: "65%", /* Add this line */
+    transform: "translateY(-50%)", /* Add this line */
+    left: "50%",
+    transform: "translateX(-50%)",
+    paddingBottom: "25px",
+    width: "1400px",
+    height: "350px",
+  }}
+>
           <div
             className="row justify-content-center"
             style={{ paddingBottom: "15px" }}

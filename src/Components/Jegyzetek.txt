@@ -20,3 +20,8 @@ alap oldalak= master + recursion infó hiány,----binary tree hát nem jó,alaku
 
 feladatos oldalak= bug fix, fix, dropdown fix, rbt befejezése, többi ok., hast tábla ok,backtrack ok,   rbt-t fent inkább és done, 
 
+holnap megcsinálni a vonalakat az új css szerint
+, bug fix az rbttree simára 1-3 elemig nem jó + a nil-es story.
+
+
+saját: hibakódok + Chatbot, backend köv 

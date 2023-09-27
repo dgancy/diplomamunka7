@@ -15,11 +15,11 @@ export default function RedBlackTree() {
   );
 
   const lines = [
-    <Line key="line1" x1="600" y1="20" x2="400" y2="80" />, //1
-    <Line key="line2" x1="600" y1="20" x2="800" y2="80" />, //2
+    <Line key="line1" x1="600" y1="20" x2="410" y2="70" />, //1
+    <Line key="line2" x1="600" y1="20" x2="800" y2="70" />, //2
 
-    <Line key="line3" x1="400" y1="80" x2="290" y2="130" />, //3
-    <Line key="line4" x1="400" y1="80" x2="500" y2="130" />, //4
+    <Line key="line3" x1="410" y1="70" x2="310" y2="120" />, //3
+    <Line key="line4" x1="410" y1="70" x2="500" y2="120" />, //4
 
     <Line key="line5" x1="300" y1="120" x2="240" y2="180" />, //5
     <Line key="line6" x1="300" y1="110" x2="350" y2="180" />, //6
@@ -139,20 +139,6 @@ export default function RedBlackTree() {
           ) {
             fourthLine[1] = parsedarray[i];
           }
-          /*if (parsedarray[i] < thirdLine[0] && thirdLine[1] === "NIL") {
-            thirdLine[1] = secondLine[0];
-            secondLine[0] = thirdLine[0];
-            thirdLine[0] = parsedarray[i];
-          }
-          if (
-            parsedarray[i] > thirdLine[0] &&
-            parsedarray[i] < thirdLine[1] &&
-            thirdLine[1] === "NIL"
-          ) {
-            thirdLine[0] = secondLine[0];
-            secondLine[0] = thirdLine[1];
-            thirdLine[1] = parsedarray[i];
-          }*/
         }
 
         if (
@@ -179,20 +165,6 @@ export default function RedBlackTree() {
           ) {
             fourthLine[3] = parsedarray[i];
           }
-          /*if (parsedarray[i] < thirdLine[1] && thirdLine[0] === "NIL") {
-            thirdLine[0] = secondLine[0];
-            secondLine[0] = thirdLine[2];
-            thirdLine[2] = parsedarray[i];
-          }
-          if (
-            parsedarray[i] > thirdLine[1] &&
-            parsedarray[i] < secondLine[1] &&
-            thirdLine[0] === "NIL"
-          ) {
-            thirdLine[0] = secondLine[0];
-            secondLine[0] = thirdLine[3];
-            thirdLine[3] = parsedarray[i];
-          }*/
         }
 
         if (parsedarray[i] < secondLine[0] && secondLine[0] !== "NIL") {
@@ -283,24 +255,6 @@ export default function RedBlackTree() {
               fifthLine[7] = parsedarray[i];
             }
           }
-          /*if (
-            parsedarray[i] > thirdLine[1] &&
-            thirdLine[1] !== "NIL" &&
-            parsedarray[i] < thirdLine[2] &&
-            thirdLine[2] !== "NIL"
-          ) {
-            if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
-              fifthLine[2] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[1] &&
-              fourthLine[1] !== "NIL" &&
-              parsedarray[i] < fourthLine[2] &&
-              fourthLine[2] !== "NIL"
-            ) {
-              fifthLine[3] = parsedarray[i];
-            }
-          }*/
         }
 
         if (
@@ -553,14 +507,16 @@ export default function RedBlackTree() {
         if (
           secondLine[0] === "NIL" &&
           secondLine[1] !== "NIL" &&
-          parsedarray[i] < secondLine[1]
+          parsedarray[i] < secondLine[1] &&
+          parsedarray[i] > edge
         ) {
           secondLine[0] = edge;
           edge = parsedarray[i];
         } else if (
           secondLine[0] === "NIL" &&
           secondLine[1] !== "NIL" &&
-          parsedarray[i] > secondLine[1]
+          parsedarray[i] > secondLine[1] &&
+          parsedarray[i] > edge
         ) {
           secondLine[0] = edge;
           edge = secondLine[1];
@@ -694,17 +650,17 @@ export default function RedBlackTree() {
 
     var state = 0;
 
-    if (!containsNumber(secondLine)) {
+    if (containsNumber(secondLine)) {
       colorHelperArray.push(edge, secondLine);
       state = 1;
       console.log("im in");
     }
-    if (!containsNumber(thirdLine)) {
+    if (containsNumber(thirdLine)) {
       colorHelperArray = colorHelperArray.concat(edge, secondLine, thirdLine);
       state = 3;
-      console.log("why")
+      console.log("why");
     }
-    if (!containsNumber(fourthLine)) {
+    if (containsNumber(fourthLine)) {
       colorHelperArray = colorHelperArray.concat(
         edge,
         secondLine,
@@ -856,10 +812,6 @@ export default function RedBlackTree() {
     console.log("FourthLine: " + fourthLine);
     console.log("FifthLine: " + fifthLine);
   }
-
-  /*
-
- */
 
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
