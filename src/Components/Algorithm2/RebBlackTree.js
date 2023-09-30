@@ -63,748 +63,770 @@ export default function RedBlackTree() {
 
   function Rbtadd() {
     var a = document.getElementById("addnumber").value;
-    array = a.split(",");
+    console.log(a);
+    if (a.length < 1) {
+      alert("Kérlek adj értéket a mezőbe");
+    } else {
+      array = a.split(",");
+      var parsedarray = [];
+      var colorHelperArray = [];
+      var color = [];
 
-    var parsedarray = [];
-    var colorHelperArray = [];
-    var color = [];
+      for (var i = 0; i < array.length; i++) {
+        parsedarray.push(parseInt(array[i]));
+      }
 
-    for (var i = 0; i < array.length; i++) {
-      parsedarray.push(parseInt(array[i]));
-    }
+      var secondLine = [];
+      var thirdLine = [];
+      var fourthLine = [];
+      var fifthLine = [];
 
-    var secondLine = [];
-    var thirdLine = [];
-    var fourthLine = [];
-    var fifthLine = [];
+      //var change=0;
 
-    //var change=0;
-
-    for (let i = 0; i < 2; i++) {
-      secondLine.push("NIL");
-      for (let j = 0; j < 2; j++) {
-        thirdLine.push("NIL");
-        for (let n = 0; n < 2; n++) {
-          fourthLine.push("NIL");
-          for (let m = 0; m < 2; m++) {
-            fifthLine.push("NIL");
+      for (let i = 0; i < 2; i++) {
+        secondLine.push("NIL");
+        for (let j = 0; j < 2; j++) {
+          thirdLine.push("NIL");
+          for (let n = 0; n < 2; n++) {
+            fourthLine.push("NIL");
+            for (let m = 0; m < 2; m++) {
+              fifthLine.push("NIL");
+            }
           }
         }
       }
-    }
 
-    var edge = parsedarray[0];
+      var edge = parsedarray[0];
 
-    for (let i = 0; i < parsedarray.length; i++) {
-      if (parsedarray[i] < edge && secondLine[0] === "NIL") {
-        secondLine[0] = parsedarray[i];
-      } else if (parsedarray[i] > edge && secondLine[1] === "NIL") {
-        secondLine[1] = parsedarray[i];
-      }
-
-      if (parsedarray[i] < edge) {
-        if (
-          secondLine[0] !== "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] < secondLine[0] &&
-          thirdLine[0] === "NIL"
-        ) {
-          thirdLine[0] = parsedarray[i];
-        } else if (
-          secondLine[0] !== "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] > secondLine[0] &&
-          thirdLine[1] === "NIL"
-        ) {
-          thirdLine[1] = parsedarray[i];
-        }
-
-        if (
-          secondLine[0] !== "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] < secondLine[0] &&
-          thirdLine[0] !== "NIL"
-        ) {
-          if (
-            parsedarray[i] < thirdLine[0] &&
-            fourthLine[0] === "NIL" &&
-            thirdLine[1] !== "NIL"
-          ) {
-            fourthLine[0] = parsedarray[i];
-          } else if (
-            parsedarray[i] > thirdLine[0] &&
-            parsedarray[i] < thirdLine[1] &&
-            fourthLine[1] === "NIL" &&
-            thirdLine[1] !== "NIL"
-          ) {
-            fourthLine[1] = parsedarray[i];
-          }
-        }
-
-        if (
-          secondLine[0] !== "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] > secondLine[0] &&
-          parsedarray[i] < secondLine[1] &&
-          thirdLine[1] !== "NIL"
-        ) {
-          if (
-            parsedarray[i] < thirdLine[1] &&
-            parsedarray[i] > thirdLine[0] &&
-            fourthLine[2] === "NIL" &&
-            thirdLine[0] !== "NIL" &&
-            thirdLine[1] !== "NIL"
-          ) {
-            fourthLine[2] = parsedarray[i];
-          } else if (
-            parsedarray[i] > thirdLine[1] &&
-            parsedarray[i] < thirdLine[2] &&
-            fourthLine[3] === "NIL" &&
-            thirdLine[2] !== "NIL" &&
-            thirdLine[1] !== "NIL"
-          ) {
-            fourthLine[3] = parsedarray[i];
-          }
-        }
-
-        if (parsedarray[i] < secondLine[0] && secondLine[0] !== "NIL") {
-          if (parsedarray[i] < thirdLine[0] && thirdLine[0] !== "NIL") {
-            if (parsedarray[i] < fourthLine[0] && fourthLine[0] !== "NIL") {
-              fifthLine[0] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[0] &&
-              fourthLine[0] !== "NIL" &&
-              parsedarray[i] < fourthLine[1] &&
-              fourthLine[1] !== "NIL"
-            ) {
-              fifthLine[1] = parsedarray[i];
-            }
-          }
-          if (
-            parsedarray[i] > thirdLine[0] &&
-            thirdLine[0] !== "NIL" &&
-            parsedarray[i] < thirdLine[1] &&
-            thirdLine[1] !== "NIL"
-          ) {
-            if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
-              fifthLine[2] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[1] &&
-              fourthLine[1] !== "NIL" &&
-              parsedarray[i] < fourthLine[2] &&
-              fourthLine[2] !== "NIL"
-            ) {
-              fifthLine[3] = parsedarray[i];
-            }
-          }
-          if (
-            parsedarray[i] > thirdLine[1] &&
-            thirdLine[1] !== "NIL" &&
-            parsedarray[i] < thirdLine[2] &&
-            thirdLine[2] !== "NIL"
-          ) {
-            if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
-              fifthLine[2] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[1] &&
-              fourthLine[1] !== "NIL" &&
-              parsedarray[i] < fourthLine[2] &&
-              fourthLine[2] !== "NIL"
-            ) {
-              fifthLine[3] = parsedarray[i];
-            }
-          }
-        }
-        if (
-          parsedarray[i] > secondLine[0] &&
-          secondLine[0] !== "NIL" &&
-          parsedarray[i] < secondLine[1] &&
-          secondLine[1] !== "NIL"
-        ) {
-          if (parsedarray[i] < thirdLine[1] && thirdLine[1] !== "NIL") {
-            if (parsedarray[i] < fourthLine[2] && fourthLine[2] !== "NIL") {
-              fifthLine[4] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[2] &&
-              fourthLine[2] !== "NIL" &&
-              parsedarray[i] < fourthLine[3] &&
-              fourthLine[3] !== "NIL"
-            ) {
-              fifthLine[5] = parsedarray[i];
-            }
-          }
-          if (
-            parsedarray[i] > thirdLine[1] &&
-            thirdLine[1] !== "NIL" &&
-            parsedarray[i] < thirdLine[2] &&
-            thirdLine[2] !== "NIL"
-          ) {
-            if (parsedarray[i] < fourthLine[3] && fourthLine[3] !== "NIL") {
-              fifthLine[6] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[3] &&
-              fourthLine[3] !== "NIL" &&
-              parsedarray[i] < fourthLine[4] &&
-              fourthLine[4] !== "NIL"
-            ) {
-              fifthLine[7] = parsedarray[i];
-            }
-          }
-        }
-
-        if (
-          secondLine[0] === "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] < secondLine[0]
-        ) {
-          secondLine[1] = edge;
-          edge = secondLine[0];
+      for (let i = 0; i < parsedarray.length; i++) {
+        if (parsedarray[i] < edge && secondLine[0] === "NIL") {
           secondLine[0] = parsedarray[i];
-        } else if (
-          secondLine[0] === "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] > secondLine[0]
-        ) {
-          secondLine[0] = edge;
-          edge = parsedarray[i];
-        }
-
-        if (secondLine[0] !== "NIL") {
-          if (thirdLine[0] !== "NIL" && thirdLine[1] === "NIL") {
-            if (fourthLine[0] !== "NIL") {
-              thirdLine[1] = secondLine[0];
-              secondLine[0] = thirdLine[0];
-              thirdLine[0] = fourthLine[0];
-              fourthLine[0] = "NIL";
-            }
-            if (fourthLine[1] !== "NIL") {
-              thirdLine[1] = secondLine[0];
-              secondLine[0] = fourthLine[1];
-              fourthLine[1] = "NIL";
-            }
-          }
-          if (thirdLine[1] !== "NIL" && thirdLine[0] === "NIL") {
-            if (fourthLine[2] !== "NIL") {
-              thirdLine[0] = secondLine[0];
-              secondLine[0] = fourthLine[2];
-              fourthLine[2] = "NIL";
-            }
-            if (fourthLine[3] !== "NIL") {
-              thirdLine[0] = secondLine[0];
-              secondLine[0] = thirdLine[1];
-              thirdLine[1] = fourthLine[3];
-              fourthLine[3] = "NIL";
-            }
-          }
-        }
-
-        if (
-          thirdLine[0] !== "NIL" &&
-          fourthLine[0] !== "NIL" &&
-          fourthLine[1] === "NIL" &&
-          fifthLine[0] !== "NIL"
-        ) {
-          fourthLine[1] = thirdLine[0];
-          thirdLine[0] = fourthLine[0];
-          fourthLine[0] = fifthLine[0];
-          fifthLine[0] = "NIL";
-        }
-
-        if (
-          thirdLine[0] !== "NIL" &&
-          fourthLine[0] !== "NIL" &&
-          fourthLine[1] === "NIL" &&
-          fifthLine[1] !== "NIL"
-        ) {
-          fourthLine[1] = thirdLine[0];
-          thirdLine[0] = fifthLine[1];
-          fifthLine[1] = "NIL";
-        }
-
-        if (
-          thirdLine[0] !== "NIL" &&
-          fourthLine[1] !== "NIL" &&
-          fourthLine[0] === "NIL" &&
-          fifthLine[2] !== "NIL"
-        ) {
-          fourthLine[0] = thirdLine[0];
-          thirdLine[0] = fifthLine[2];
-          fifthLine[2] = "NIL";
-        }
-        if (
-          thirdLine[0] !== "NIL" &&
-          fourthLine[1] !== "NIL" &&
-          fourthLine[0] === "NIL" &&
-          fifthLine[3] !== "NIL"
-        ) {
-          fourthLine[0] = thirdLine[0];
-          thirdLine[0] = fourthLine[1];
-          fourthLine[1] = fifthLine[3];
-          fifthLine[3] = "NIL";
-        }
-
-        if (
-          thirdLine[1] !== "NIL" &&
-          fourthLine[2] !== "NIL" &&
-          fourthLine[3] === "NIL" &&
-          fifthLine[4] !== "NIL"
-        ) {
-          fourthLine[3] = thirdLine[1];
-          thirdLine[1] = fourthLine[2];
-          fourthLine[2] = fifthLine[4];
-          fifthLine[4] = "NIL";
-        }
-
-        if (
-          thirdLine[1] !== "NIL" &&
-          fourthLine[2] !== "NIL" &&
-          fourthLine[3] === "NIL" &&
-          fifthLine[5] !== "NIL"
-        ) {
-          fourthLine[3] = thirdLine[1];
-          thirdLine[1] = fifthLine[5];
-          fifthLine[5] = "NIL";
-        }
-
-        if (
-          thirdLine[1] !== "NIL" &&
-          fourthLine[3] !== "NIL" &&
-          fourthLine[2] === "NIL" &&
-          fifthLine[6] !== "NIL"
-        ) {
-          fourthLine[2] = thirdLine[1];
-          thirdLine[1] = fifthLine[6];
-          fifthLine[6] = "NIL";
-        }
-        if (
-          thirdLine[1] !== "NIL" &&
-          fourthLine[3] !== "NIL" &&
-          fourthLine[2] === "NIL" &&
-          fifthLine[7] !== "NIL"
-        ) {
-          fourthLine[2] = thirdLine[1];
-          thirdLine[1] = fourthLine[3];
-          fourthLine[3] = fifthLine[7];
-          fifthLine[7] = "NIL";
-        }
-      }
-
-      if (parsedarray[i] > edge) {
-        if (
-          secondLine[0] !== "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] < secondLine[1] &&
-          thirdLine[2] === "NIL"
-        ) {
-          thirdLine[2] = parsedarray[i];
-        } else if (
-          secondLine[0] !== "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] > secondLine[1] &&
-          thirdLine[3] === "NIL"
-        ) {
-          thirdLine[3] = parsedarray[i];
-        }
-        if (parsedarray[i] < secondLine[1]) {
-          if (
-            parsedarray[i] < thirdLine[2] &&
-            fourthLine[4] === "NIL" 
-          ) {
-            fourthLine[4] = parsedarray[i];
-          } else if (
-            parsedarray[i] > thirdLine[2] &&
-            parsedarray[i] < thirdLine[3] &&
-            fourthLine[5] === "NIL"
-          ) {
-            fourthLine[5] = parsedarray[i];
-          }
-        }
-        if (parsedarray[i] > secondLine[1]) {
-          if (
-            parsedarray[i] < thirdLine[3] &&
-            fourthLine[6] === "NIL"
-          ) {
-            fourthLine[6] = parsedarray[i];
-          } else if (
-            parsedarray[i] > thirdLine[3] &&
-            fourthLine[7] === "NIL"
-          ) {
-            fourthLine[7] = parsedarray[i];
-          }
-        }
-        if (parsedarray[i] < secondLine[1] && secondLine[1] !== "NIL") {
-          if (parsedarray[i] < thirdLine[2] && thirdLine[2] !== "NIL") {
-            if (parsedarray[i] < fourthLine[4] && fourthLine[4] !== "NIL") {
-              fifthLine[8] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[4] &&
-              fourthLine[4] !== "NIL" &&
-              parsedarray[i] < fourthLine[5] &&
-              fourthLine[5] !== "NIL"
-            ) {
-              fifthLine[9] = parsedarray[i];
-            }
-          }
-          if (
-            parsedarray[i] > thirdLine[2] &&
-            thirdLine[2] !== "NIL" &&
-            parsedarray[i] < thirdLine[3] &&
-            thirdLine[3] !== "NIL"
-          ) {
-            if (parsedarray[i] < fourthLine[5] && fourthLine[5] !== "NIL") {
-              fifthLine[10] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[5] &&
-              fourthLine[5] !== "NIL" &&
-              parsedarray[i] < fourthLine[6] &&
-              fourthLine[6] !== "NIL"
-            ) {
-              fifthLine[11] = parsedarray[i];
-            }
-          }
-          if (
-            parsedarray[i] > thirdLine[2] &&
-            thirdLine[2] !== "NIL" &&
-            parsedarray[i] < thirdLine[3] &&
-            thirdLine[3] !== "NIL"
-          ) {
-            if (parsedarray[i] < fourthLine[6] && fourthLine[6] !== "NIL") {
-              fifthLine[12] = parsedarray[i];
-            }
-            if (
-              parsedarray[i] > fourthLine[6] &&
-              fourthLine[6] !== "NIL" &&
-              parsedarray[i] < fourthLine[7] &&
-              fourthLine[7] !== "NIL"
-            ) {
-              fifthLine[13] = parsedarray[i];
-            }
-          }
-          if (parsedarray[i] > thirdLine[3] && thirdLine[3] !== "NIL") {
-            if (parsedarray[i] < fourthLine[7] && fourthLine[7] !== "NIL") {
-              fifthLine[14] = parsedarray[i];
-            }
-            if (parsedarray[i] > fourthLine[7] && fourthLine[7] !== "NIL") {
-              fifthLine[15] = parsedarray[i];
-            }
-          }
-        }
-
-        if (
-          secondLine[0] === "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] < secondLine[1] &&
-          parsedarray[i] > edge
-        ) {
-          secondLine[0] = edge;
-          edge = parsedarray[i];
-        } else if (
-          secondLine[0] === "NIL" &&
-          secondLine[1] !== "NIL" &&
-          parsedarray[i] > secondLine[1] &&
-          parsedarray[i] > edge
-        ) {
-          secondLine[0] = edge;
-          edge = secondLine[1];
+        } else if (parsedarray[i] > edge && secondLine[1] === "NIL") {
           secondLine[1] = parsedarray[i];
         }
 
-        if (secondLine[1] !== "NIL") {
-          if (thirdLine[2] !== "NIL" && thirdLine[3] === "NIL") {
-            if (fourthLine[4] !== "NIL") {
-              thirdLine[3] = secondLine[1];
-              secondLine[1] = thirdLine[2];
-              thirdLine[2] = fourthLine[4];
-              fourthLine[4] = "NIL";
-            }
-            if (fourthLine[5] !== "NIL") {
-              thirdLine[3] = secondLine[1];
-              secondLine[1] = fourthLine[5];
-              fourthLine[5] = "NIL";
+        if (parsedarray[i] < edge) {
+          if (
+            secondLine[0] !== "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] < secondLine[0] &&
+            thirdLine[0] === "NIL"
+          ) {
+            thirdLine[0] = parsedarray[i];
+          } else if (
+            secondLine[0] !== "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] > secondLine[0] &&
+            thirdLine[1] === "NIL"
+          ) {
+            thirdLine[1] = parsedarray[i];
+          }
+
+          if (
+            secondLine[0] !== "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] < secondLine[0] &&
+            thirdLine[0] !== "NIL"
+          ) {
+            if (
+              parsedarray[i] < thirdLine[0] &&
+              fourthLine[0] === "NIL" &&
+              thirdLine[1] !== "NIL"
+            ) {
+              fourthLine[0] = parsedarray[i];
+            } else if (
+              parsedarray[i] > thirdLine[0] &&
+              parsedarray[i] < thirdLine[1] &&
+              fourthLine[1] === "NIL" &&
+              thirdLine[1] !== "NIL"
+            ) {
+              fourthLine[1] = parsedarray[i];
             }
           }
-          if (thirdLine[3] !== "NIL" && thirdLine[2] === "NIL") {
-            if (fourthLine[6] !== "NIL") {
-              thirdLine[2] = secondLine[1];
-              secondLine[1] = fourthLine[6];
-              fourthLine[6] = "NIL";
+
+          if (
+            secondLine[0] !== "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] > secondLine[0] &&
+            parsedarray[i] < secondLine[1] &&
+            thirdLine[1] !== "NIL"
+          ) {
+            if (
+              parsedarray[i] < thirdLine[1] &&
+              parsedarray[i] > thirdLine[0] &&
+              fourthLine[2] === "NIL" &&
+              thirdLine[0] !== "NIL" &&
+              thirdLine[1] !== "NIL"
+            ) {
+              fourthLine[2] = parsedarray[i];
+            } else if (
+              parsedarray[i] > thirdLine[1] &&
+              parsedarray[i] < thirdLine[2] &&
+              fourthLine[3] === "NIL" &&
+              thirdLine[2] !== "NIL" &&
+              thirdLine[1] !== "NIL"
+            ) {
+              fourthLine[3] = parsedarray[i];
             }
-            if (fourthLine[7] !== "NIL") {
-              thirdLine[2] = secondLine[1];
-              secondLine[1] = thirdLine[3];
-              thirdLine[3] = fourthLine[7];
-              fourthLine[7] = "NIL";
+          }
+
+          if (parsedarray[i] < secondLine[0] && secondLine[0] !== "NIL") {
+            if (parsedarray[i] < thirdLine[0] && thirdLine[0] !== "NIL") {
+              if (parsedarray[i] < fourthLine[0] && fourthLine[0] !== "NIL") {
+                fifthLine[0] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[0] &&
+                fourthLine[0] !== "NIL" &&
+                parsedarray[i] < fourthLine[1] &&
+                fourthLine[1] !== "NIL"
+              ) {
+                fifthLine[1] = parsedarray[i];
+              }
             }
+            if (
+              parsedarray[i] > thirdLine[0] &&
+              thirdLine[0] !== "NIL" &&
+              parsedarray[i] < thirdLine[1] &&
+              thirdLine[1] !== "NIL"
+            ) {
+              if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
+                fifthLine[2] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[1] &&
+                fourthLine[1] !== "NIL" &&
+                parsedarray[i] < fourthLine[2] &&
+                fourthLine[2] !== "NIL"
+              ) {
+                fifthLine[3] = parsedarray[i];
+              }
+            }
+            if (
+              parsedarray[i] > thirdLine[1] &&
+              thirdLine[1] !== "NIL" &&
+              parsedarray[i] < thirdLine[2] &&
+              thirdLine[2] !== "NIL"
+            ) {
+              if (parsedarray[i] < fourthLine[1] && fourthLine[1] !== "NIL") {
+                fifthLine[2] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[1] &&
+                fourthLine[1] !== "NIL" &&
+                parsedarray[i] < fourthLine[2] &&
+                fourthLine[2] !== "NIL"
+              ) {
+                fifthLine[3] = parsedarray[i];
+              }
+            }
+          }
+          if (
+            parsedarray[i] > secondLine[0] &&
+            secondLine[0] !== "NIL" &&
+            parsedarray[i] < secondLine[1] &&
+            secondLine[1] !== "NIL"
+          ) {
+            if (parsedarray[i] < thirdLine[1] && thirdLine[1] !== "NIL") {
+              if (parsedarray[i] < fourthLine[2] && fourthLine[2] !== "NIL") {
+                fifthLine[4] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[2] &&
+                fourthLine[2] !== "NIL" &&
+                parsedarray[i] < fourthLine[3] &&
+                fourthLine[3] !== "NIL"
+              ) {
+                fifthLine[5] = parsedarray[i];
+              }
+            }
+            if (
+              parsedarray[i] > thirdLine[1] &&
+              thirdLine[1] !== "NIL" &&
+              parsedarray[i] < thirdLine[2] &&
+              thirdLine[2] !== "NIL"
+            ) {
+              if (parsedarray[i] < fourthLine[3] && fourthLine[3] !== "NIL") {
+                fifthLine[6] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[3] &&
+                fourthLine[3] !== "NIL" &&
+                parsedarray[i] < fourthLine[4] &&
+                fourthLine[4] !== "NIL"
+              ) {
+                fifthLine[7] = parsedarray[i];
+              }
+            }
+          }
+
+          if (
+            secondLine[0] === "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] < secondLine[0]
+          ) {
+            secondLine[1] = edge;
+            edge = secondLine[0];
+            secondLine[0] = parsedarray[i];
+          } else if (
+            secondLine[0] === "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] > secondLine[0]
+          ) {
+            secondLine[0] = edge;
+            edge = parsedarray[i];
+          }
+
+          if (secondLine[0] !== "NIL") {
+            if (thirdLine[0] !== "NIL" && thirdLine[1] === "NIL") {
+              if (fourthLine[0] !== "NIL") {
+                thirdLine[1] = secondLine[0];
+                secondLine[0] = thirdLine[0];
+                thirdLine[0] = fourthLine[0];
+                fourthLine[0] = "NIL";
+              }
+              if (fourthLine[1] !== "NIL") {
+                thirdLine[1] = secondLine[0];
+                secondLine[0] = fourthLine[1];
+                fourthLine[1] = "NIL";
+              }
+            }
+            if (thirdLine[1] !== "NIL" && thirdLine[0] === "NIL") {
+              if (fourthLine[2] !== "NIL") {
+                thirdLine[0] = secondLine[0];
+                secondLine[0] = fourthLine[2];
+                fourthLine[2] = "NIL";
+              }
+              if (fourthLine[3] !== "NIL") {
+                thirdLine[0] = secondLine[0];
+                secondLine[0] = thirdLine[1];
+                thirdLine[1] = fourthLine[3];
+                fourthLine[3] = "NIL";
+              }
+            }
+          }
+
+          if (
+            thirdLine[0] !== "NIL" &&
+            fourthLine[0] !== "NIL" &&
+            fourthLine[1] === "NIL" &&
+            fifthLine[0] !== "NIL"
+          ) {
+            fourthLine[1] = thirdLine[0];
+            thirdLine[0] = fourthLine[0];
+            fourthLine[0] = fifthLine[0];
+            fifthLine[0] = "NIL";
+          }
+
+          if (
+            thirdLine[0] !== "NIL" &&
+            fourthLine[0] !== "NIL" &&
+            fourthLine[1] === "NIL" &&
+            fifthLine[1] !== "NIL"
+          ) {
+            fourthLine[1] = thirdLine[0];
+            thirdLine[0] = fifthLine[1];
+            fifthLine[1] = "NIL";
+          }
+
+          if (
+            thirdLine[0] !== "NIL" &&
+            fourthLine[1] !== "NIL" &&
+            fourthLine[0] === "NIL" &&
+            fifthLine[2] !== "NIL"
+          ) {
+            fourthLine[0] = thirdLine[0];
+            thirdLine[0] = fifthLine[2];
+            fifthLine[2] = "NIL";
+          }
+          if (
+            thirdLine[0] !== "NIL" &&
+            fourthLine[1] !== "NIL" &&
+            fourthLine[0] === "NIL" &&
+            fifthLine[3] !== "NIL"
+          ) {
+            fourthLine[0] = thirdLine[0];
+            thirdLine[0] = fourthLine[1];
+            fourthLine[1] = fifthLine[3];
+            fifthLine[3] = "NIL";
+          }
+
+          if (
+            thirdLine[1] !== "NIL" &&
+            fourthLine[2] !== "NIL" &&
+            fourthLine[3] === "NIL" &&
+            fifthLine[4] !== "NIL"
+          ) {
+            fourthLine[3] = thirdLine[1];
+            thirdLine[1] = fourthLine[2];
+            fourthLine[2] = fifthLine[4];
+            fifthLine[4] = "NIL";
+          }
+
+          if (
+            thirdLine[1] !== "NIL" &&
+            fourthLine[2] !== "NIL" &&
+            fourthLine[3] === "NIL" &&
+            fifthLine[5] !== "NIL"
+          ) {
+            fourthLine[3] = thirdLine[1];
+            thirdLine[1] = fifthLine[5];
+            fifthLine[5] = "NIL";
+          }
+
+          if (
+            thirdLine[1] !== "NIL" &&
+            fourthLine[3] !== "NIL" &&
+            fourthLine[2] === "NIL" &&
+            fifthLine[6] !== "NIL"
+          ) {
+            fourthLine[2] = thirdLine[1];
+            thirdLine[1] = fifthLine[6];
+            fifthLine[6] = "NIL";
+          }
+          if (
+            thirdLine[1] !== "NIL" &&
+            fourthLine[3] !== "NIL" &&
+            fourthLine[2] === "NIL" &&
+            fifthLine[7] !== "NIL"
+          ) {
+            fourthLine[2] = thirdLine[1];
+            thirdLine[1] = fourthLine[3];
+            fourthLine[3] = fifthLine[7];
+            fifthLine[7] = "NIL";
           }
         }
 
-        if (
-          thirdLine[2] !== "NIL" &&
-          fourthLine[4] !== "NIL" &&
-          fourthLine[5] === "NIL" &&
-          fifthLine[8] !== "NIL"
-        ) {
-          fourthLine[5] = thirdLine[2];
-          thirdLine[2] = fourthLine[4];
-          fourthLine[4] = fifthLine[8];
-          fifthLine[8] = "NIL";
-        }
+        if (parsedarray[i] > edge) {
+          if (
+            secondLine[0] !== "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] < secondLine[1] &&
+            thirdLine[2] === "NIL"
+          ) {
+            thirdLine[2] = parsedarray[i];
+          } else if (
+            secondLine[0] !== "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] > secondLine[1] &&
+            thirdLine[3] === "NIL"
+          ) {
+            thirdLine[3] = parsedarray[i];
+          }
+          if (parsedarray[i] < secondLine[1]) {
+            if (parsedarray[i] < thirdLine[2] && fourthLine[4] === "NIL") {
+              fourthLine[4] = parsedarray[i];
+            } else if (
+              parsedarray[i] > thirdLine[2] &&
+              parsedarray[i] < thirdLine[3] &&
+              fourthLine[5] === "NIL"
+            ) {
+              fourthLine[5] = parsedarray[i];
+            }
+          }
+          if (parsedarray[i] > secondLine[1]) {
+            if (parsedarray[i] < thirdLine[3] && fourthLine[6] === "NIL") {
+              fourthLine[6] = parsedarray[i];
+            } else if (
+              parsedarray[i] > thirdLine[3] &&
+              fourthLine[7] === "NIL"
+            ) {
+              fourthLine[7] = parsedarray[i];
+            }
+          }
+          if (parsedarray[i] < secondLine[1] && secondLine[1] !== "NIL") {
+            if (parsedarray[i] < thirdLine[2] && thirdLine[2] !== "NIL") {
+              if (parsedarray[i] < fourthLine[4] && fourthLine[4] !== "NIL") {
+                fifthLine[8] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[4] &&
+                fourthLine[4] !== "NIL" &&
+                parsedarray[i] < fourthLine[5] &&
+                fourthLine[5] !== "NIL"
+              ) {
+                fifthLine[9] = parsedarray[i];
+              }
+            }
+            if (
+              parsedarray[i] > thirdLine[2] &&
+              thirdLine[2] !== "NIL" &&
+              parsedarray[i] < thirdLine[3] &&
+              thirdLine[3] !== "NIL"
+            ) {
+              if (parsedarray[i] < fourthLine[5] && fourthLine[5] !== "NIL") {
+                fifthLine[10] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[5] &&
+                fourthLine[5] !== "NIL" &&
+                parsedarray[i] < fourthLine[6] &&
+                fourthLine[6] !== "NIL"
+              ) {
+                fifthLine[11] = parsedarray[i];
+              }
+            }
+            if (
+              parsedarray[i] > thirdLine[2] &&
+              thirdLine[2] !== "NIL" &&
+              parsedarray[i] < thirdLine[3] &&
+              thirdLine[3] !== "NIL"
+            ) {
+              if (parsedarray[i] < fourthLine[6] && fourthLine[6] !== "NIL") {
+                fifthLine[12] = parsedarray[i];
+              }
+              if (
+                parsedarray[i] > fourthLine[6] &&
+                fourthLine[6] !== "NIL" &&
+                parsedarray[i] < fourthLine[7] &&
+                fourthLine[7] !== "NIL"
+              ) {
+                fifthLine[13] = parsedarray[i];
+              }
+            }
+            if (parsedarray[i] > thirdLine[3] && thirdLine[3] !== "NIL") {
+              if (parsedarray[i] < fourthLine[7] && fourthLine[7] !== "NIL") {
+                fifthLine[14] = parsedarray[i];
+              }
+              if (parsedarray[i] > fourthLine[7] && fourthLine[7] !== "NIL") {
+                fifthLine[15] = parsedarray[i];
+              }
+            }
+          }
 
-        if (
-          thirdLine[2] !== "NIL" &&
-          fourthLine[4] !== "NIL" &&
-          fourthLine[5] === "NIL" &&
-          fifthLine[9] !== "NIL"
-        ) {
-          fourthLine[5] = thirdLine[2];
-          thirdLine[2] = fifthLine[9];
-          fifthLine[9] = "NIL";
-        }
+          if (
+            secondLine[0] === "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] < secondLine[1] &&
+            parsedarray[i] > edge
+          ) {
+            secondLine[0] = edge;
+            edge = parsedarray[i];
+          } else if (
+            secondLine[0] === "NIL" &&
+            secondLine[1] !== "NIL" &&
+            parsedarray[i] > secondLine[1] &&
+            parsedarray[i] > edge
+          ) {
+            secondLine[0] = edge;
+            edge = secondLine[1];
+            secondLine[1] = parsedarray[i];
+          }
 
-        if (
-          thirdLine[2] !== "NIL" &&
-          fourthLine[5] !== "NIL" &&
-          fourthLine[4] === "NIL" &&
-          fifthLine[10] !== "NIL"
-        ) {
-          fourthLine[4] = thirdLine[2];
-          thirdLine[2] = fifthLine[10];
-          fifthLine[10] = "NIL";
-        }
-        if (
-          thirdLine[2] !== "NIL" &&
-          fourthLine[5] !== "NIL" &&
-          fourthLine[4] === "NIL" &&
-          fifthLine[11] !== "NIL"
-        ) {
-          fourthLine[4] = thirdLine[2];
-          thirdLine[2] = fourthLine[5];
-          fourthLine[5] = fifthLine[11];
-          fifthLine[11] = "NIL";
-        }
+          if (secondLine[1] !== "NIL") {
+            if (thirdLine[2] !== "NIL" && thirdLine[3] === "NIL") {
+              if (fourthLine[4] !== "NIL") {
+                thirdLine[3] = secondLine[1];
+                secondLine[1] = thirdLine[2];
+                thirdLine[2] = fourthLine[4];
+                fourthLine[4] = "NIL";
+              }
+              if (fourthLine[5] !== "NIL") {
+                thirdLine[3] = secondLine[1];
+                secondLine[1] = fourthLine[5];
+                fourthLine[5] = "NIL";
+              }
+            }
+            if (thirdLine[3] !== "NIL" && thirdLine[2] === "NIL") {
+              if (fourthLine[6] !== "NIL") {
+                thirdLine[2] = secondLine[1];
+                secondLine[1] = fourthLine[6];
+                fourthLine[6] = "NIL";
+              }
+              if (fourthLine[7] !== "NIL") {
+                thirdLine[2] = secondLine[1];
+                secondLine[1] = thirdLine[3];
+                thirdLine[3] = fourthLine[7];
+                fourthLine[7] = "NIL";
+              }
+            }
+          }
 
-        if (
-          thirdLine[3] !== "NIL" &&
-          fourthLine[6] !== "NIL" &&
-          fourthLine[7] === "NIL" &&
-          fifthLine[12] !== "NIL"
-        ) {
-          fourthLine[7] = thirdLine[3];
-          thirdLine[3] = fourthLine[6];
-          fourthLine[6] = fifthLine[12];
-          fifthLine[12] = "NIL";
-        }
+          if (
+            thirdLine[2] !== "NIL" &&
+            fourthLine[4] !== "NIL" &&
+            fourthLine[5] === "NIL" &&
+            fifthLine[8] !== "NIL"
+          ) {
+            fourthLine[5] = thirdLine[2];
+            thirdLine[2] = fourthLine[4];
+            fourthLine[4] = fifthLine[8];
+            fifthLine[8] = "NIL";
+          }
 
-        if (
-          thirdLine[3] !== "NIL" &&
-          fourthLine[6] !== "NIL" &&
-          fourthLine[7] === "NIL" &&
-          fifthLine[13] !== "NIL"
-        ) {
-          fourthLine[7] = thirdLine[3];
-          thirdLine[3] = fifthLine[13];
-          fifthLine[13] = "NIL";
-        }
+          if (
+            thirdLine[2] !== "NIL" &&
+            fourthLine[4] !== "NIL" &&
+            fourthLine[5] === "NIL" &&
+            fifthLine[9] !== "NIL"
+          ) {
+            fourthLine[5] = thirdLine[2];
+            thirdLine[2] = fifthLine[9];
+            fifthLine[9] = "NIL";
+          }
 
-        if (
-          thirdLine[3] !== "NIL" &&
-          fourthLine[7] !== "NIL" &&
-          fourthLine[6] === "NIL" &&
-          fifthLine[14] !== "NIL"
-        ) {
-          fourthLine[6] = thirdLine[3];
-          thirdLine[3] = fifthLine[14];
-          fifthLine[14] = "NIL";
-        }
-        if (
-          thirdLine[3] !== "NIL" &&
-          fourthLine[7] !== "NIL" &&
-          fourthLine[6] === "NIL" &&
-          fifthLine[15] !== "NIL"
-        ) {
-          fourthLine[6] = thirdLine[3];
-          thirdLine[3] = fourthLine[7];
-          fourthLine[7] = fifthLine[15];
-          fifthLine[15] = "NIL";
+          if (
+            thirdLine[2] !== "NIL" &&
+            fourthLine[5] !== "NIL" &&
+            fourthLine[4] === "NIL" &&
+            fifthLine[10] !== "NIL"
+          ) {
+            fourthLine[4] = thirdLine[2];
+            thirdLine[2] = fifthLine[10];
+            fifthLine[10] = "NIL";
+          }
+          if (
+            thirdLine[2] !== "NIL" &&
+            fourthLine[5] !== "NIL" &&
+            fourthLine[4] === "NIL" &&
+            fifthLine[11] !== "NIL"
+          ) {
+            fourthLine[4] = thirdLine[2];
+            thirdLine[2] = fourthLine[5];
+            fourthLine[5] = fifthLine[11];
+            fifthLine[11] = "NIL";
+          }
+
+          if (
+            thirdLine[3] !== "NIL" &&
+            fourthLine[6] !== "NIL" &&
+            fourthLine[7] === "NIL" &&
+            fifthLine[12] !== "NIL"
+          ) {
+            fourthLine[7] = thirdLine[3];
+            thirdLine[3] = fourthLine[6];
+            fourthLine[6] = fifthLine[12];
+            fifthLine[12] = "NIL";
+          }
+
+          if (
+            thirdLine[3] !== "NIL" &&
+            fourthLine[6] !== "NIL" &&
+            fourthLine[7] === "NIL" &&
+            fifthLine[13] !== "NIL"
+          ) {
+            fourthLine[7] = thirdLine[3];
+            thirdLine[3] = fifthLine[13];
+            fifthLine[13] = "NIL";
+          }
+
+          if (
+            thirdLine[3] !== "NIL" &&
+            fourthLine[7] !== "NIL" &&
+            fourthLine[6] === "NIL" &&
+            fifthLine[14] !== "NIL"
+          ) {
+            fourthLine[6] = thirdLine[3];
+            thirdLine[3] = fifthLine[14];
+            fifthLine[14] = "NIL";
+          }
+          if (
+            thirdLine[3] !== "NIL" &&
+            fourthLine[7] !== "NIL" &&
+            fourthLine[6] === "NIL" &&
+            fifthLine[15] !== "NIL"
+          ) {
+            fourthLine[6] = thirdLine[3];
+            thirdLine[3] = fourthLine[7];
+            fourthLine[7] = fifthLine[15];
+            fifthLine[15] = "NIL";
+          }
         }
       }
 
+      function containsNumber(str) {
+        return /[0-9]/.test(str);
+      }
+
+      var state = 0;
+
+      if (!containsNumber(secondLine) && containsNumber(edge)) {
+        colorHelperArray.push(edge, secondLine);
+        state = 1;
+      }
+      if (!containsNumber(thirdLine) && containsNumber(secondLine)) {
+        colorHelperArray = colorHelperArray.concat(edge, secondLine, thirdLine);
+        state = 3;
+      }
+      if (!containsNumber(fourthLine) && containsNumber(thirdLine)) {
+        colorHelperArray = colorHelperArray.concat(
+          edge,
+          secondLine,
+          thirdLine,
+          fourthLine
+        );
+        state = 4;
+      }
+      if (containsNumber(fourthLine) && containsNumber(thirdLine)) {
+        colorHelperArray = colorHelperArray.concat(
+          edge,
+          secondLine,
+          thirdLine,
+          fourthLine,
+          fifthLine
+        );
+        state = 5;
+      }
+      console.log(colorHelperArray);
+
+      color.push("0");
+
+      for (let i = 1; i < colorHelperArray.length; i++) {
+        if (colorHelperArray[i] !== "NIL") {
+          color[i] = "1";
+        } else {
+          color[i] = "0";
+        }
+      }
+
+      if (state === 3) {
+        if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
+          color[1] = "0";
+        }
+        if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
+          color[2] = "0";
+        }
+
+        for (var i = 0; i < secondLine.length; i++) {
+          if (secondLine[i] === "NIL") {
+            color[i * 2 + 3] = "7";
+            color[i * 2 + 4] = "7";
+          }
+        }
+      }
+      if (state === 4) {
+        if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
+          color[1] = "0";
+        }
+        if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
+          color[2] = "0";
+        }
+        if ((color[7] === "1" || color[8] === "1") && color[3] === "1") {
+          color[3] = "0";
+        }
+        if ((color[9] === "1" || color[10] === "1") && color[4] === "1") {
+          color[4] = "0";
+        }
+        if ((color[11] === "1" || color[12] === "1") && color[5] === "1") {
+          color[5] = "0";
+        }
+        if ((color[13] === "1" || color[14] === "1") && color[6] === "1") {
+          color[6] = "0";
+        }
+
+        for (var i = 0; i < thirdLine.length; i++) {
+          if (thirdLine[i] === "NIL") {
+            color[i * 2 + 7] = "7";
+            color[i * 2 + 8] = "7";
+          }
+        }
+      }
+      if (state === 5) {
+        if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
+          color[1] = "0";
+        }
+        if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
+          color[2] = "0";
+        }
+        if ((color[7] === "1" || color[8] === "1") && color[3] === "1") {
+          color[3] = "0";
+        }
+        if ((color[9] === "1" || color[10] === "1") && color[4] === "1") {
+          color[4] = "0";
+        }
+        if ((color[11] === "1" || color[12] === "1") && color[5] === "1") {
+          color[5] = "0";
+        }
+        if ((color[13] === "1" || color[14] === "1") && color[6] === "1") {
+          color[6] = "0";
+        }
+        if ((color[15] === "1" || color[16] === "1") && color[7] === "1") {
+          color[7] = "0";
+        }
+        if ((color[17] === "1" || color[18] === "1") && color[8] === "1") {
+          color[8] = "0";
+        }
+        if ((color[19] === "1" || color[20] === "1") && color[9] === "1") {
+          color[9] = "0";
+        }
+        if ((color[21] === "1" || color[22] === "1") && color[10] === "1") {
+          color[10] = "0";
+        }
+        if ((color[23] === "1" || color[24] === "1") && color[11] === "1") {
+          color[11] = "0";
+        }
+        if ((color[25] === "1" || color[26] === "1") && color[12] === "1") {
+          color[12] = "0";
+        }
+        if ((color[27] === "1" || color[28] === "1") && color[13] === "1") {
+          color[13] = "0";
+        }
+        if ((color[29] === "1" || color[30] === "1") && color[14] === "1") {
+          color[14] = "0";
+        }
+
+        for (var i = 0; i < fourthLine.length; i++) {
+          if (fourthLine[i] === "NIL") {
+            color[i * 2 + 15] = "7";
+            color[i * 2 + 16] = "7";
+          }
+        }
+      }
+      console.log("state: " + state);
+      for (var i = 0; i < colorHelperArray.length; i++) {
+        //43,23,76,98,32,65,10,2,12,34,33,89,66,1
+        if (edge !== "") {
+          var element;
+          var breaks;
+          element = document.createElement("b");
+          breaks = document.createElement("br");
+
+          if (colorHelperArray[i] === "NIL" || color[i] === "0") {
+            element.className = "tree-black";
+          } else element.className = "tree-red";
+
+          if (color[i] === "7") {
+            element.className = "tree-none";
+          }
+
+          element.innerHTML = colorHelperArray[i];
+          if (i === 1) {
+            element.classList.add("horizontal-space");
+          }
+          if (i > 2 && i < 6) {
+            element.classList.add("horizontal-space-second-line");
+          }
+          if (i > 6 && i < 15) {
+            element.classList.add("horizontal-space-third-line");
+          }
+          if (i > 14) {
+            element.classList.add("horizontal-space-fourth-line");
+          }
+          if (i === 7) {
+            element.classList.add("horizontal-space-third-line-fix");
+          }
+
+          if (
+            i === 0 ||
+            i === 2 ||
+            i === 6 ||
+            i === 14 ||
+            i === colorHelperArray.length
+          ) {
+            document.getElementById("tree").appendChild(element);
+            document.getElementById("tree").appendChild(breaks);
+          } else document.getElementById("tree").appendChild(element);
+        }
+      }
+
+      console.log(color); //0 gray 1 red
+      console.log();
+      console.log("Edge: " + edge);
+      console.log("SecondLine: " + secondLine);
+      console.log("ThirdLine: " + thirdLine);
+      console.log("FourthLine: " + fourthLine);
+      console.log("FifthLine: " + fifthLine);
     }
-
-    function containsNumber(str) {
-      return /[0-9]/.test(str);
-    }
-
-    var state = 0;
-
-    if (!containsNumber(secondLine) && containsNumber(edge)) {
-      colorHelperArray.push(edge, secondLine);
-      state = 1;
-      console.log("im in");
-    }
-    if (!containsNumber(thirdLine) && containsNumber(secondLine)) {
-      colorHelperArray = colorHelperArray.concat(edge, secondLine, thirdLine);
-      state = 3;
-      console.log("why");
-    }
-    if (!containsNumber(fourthLine) &&containsNumber(thirdLine)) {
-      colorHelperArray = colorHelperArray.concat(
-        edge,
-        secondLine,
-        thirdLine,
-        fourthLine
-      );
-      state = 4;
-    }
-    if (containsNumber(fourthLine) && containsNumber(thirdLine)) {
-      colorHelperArray = colorHelperArray.concat(
-        edge,
-        secondLine,
-        thirdLine,
-        fourthLine,
-        fifthLine
-      );
-      state = 5;
-    }
-    console.log(colorHelperArray);
-
-    color.push("0");
-
-    for (let i = 1; i < colorHelperArray.length; i++) {
-      if (colorHelperArray[i] !== "NIL") {
-        color[i] = "1";
-      } else {
-        color[i] = "0";
-      }
-    }
-
-    if (state === 3) {
-      if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
-        color[1] = "0";
-      }
-      if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
-        color[2] = "0";
-      }
-    }
-    if (state === 4) {
-      if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
-        color[1] = "0";
-      }
-      if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
-        color[2] = "0";
-      }
-      if ((color[7] === "1" || color[8] === "1") && color[3] === "1") {
-        color[3] = "0";
-      }
-      if ((color[9] === "1" || color[10] === "1") && color[4] === "1") {
-        color[4] = "0";
-      }
-      if ((color[11] === "1" || color[12] === "1") && color[5] === "1") {
-        color[5] = "0";
-      }
-      if ((color[13] === "1" || color[14] === "1") && color[6] === "1") {
-        color[6] = "0";
-      }
-    }
-    if (state === 5) {
-      if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
-        color[1] = "0";
-      }
-      if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
-        color[2] = "0";
-      }
-      if ((color[7] === "1" || color[8] === "1") && color[3] === "1") {
-        color[3] = "0";
-      }
-      if ((color[9] === "1" || color[10] === "1") && color[4] === "1") {
-        color[4] = "0";
-      }
-      if ((color[11] === "1" || color[12] === "1") && color[5] === "1") {
-        color[5] = "0";
-      }
-      if ((color[13] === "1" || color[14] === "1") && color[6] === "1") {
-        color[6] = "0";
-      }
-      if ((color[15] === "1" || color[16] === "1") && color[7] === "1") {
-        color[7] = "0";
-      }
-      if ((color[17] === "1" || color[18] === "1") && color[8] === "1") {
-        color[8] = "0";
-      }
-      if ((color[19] === "1" || color[20] === "1") && color[9] === "1") {
-        color[9] = "0";
-      }
-      if ((color[21] === "1" || color[22] === "1") && color[10] === "1") {
-        color[10] = "0";
-      }
-      if ((color[23] === "1" || color[24] === "1") && color[11] === "1") {
-        color[11] = "0";
-      }
-      if ((color[25] === "1" || color[26] === "1") && color[12] === "1") {
-        color[12] = "0";
-      }
-      if ((color[27] === "1" || color[28] === "1") && color[13] === "1") {
-        color[13] = "0";
-      }
-      if ((color[29] === "1" || color[30] === "1") && color[14] === "1") {
-        color[14] = "0";
-      }
-    }
-console.log("state: "+state)
-    for (var i = 0; i < colorHelperArray.length; i++) {
-      //43,23,76,98,32,65,10,2,12,34,33,89,66,1
-      if (edge !== "") {
-        var element;
-        var breaks;
-        element = document.createElement("b");
-        breaks = document.createElement("br");
-
-        if (colorHelperArray[i] === "NIL" || color[i] === "0") {
-          element.className = "tree-black";
-        } else element.className = "tree-red";
-        element.innerHTML = colorHelperArray[i];
-        if (i === 1) {
-          element.classList.add("horizontal-space");
-        }
-        if (i > 2 && i < 6) {
-          element.classList.add("horizontal-space-second-line");
-        }
-        if (i > 6 && i < 15) {
-          element.classList.add("horizontal-space-third-line");
-        }
-        if (i > 14) {
-          element.classList.add("horizontal-space-fourth-line");
-        }
-        if (i === 7) {
-          element.classList.add("horizontal-space-third-line-fix");
-        }
-        if (
-          i === 0 ||
-          i === 2 ||
-          i === 6 ||
-          i === 14 ||
-          i === colorHelperArray.length
-        ) {
-          document.getElementById("tree").appendChild(element);
-          document.getElementById("tree").appendChild(breaks);
-        } else document.getElementById("tree").appendChild(element);
-      }
-    }
-
-    console.log(color); //0 gray 1 red
-    console.log();
-    console.log("Edge: " + edge);
-    console.log("SecondLine: " + secondLine);
-    console.log("ThirdLine: " + thirdLine);
-    console.log("FourthLine: " + fourthLine);
-    console.log("FifthLine: " + fifthLine);
   }
 
   return (

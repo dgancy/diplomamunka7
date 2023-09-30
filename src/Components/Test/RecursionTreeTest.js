@@ -16,9 +16,17 @@ function RecursionTreeTest() {
   var number;
   for (let i = 0; i < 4; i++) {
     number = Math.floor(Math.random() * 10) + 1;
-    if (numbers_of_answers.length < 4) {
+    if (numbers_of_answers.length <= 4) {
       if (!numbers_of_answers.includes(number)) {
         numbers_of_answers.push(number);
+      }
+      if (numbers_of_answers.includes(number)) {
+        number = Math.floor(Math.random() * 10) + 1;
+        if (numbers_of_answers.length <= 4) {
+          if (!numbers_of_answers.includes(number)) {
+            numbers_of_answers.push(number);
+          }
+        }
       }
     }
   }
@@ -48,12 +56,25 @@ function RecursionTreeTest() {
   for (let i = 0; i < 4; i++) {
     number = 0;
     number = Math.floor(Math.random() * 10) + 1;
-    if (numbers_of_answers_edge_number.length < 4) {
+    if (numbers_of_answers_edge_number.length <= 4) {
       if (!numbers_of_answers_edge_number.includes(number)) {
         numbers_of_answers_edge_number.push(number);
       }
+      if (numbers_of_answers_edge_number.includes(number)) {
+        number = Math.floor(Math.random() * 10) + 1;
+        if (numbers_of_answers_edge_number.length <= 4) {
+          if (!numbers_of_answers_edge_number.includes(number)) {
+            numbers_of_answers_edge_number.push(number);
+          }
+        }
+      }
     }
   }
+
+  change_element = numbers_of_answers_edge_number[0];
+  numbers_of_answers_edge_number[0] =
+    numbers_of_answers_edge_number[change_position];
+  numbers_of_answers_edge_number[change_position] = change_element;
 
   function first_answer_edge_number() {
     return `${numbers_of_answers_edge_number[0]}`;
@@ -78,8 +99,21 @@ function RecursionTreeTest() {
       if (!numbers_of_answers_tree_height.includes(number)) {
         numbers_of_answers_tree_height.push(number);
       }
+      if (numbers_of_answers_tree_height.includes(number)) {
+        number = Math.floor(Math.random() * 10) + 1;
+        if (numbers_of_answers_tree_height.length <= 4) {
+          if (!numbers_of_answers_tree_height.includes(number)) {
+            numbers_of_answers_tree_height.push(number);
+          }
+        }
+      }
     }
   }
+
+  change_element = numbers_of_answers_tree_height[0];
+  numbers_of_answers_tree_height[0] =
+    numbers_of_answers_tree_height[change_position];
+  numbers_of_answers_tree_height[change_position] = change_element;
 
   function first_answer_tree_height() {
     return `log${numbers_of_answers_tree_height[0]}n`;
@@ -107,6 +141,8 @@ function RecursionTreeTest() {
     return `${numbers_of_answers_edge_number[3]} log${numbers_of_answers_tree_height[3]}n = nlog${numbers_of_answers_edge_number[3]} ${numbers_of_answers_tree_height[3]}`;
   }
 
+  console.log(numbers_of_answers_tree_height);
+
   function General() {
     if (n_rekurzios === `n<sup>4</sup>`) {
       n_rekurzios = `nlogn`;
@@ -115,7 +151,6 @@ function RecursionTreeTest() {
       n_rekurzios = `n`;
     }
     return `Oldja meg a következő feladatot Rekurziós fa módszer használatával. T(n)= ${T_elem} T( n/${N_elem} ) ${n_rekurzios}`;
-
   }
 
   function Check() {

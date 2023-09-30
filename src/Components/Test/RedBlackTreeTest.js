@@ -247,7 +247,7 @@ export default function RedBlackTreeTest() {
         style={{
           position: "absolute",
           paddingBottom: "25px",
-          marginLeft: "14%",
+          marginLeft: "10%",
           height: "350px",
           width: "1400px",
         }}
@@ -257,7 +257,7 @@ export default function RedBlackTreeTest() {
       <div
         style={{
           paddingBottom: "25px",
-          marginLeft: "14%",
+          marginLeft: "10%",
           width: "1400px",
           height: "350px",
         }}

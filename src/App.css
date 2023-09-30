@@ -34,7 +34,18 @@ a {
   display: inline-block;
   margin: 5px; 
 }
-
+.tree-none{
+  width: 40px; 
+  height: 40px; 
+  background-color: #000027;
+  color: #000027;
+  text-align: center;
+  line-height: 40px;
+  border-radius: 50%;
+  border: 1px solid #000027;
+  display: inline-block;
+  margin: 5px; 
+}
 .horizontal-space {
   margin-right: 29.4%;
 }
