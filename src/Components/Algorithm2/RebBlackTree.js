@@ -19,13 +19,13 @@ export default function RedBlackTree() {
     <Line key="line2" x1="600" y1="20" x2="800" y2="70" />, //2
 
     <Line key="line3" x1="410" y1="70" x2="310" y2="120" />, //3
-    <Line key="line4" x1="410" y1="70" x2="500" y2="120" />, //4
+    <Line key="line4" x1="410" y1="70" x2="510" y2="120" />, //4
 
-    <Line key="line5" x1="300" y1="120" x2="240" y2="180" />, //5
-    <Line key="line6" x1="300" y1="110" x2="350" y2="180" />, //6
+    <Line key="line5" x1="300" y1="120" x2="250" y2="180" />, //5
+    <Line key="line6" x1="310" y1="120" x2="360" y2="180" />, //6
 
-    <Line key="line7" x1="500" y1="130" x2="450" y2="180" />, //7
-    <Line key="line8" x1="500" y1="130" x2="550" y2="180" />, //8
+    <Line key="line7" x1="505" y1="120" x2="450" y2="180" />, //7
+    <Line key="line8" x1="500" y1="120" x2="550" y2="180" />, //8
 
     <Line key="line9" x1="800" y1="80" x2="700" y2="130" />, //9
     <Line key="line10" x1="800" y1="80" x2="900" y2="130" />, //10
@@ -34,7 +34,7 @@ export default function RedBlackTree() {
     <Line key="line12" x1="700" y1="130" x2="750" y2="180" />, //12
 
     <Line key="line13" x1="880" y1="130" x2="840" y2="180" />, //13
-    <Line key="line14" x1="900" y1="130" x2="950" y2="180" />, //14
+    <Line key="line14" x1="905" y1="130" x2="950" y2="180" />, //14
 
     <Line key="line15" x1="240" y1="180" x2="220" y2="220" />, //15
     <Line key="line16" x1="260" y1="180" x2="280" y2="220" />, //16
@@ -57,8 +57,8 @@ export default function RedBlackTree() {
     <Line key="line27" x1="840" y1="180" x2="820" y2="220" />, //27
     <Line key="line28" x1="850" y1="180" x2="880" y2="220" />, //28
 
-    <Line key="line29" x1="940" y1="180" x2="920" y2="220" />, //29
-    <Line key="line30" x1="950" y1="180" x2="980" y2="220" />, //30
+    <Line key="line29" x1="935" y1="180" x2="920" y2="220" />, //29
+    <Line key="line30" x1="950" y1="180" x2="975" y2="220" />, //30
   ];
 
   function Rbtadd() {
@@ -413,16 +413,13 @@ export default function RedBlackTree() {
         if (parsedarray[i] < secondLine[1]) {
           if (
             parsedarray[i] < thirdLine[2] &&
-            fourthLine[4] === "NIL" &&
-            thirdLine[2] !== "NIL"
+            fourthLine[4] === "NIL" 
           ) {
             fourthLine[4] = parsedarray[i];
           } else if (
             parsedarray[i] > thirdLine[2] &&
             parsedarray[i] < thirdLine[3] &&
-            fourthLine[5] === "NIL" &&
-            thirdLine[2] !== "NIL" &&
-            thirdLine[3] !== "NIL"
+            fourthLine[5] === "NIL"
           ) {
             fourthLine[5] = parsedarray[i];
           }
@@ -430,16 +427,12 @@ export default function RedBlackTree() {
         if (parsedarray[i] > secondLine[1]) {
           if (
             parsedarray[i] < thirdLine[3] &&
-            fourthLine[6] === "NIL" &&
-            thirdLine[4] !== "NIL" &&
-            thirdLine[3] !== "NIL"
+            fourthLine[6] === "NIL"
           ) {
             fourthLine[6] = parsedarray[i];
           } else if (
             parsedarray[i] > thirdLine[3] &&
-            fourthLine[7] === "NIL" &&
-            thirdLine[2] !== "NIL" &&
-            thirdLine[3] !== "NIL"
+            fourthLine[7] === "NIL"
           ) {
             fourthLine[7] = parsedarray[i];
           }
@@ -642,6 +635,7 @@ export default function RedBlackTree() {
           fifthLine[15] = "NIL";
         }
       }
+
     }
 
     function containsNumber(str) {
@@ -650,17 +644,17 @@ export default function RedBlackTree() {
 
     var state = 0;
 
-    if (containsNumber(secondLine)) {
+    if (!containsNumber(secondLine) && containsNumber(edge)) {
       colorHelperArray.push(edge, secondLine);
       state = 1;
       console.log("im in");
     }
-    if (containsNumber(thirdLine)) {
+    if (!containsNumber(thirdLine) && containsNumber(secondLine)) {
       colorHelperArray = colorHelperArray.concat(edge, secondLine, thirdLine);
       state = 3;
       console.log("why");
     }
-    if (containsNumber(fourthLine)) {
+    if (!containsNumber(fourthLine) &&containsNumber(thirdLine)) {
       colorHelperArray = colorHelperArray.concat(
         edge,
         secondLine,
@@ -669,7 +663,7 @@ export default function RedBlackTree() {
       );
       state = 4;
     }
-    if (containsNumber(fourthLine)) {
+    if (containsNumber(fourthLine) && containsNumber(thirdLine)) {
       colorHelperArray = colorHelperArray.concat(
         edge,
         secondLine,
@@ -763,7 +757,7 @@ export default function RedBlackTree() {
         color[14] = "0";
       }
     }
-
+console.log("state: "+state)
     for (var i = 0; i < colorHelperArray.length; i++) {
       //43,23,76,98,32,65,10,2,12,34,33,89,66,1
       if (edge !== "") {
@@ -805,7 +799,7 @@ export default function RedBlackTree() {
     }
 
     console.log(color); //0 gray 1 red
-
+    console.log();
     console.log("Edge: " + edge);
     console.log("SecondLine: " + secondLine);
     console.log("ThirdLine: " + thirdLine);
@@ -866,4 +860,4 @@ export default function RedBlackTree() {
     </form>
   );
 }
-//van hiba vizsgáld
+//vonalakat rendbe rakni + kezellni megjelenését
