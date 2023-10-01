@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 export default function RedBlackTree() {
@@ -21,14 +21,14 @@ export default function RedBlackTree() {
     <Line key="line3" x1="410" y1="70" x2="310" y2="120" />, //3
     <Line key="line4" x1="410" y1="70" x2="510" y2="120" />, //4
 
-    <Line key="line5" x1="300" y1="120" x2="250" y2="180" />, //5
-    <Line key="line6" x1="310" y1="120" x2="360" y2="180" />, //6
-
+    <Line key="line5" x1="800" y1="80" x2="700" y2="130" />, //5
+    <Line key="line6" x1="800" y1="80" x2="900" y2="130" />, //6    
+    
     <Line key="line7" x1="505" y1="120" x2="450" y2="180" />, //7
     <Line key="line8" x1="500" y1="120" x2="550" y2="180" />, //8
-
-    <Line key="line9" x1="800" y1="80" x2="700" y2="130" />, //9
-    <Line key="line10" x1="800" y1="80" x2="900" y2="130" />, //10
+    
+    <Line key="line9" x1="300" y1="120" x2="250" y2="180" />, //9
+    <Line key="line10" x1="310" y1="120" x2="360" y2="180" />, //10
 
     <Line key="line11" x1="700" y1="130" x2="650" y2="180" />, //11
     <Line key="line12" x1="700" y1="130" x2="750" y2="180" />, //12
@@ -61,9 +61,11 @@ export default function RedBlackTree() {
     <Line key="line30" x1="950" y1="180" x2="975" y2="220" />, //30
   ];
 
+  const [renderedLines, setRenderedLines] = useState([]);
+
   function Rbtadd() {
     var a = document.getElementById("addnumber").value;
-    console.log(a);
+    console.log("Ez jön be: " + a);
     if (a.length < 1) {
       alert("Kérlek adj értéket a mezőbe");
     } else {
@@ -641,7 +643,9 @@ export default function RedBlackTree() {
       var state = 0;
 
       if (!containsNumber(secondLine) && containsNumber(edge)) {
-        colorHelperArray.push(edge, secondLine);
+        colorHelperArray.push(edge);
+        colorHelperArray.push("NIL");
+        colorHelperArray.push("NIL");
         state = 1;
       }
       if (!containsNumber(thirdLine) && containsNumber(secondLine)) {
@@ -686,13 +690,6 @@ export default function RedBlackTree() {
         if ((color[5] === "1" || color[6] === "1") && color[2] === "1") {
           color[2] = "0";
         }
-
-        for (var i = 0; i < secondLine.length; i++) {
-          if (secondLine[i] === "NIL") {
-            color[i * 2 + 3] = "7";
-            color[i * 2 + 4] = "7";
-          }
-        }
       }
       if (state === 4) {
         if ((color[3] === "1" || color[4] === "1") && color[1] === "1") {
@@ -712,13 +709,6 @@ export default function RedBlackTree() {
         }
         if ((color[13] === "1" || color[14] === "1") && color[6] === "1") {
           color[6] = "0";
-        }
-
-        for (var i = 0; i < thirdLine.length; i++) {
-          if (thirdLine[i] === "NIL") {
-            color[i * 2 + 7] = "7";
-            color[i * 2 + 8] = "7";
-          }
         }
       }
       if (state === 5) {
@@ -764,14 +754,29 @@ export default function RedBlackTree() {
         if ((color[29] === "1" || color[30] === "1") && color[14] === "1") {
           color[14] = "0";
         }
+      }
 
-        for (var i = 0; i < fourthLine.length; i++) {
-          if (fourthLine[i] === "NIL") {
-            color[i * 2 + 15] = "7";
-            color[i * 2 + 16] = "7";
-          }
+      for (var i = 0; i < secondLine.length; i++) {
+        if (secondLine[i] === "NIL") {
+          color[i * 2 + 3] = 7;
+          color[i * 2 + 4] = 7;
         }
       }
+
+      for (var i = 0; i < thirdLine.length; i++) {
+        if (thirdLine[i] === "NIL") {
+          color[i * 2 + 7] = 7;
+          color[i * 2 + 8] = 7;
+        }
+      }
+
+      for (var i = 0; i < fourthLine.length; i++) {
+        if (fourthLine[i] === "NIL") {
+          color[i * 2 + 15] = 7;
+          color[i * 2 + 16] = 7;
+        }
+      }
+
       console.log("state: " + state);
       for (var i = 0; i < colorHelperArray.length; i++) {
         //43,23,76,98,32,65,10,2,12,34,33,89,66,1
@@ -785,7 +790,7 @@ export default function RedBlackTree() {
             element.className = "tree-black";
           } else element.className = "tree-red";
 
-          if (color[i] === "7") {
+          if (color[i] === 7) {
             element.className = "tree-none";
           }
 
@@ -818,14 +823,24 @@ export default function RedBlackTree() {
           } else document.getElementById("tree").appendChild(element);
         }
       }
+      const newLines = [];
+      for (let i = 1; i < color.length; i++) {
+        if (color[i] !== 7) {
+          console.log("in");
+          newLines.push(...lines.filter((line) => line.key === "line" + i));
+          setRenderedLines(newLines);
+        }
+      }
 
       console.log(color); //0 gray 1 red
-      console.log();
       console.log("Edge: " + edge);
       console.log("SecondLine: " + secondLine);
       console.log("ThirdLine: " + thirdLine);
       console.log("FourthLine: " + fourthLine);
       console.log("FifthLine: " + fifthLine);
+
+      console.log(lines);
+      console.log(renderedLines);
     }
   }
 
@@ -862,18 +877,18 @@ export default function RedBlackTree() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "80%",
+            top: "60%",
             height: "400px",
             width: "1200px",
           }}
         >
-          {lines}
+          {renderedLines}
         </svg>
         <b
           id="tree"
           style={{
             position: "absolute",
-            top: "80%",
+            top: "60%",
             height: "400px",
             width: "1200px",
           }}

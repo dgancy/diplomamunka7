@@ -23,7 +23,9 @@ feladatos oldalak= bug fix, fix, dropdown fix, rbt befejezése, többi ok., hast
 holnap megcsinálni a vonalakat az új css szerint (rbt sima kész)
 , bug fix az rbttree simára 1-3 elemig nem jó (ez megvan) +--> a nil-es story + a bugfix (done). // ezt így mind
 
-rbtree NIL-es story
+rbtree NIL-es story ----done
+rbtree bug --fixed + vonalas story ----done teszteld azért.
+
 
 tesztoldlalakat fixálni ~
 

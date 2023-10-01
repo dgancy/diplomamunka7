@@ -32,16 +32,18 @@ import ActionProvider from "./Components/Chatbot/ActionProvider";
 import config from "./Components/Chatbot/config";
 import MessageParser from "./Components/Chatbot/MessageParser";
 
+/*<Chatbot
+config={config}
+messageParser={MessageParser}
+actionProvider={ActionProvider}
+/>*/
+
 function App() {
   return (
     <>
       <Router>
         <NavbarMenu />
-        <Chatbot
-        config={config}
-        messageParser={MessageParser}
-        actionProvider={ActionProvider}
-      />
+        
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
