@@ -716,11 +716,11 @@ export default function BinaryTreeAssignment() {
               style={{ marginRight: "4%", marginLeft: "4%" }}
             >
               {" "}
-              <input id="inpmid1" type="text" className="form-control"></input>
+              <input id="inp2" type="text" className="form-control"></input>
             </div>
             <div className="col-2">
               {" "}
-              <input id="inp2" type="text" className="form-control"></input>
+              <input id="inp3" type="text" className="form-control"></input>
             </div>
           </div>
           <div
@@ -729,10 +729,6 @@ export default function BinaryTreeAssignment() {
           >
             <div className="col-1">
               {" "}
-              <input id="inp3" type="text" className="form-control"></input>
-            </div>
-            <div className="col-1">
-              {" "}
               <input id="inp4" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
@@ -745,19 +741,23 @@ export default function BinaryTreeAssignment() {
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp3" type="text" className="form-control"></input>
+              <input id="inp7" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp4" type="text" className="form-control"></input>
+              <input id="inp8" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp5" type="text" className="form-control"></input>
+              <input id="inp9" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp6" type="text" className="form-control"></input>
+              <input id="inp10" type="text" className="form-control"></input>
+            </div>
+            <div className="col-1">
+              {" "}
+              <input id="inp11" type="text" className="form-control"></input>
             </div>
           </div>
         </div>

@@ -28,7 +28,7 @@ rbtree bug --fixed + vonalas story ----done teszteld azért. done
 
 has table fix --done
 master and recursion Rework
-vonalakat megcsinálni a többi helyen is  //binkeresofaassignment gondok mindkettoben inputok
+vonalakat megcsinálni a többi helyen is  //binkeresofaassignment test gondok mindkettoben rendbe rakni ezeket
 test oldalak
 
 tesztoldlalakat fixálni ~
