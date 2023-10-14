@@ -84,7 +84,7 @@ export default function NavbarMenu() {
           as={Link}
           to={"/binary-tree-assignment"}
         >
-          Bináris keresés-fa
+          Bináris kereső-fa
         </NavDropdown.Item>
         <NavDropdown.Item
           style={{ color: "black" }}

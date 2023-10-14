@@ -26,9 +26,9 @@ holnap megcsinálni a vonalakat az új css szerint (rbt sima kész)
 rbtree NIL-es story ----done
 rbtree bug --fixed + vonalas story ----done teszteld azért. done
 
-has table fix
+has table fix --done
 master and recursion Rework
-vonalakat megcsinálni a többi helyen is
+vonalakat megcsinálni a többi helyen is  //binkeresofaassignment gondok mindkettoben inputok
 test oldalak
 
 tesztoldlalakat fixálni ~

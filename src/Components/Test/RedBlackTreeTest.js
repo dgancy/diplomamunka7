@@ -246,8 +246,9 @@ export default function RedBlackTreeTest() {
         id="tree-line"
         style={{
           position: "absolute",
-          paddingBottom: "25px",
-          marginLeft: "10%",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           height: "350px",
           width: "1400px",
         }}
@@ -256,10 +257,12 @@ export default function RedBlackTreeTest() {
       </svg>
       <div
         style={{
-          paddingBottom: "25px",
-          marginLeft: "10%",
-          width: "1400px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           height: "350px",
+          width: "1400px",
         }}
       >
         <div
@@ -643,7 +646,11 @@ export default function RedBlackTreeTest() {
       <div>
         <div
           className="row justify-content-center text-center"
-          style={{ padding: "20px" }}
+          style={{ position: "absolute",
+          top: "70%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
+          }}
         >
           <Button variant="outline-warning" onClick={Check}>
             Befejez

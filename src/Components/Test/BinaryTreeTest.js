@@ -50,19 +50,21 @@ export default function BinaryTreeTest() {
 
   function Check() {
     console.log("array-check: " + array);
-
     var edgearray = [];
     edgearray = document.getElementById("inp0").value.split(",");
 
     var leftarrayone = [];
     leftarrayone = document.getElementById("inp1").value.split(",");
+    var leftarrayone = [];
+    leftarrayone = document.getElementById("inp1").value.split(",");
+    var rightarrayone = [];
+    rightarrayone = document.getElementById("inp2").value.split(",");
+
     var leftarraytwo = [];
     leftarraytwo = document.getElementById("inp3").value.split(",");
     var leftarraythree = [];
     leftarraythree = document.getElementById("inp4").value.split(",");
 
-    var rightarrayone = [];
-    rightarrayone = document.getElementById("inp2").value.split(",");
     var rightarraytwo = [];
     rightarraytwo = document.getElementById("inp5").value.split(",");
     var rightarraythree = [];
@@ -320,32 +322,32 @@ export default function BinaryTreeTest() {
         </div>
         <br />
         <svg
-  id="tree-line"
-  style={{
-    position: "absolute",
-    top: "45%", /* Add this line */
-    transform: "translateY(-50%)", /* Add this line */
-    left: "50%",
-    transform: "translateX(-50%)",
-    paddingBottom: "25px",
-    height: "350px",
-    width: "1400px",
-  }}
->
-  {lines}
-</svg>
-<div
-  style={{
-    position: "absolute",
-    top: "45%", /* Add this line */
-    transform: "translateY(-50%)", /* Add this line */
-    left: "50%",
-    transform: "translateX(-50%)",
-    paddingBottom: "25px",
-    width: "1400px",
-    height: "350px",
-  }}
->
+          id="tree-line"
+          style={{
+            position: "absolute",
+            top: "45%" /* Add this line */,
+            transform: "translateY(-50%)" /* Add this line */,
+            left: "50%",
+            transform: "translateX(-50%)",
+            paddingBottom: "25px",
+            height: "350px",
+            width: "1400px",
+          }}
+        >
+          {lines}
+        </svg>
+        <div
+          style={{
+            position: "absolute",
+            top: "45%" /* Add this line */,
+            transform: "translateY(-50%)" /* Add this line */,
+            left: "50%",
+            transform: "translateX(-50%)",
+            paddingBottom: "25px",
+            width: "1400px",
+            height: "350px",
+          }}
+        >
           <div
             className="row justify-content-center"
             style={{ paddingBottom: "15px" }}
@@ -380,35 +382,35 @@ export default function BinaryTreeTest() {
           >
             <div className="col-1">
               {" "}
-              <input id="inp3" type="text" className="form-control"></input>
+              <input id="inp10" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp4" type="text" className="form-control"></input>
+              <input id="inp11" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp5" type="text" className="form-control"></input>
+              <input id="inp12" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp6" type="text" className="form-control"></input>
+              <input id="inpm1" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp3" type="text" className="form-control"></input>
+              <input id="inpm2" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp4" type="text" className="form-control"></input>
+              <input id="inp20" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp5" type="text" className="form-control"></input>
+              <input id="inp21" type="text" className="form-control"></input>
             </div>
             <div className="col-1">
               {" "}
-              <input id="inp6" type="text" className="form-control"></input>
+              <input id="inp22" type="text" className="form-control"></input>
             </div>
           </div>
         </div>

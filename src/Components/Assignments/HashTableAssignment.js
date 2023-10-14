@@ -10,7 +10,8 @@ export default function HashTableAssignment() {
   var numbersh2 = [];
   var c1;
   var c2;
-
+  var c1c2type;
+  
   function Generate() {
     var chars = "QWERTZUIOPLKJHGFDSAYXCVBNM";
     var h1 = "";
@@ -63,11 +64,13 @@ export default function HashTableAssignment() {
     } else if (type === "square") {
       var oneortwo = Math.floor(Math.random() * 1);
       if (oneortwo === 0) {
-        c1 = "c1 = " + 1;
+        c1 = "c1 = " + 0;
         c2 = "c2 = " + 1;
+        c1c2type=0;
       } else {
         c1 = "c1 = " + 1;
         c2 = "c2 = " + 2;
+        c1c2type=1;
       }
       for (let i = 0; i < elemszam; i++) {
         if (i === elemszam) {
@@ -171,21 +174,46 @@ export default function HashTableAssignment() {
       }
     }
     if (type === "square") {
-      for (let j = 0; j <= elemszam; j++) {
-        leftover = numbers[j] % hossz;
+      if(c1c2type===0){
+        c1=0;
+        c2=1;
+      }else if(c1c2type===1){
+        c1=1;
+        c2=2;
+      }
+      var overLapping = 1;
+      for (let j = 0; j < elemszam; j++) {
+        leftover = parseInt(numbers[j]) % hossz;
         if (arrayfinal[leftover] === " ") {
           arrayfinal[leftover] = charakters[j];
         } else if (arrayfinal[leftover] !== " ") {
-          leftover = numbers[j] % hossz;
-          arrayfinal[leftover + c1] = charakters[j];
-        } else if (
-          arrayfinal[leftover + c1] !== " " &&
-          leftover + c1 + c2 * c2 < hossz
-        ) {
-          leftover = numbers[j] % hossz;
-          arrayfinal[leftover + c1 + c2 * c2] = charakters[j];
+          console.log(j + " eleje: " + leftover);
+          if (
+            arrayfinal[leftover + Math.pow(c1 + c2 * overLapping, 2)] === " "
+          ) {
+            numbers[j] =
+              parseInt(numbers[j]) +
+              parseInt(Math.pow(c1 + c2 * overLapping, 2));
+            leftover = numbers[j] % hossz;
+            console.log("Debug: " + numbers[j]);
+            arrayfinal[leftover] = charakters[j];
+            console.log(j + " vege1: " + leftover);
+          }
+
+          if (
+            arrayfinal[leftover + Math.pow(c1 + c2 * overLapping, 2)] !== " "
+          ) {
+            overLapping++;
+            leftover =
+              (numbers[j] + Math.pow(c1 + c2 * overLapping, 2)) % hossz;
+            arrayfinal[leftover] = charakters[j];
+            console.log(
+              j + " vegeosszeg: " + Math.pow(c1 + c2 * overLapping, 2)
+            );
+          }
         }
       }
+      console.log("sq: "+ arrayfinal);
     }
 
     console.log("type:" + type);
@@ -209,12 +237,12 @@ export default function HashTableAssignment() {
 
     var counter = 0;
     for (let i = 0; i < hossz; i++) {
-      if (userresult[i] === arrayfinal[i]) {
+      if (userresult[i] === arrayfinal[i] && !userresult[i].includes("")) {
         counter += 1;
       }
     }
     console.log(counter);
-    if (counter === hossz) {
+    if (counter === hossz && counter!==0) {
       console.log("Jó megoldás!");
       document.getElementById("final").innerHTML = "Jó megoldás!";
     } else {
@@ -245,7 +273,10 @@ export default function HashTableAssignment() {
               New Assignment
             </Button>
           </div>
-          <div class="row justify-content-center text-center" style={{paddingTop:"15px"}}>
+          <div
+            class="row justify-content-center text-center"
+            style={{ paddingTop: "15px" }}
+          >
             <b id="hossz" style={{ color: "white" }}></b>
             <br />
             <b id="h" style={{ color: "white" }}></b>

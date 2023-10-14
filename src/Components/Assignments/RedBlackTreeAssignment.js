@@ -28,7 +28,7 @@ export default function RedBlackTreeTest() {
 
     <Line key="line7" x1="230" y1="145" x2="160" y2="210" />, //7
     <Line key="line8" x1="230" y1="145" x2="310" y2="210" />, //8
-    
+
     <Line key="line9" x1="525" y1="145" x2="460" y2="210" />, //9
     <Line key="line10" x1="525" y1="145" x2="625" y2="210" />, //10
 
@@ -38,28 +38,27 @@ export default function RedBlackTreeTest() {
     <Line key="line13" x1="1150" y1="145" x2="1050" y2="210" />, //13
     <Line key="line14" x1="1150" y1="145" x2="1240" y2="210" />, //14
 
-
     <Line key="line15" x1="160" y1="210" x2="100" y2="280" />, //15
     <Line key="line16" x1="160" y1="210" x2="220" y2="280" />, //16
 
     <Line key="line17" x1="310" y1="210" x2="250" y2="280" />, //17
     <Line key="line18" x1="310" y1="210" x2="370" y2="280" />, //18
-    
+
     <Line key="line19" x1="460" y1="210" x2="400" y2="280" />, //19
     <Line key="line20" x1="460" y1="210" x2="520" y2="280" />, //20
-    
+
     <Line key="line21" x1="610" y1="210" x2="560" y2="280" />, //21
     <Line key="line22" x1="610" y1="210" x2="670" y2="280" />, //22
-    
+
     <Line key="line23" x1="760" y1="210" x2="710" y2="280" />, //23
     <Line key="line24" x1="760" y1="210" x2="810" y2="280" />, //24
-    
+
     <Line key="line25" x1="910" y1="210" x2="860" y2="280" />, //25
     <Line key="line26" x1="910" y1="210" x2="970" y2="280" />, //26
-    
+
     <Line key="line25" x1="1060" y1="210" x2="1010" y2="280" />, //25
     <Line key="line26" x1="1060" y1="210" x2="1110" y2="280" />, //26
-    
+
     <Line key="line25" x1="1210" y1="210" x2="1160" y2="280" />, //25
     <Line key="line26" x1="1210" y1="210" x2="1260" y2="280" />, //26
   ];
@@ -271,7 +270,9 @@ export default function RedBlackTreeTest() {
         id="tree-line"
         style={{
           position: "absolute",
-          marginLeft:"14%",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           height: "350px",
           width: "1400px",
         }}
@@ -280,10 +281,12 @@ export default function RedBlackTreeTest() {
       </svg>
       <div
         style={{
-          paddingBottom: "25px",
-          marginLeft:"14%",
-          width: "1400px",
+          position: "absolute",
+          top: "50%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           height: "350px",
+          width: "1400px",
         }}
       >
         <div
@@ -667,7 +670,11 @@ export default function RedBlackTreeTest() {
       <div>
         <div
           className="row justify-content-center text-center"
-          style={{ padding: "20px" }}
+          style={{
+            top: "70%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
+          }}
         >
           <Button variant="outline-warning" onClick={Check}>
             Befejez

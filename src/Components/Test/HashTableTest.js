@@ -12,6 +12,7 @@ export default function HashTableTest() {
   var numbersh2 = [];
   var c1;
   var c2;
+  var c1c2type;
 
   for (let i = 0; i < hossz; i++) {}
 
@@ -61,11 +62,13 @@ export default function HashTableTest() {
     } else if (type === "square") {
       var oneortwo = Math.floor(Math.random() * 1);
       if (oneortwo === 0) {
-        c1 = "c1 = " + 1;
+        c1 = "c1 = " + 0;
         c2 = "c2 = " + 1;
+        c1c2type=0;
       } else {
         c1 = "c1 = " + 1;
         c2 = "c2 = " + 2;
+        c1c2type=1;
       }
       for (let i = 0; i < elemszam; i++) {
         if (i === elemszam) {
@@ -147,19 +150,43 @@ export default function HashTableTest() {
       }
     }
     if (type === "square") {
-      for (let j = 0; j <= elemszam; j++) {
+      if(c1c2type===0){
+        c1=0;
+        c2=1;
+      }else if(c1c2type===1){
+        c1=1;
+        c2=2;
+      }
+      var overLapping = 1;
+      for (let j = 0; j < elemszam; j++) {
         leftover = numbers[j] % hossz;
         if (arrayfinal[leftover] === " ") {
           arrayfinal[leftover] = charakters[j];
         } else if (arrayfinal[leftover] !== " ") {
-          leftover = numbers[j] % hossz;
-          arrayfinal[leftover + c1] = charakters[j];
-        } else if (
-          arrayfinal[leftover + c1] !== " " &&
-          leftover + c1 + c2 * c2 < hossz
-        ) {
-          leftover = numbers[j] % hossz;
-          arrayfinal[leftover + c1 + c2 * c2] = charakters[j];
+          console.log(j + " eleje: " + leftover);
+          if (
+            arrayfinal[leftover + Math.pow(c1 + c2 * overLapping, 2)] === " "
+          ) {
+            numbers[j] =
+              parseInt(numbers[j]) +
+              parseInt(Math.pow(c1 + c2 * overLapping, 2));
+            leftover = numbers[j] % hossz;
+            console.log("Debug: " + numbers[j]);
+            arrayfinal[leftover] = charakters[j];
+            console.log(j + " vege1: " + leftover);
+          }
+
+          if (
+            arrayfinal[leftover + Math.pow(c1 + c2 * overLapping, 2)] !== " "
+          ) {
+            overLapping++;
+            leftover =
+              (numbers[j] + Math.pow(c1 + c2 * overLapping, 2)) % hossz;
+            arrayfinal[leftover] = charakters[j];
+            console.log(
+              j + " vegeosszeg: " + Math.pow(c1 + c2 * overLapping, 2)
+            );
+          }
         }
       }
     }
@@ -185,12 +212,12 @@ export default function HashTableTest() {
 
     var counter = 0;
     for (let i = 0; i < hossz; i++) {
-      if (userresult[i] === arrayfinal[i]) {
+      if (userresult[i] === arrayfinal[i] && !userresult[i].includes("")) {
         counter += 1;
       }
     }
     console.log(counter);
-    if (counter === hossz) {
+    if (counter === hossz && counter!==0) {
       console.log("Jó megoldás!");
       document.getElementById("final").innerHTML = "Jó megoldás!";
     } else {
@@ -199,14 +226,14 @@ export default function HashTableTest() {
         "final"
       ).innerHTML = `Hibás megoldás, a helyes megoldás: [ ${arrayfinal} ].`;
     }
-    navigate("/backtracking-test")
+    navigate("/backtracking-test");
   }
   /*
             
    */
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <div
         className="form-group"
         style={{ paddingBottom: "15px", paddingTop: "15px" }}
@@ -215,7 +242,7 @@ export default function HashTableTest() {
           <div className="row justify-content-center text-center">
             <div style={{ color: "white" }}>{Generate()}</div>
             <div style={{ padding: "20px" }} className="container">
-              <div style={{padding:"20px"}} className="row">
+              <div style={{ padding: "20px" }} className="row">
                 <input
                   type="text"
                   id="inp0"
@@ -292,12 +319,11 @@ export default function HashTableTest() {
             </div>
           </div>
           <div>
-            <div style={{padding:"20px"}} className="row justify-content-center text-center">
-              <Button
-                id="btncheck"
-                variant="outline-warning"
-                onClick={Check}
-              >
+            <div
+              style={{ padding: "20px" }}
+              className="row justify-content-center text-center"
+            >
+              <Button id="btncheck" variant="outline-warning" onClick={Check}>
                 Következő
               </Button>
             </div>

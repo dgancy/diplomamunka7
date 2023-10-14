@@ -132,30 +132,36 @@ export default function Hashtable() {
     if (type === "square") {
       var c1 = document.getElementById("c1").value;
       var c2 = document.getElementById("c2").value;
-      var overLapping=1;
+      var overLapping = 1;
       for (let j = 0; j < elementnumber; j++) {
         finalindex = arraynumbers[j] % range;
         if (arrayfinal[finalindex] === ".") {
           arrayfinal[finalindex] = arrayelements[j];
         } else if (arrayfinal[finalindex] !== ".") {
-          if(arrayfinal[finalindex + c2 * overLapping] !== ".")
-          console.log("1-es if");
-          finalindex = arraynumbers[j] % range;
-          arrayfinal[finalindex + c1 + c2] = arrayelements[j];
+          console.log(j + " eleje: " + finalindex);
           if (
-            arrayfinal[finalindex] !== "." &&
-            arrayfinal[finalindex + c2 * overLapping] !== "."
+            arrayfinal[finalindex + Math.pow(c1 + c2 * overLapping, 2)] === "."
           ) {
+            arraynumbers[j] =
+              parseInt(arraynumbers[j]) +
+              parseInt(Math.pow(c1 + c2 * overLapping, 2));
+            finalindex = arraynumbers[j] % range;
+            console.log("Debug: " + arraynumbers[j]);
+            arrayfinal[finalindex] = arrayelements[j];
+            console.log(j + " vege1: " + finalindex);
           }
-          //negyzetre emeles
-        } else if (
-          arrayfinal[finalindex + c1] !== "." &&
-          arrayfinal[finalindex] !== "." &&
-          finalindex + c1 + c2 * c2 < range
-        ) {
-          console.log("2-es if");
-          finalindex = arraynumbers[j] % range;
-          arrayfinal[finalindex + c1 + c2 * c2] = arrayelements[j];
+
+          if (
+            arrayfinal[finalindex + Math.pow(c1 + c2 * overLapping, 2)] !== "."
+          ) {
+            overLapping++;
+            finalindex =
+              (arraynumbers[j] + Math.pow(c1 + c2 * overLapping, 2)) % range;
+            arrayfinal[finalindex] = arrayelements[j];
+            console.log(
+              j + " vegeosszeg: " + Math.pow(c1 + c2 * overLapping, 2)
+            );
+          }
         }
       } //button deactivate
     }

@@ -130,6 +130,7 @@ export default function BackTrackAssignment() {
             style={{ marginRight: "4%" }}
           ></input>
         </div>
+        <br/>
         <div className="row justify-content-center text-center">
           <Button id="btncheck" variant="outline-warning" onClick={Check}>
             Ellenőriz

@@ -11,8 +11,8 @@ export default function Backtracking() {
     var ctx = c.getContext("2d");
 
     ctx.font = "bold 18pt Georgia ";
-    ctx.strokeStyle = "black";
-    ctx.lineWidth = 3;
+    ctx.strokeStyle = "white";
+    ctx.lineWidth = 2;
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
     if (Tipus !== "") {

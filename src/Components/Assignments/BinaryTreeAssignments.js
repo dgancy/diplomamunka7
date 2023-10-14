@@ -2,6 +2,32 @@ import React from "react";
 import { Button } from "react-bootstrap";
 
 var fokszam = 2;
+const Line = ({ x1, y1, x2, y2 }) => (
+  <line
+    x1={x1}
+    y1={y1}
+    x2={x2}
+    y2={y2}
+    style={{ stroke: "gold", strokeWidth: 2 }}
+  />
+);
+
+const lines = [
+  <Line key="line1" x1="580" y1="37" x2="450" y2="75" />, //1
+  <Line key="line2" x1="820" y1="37" x2="950" y2="75" />, //2
+  <Line key="line3" x1="700" y1="37" x2="700" y2="75" />, //3
+
+  <Line key="line4" x1="340" y1="100" x2="290" y2="140" />, //4
+  <Line key="line5" x1="410" y1="100" x2="410" y2="140" />, //5
+  <Line key="line6" x1="490" y1="100" x2="540" y2="140" />, //6
+
+  <Line key="line7" x1="680" y1="100" x2="620" y2="140" />, //7
+  <Line key="line8" x1="730" y1="100" x2="780" y2="140" />, //8
+
+  <Line key="line9" x1="940" y1="100" x2="880" y2="140" />, //9
+  <Line key="line10" x1="990" y1="100" x2="990" y2="140" />, //10
+  <Line key="line11" x1="1050" y1="100" x2="1100" y2="140" />, //11
+];
 export default function BinaryTreeAssignment() {
   var AllArray = [];
 
@@ -642,9 +668,38 @@ export default function BinaryTreeAssignment() {
           className="row justify-content-center"
           id="question"
         ></b>
-        <div id="inputPlatform" className="container" hidden>
-          <div className="row justify-content-center">
-            <div style={{ width: "150px", paddingBottom: "15px" }}>
+        <svg
+          id="tree-line"
+          style={{
+            position: "absolute",
+            top: "45%" /* Add this line */,
+            transform: "translateY(-50%)" /* Add this line */,
+            left: "50%",
+            transform: "translateX(-50%)",
+            paddingBottom: "25px",
+            height: "350px",
+            width: "1400px",
+          }}
+        >
+          {lines}
+        </svg>
+        <div
+          style={{
+            position: "absolute",
+            top: "45%" /* Add this line */,
+            transform: "translateY(-50%)" /* Add this line */,
+            left: "50%",
+            transform: "translateX(-50%)",
+            paddingBottom: "25px",
+            width: "1400px",
+            height: "350px",
+          }}
+        >
+          <div
+            className="row justify-content-center"
+            style={{ paddingBottom: "15px" }}
+          >
+            <div className="col-3">
               <input id="inp0" type="text" className="form-control"></input>
             </div>
           </div>
@@ -652,54 +707,57 @@ export default function BinaryTreeAssignment() {
             className="row justify-content-center"
             style={{ padding: "15px" }}
           >
-            <div style={{ width: "200px", marginRight: "6%" }}>
+            <div className="col-2">
               {" "}
               <input id="inp1" type="text" className="form-control"></input>
             </div>
-            <div style={{ width: "200px", marginRight: "6%" }}>
+            <div
+              className="col-2"
+              style={{ marginRight: "4%", marginLeft: "4%" }}
+            >
+              {" "}
+              <input id="inpmid1" type="text" className="form-control"></input>
+            </div>
+            <div className="col-2">
               {" "}
               <input id="inp2" type="text" className="form-control"></input>
-            </div>{" "}
-            <div style={{ width: "200px" }}>
-              {" "}
-              <input id="inp3" type="text" className="form-control"></input>
             </div>
           </div>
           <div
             className="row justify-content-center"
             style={{ padding: "15px" }}
           >
-            <div style={{ width: "100px", margin: "4px" }}>
+            <div className="col-1">
+              {" "}
+              <input id="inp3" type="text" className="form-control"></input>
+            </div>
+            <div className="col-1">
               {" "}
               <input id="inp4" type="text" className="form-control"></input>
             </div>
-            <div style={{ width: "100px", margin: "4px" }}>
+            <div className="col-1">
               {" "}
               <input id="inp5" type="text" className="form-control"></input>
             </div>
-            <div style={{ width: "100px", margin: "4px" }}>
+            <div className="col-1">
               {" "}
               <input id="inp6" type="text" className="form-control"></input>
             </div>
-            <div style={{ width: "100px", margin: "4px" }}>
+            <div className="col-1">
               {" "}
-              <input id="inp7" type="text" className="form-control"></input>
+              <input id="inp3" type="text" className="form-control"></input>
             </div>
-            <div style={{ width: "100px", margin: "4px" }}>
+            <div className="col-1">
               {" "}
-              <input id="inp8" type="text" className="form-control"></input>
+              <input id="inp4" type="text" className="form-control"></input>
             </div>
-            <div style={{ width: "100px", margin: "4px" }}>
+            <div className="col-1">
               {" "}
-              <input id="inp9" type="text" className="form-control"></input>
+              <input id="inp5" type="text" className="form-control"></input>
             </div>
-            <div style={{ width: "100px", margin: "4px" }}>
+            <div className="col-1">
               {" "}
-              <input id="inp10" type="text" className="form-control"></input>
-            </div>
-            <div style={{ width: "100px", margin: "4px" }}>
-              {" "}
-              <input id="inp11" type="text" className="form-control"></input>
+              <input id="inp6" type="text" className="form-control"></input>
             </div>
           </div>
         </div>
