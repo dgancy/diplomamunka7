@@ -14,7 +14,11 @@ export default function Hashtable() {
     console.log(type);
     console.log(elementnumber);
 
-    if (type === "simple" || type === "lineral") {
+    if (type === "simple" || type === "lineral" || type === "square") {
+      if (type === "square") {
+        var c1c2 = document.getElementById("c1c2");
+        c1c2.style.display = "flex";
+      }
       for (let i = 0; i < elementnumber; i++) {
         input.innerHTML +=
           'h1 : <input type="text" name="' +
@@ -29,11 +33,7 @@ export default function Hashtable() {
           (i + 15) +
           '" placeholder="Érték">    <br/>    ';
       }
-    } else if (type === "double" || type === "square") {
-      if (type === "square") {
-        var c1c2 = document.getElementById("c1c2");
-        c1c2.style.display = "block";
-      }
+    } else if (type === "double") {
       for (let i = 0; i < elementnumber; i++) {
         input.innerHTML +=
           'h1 : <input type="text" name="' +
@@ -46,7 +46,8 @@ export default function Hashtable() {
           i * 3 +
           '" class="col-1" id="inp' +
           (i + 30) +
-          '" placeholder="Érték">        ';
+          '" placeholder="Érték">     ';
+
         input.innerHTML +=
           'h2 : <input type="text" name="' +
           i * 2 +
@@ -131,24 +132,34 @@ export default function Hashtable() {
     if (type === "square") {
       var c1 = document.getElementById("c1").value;
       var c2 = document.getElementById("c2").value;
-
+      var overLapping=1;
       for (let j = 0; j < elementnumber; j++) {
         finalindex = arraynumbers[j] % range;
         if (arrayfinal[finalindex] === ".") {
           arrayfinal[finalindex] = arrayelements[j];
         } else if (arrayfinal[finalindex] !== ".") {
+          if(arrayfinal[finalindex + c2 * overLapping] !== ".")
+          console.log("1-es if");
           finalindex = arraynumbers[j] % range;
-          arrayfinal[finalindex + c1] = arrayelements[j];
+          arrayfinal[finalindex + c1 + c2] = arrayelements[j];
+          if (
+            arrayfinal[finalindex] !== "." &&
+            arrayfinal[finalindex + c2 * overLapping] !== "."
+          ) {
+          }
+          //negyzetre emeles
         } else if (
           arrayfinal[finalindex + c1] !== "." &&
+          arrayfinal[finalindex] !== "." &&
           finalindex + c1 + c2 * c2 < range
         ) {
+          console.log("2-es if");
           finalindex = arraynumbers[j] % range;
           arrayfinal[finalindex + c1 + c2 * c2] = arrayelements[j];
         }
       } //button deactivate
     }
-    
+
     const tableContainer = document.createElement("div");
     tableContainer.setAttribute("class", "table-container");
 
@@ -236,11 +247,22 @@ export default function Hashtable() {
         </div>
       </div>
       <div>
-        <div style={{ display: "none" }} id="c1c2">
-          <b style={{ color: "white" }}>c1 : </b>
+        <div
+          style={{
+            display: "none",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+          id="c1c2"
+        >
+          <b style={{ color: "white", marginRight: "5px" }}> c1 : </b>
           <input type="text" id="c1" className="col-1"></input>
-          <b style={{ color: "white" }}>c2 : </b>
+          <b style={{ color: "white", marginRight: "5px", marginLeft: "5px" }}>
+            {" "}
+            c2 :{" "}
+          </b>
           <input type="text" id="c2" className="col-1"></input>
+          <br />
           <br />
         </div>
         <div

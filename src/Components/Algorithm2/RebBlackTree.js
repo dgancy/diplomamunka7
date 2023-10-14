@@ -24,11 +24,11 @@ export default function RedBlackTree() {
     <Line key="line5" x1="800" y1="80" x2="700" y2="130" />, //5
     <Line key="line6" x1="800" y1="80" x2="900" y2="130" />, //6    
     
-    <Line key="line7" x1="505" y1="120" x2="450" y2="180" />, //7
-    <Line key="line8" x1="500" y1="120" x2="550" y2="180" />, //8
-    
-    <Line key="line9" x1="300" y1="120" x2="250" y2="180" />, //9
-    <Line key="line10" x1="310" y1="120" x2="360" y2="180" />, //10
+    <Line key="line7" x1="300" y1="120" x2="250" y2="180" />, //7
+    <Line key="line8" x1="310" y1="120" x2="360" y2="180" />, //8
+
+    <Line key="line9" x1="505" y1="120" x2="450" y2="180" />, //9
+    <Line key="line10" x1="500" y1="120" x2="550" y2="180" />, //10
 
     <Line key="line11" x1="700" y1="130" x2="650" y2="180" />, //11
     <Line key="line12" x1="700" y1="130" x2="750" y2="180" />, //12
@@ -781,10 +781,18 @@ export default function RedBlackTree() {
       for (var i = 0; i < colorHelperArray.length; i++) {
         //43,23,76,98,32,65,10,2,12,34,33,89,66,1
         if (edge !== "") {
-          var element;
-          var breaks;
-          element = document.createElement("b");
-          breaks = document.createElement("br");
+          var element = document.getElementById("element_" + i);
+          var breaks = document.getElementById("breaks_" + i);
+  
+          if (!element) {
+              element = document.createElement("b");
+              element.id = "element_" + i;
+          }
+  
+          if (!breaks) {
+              breaks = document.createElement("br");
+              breaks.id = "breaks_" + i;
+          }
 
           if (colorHelperArray[i] === "NIL" || color[i] === "0") {
             element.className = "tree-black";
