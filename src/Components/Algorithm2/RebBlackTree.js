@@ -22,8 +22,8 @@ export default function RedBlackTree() {
     <Line key="line4" x1="410" y1="70" x2="510" y2="120" />, //4
 
     <Line key="line5" x1="800" y1="80" x2="700" y2="130" />, //5
-    <Line key="line6" x1="800" y1="80" x2="900" y2="130" />, //6    
-    
+    <Line key="line6" x1="800" y1="80" x2="900" y2="130" />, //6
+
     <Line key="line7" x1="300" y1="120" x2="250" y2="180" />, //7
     <Line key="line8" x1="310" y1="120" x2="360" y2="180" />, //8
 
@@ -170,6 +170,113 @@ export default function RedBlackTree() {
             ) {
               fourthLine[3] = parsedarray[i];
             }
+          }
+
+          if (
+            //0
+            fifthLine[0] !== "NIL" &&
+            fifthLine[1] === "NIL" &&
+            (parsedarray[i] > fifthLine[0] || parsedarray[i] < fifthLine[0]) &&
+            parsedarray[i] < fourthLine[0]
+          ) {
+            console.log("finalchange in");
+            fifthLine[1] = fourthLine[0];
+            fourthLine[0] = fifthLine[0];
+            fifthLine[0] = parsedarray[i];
+          }
+          if (
+            //1
+            fifthLine[0] === "NIL" &&
+            fifthLine[1] !== "NIL" &&
+            (parsedarray[i] > fifthLine[1] || parsedarray[i] < fifthLine[1]) &&
+            parsedarray[i] > fourthLine[0] &&
+            parsedarray[i] < thirdLine[0]
+          ) {
+            fifthLine[0] = fourthLine[0];
+            fourthLine[0] = fifthLine[1];
+            fifthLine[1] = parsedarray[i];
+          }
+          if (
+            //2
+            fifthLine[2] !== "NIL" &&
+            fifthLine[3] === "NIL" &&
+            (parsedarray[i] > fifthLine[2] || parsedarray[i] < fifthLine[2]) &&
+            parsedarray[i] < fourthLine[1] &&
+            parsedarray[i] > thirdLine[0] &&
+            parsedarray[i] < secondLine[0]
+          ) {
+            fifthLine[3] = fourthLine[1];
+            fourthLine[1] = fifthLine[2];
+            fifthLine[2] = parsedarray[i];
+          }
+          if (
+            //3
+            fifthLine[2] === "NIL" &&
+            fifthLine[3] !== "NIL" &&
+            (parsedarray[i] > fifthLine[3] || parsedarray[i] < fifthLine[3]) &&
+            parsedarray[i] > fourthLine[1] &&
+            parsedarray[i] > thirdLine[0] &&
+            parsedarray[i] < secondLine[0]
+          ) {
+            fifthLine[2] = fourthLine[1];
+            fourthLine[1] = fifthLine[3];
+            fifthLine[3] = parsedarray[i];
+          }
+          if (
+            //4
+            fifthLine[4] !== "NIL" &&
+            fifthLine[5] === "NIL" &&
+            (parsedarray[i] > fifthLine[4] || parsedarray[i] < fifthLine[4]) &&
+            parsedarray[i] < fourthLine[2] &&
+            parsedarray[i] < thirdLine[1] &&
+            parsedarray[i] > secondLine[0] &&
+            parsedarray[i] < edge
+          ) {
+            fifthLine[5] = fourthLine[2];
+            fourthLine[2] = fifthLine[4];
+            fifthLine[4] = parsedarray[i];
+          }
+          if (
+            //5
+            fifthLine[4] === "NIL" &&
+            fifthLine[5] !== "NIL" &&
+            (parsedarray[i] > fifthLine[5] || parsedarray[i] < fifthLine[5]) &&
+            parsedarray[i] > fourthLine[2] &&
+            parsedarray[i] < thirdLine[1] &&
+            parsedarray[i] > secondLine[0] &&
+            parsedarray[i] < edge
+          ) {
+            fifthLine[4] = fourthLine[2];
+            fourthLine[2] = fifthLine[5];
+            fifthLine[5] = parsedarray[i];
+          }
+          if (
+            //6
+            fifthLine[6] !== "NIL" &&
+            fifthLine[7] === "NIL" &&
+            (parsedarray[i] > fifthLine[6] || parsedarray[i] < fifthLine[6]) &&
+            parsedarray[i] < fourthLine[3] &&
+            parsedarray[i] > thirdLine[1] &&
+            parsedarray[i] > secondLine[0] &&
+            parsedarray[i] < edge
+          ) {
+            fifthLine[7] = fourthLine[3];
+            fourthLine[3] = fifthLine[6];
+            fifthLine[6] = parsedarray[i];
+          }
+          if (
+            //7
+            fifthLine[6] === "NIL" &&
+            fifthLine[7] !== "NIL" &&
+            (parsedarray[i] > fifthLine[7] || parsedarray[i] < fifthLine[7]) &&
+            parsedarray[i] > fourthLine[3] &&
+            parsedarray[i] > thirdLine[1] &&
+            parsedarray[i] > secondLine[0] &&
+            parsedarray[i] < edge
+          ) {
+            fifthLine[6] = fourthLine[3];
+            fourthLine[3] = fifthLine[7];
+            fifthLine[7] = parsedarray[i];
           }
 
           if (parsedarray[i] < secondLine[0] && secondLine[0] !== "NIL") {
@@ -418,7 +525,8 @@ export default function RedBlackTree() {
           if (parsedarray[i] < secondLine[1]) {
             if (parsedarray[i] < thirdLine[2] && fourthLine[4] === "NIL") {
               fourthLine[4] = parsedarray[i];
-            } else if (
+            }
+            if (
               parsedarray[i] > thirdLine[2] &&
               parsedarray[i] < thirdLine[3] &&
               fourthLine[5] === "NIL"
@@ -427,15 +535,139 @@ export default function RedBlackTree() {
             }
           }
           if (parsedarray[i] > secondLine[1]) {
-            if (parsedarray[i] < thirdLine[3] && fourthLine[6] === "NIL") {
+            console.log("bemeno elem3: " + parsedarray[i]);
+            if (
+              parsedarray[i] < thirdLine[3] &&
+              parsedarray[i] > thirdLine[2] &&
+              fourthLine[6] === "NIL"
+            ) {
+              console.log("bemeno elem6: " + parsedarray[i]);
               fourthLine[6] = parsedarray[i];
             } else if (
               parsedarray[i] > thirdLine[3] &&
               fourthLine[7] === "NIL"
             ) {
+              console.log("bemeno elem7: " + parsedarray[i]);
               fourthLine[7] = parsedarray[i];
             }
           }
+
+          if (
+            //8
+            fifthLine[8] !== "NIL" &&
+            fifthLine[9] === "NIL" &&
+            (parsedarray[i] > fifthLine[8] || parsedarray[i] < fifthLine[8]) &&
+            parsedarray[i] < fourthLine[4] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[9] = fourthLine[4];
+            fourthLine[4] = fifthLine[8];
+            fifthLine[8] = parsedarray[i];
+          }
+          if (
+            //9
+            fifthLine[8] === "NIL" &&
+            fifthLine[9] !== "NIL" &&
+            (parsedarray[i] > fifthLine[9] || parsedarray[i] < fifthLine[9]) &&
+            parsedarray[i] > fourthLine[4] &&
+            parsedarray[i] < thirdLine[2] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[8] = fourthLine[4];
+            fourthLine[4] = fifthLine[9];
+            fifthLine[9] = parsedarray[i];
+          }
+          if (
+            //10
+            fifthLine[10] !== "NIL" &&
+            fifthLine[11] === "NIL" &&
+            (parsedarray[i] > fifthLine[10] ||
+              parsedarray[i] < fifthLine[10]) &&
+            parsedarray[i] < fourthLine[5] &&
+            parsedarray[i] > thirdLine[2] &&
+            parsedarray[i] < secondLine[1] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[11] = fourthLine[5];
+            fourthLine[5] = fifthLine[10];
+            fifthLine[10] = parsedarray[i];
+          }
+          if (
+            //11
+            fifthLine[10] === "NIL" &&
+            fifthLine[11] !== "NIL" &&
+            (parsedarray[i] > fifthLine[11] ||
+              parsedarray[i] < fifthLine[11]) &&
+            parsedarray[i] > fourthLine[5] &&
+            parsedarray[i] > thirdLine[2] &&
+            parsedarray[i] < secondLine[1] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[10] = fourthLine[5];
+            fourthLine[5] = fifthLine[11];
+            fifthLine[11] = parsedarray[i];
+          }
+          if (
+            //12
+            fifthLine[12] !== "NIL" &&
+            fifthLine[13] === "NIL" &&
+            (parsedarray[i] > fifthLine[12] ||
+              parsedarray[i] < fifthLine[12]) &&
+            parsedarray[i] < fourthLine[6] &&
+            parsedarray[i] < thirdLine[3] &&
+            parsedarray[i] > secondLine[1] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[13] = fourthLine[6];
+            fourthLine[6] = fifthLine[12];
+            fifthLine[12] = parsedarray[i];
+          }
+          if (
+            //13
+            fifthLine[12] === "NIL" &&
+            fifthLine[13] !== "NIL" &&
+            (parsedarray[i] > fifthLine[13] ||
+              parsedarray[i] < fifthLine[13]) &&
+            parsedarray[i] > fourthLine[6] &&
+            parsedarray[i] < thirdLine[3] &&
+            parsedarray[i] > secondLine[0] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[12] = fourthLine[6];
+            fourthLine[6] = fifthLine[13];
+            fifthLine[13] = parsedarray[i];
+          }
+          if (
+            //14
+            fifthLine[14] !== "NIL" &&
+            fifthLine[15] === "NIL" &&
+            (parsedarray[i] > fifthLine[14] ||
+              parsedarray[i] < fifthLine[14]) &&
+            parsedarray[i] < fourthLine[7] &&
+            parsedarray[i] > thirdLine[3] &&
+            parsedarray[i] > secondLine[1] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[15] = fourthLine[7];
+            fourthLine[7] = fifthLine[14];
+            fifthLine[14] = parsedarray[i];
+          }
+          if (
+            //15
+            fifthLine[14] === "NIL" &&
+            fifthLine[15] !== "NIL" &&
+            (parsedarray[i] > fifthLine[15] ||
+              parsedarray[i] < fifthLine[15]) &&
+            parsedarray[i] > fourthLine[7] &&
+            parsedarray[i] > thirdLine[3] &&
+            parsedarray[i] > secondLine[1] &&
+            parsedarray[i] > edge
+          ) {
+            fifthLine[14] = fourthLine[7];
+            fourthLine[7] = fifthLine[15];
+            fifthLine[15] = parsedarray[i];
+          }
+
           if (parsedarray[i] < secondLine[1] && secondLine[1] !== "NIL") {
             if (parsedarray[i] < thirdLine[2] && thirdLine[2] !== "NIL") {
               if (parsedarray[i] < fourthLine[4] && fourthLine[4] !== "NIL") {
@@ -469,6 +701,8 @@ export default function RedBlackTree() {
               }
             }
             if (
+              parsedarray[i] > secondLine[1] &&
+              secondLine[1] !== "NIL" &&
               parsedarray[i] > thirdLine[2] &&
               thirdLine[2] !== "NIL" &&
               parsedarray[i] < thirdLine[3] &&
@@ -486,12 +720,75 @@ export default function RedBlackTree() {
                 fifthLine[13] = parsedarray[i];
               }
             }
-            if (parsedarray[i] > thirdLine[3] && thirdLine[3] !== "NIL") {
-              if (parsedarray[i] < fourthLine[7] && fourthLine[7] !== "NIL") {
-                fifthLine[14] = parsedarray[i];
+            if (parsedarray[i] < secondLine[1] && secondLine[1] !== "NIL") {
+              console.log("hiba-1: " + parsedarray[i]);
+              if (parsedarray[i] < thirdLine[2] && thirdLine[2] !== "NIL") {
+                if (parsedarray[i] < fourthLine[4] && fourthLine[4] !== "NIL") {
+                  fifthLine[8] = parsedarray[i];
+                }
+                if (
+                  parsedarray[i] > fourthLine[4] &&
+                  fourthLine[4] !== "NIL" &&
+                  parsedarray[i] < fourthLine[5] &&
+                  fourthLine[5] !== "NIL"
+                ) {
+                  fifthLine[9] = parsedarray[i];
+                }
               }
-              if (parsedarray[i] > fourthLine[7] && fourthLine[7] !== "NIL") {
-                fifthLine[15] = parsedarray[i];
+              if (
+                parsedarray[i] > thirdLine[2] &&
+                thirdLine[2] !== "NIL" &&
+                parsedarray[i] < thirdLine[3] &&
+                thirdLine[3] !== "NIL"
+              ) {
+                if (parsedarray[i] < fourthLine[5] && fourthLine[5] !== "NIL") {
+                  fifthLine[10] = parsedarray[i];
+                }
+                if (
+                  parsedarray[i] > fourthLine[5] &&
+                  fourthLine[5] !== "NIL" &&
+                  parsedarray[i] < fourthLine[6] &&
+                  fourthLine[6] !== "NIL"
+                ) {
+                  fifthLine[11] = parsedarray[i];
+                }
+              }
+            }
+          }
+          if (parsedarray[i] > secondLine[1]) {
+            console.log("hiba0: " + parsedarray[i]);
+            if (parsedarray[i] < thirdLine[3] && thirdLine[3] !== "NIL") {
+              console.log("belep a hibas reszhez: " + parsedarray[i]);
+              if (
+                parsedarray[i] > thirdLine[2] &&
+                thirdLine[2] !== "NIL" &&
+                parsedarray[i] < thirdLine[3] &&
+                thirdLine[3] !== "NIL"
+              ) {
+                if (parsedarray[i] < fourthLine[6] && fourthLine[6] !== "NIL") {
+                  fifthLine[12] = parsedarray[i];
+                }
+                if (
+                  parsedarray[i] > fourthLine[6] &&
+                  fourthLine[6] !== "NIL" &&
+                  parsedarray[i] < fourthLine[7] &&
+                  fourthLine[7] !== "NIL"
+                ) {
+                  fifthLine[13] = parsedarray[i];
+                }
+              }
+            }
+            if (parsedarray[i] > thirdLine[3] && thirdLine[3] !== "NIL") {
+              console.log("hiba");
+              if (parsedarray[i] > thirdLine[3] && thirdLine[3] !== "NIL") {
+                console.log("hiba1");
+                if (parsedarray[i] < fourthLine[7] && fourthLine[7] !== "NIL") {
+                  console.log("hiba2");
+                  fifthLine[14] = parsedarray[i];
+                }
+                if (parsedarray[i] > fourthLine[7] && fourthLine[7] !== "NIL") {
+                  fifthLine[15] = parsedarray[i];
+                }
               }
             }
           }
@@ -783,15 +1080,15 @@ export default function RedBlackTree() {
         if (edge !== "") {
           var element = document.getElementById("element_" + i);
           var breaks = document.getElementById("breaks_" + i);
-  
+
           if (!element) {
-              element = document.createElement("b");
-              element.id = "element_" + i;
+            element = document.createElement("b");
+            element.id = "element_" + i;
           }
-  
+
           if (!breaks) {
-              breaks = document.createElement("br");
-              breaks.id = "breaks_" + i;
+            breaks = document.createElement("br");
+            breaks.id = "breaks_" + i;
           }
 
           if (colorHelperArray[i] === "NIL" || color[i] === "0") {
@@ -846,9 +1143,6 @@ export default function RedBlackTree() {
       console.log("ThirdLine: " + thirdLine);
       console.log("FourthLine: " + fourthLine);
       console.log("FifthLine: " + fifthLine);
-
-      console.log(lines);
-      console.log(renderedLines);
     }
   }
 
@@ -885,7 +1179,9 @@ export default function RedBlackTree() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "60%",
+            top: "70%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             height: "400px",
             width: "1200px",
           }}
@@ -896,7 +1192,9 @@ export default function RedBlackTree() {
           id="tree"
           style={{
             position: "absolute",
-            top: "60%",
+            top: "70%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
             height: "400px",
             width: "1200px",
           }}

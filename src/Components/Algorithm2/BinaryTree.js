@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 
 export default function BinaryTree() {
@@ -30,6 +30,8 @@ export default function BinaryTree() {
     <Line key="line10" x1="840" y1="89" x2="840" y2="112" />, //10
     <Line key="line11" x1="900" y1="89" x2="950" y2="112" />, //11
   ];
+
+  const [renderedLines, setRenderedLines] = useState([]);
 
   function Delete() {
     var del_element = document.getElementById("elements").value;
@@ -689,7 +691,7 @@ export default function BinaryTree() {
         document.getElementById("showEleven").style.border = "2px solid gold";
       }
     }
-
+//vonalakat rendbe rakni úgy hogy időben jelenjenek meg bug nélkül
     console.log("Array hossz: " + AllArray.length);
     console.log("Edgemax: " + edgemax);
     console.log("Edge: " + OpArrayEdge);
@@ -767,13 +769,13 @@ export default function BinaryTree() {
         style={{
           position: "absolute",
           top: "60%",
-          left: "57%",
+          left: "50%",
           transform: "translate(-50%, -50%)",
-          height: "350px",
-          width: "1400px",
+          height: "400px",
+          width: "1200px",
         }}
       >
-        {lines}
+        {renderedLines}
       </svg>
       <div
         style={{
@@ -789,7 +791,11 @@ export default function BinaryTree() {
           <div className="row justify-content-center ">
             <div
               id="showZero"
-              style={{ border: "solid gold", display: "none" }}
+              style={{
+                border: "solid gold",
+                display: "none",
+                textAlign: "center",
+              }}
               className="col-2"
             >
               <b id="arrayedge"></b>
@@ -804,6 +810,7 @@ export default function BinaryTree() {
                 border: "solid gold",
                 marginRight: "7%",
                 display: "none",
+                textAlign: "center",
               }}
               id="showOne"
             >
@@ -815,6 +822,7 @@ export default function BinaryTree() {
                 border: "solid gold",
                 marginRight: "7%",
                 display: "none",
+                textAlign: "center",
               }}
               id="showTwo"
             >
@@ -822,7 +830,11 @@ export default function BinaryTree() {
             </div>
             <div
               id="showThree"
-              style={{ border: "solid gold", display: "none" }}
+              style={{
+                border: "solid gold",
+                display: "none",
+                textAlign: "center",
+              }}
               className="col-2"
             >
               <b id="arrayright_1"></b>
@@ -835,6 +847,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showFour"
             >
@@ -844,6 +857,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showFive"
             >
@@ -853,6 +867,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showSix"
             >
@@ -862,6 +877,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showSeven"
             >
@@ -871,6 +887,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showEight"
             >
@@ -880,6 +897,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showNine"
             >
@@ -889,6 +907,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showTen"
             >
@@ -898,6 +917,7 @@ export default function BinaryTree() {
               className="col-1"
               style={{
                 marginRight: "1%",
+                textAlign: "center",
               }}
               id="showEleven"
             >

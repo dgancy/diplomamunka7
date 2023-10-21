@@ -27,7 +27,8 @@ rbtree NIL-es story ----done
 rbtree bug --fixed + vonalas story ----done teszteld azért. done
 
 has table fix --done
-master and recursion Rework
+master Rework
+recursion Rework --done
 vonalakat megcsinálni a többi helyen is  //binkeresofaassignment test gondok mindkettoben rendbe rakni ezeket
 test oldalak
 

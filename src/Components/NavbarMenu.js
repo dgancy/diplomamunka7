@@ -64,7 +64,7 @@ export default function NavbarMenu() {
         </NavDropdown.Item>
       </NavDropdown>
 
-      <NavDropdown title={<span className="navelement">Assignment</span>}>
+      <NavDropdown title={<span className="navelement">Feladatok</span>}>
         <NavDropdown.Item
           style={{ color: "black" }}
           as={Link}
