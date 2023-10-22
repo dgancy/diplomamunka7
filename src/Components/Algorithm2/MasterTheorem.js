@@ -3,44 +3,41 @@ import { Button } from "react-bootstrap";
 
 function MasterTheorem() {
   function Result() {
-    var a_element = document.getElementById("A_element").value;
-    var b_element = document.getElementById("B_element").value;
+    var a_element = parseInt(document.getElementById("A_element").value);
+    var b_element = parseInt(document.getElementById("B_element").value);
     var n_element = document.getElementById("N_element").value;
 
     let logarithm_element = (Math.log(a_element) / Math.log(b_element)).toFixed(
       3
     );
+
+    console.log(n_element);
+
     let epszilon = 0;
     let differencial = 0;
+
     if (n_element === "n") {
       differencial = 1;
-    } else if (n_element === "n^2") {
+    } else if (n_element === "2") {
       differencial = 2;
-    } else if (n_element === "n^3") {
+    } else if (n_element === "3") {
       differencial = 3;
     } else if (n_element === "1") {
       differencial = 0;
     }
-
-    if (logarithm_element < differencial) {
-      epszilon = differencial - logarithm_element;
-    } else {
-      epszilon = logarithm_element - differencial;
-    }
-
+    console.log(differencial + " : " + logarithm_element);
+    var eset;
     if (a_element >= 1 && b_element > 1) {
-      var eset;
-      if (logarithm_element === differencial || n_element === "1") {
+      if (a_element === b_element || n_element === "1") {
         eset = 2;
       }
-      if (
-        logarithm_element > differencial &&
-        logarithm_element - epszilon === differencial
-      ) {
+      if (differencial < logarithm_element) {
         eset = 1;
+        epszilon = logarithm_element - differencial;
       }
-      if (logarithm_element < differencial) {
+      if (differencial > logarithm_element) {
         eset = 3;
+        epszilon = differencial - logarithm_element;
       }
     }
     epszilon = epszilon.toFixed(3);
@@ -49,16 +46,15 @@ function MasterTheorem() {
     var final_result;
     if (eset === 1) {
       muvelet = "-";
-      final_result = Number(logarithm_element) - Number(epszilon);
+      final_result = Number(logarithm_element);
     } else if (eset === 3) {
       muvelet = "+";
       final_result = Number(logarithm_element) + Number(epszilon);
     }
-
-    if (a_element && b_element && n_element && eset !== "2") {
+    console.log("eset:" + eset);
+    if (eset !== 2) {
       document.getElementById("logarithm").innerHTML =
-        "Képlet: " +
-        "n" +
+        "Képlet: n" +
         "<sup>" +
         "log" +
         "<sub>" +
@@ -71,9 +67,7 @@ function MasterTheorem() {
         logarithm_element +
         "</sup>" +
         ")";
-      document.getElementById("eset").innerHTML = " Eset: " + eset;
-      document.getElementById("seged").innerHTML =
-        "Epszilon érték(ε): : " + epszilon;
+      document.getElementById("eset").innerHTML = ", Eset: " + eset;
       document.getElementById("seged").innerHTML =
         "Epszilon érték(ε): " +
         epszilon +
@@ -103,14 +97,53 @@ function MasterTheorem() {
         "</sup>" +
         ")";
       if (n_element === "2" || n_element === "3") {
-        document.getElementById("final").innerHTML =
-          "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
+        if (eset === 3) {
+          document.getElementById("final").innerHTML =
+            "Megoldás: T(n)= Θ(" +
+            n_element +
+            ") </br> Ellenőrzés: </br> Képlet: a * f(n/b)<= c * f(n) </br>" +
+            a_element +
+            " * (n/" +
+            b_element +
+            ")<sup>" +
+            n_element +
+            "</sup> <= c * n<sup>" +
+            n_element +
+            "</sup> </br> " +
+            a_element +
+            "/" +
+            b_element ** n_element +
+            " <= c < 1 ";
+        } else {
+          document.getElementById("final").innerHTML =
+            "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
+        }
       } else {
-        document.getElementById("final").innerHTML =
-          "Megoldás: T(n)= Θ(" + n_element + ")";
+        if (eset === 3) {
+          document.getElementById("final").innerHTML =
+            "Megoldás: T(n)= Θ(" +
+            n_element +
+            ") </br> Ellenőrzés: </br> Képlet: a * f(n/b)<= c * f(n) </br>" +
+            a_element +
+            " * (n/" +
+            b_element +
+            ")<sup>" +
+            n_element +
+            "</sup> <= c * n<sup>" +
+            n_element +
+            "</sup> </br> " +
+            a_element +
+            "/" +
+            b_element +
+            " <= c < 1 ";
+        } else {
+          document.getElementById("final").innerHTML =
+            "Megoldás: T(n)= Θ(" + n_element + ")";
+        }
       }
     }
-    if (a_element && b_element && n_element && eset === "2") {
+    if (eset === 2) {
+      console.log("befordulok");
       document.getElementById("logarithm").innerHTML =
         "Képlet: " +
         "n" +
@@ -126,17 +159,20 @@ function MasterTheorem() {
         logarithm_element +
         "</sup>" +
         ")";
-      document.getElementById("eset").innerHTML = "Eset: " + eset;
-      if (n_element === "2" || n_element === "3") {
+      document.getElementById("eset").innerHTML = ", Eset: " + eset;
+      document.getElementById("seged").innerHTML = "";
+      document.getElementById("result").innerHTML = "";
+      if (differencial === 2 || differencial === 3) {
         document.getElementById("final").innerHTML =
           "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
       } else {
         document.getElementById("final").innerHTML =
-          "Megoldás: T(n)= Θ(" + n_element + ")";
+          "Megoldás: T(n)= Θ(" + n_element + "logn)";
       }
       console.log("nelem: " + n_element);
     }
   }
+
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
       <h1
@@ -176,7 +212,6 @@ function MasterTheorem() {
                 <option value="n">n</option>
                 <option value="2">n&sup2;</option>
                 <option value="3">n&sup3;</option>
-                <option value="nlogn">nlogn</option>
               </select>
               <small className="form-text text-white">(n kitevős tag)</small>
             </div>
@@ -199,13 +234,7 @@ function MasterTheorem() {
         <br />
         <b id="result" />
         <br />
-        <b
-          id="final"
-          style={{
-            textDecorationLine: "underline",
-            textDecorationStyle: "double",
-          }}
-        />
+        <b id="final" style={{}} />
       </div>
       <br />
     </form>

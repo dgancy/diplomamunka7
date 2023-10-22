@@ -1,37 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import Button from "react-bootstrap/Button";
 
 export default function BinaryTree() {
   var AllArray = [];
   //perfetto mefisto, márcsak otthon bekell vonalazni rendesen
-  const Line = ({ x1, y1, x2, y2 }) => (
-    <line
-      x1={x1}
-      y1={y1}
-      x2={x2}
-      y2={y2}
-      style={{ stroke: "gold", strokeWidth: 2 }}
-    />
-  );
-
-  const lines = [
-    <Line key="line1" x1="480" y1="37" x2="390" y2="62" />, //1
-    <Line key="line2" x1="660" y1="37" x2="750" y2="62" />, //2
-    <Line key="line3" x1="570" y1="37" x2="570" y2="62" />, //3
-
-    <Line key="line4" x1="250" y1="89" x2="200" y2="112" />, //4
-    <Line key="line5" x1="305" y1="89" x2="305" y2="112" />, //5
-    <Line key="line6" x1="350" y1="89" x2="400" y2="112" />, //6
-
-    <Line key="line7" x1="525" y1="89" x2="500" y2="112" />, //7
-    <Line key="line8" x1="600" y1="89" x2="625" y2="112" />, //8
-
-    <Line key="line9" x1="800" y1="89" x2="750" y2="112" />, //9
-    <Line key="line10" x1="840" y1="89" x2="840" y2="112" />, //10
-    <Line key="line11" x1="900" y1="89" x2="950" y2="112" />, //11
-  ];
-
-  const [renderedLines, setRenderedLines] = useState([]);
 
   function Delete() {
     var del_element = document.getElementById("elements").value;
@@ -241,7 +213,8 @@ export default function BinaryTree() {
               return a - b;
             });
           }
-          if (AllArray[i] > OpArrayEdge[0]) {
+          if (AllArray[i] > OpArrayEdge[OpArrayEdge.length-1]) {
+            console.log("belep:"+AllArray[i]);
             if (AllArray[i] < OpArrayRight_1[0]) {
               OpArrayMiddle_26.push(AllArray[i]);
             } else {
@@ -414,7 +387,6 @@ export default function BinaryTree() {
         }
       }
       if (i > 6) {
-        console.log("beleptem ezzel : " + AllArray[i]);
         if (
           OpArrayLeft_2.length === childmax - 1 &&
           parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0])
@@ -580,8 +552,7 @@ export default function BinaryTree() {
       }
       if (
         parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
-        parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[1]) &&
-        parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[2]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[OpArrayLeft_1.length-1]) &&
         OpArrayMiddle_12.length < childmax
       ) {
         OpArrayMiddle_12.push(AllArray[i]);
@@ -606,7 +577,7 @@ export default function BinaryTree() {
       if (
         parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
         parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
-        parseInt(AllArray[i]) > parseInt(OpArrayMiddle[0]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayMiddle[OpArrayMiddle.length-1]) &&
         OpArrayMiddle_2.length !== 0 &&
         OpArrayMiddle_2.length < childmax
       ) {
@@ -617,9 +588,8 @@ export default function BinaryTree() {
         });
       }
       if (
-        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-        parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0]) &&
-        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[1]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[OpArrayEdge.length-1]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[0]) &&
         OpArrayMiddle_26.length < childmax
       ) {
         OpArrayMiddle_26.push(AllArray[i]);
@@ -629,9 +599,9 @@ export default function BinaryTree() {
         });
       }
       if (
-        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
-        parseInt(AllArray[i]) > parseInt(OpArrayRight_1[1]) &&
-        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[2]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[OpArrayEdge.length-1]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[1]) &&
         OpArrayMiddle_28.length < childmax
       ) {
         OpArrayMiddle_28.push(AllArray[i]);
@@ -641,7 +611,7 @@ export default function BinaryTree() {
         });
       }
       if (
-        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[OpArrayEdge.length-1]) &&
         parseInt(AllArray[i]) >
           parseInt(OpArrayRight_1[OpArrayRight_1.length - 1]) &&
         OpArrayRight_2.length < childmax
@@ -654,6 +624,7 @@ export default function BinaryTree() {
       }
       //az alsó szinten levőket helyre rakni
     }
+
     if (OpArrayEdge.length > 0) {
       document.getElementById("showZero").style.display = "block";
     }
@@ -661,51 +632,50 @@ export default function BinaryTree() {
       document.getElementById("showOne").style.display = "block";
       document.getElementById("showOne").style.marginLeft = "0%";
       document.getElementById("showThree").style.display = "block";
+      document.getElementById("line1").style.display = "block";
+      document.getElementById("line2").style.display = "block";
     }
     if (OpArrayMiddle.length > 0) {
       document.getElementById("showTwo").style.display = "block";
+      document.getElementById("line3").style.display = "block";
     }
     if (AllArray.length >= 7) {
       if (OpArrayLeft_2.length > 0) {
         document.getElementById("showFour").style.border = "2px solid gold";
+        document.getElementById("line4").style.display = "block";
       }
       if (OpArrayMiddle_1.length > 0) {
         document.getElementById("showFive").style.border = "2px solid gold";
+        document.getElementById("line5").style.display = "block";
       }
       if (OpArrayMiddle_12.length > 0) {
         document.getElementById("showSix").style.border = "2px solid gold";
+        document.getElementById("line6").style.display = "block";
       }
       if (OpArrayMiddle_14.length > 0) {
         document.getElementById("showSeven").style.border = "2px solid gold";
+        document.getElementById("line7").style.display = "block";
       }
       if (OpArrayMiddle_2.length > 0) {
         document.getElementById("showEight").style.border = "2px solid gold";
+        document.getElementById("line8").style.display = "block";
       }
       if (OpArrayMiddle_26.length > 0) {
         document.getElementById("showNine").style.border = "2px solid gold";
+        document.getElementById("line9").style.display = "block";
       }
       if (OpArrayMiddle_28.length > 0) {
         document.getElementById("showTen").style.border = "2px solid gold";
+        document.getElementById("line10").style.display = "block";
       }
       if (OpArrayRight_2.length > 0) {
         document.getElementById("showEleven").style.border = "2px solid gold";
+        document.getElementById("line11").style.display = "block";
       }
     }
-//vonalakat rendbe rakni úgy hogy időben jelenjenek meg bug nélkül
-    console.log("Array hossz: " + AllArray.length);
-    console.log("Edgemax: " + edgemax);
-    console.log("Edge: " + OpArrayEdge);
-    console.log("Left1: " + OpArrayLeft_1);
-    console.log("Left2: " + OpArrayLeft_2);
-    console.log("Right1: " + OpArrayRight_1);
-    console.log("Right2: " + OpArrayRight_2);
-    console.log("Middle: " + OpArrayMiddle);
-    console.log("Middle1: " + OpArrayMiddle_1);
-    console.log("Middle12: " + OpArrayMiddle_1);
-    console.log("Middle14: " + OpArrayMiddle_1);
-    console.log("Middle2: " + OpArrayMiddle_2);
-    console.log("Middle26: " + OpArrayMiddle_2);
-    console.log("Middle28: " + OpArrayMiddle_2);
+
+    //vonalakat rendbe rakni úgy hogy időben jelenjenek meg bug nélkül
+
 
     //document.getElementById("array1").innerHTML = AllArray;
     document.getElementById("arrayedge").innerHTML = OpArrayEdge;
@@ -720,8 +690,6 @@ export default function BinaryTree() {
     document.getElementById("arraymiddle_2").innerHTML = OpArrayMiddle_2;
     document.getElementById("arraymiddle_26").innerHTML = OpArrayMiddle_26;
     document.getElementById("arraymiddle_28").innerHTML = OpArrayMiddle_28;
-
-    /**/
   }
   return (
     <form style={{ background: "#000027", height: "100vh", color: "white" }}>
@@ -775,7 +743,97 @@ export default function BinaryTree() {
           width: "1200px",
         }}
       >
-        {renderedLines}
+        <line
+          id="line1"
+          x1="485"
+          y1="67"
+          x2="355"
+          y2="97"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+        <line
+          id="line2"
+          x1="715"
+          y1="67"
+          x2="845"
+          y2="97"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+        <line
+          id="line3"
+          x1="600"
+          y1="67"
+          x2="600"
+          y2="100"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+
+        <line
+          id="line4"
+          x1="152"
+          y1="125"
+          x2="100"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+        <line
+          id="line5"
+          x1="270"
+          y1="125"
+          x2="270"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+        <line
+          id="line6"
+          x1="385"
+          y1="125"
+          x2="420"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+
+        <line
+          id="line7"
+          x1="565"
+          y1="125"
+          x2="540"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+        <line
+          id="line8"
+          x1="630"
+          y1="125"
+          x2="655"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+
+        <line
+          id="line9"
+          x1="815"
+          y1="125"
+          x2="800"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+        <line
+          id="line10"
+          x1="930"
+          y1="125"
+          x2="930"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
+        <line
+          id="line11"
+          x1="1045"
+          y1="125"
+          x2="1060"
+          y2="155"
+          style={{ stroke: "gold", strokeWidth: "2", display: "none" }}
+        />
       </svg>
       <div
         style={{

@@ -129,7 +129,6 @@ export default function BinaryTreeTest() {
         i > 2 &&
         i < 7
       ) {
-
         if (OpArrayEdge[0] > AllArray[i]) {
           OpArrayLeft_1.push(AllArray[i]);
           OpArrayLeft_1.sort(function (a, b) {
@@ -517,8 +516,8 @@ export default function BinaryTreeTest() {
         }
         if (
           AllArray[i] < OpArrayEdge[0] &&
-          AllArray[i] > OpArrayLeft_1[1] &&
-          AllArray[i] < OpArrayLeft_1[2]
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayLeft_1[OpArrayLeft_1.length - 1])
         ) {
           OpArrayMiddle_12.push(AllArray[i]);
 
@@ -533,7 +532,11 @@ export default function BinaryTreeTest() {
             return a - b;
           });
         }
-        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] < OpArrayRight_1[0]) {
+        if (
+          AllArray[i] > OpArrayEdge[0] &&
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayMiddle[OpArrayMiddle.length - 1])
+        ) {
           OpArrayMiddle_2.push(AllArray[i]);
 
           OpArrayMiddle_2.sort(function (a, b) {
@@ -541,9 +544,9 @@ export default function BinaryTreeTest() {
           });
         }
         if (
-          AllArray[i] > OpArrayEdge[0] &&
-          AllArray[i] > OpArrayRight_1[0] &&
-          AllArray[i] < OpArrayRight_1[1]
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayRight_1[0])
         ) {
           OpArrayMiddle_26.push(AllArray[i]);
 
@@ -552,9 +555,10 @@ export default function BinaryTreeTest() {
           });
         }
         if (
-          AllArray[i] > OpArrayEdge[0] &&
-          AllArray[i] > OpArrayRight_1[1] &&
-          AllArray[i] < OpArrayRight_1[2]
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
+          parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayRight_1[1])
         ) {
           OpArrayMiddle_28.push(AllArray[i]);
 
@@ -562,7 +566,12 @@ export default function BinaryTreeTest() {
             return a - b;
           });
         }
-        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] > OpArrayRight_1[2]) {
+        if (
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayRight_1[OpArrayRight_1.length - 1])
+        ) {
           OpArrayRight_2.push(AllArray[i]);
 
           OpArrayRight_2.sort(function (a, b) {
