@@ -30,14 +30,18 @@ const lines = [
 ];
 export default function BinaryTreeAssignment() {
   var AllArray = [];
-
+  var hossz;
   function Generate() {
-    var hossz = Math.floor(Math.random() * 3) + 9;
+    for (let i = 0; i < hossz; i++) {
+      AllArray.pop();
+    }
+    console.log("Array tartalma: " + AllArray);
+
+    hossz = Math.floor(Math.random() * 3) + 9;
 
     for (let i = 0; i < hossz; i++) {
-      AllArray.push(Math.floor(Math.random() * 100));
+      AllArray.push(Math.floor(Math.random() * 100) + 1);
     }
-
     console.log("hossz: " + hossz);
     console.log("AllArray: " + AllArray);
 
@@ -121,16 +125,17 @@ export default function BinaryTreeAssignment() {
         OpArrayRight_1.length <= childmax &&
         OpArrayMiddle.length <= childmax &&
         i > 2 &&
-        i < 7
+        i <= 6
       ) {
-
-        if (OpArrayEdge[0] > AllArray[i]) {
+        if (parseInt(OpArrayEdge[0]) > parseInt(AllArray[i])) {
           OpArrayLeft_1.push(AllArray[i]);
           OpArrayLeft_1.sort(function (a, b) {
             return a - b;
           });
         }
-        if (OpArrayEdge[OpArrayEdge.length - 1] < AllArray[i]) {
+        if (
+          parseInt(OpArrayEdge[OpArrayEdge.length - 1]) < parseInt(AllArray[i])
+        ) {
           OpArrayRight_1.push(AllArray[i]);
           OpArrayRight_1.sort(function (a, b) {
             return a - b;
@@ -166,48 +171,123 @@ export default function BinaryTreeAssignment() {
         OpArrayLeft_1.length <= childmax &&
         OpArrayRight_1.length <= childmax &&
         OpArrayMiddle.length <= childmax &&
-        i > 6 &&
-        OpArrayLeft_2.length === 0 &&
-        OpArrayMiddle_2.length === 0
+        i > 6
       ) {
+        //nincs lekezelve amikor még csak lefele kell neki az adatokat adnia fel nélkül.
         if (
-          AllArray[i] > OpArrayEdge[0] &&
-          AllArray[i] < OpArrayEdge[OpArrayEdge.length - 1] &&
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+          OpArrayLeft_1.length === childmax - 1
+        ) {
+          OpArrayMiddle_12.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+          OpArrayLeft_1.pop();
+          OpArrayLeft_2.push(OpArrayLeft_1[0]);
+          OpArrayLeft_1.shift();
+
+          OpArrayMiddle_12.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayLeft_2.sort(function (a, b) {
+            return a - b;
+          });
+        }
+
+        if (
+          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+          OpArrayRight_1.length === childmax - 1
+        ) {
+          OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+          OpArrayRight_1.pop();
+          OpArrayMiddle_26.push(OpArrayRight_1[0]);
+          OpArrayRight_1.shift();
+
+          OpArrayMiddle_26.sort(function (a, b) {
+            return a - b;
+          });
+          OpArrayRight_2.sort(function (a, b) {
+            return a - b;
+          });
+        }
+
+        if (
+          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
           OpArrayMiddle.length === childmax - 1 &&
           OpArrayEdge.length === edgemax - 1
         ) {
-          OpArrayMiddle_2.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
+          OpArrayLeft_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
+          OpArrayRight_1.push(OpArrayEdge[0]);
+          OpArrayEdge.shift();
+
+          OpArrayLeft_1.push(OpArrayMiddle[0]);
+          OpArrayMiddle.shift();
+          OpArrayRight_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
           OpArrayMiddle.pop();
-          OpArrayEdge.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
-          OpArrayMiddle.pop();
-          OpArrayMiddle_1.push(OpArrayMiddle[OpArrayMiddle.length - 1]);
-          OpArrayMiddle.pop();
+          OpArrayEdge.push(OpArrayMiddle[0]);
+          OpArrayMiddle.shift();
 
           OpArrayEdge.sort(function (a, b) {
             return a - b;
           });
-          OpArrayMiddle_1.sort(function (a, b) {
+          OpArrayLeft_1.sort(function (a, b) {
             return a - b;
           });
-          OpArrayMiddle_2.sort(function (a, b) {
+          OpArrayRight_1.sort(function (a, b) {
             return a - b;
           });
 
-          OpArrayLeft_2 = OpArrayLeft_1;
-          OpArrayLeft_1 = OpArrayEdge[0];
-          OpArrayEdge.shift();
+          if (OpArrayLeft_1.length === childmax) {
+            OpArrayLeft_2.push(OpArrayLeft_1[0]);
+            OpArrayLeft_1.shift();
+            OpArrayEdge.push(OpArrayLeft_1[0]);
+            OpArrayLeft_1.shift();
+            OpArrayMiddle_12.push(OpArrayLeft_1[OpArrayLeft_1.length - 1]);
+            OpArrayLeft_1.pop();
+          }
+          if (OpArrayRight_1.length === childmax) {
+            OpArrayMiddle_26.push(OpArrayRight_1[0]);
+            OpArrayRight_1.shift();
+            OpArrayEdge.push(OpArrayRight_1[0]);
+            OpArrayRight_1.shift();
+            OpArrayRight_2.push(OpArrayRight_1[OpArrayRight_1.length - 1]);
+            OpArrayRight_1.pop();
+          }
 
-          OpArrayRight_2 = OpArrayRight_1;
-          OpArrayRight_1 = OpArrayEdge[OpArrayEdge.length - 1];
-          OpArrayEdge.pop();
+          document.getElementById("showTwo").style.display = "none";
+          document.getElementById("showEight").style.display = "none";
+          document.getElementById("showNine").style.display = "none";
 
-          OpArrayRight_1.push(OpArrayEdge[OpArrayEdge.length - 1]);
-          OpArrayEdge.pop();
-          OpArrayLeft_1.push(OpArrayEdge[0]);
-          OpArrayEdge.shift();
+          if (AllArray[i] < OpArrayEdge[0]) {
+            if (AllArray[i] < OpArrayLeft_1[0]) {
+              OpArrayLeft_2.push(AllArray[i]);
+            } else {
+              OpArrayMiddle_12.push(AllArray[i]);
+            }
+            OpArrayLeft_2.sort(function (a, b) {
+              return a - b;
+            });
+            OpArrayMiddle_12.sort(function (a, b) {
+              return a - b;
+            });
+          }
+          if (AllArray[i] > OpArrayEdge[OpArrayEdge.length - 1]) {
+            console.log("belep:" + AllArray[i]);
+            if (AllArray[i] < OpArrayRight_1[0]) {
+              OpArrayMiddle_26.push(AllArray[i]);
+            } else {
+              OpArrayRight_2.push(AllArray[i]);
+            }
+            OpArrayMiddle_26.sort(function (a, b) {
+              return a - b;
+            });
+            OpArrayRight_2.sort(function (a, b) {
+              return a - b;
+            });
+          }
         }
+
         if (
-          AllArray[i] < OpArrayEdge[0] &&
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
           OpArrayLeft_1.length === childmax - 1 &&
           OpArrayEdge.length === edgemax - 1
         ) {
@@ -256,10 +336,10 @@ export default function BinaryTreeAssignment() {
               }
             }
           } else if (OpArrayMiddle.length === 1) {
-            if (OpArrayMiddle[0] < OpArrayEdge[0]) {
+            if (parseInt(OpArrayMiddle[0]) < parseInt(OpArrayEdge[0])) {
               OpArrayMiddle_1.push(OpArrayMiddle[0]);
               OpArrayMiddle.pop();
-            } else if (OpArrayMiddle[0] > OpArrayEdge[0]) {
+            } else if (parseInt(OpArrayMiddle[0]) > parseInt(OpArrayEdge[0])) {
               OpArrayMiddle_2.push(OpArrayMiddle[0]);
               OpArrayMiddle.pop();
             }
@@ -267,7 +347,8 @@ export default function BinaryTreeAssignment() {
         }
 
         if (
-          AllArray[i] > OpArrayEdge[OpArrayEdge.length - 1] &&
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
           OpArrayRight_1.length === childmax - 1 &&
           OpArrayEdge.length === edgemax - 1
         ) {
@@ -291,22 +372,25 @@ export default function BinaryTreeAssignment() {
 
           if (OpArrayMiddle.length > 1) {
             for (let m = 0; m < OpArrayMiddle.length - 1; m++) {
-              if (OpArrayMiddle[m] < OpArrayEdge[0]) {
-                if (OpArrayMiddle[m] < OpArrayLeft_1[0]) {
+              if (parseInt(OpArrayMiddle[m]) < parseInt(OpArrayEdge[0])) {
+                if (parseInt(OpArrayMiddle[m]) < parseInt(OpArrayLeft_1[0])) {
                   OpArrayLeft_2.push(OpArrayMiddle[m]);
                 } else if (
-                  OpArrayMiddle[m] > OpArrayLeft_1[OpArrayLeft_1.length - 1]
+                  parseInt(OpArrayMiddle[m]) >
+                  parseInt(OpArrayLeft_1[OpArrayLeft_1.length - 1])
                 ) {
                   OpArrayMiddle_1.push(OpArrayMiddle[m]);
                 }
               } else if (
-                OpArrayMiddle[m] > OpArrayEdge[OpArrayEdge.length - 1]
+                parseInt(OpArrayMiddle[m]) >
+                parseInt(OpArrayEdge[OpArrayEdge.length - 1])
               ) {
-                if (OpArrayMiddle[m] < OpArrayRight_1[0]) {
+                if (parseInt(OpArrayMiddle[m]) < parseInt(OpArrayRight_1[0])) {
                   OpArrayMiddle_2.push(OpArrayMiddle[m]);
                   OpArrayMiddle.pop();
                 } else if (
-                  OpArrayMiddle[m] > OpArrayRight_1[OpArrayRight_1.length - 1]
+                  parseInt(OpArrayMiddle[m]) >
+                  parseInt(OpArrayRight_1[OpArrayRight_1.length - 1])
                 ) {
                   OpArrayRight_2.push(OpArrayMiddle[m]);
                   OpArrayMiddle.pop();
@@ -314,10 +398,10 @@ export default function BinaryTreeAssignment() {
               }
             }
           } else if (OpArrayMiddle.length === 1) {
-            if (OpArrayMiddle[0] < OpArrayEdge[0]) {
+            if (parseInt(OpArrayMiddle[0]) < parseInt(OpArrayEdge[0])) {
               OpArrayMiddle_1.push(OpArrayMiddle[0]);
               OpArrayMiddle.pop();
-            } else if (OpArrayMiddle[0] > OpArrayEdge[0]) {
+            } else if (parseInt(OpArrayMiddle[0]) > parseInt(OpArrayEdge[0])) {
               OpArrayMiddle_2.push(OpArrayMiddle[0]);
               OpArrayMiddle.pop();
             }
@@ -325,40 +409,44 @@ export default function BinaryTreeAssignment() {
         }
 
         if (
-          OpArrayEdge.length === edgemax &&
-          OpArrayRight_1.length === childmax
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+          OpArrayLeft_2.length === 0 &&
+          OpArrayMiddle_1.length === 0 &&
+          OpArrayMiddle_12.length === 0
         ) {
-        }
-
-        if (AllArray[i] < OpArrayEdge[0]) {
           OpArrayLeft_1.push(AllArray[i]);
           OpArrayLeft_1.sort(function (a, b) {
             return a - b;
           });
         }
-        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] < OpArrayEdge[1]) {
+        if (
+          parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayEdge[1])
+        ) {
           OpArrayMiddle.push(AllArray[i]);
           OpArrayMiddle.sort(function (a, b) {
             return a - b;
           });
         }
-        if (AllArray[i] > OpArrayEdge[1]) {
+        if (
+          parseInt(AllArray[i]) >
+          parseInt(
+            OpArrayEdge[1] &&
+              OpArrayRight_2.length === 0 &&
+              OpArrayMiddle_28.length === 0 &&
+              OpArrayMiddle_26.length === 0
+          )
+        ) {
           OpArrayRight_1.push(AllArray[i]);
           OpArrayRight_1.sort(function (a, b) {
             return a - b;
           });
         }
       }
-      if (
-        OpArrayEdge.length <= edgemax &&
-        OpArrayLeft_1.length <= childmax &&
-        OpArrayRight_1.length <= childmax &&
-        OpArrayMiddle.length <= childmax &&
-        i > 6
-      ) {
+      if (i > 6) {
         if (
           OpArrayLeft_2.length === childmax - 1 &&
-          AllArray[i] < OpArrayLeft_1[0]
+          parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0])
         ) {
           OpArrayMiddle_1.push(OpArrayLeft_2[OpArrayLeft_2.length - 1]);
           OpArrayLeft_2.pop();
@@ -374,8 +462,8 @@ export default function BinaryTreeAssignment() {
         }
         if (
           OpArrayMiddle_1.length === childmax - 1 &&
-          AllArray[i] > OpArrayLeft_1[0] &&
-          AllArray[i] < OpArrayLeft_1[1]
+          parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[0]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[1])
         ) {
           OpArrayMiddle_12.push(OpArrayMiddle_1[OpArrayMiddle_1.length - 1]);
           OpArrayMiddle_1.pop();
@@ -391,8 +479,8 @@ export default function BinaryTreeAssignment() {
         }
         if (
           OpArrayMiddle_12.length === childmax - 1 &&
-          AllArray[i] > OpArrayLeft_1[1] &&
-          AllArray[i] < OpArrayLeft_1[2]
+          parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[1]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[2])
         ) {
           OpArrayMiddle_14.push(OpArrayMiddle_12[OpArrayMiddle_12.length - 1]);
           OpArrayMiddle_12.pop();
@@ -408,7 +496,7 @@ export default function BinaryTreeAssignment() {
         }
         if (
           OpArrayMiddle_14.length === childmax - 1 &&
-          AllArray[i] > OpArrayLeft_1[2]
+          parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[2])
         ) {
           OpArrayMiddle_12.push(OpArrayMiddle_14[0]);
           OpArrayMiddle_14.shift();
@@ -425,7 +513,7 @@ export default function BinaryTreeAssignment() {
 
         if (
           OpArrayMiddle_2.length === childmax - 1 &&
-          AllArray[i] < OpArrayRight_1[0]
+          parseInt(AllArray[i]) < parseInt(OpArrayRight_1[0])
         ) {
           OpArrayMiddle_26.push(OpArrayMiddle_2[OpArrayMiddle_2.length - 1]);
           OpArrayMiddle_2.pop();
@@ -441,8 +529,8 @@ export default function BinaryTreeAssignment() {
         }
         if (
           OpArrayMiddle_26.length === childmax - 1 &&
-          AllArray[i] > OpArrayRight_1[0] &&
-          AllArray[i] < OpArrayRight_1[1]
+          parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0]) &&
+          parseInt(AllArray[i]) < parseInt(OpArrayRight_1[1])
         ) {
           OpArrayMiddle_28.push(OpArrayMiddle_26[OpArrayMiddle_26.length - 1]);
           OpArrayMiddle_26.pop();
@@ -458,8 +546,11 @@ export default function BinaryTreeAssignment() {
         }
         if (
           OpArrayMiddle_28.length === childmax - 1 &&
-          AllArray[i] > OpArrayRight_1[2] &&
-          AllArray[i] < OpArrayRight_1[3]
+          parseInt(AllArray[i]) >
+            parseInt(
+              parseInt(OpArrayRight_1[2]) &&
+                parseInt(AllArray[i]) < OpArrayRight_1[3]
+            )
         ) {
           OpArrayRight_2.push(OpArrayMiddle_28[OpArrayMiddle_28.length - 1]);
           OpArrayMiddle_28.pop();
@@ -476,9 +567,10 @@ export default function BinaryTreeAssignment() {
 
         if (
           OpArrayRight_2.length === childmax - 1 &&
-          AllArray[i] > OpArrayRight_1[OpArrayRight_1.length - 1]
+          parseInt(AllArray[i]) >
+            parseInt(OpArrayRight_1[OpArrayRight_1.length - 1])
         ) {
-          OpArrayMiddle_14.push(OpArrayRight_2[0]);
+          OpArrayMiddle_28.push(OpArrayRight_2[0]);
           OpArrayRight_2.shift();
           OpArrayRight_1.push(OpArrayRight_2[0]);
           OpArrayRight_2.shift();
@@ -490,147 +582,215 @@ export default function BinaryTreeAssignment() {
             return a - b;
           });
         }
-
-        if (AllArray[i] < OpArrayEdge[0] && AllArray[i] < OpArrayLeft_1[0]) {
-          OpArrayLeft_2.push(AllArray[i]);
-
-          OpArrayLeft_2.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          AllArray[i] < OpArrayEdge[0] &&
-          AllArray[i] > OpArrayLeft_1[0] &&
-          AllArray[i] < OpArrayLeft_1[1]
-        ) {
-          OpArrayMiddle_1.push(AllArray[i]);
-
-          OpArrayMiddle_1.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          AllArray[i] < OpArrayEdge[0] &&
-          AllArray[i] > OpArrayLeft_1[1] &&
-          AllArray[i] < OpArrayLeft_1[2]
-        ) {
-          OpArrayMiddle_12.push(AllArray[i]);
-
-          OpArrayMiddle_12.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (AllArray[i] < OpArrayEdge[0] && AllArray[i] > OpArrayLeft_1[2]) {
-          OpArrayMiddle_14.push(AllArray[i]);
-
-          OpArrayMiddle_14.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] < OpArrayRight_1[0]) {
-          OpArrayMiddle_2.push(AllArray[i]);
-
-          OpArrayMiddle_2.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          AllArray[i] > OpArrayEdge[0] &&
-          AllArray[i] > OpArrayRight_1[0] &&
-          AllArray[i] < OpArrayRight_1[1]
-        ) {
-          OpArrayMiddle_26.push(AllArray[i]);
-
-          OpArrayMiddle_26.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (
-          AllArray[i] > OpArrayEdge[0] &&
-          AllArray[i] > OpArrayRight_1[1] &&
-          AllArray[i] < OpArrayRight_1[2]
-        ) {
-          OpArrayMiddle_28.push(AllArray[i]);
-
-          OpArrayMiddle_28.sort(function (a, b) {
-            return a - b;
-          });
-        }
-        if (AllArray[i] > OpArrayEdge[0] && AllArray[i] > OpArrayRight_1[2]) {
-          OpArrayRight_2.push(AllArray[i]);
-
-          OpArrayRight_2.sort(function (a, b) {
-            return a - b;
-          });
-        }
       }
+
+      if (
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[0]) &&
+        OpArrayLeft_2.length < childmax
+      ) {
+        OpArrayLeft_2.push(AllArray[i]);
+
+        OpArrayLeft_2.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayLeft_1[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayLeft_1[1]) &&
+        OpArrayMiddle_1.length < childmax
+      ) {
+        OpArrayMiddle_1.push(AllArray[i]);
+
+        OpArrayMiddle_1.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) >
+          parseInt(OpArrayLeft_1[OpArrayLeft_1.length - 1]) &&
+        OpArrayMiddle_12.length < childmax
+      ) {
+        OpArrayMiddle_12.push(AllArray[i]);
+
+        OpArrayMiddle_12.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayMiddle[0]) &&
+        OpArrayMiddle_14.length !== 0 &&
+        OpArrayMiddle_14.length < childmax
+      ) {
+        OpArrayMiddle_14.push(AllArray[i]);
+
+        OpArrayMiddle_14.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayEdge[1]) &&
+        parseInt(AllArray[i]) >
+          parseInt(OpArrayMiddle[OpArrayMiddle.length - 1]) &&
+        OpArrayMiddle_2.length !== 0 &&
+        OpArrayMiddle_2.length < childmax
+      ) {
+        OpArrayMiddle_2.push(AllArray[i]);
+
+        OpArrayMiddle_2.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[0]) &&
+        OpArrayMiddle_26.length < childmax
+      ) {
+        OpArrayMiddle_26.push(AllArray[i]);
+
+        OpArrayMiddle_26.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
+        parseInt(AllArray[i]) > parseInt(OpArrayRight_1[0]) &&
+        parseInt(AllArray[i]) < parseInt(OpArrayRight_1[1]) &&
+        OpArrayMiddle_28.length < childmax
+      ) {
+        OpArrayMiddle_28.push(AllArray[i]);
+
+        OpArrayMiddle_28.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      if (
+        parseInt(AllArray[i]) > parseInt(OpArrayEdge[OpArrayEdge.length - 1]) &&
+        parseInt(AllArray[i]) >
+          parseInt(OpArrayRight_1[OpArrayRight_1.length - 1]) &&
+        OpArrayRight_2.length < childmax
+      ) {
+        OpArrayRight_2.push(AllArray[i]);
+
+        OpArrayRight_2.sort(function (a, b) {
+          return a - b;
+        });
+      }
+      //az alsó szinten levőket helyre rakni
     }
 
     var points = 0;
-    for (let i = 0; i < OpArrayEdge.length; i++) {
-      if (userEdgeArray[i] === OpArrayEdge[i]) {
-        points += 1;
-      }
-    }
-    for (let i = 0; i < OpArrayLeft_1.length; i++) {
-      if (userLeftArrayOne[i] === OpArrayLeft_1[i]) {
-        points += 1;
-      }
-    }
-    for (let i = 0; i < OpArrayMiddle.length; i++) {
-      if (userMiddleArray[i] === OpArrayMiddle[i]) {
-        points += 1;
-      }
-    }
-    for (let i = 0; i < OpArrayRight_1.length; i++) {
-      if (userRightArrayOne[i] === OpArrayRight_1[i]) {
-        points += 1;
-      }
-    }
+    if (userEdgeArray.length > 0) {
+      for (let i = 0; i < userEdgeArray.length; i++) {
+        const userEdgeInt = parseInt(userEdgeArray[i]);
 
-    for (let i = 0; i < OpArrayLeft_2.length; i++) {
-      if (userLeftArrayTwoZero[i] === OpArrayLeft_2[i]) {
-        points += 1;
+        if (OpArrayEdge.includes(userEdgeInt)) {
+          points++;
+        }
       }
     }
-    for (let i = 0; i < OpArrayMiddle_1.length; i++) {
-      if (userLeftArrayTwoOne[i] === OpArrayMiddle_1[i]) {
-        points += 1;
-      }
-    }
-    for (let i = 0; i < OpArrayMiddle_12.length; i++) {
-      if (userLeftArrayTwoTwo[i] === OpArrayMiddle_12[i]) {
-        points += 1;
-      }
-    }
+    if (userLeftArrayOne.length > 0) {
+      for (let i = 0; i < userLeftArrayOne.length; i++) {
+        const userLeftArrayInt = parseInt(userLeftArrayOne[i]);
 
-    for (let i = 0; i < OpArrayMiddle_14.length; i++) {
-      if (userMiddleArrayTwoZero[i] === OpArrayMiddle_14[i]) {
-        points += 1;
+        if (OpArrayLeft_1.includes(userLeftArrayInt)) {
+          points++;
+        }
       }
     }
-    for (let i = 0; i < OpArrayMiddle_2.length; i++) {
-      if (userMiddleArrayTwoOne[i] === OpArrayMiddle_2[i]) {
-        points += 1;
-      }
-    }
+    if (userMiddleArray.length > 0) {
+      for (let i = 0; i < userMiddleArray.length; i++) {
+        const userMiddleInt = parseInt(userMiddleArray[i]);
 
-    for (let i = 0; i < OpArrayMiddle_26.length; i++) {
-      if (userRightArrayTwoZero[i] === OpArrayMiddle_26[i]) {
-        points += 1;
+        if (OpArrayMiddle.includes(userMiddleInt)) {
+          points++;
+        }
       }
     }
-    for (let i = 0; i < OpArrayMiddle_28.length; i++) {
-      if (userRightArrayTwoOne[i] === OpArrayMiddle_28[i]) {
-        points += 1;
-      }
-    }
-    for (let i = 0; i < OpArrayRight_2.length; i++) {
-      if (userRightArrayTwoTwo[i] === OpArrayRight_2[i]) {
-        points += 1;
-      }
-    }
+    if (userRightArrayOne.length > 0) {
+      for (let i = 0; i < userRightArrayOne.length; i++) {
+        const userRightArrayInt = parseInt(userRightArrayOne[i]);
 
+        if (OpArrayRight_1.includes(userRightArrayInt)) {
+          points++;
+        }
+      }
+    }
+    if (userLeftArrayTwoZero.length > 0) {
+      for (let i = 0; i < userLeftArrayTwoZero.length; i++) {
+        const userLeftArrayTwoZeroInt = parseInt(userLeftArrayTwoZero[i]);
+
+        if (OpArrayLeft_2.includes(userLeftArrayTwoZeroInt)) {
+          points++;
+        }
+      }
+    }
+    if (userLeftArrayTwoOne.length > 0) {
+      for (let i = 0; i < userLeftArrayTwoOne.length; i++) {
+        const userLeftArrayTwoOneInt = parseInt(userLeftArrayTwoOne[i]);
+
+        if (OpArrayMiddle_1.includes(userLeftArrayTwoOneInt)) {
+          points++;
+        }
+      }
+    }
+    if (userLeftArrayTwoTwo.length > 0) {
+      for (let i = 0; i < userLeftArrayTwoTwo.length; i++) {
+        const userLeftArrayTwoTwoInt = parseInt(userLeftArrayTwoTwo[i]);
+
+        if (OpArrayMiddle_12.includes(userLeftArrayTwoTwoInt)) {
+          points++;
+        }
+      }
+    }
+    if (userMiddleArrayTwoZero.length > 0) {
+      for (let i = 0; i < userMiddleArrayTwoZero.length; i++) {
+        const userMiddleArrayTwoZeroInt = parseInt(userMiddleArrayTwoZero[i]);
+        if (OpArrayMiddle_14.includes(userMiddleArrayTwoZeroInt)) {
+          points++;
+        }
+      }
+    }
+    if (userMiddleArrayTwoOne.length > 0) {
+      for (let i = 0; i < userMiddleArrayTwoOne.length; i++) {
+        const userMiddleArrayTwoOneInt = parseInt(userMiddleArrayTwoOne[i]);
+
+        if (OpArrayMiddle_2.includes(userMiddleArrayTwoOneInt)) {
+          points++;
+        }
+      }
+    }
+    if (userRightArrayTwoZero.length > 0) {
+      for (let i = 0; i < userRightArrayTwoZero.length; i++) {
+        const userRightArrayTwoZeroInt = parseInt(userRightArrayTwoZero[i]);
+
+        if (OpArrayMiddle_26.includes(userRightArrayTwoZeroInt)) {
+          points++;
+        }
+      }
+    }
+    if (userRightArrayTwoOne.length > 0) {
+      for (let i = 0; i < userRightArrayTwoOne.length; i++) {
+        const userRightArrayTwoOneInt = parseInt(userRightArrayTwoOne[i]);
+        if (OpArrayMiddle_28.includes(userRightArrayTwoOneInt)) {
+          points++;
+        }
+      }
+    }
+    if (userRightArrayTwoTwo.length > 0) {
+      for (let i = 0; i < userRightArrayTwoTwo.length; i++) {
+        const userRightArrayTwoTwoInt = parseInt(userRightArrayTwoTwo[i]);
+        if (OpArrayRight_2.includes(userRightArrayTwoTwoInt)) {
+          points++;
+        }
+      }
+    }
+    console.log("pontok szama: " + points);
     console.log("Edgemax: " + edgemax);
 
     console.log("Edge:" + OpArrayEdge);
@@ -649,6 +809,15 @@ export default function BinaryTreeAssignment() {
     console.log("Right20: " + OpArrayMiddle_26);
     console.log("Right21: " + OpArrayMiddle_28);
     console.log("Right22: " + OpArrayRight_2);
+
+    var results;
+    var mistakes = parseInt(hossz) - parseInt(points);
+    if (points === hossz) {
+      results = "Jó megoldást!";
+    } else {
+      results = "Hibás megoldás, eltéveszetett elemeke száma: " + parseInt(mistakes);
+    }
+    alert(results);
   }
 
   return (
@@ -672,8 +841,8 @@ export default function BinaryTreeAssignment() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "45%" /* Add this line */,
-            transform: "translateY(-50%)" /* Add this line */,
+            top: "45%",
+            transform: "translateY(-50%)",
             left: "50%",
             transform: "translateX(-50%)",
             paddingBottom: "25px",
@@ -686,8 +855,8 @@ export default function BinaryTreeAssignment() {
         <div
           style={{
             position: "absolute",
-            top: "45%" /* Add this line */,
-            transform: "translateY(-50%)" /* Add this line */,
+            top: "45%",
+            transform: "translateY(-50%)",
             left: "50%",
             transform: "translateX(-50%)",
             paddingBottom: "25px",
@@ -764,7 +933,17 @@ export default function BinaryTreeAssignment() {
 
         <div className="row justify-content-center text-center">
           <div>
-            <Button variant="outline-warning" onClick={Check}>
+            <Button
+              style={{
+                position: "absolute",
+                top: "80%",
+                transform: "translateY(-50%)",
+                left: "50%",
+                transform: "translateX(-50%)",
+              }}
+              variant="outline-warning"
+              onClick={Check}
+            >
               Ellenőriz
             </Button>
           </div>
