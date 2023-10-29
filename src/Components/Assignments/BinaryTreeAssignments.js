@@ -841,7 +841,7 @@ export default function BinaryTreeAssignment() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "45%",
+            top: "50%",
             transform: "translateY(-50%)",
             left: "50%",
             transform: "translateX(-50%)",
@@ -855,7 +855,7 @@ export default function BinaryTreeAssignment() {
         <div
           style={{
             position: "absolute",
-            top: "45%",
+            top: "50%",
             transform: "translateY(-50%)",
             left: "50%",
             transform: "translateX(-50%)",

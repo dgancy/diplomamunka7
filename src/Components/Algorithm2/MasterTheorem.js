@@ -42,6 +42,9 @@ function MasterTheorem() {
     }
     epszilon = epszilon.toFixed(3);
 
+    document.getElementById("feladat").innerHTML = "Feladat : ";
+    document.getElementById("feladatleiras").innerHTML = "T(n) = ";
+
     var muvelet;
     var final_result;
     if (eset === 1) {
@@ -53,35 +56,17 @@ function MasterTheorem() {
     }
     console.log("eset:" + eset);
     if (eset !== 2) {
+      document.getElementById("logarithmresult").innerHTML =
+        " Θ(n" + "<sup>" + logarithm_element + "</sup>" + ")";
       document.getElementById("logarithm").innerHTML =
-        "Képlet: n" +
-        "<sup>" +
-        "log" +
-        "<sub>" +
-        "b" +
-        "</sub>" +
-        "a" +
-        "</sup>" +
-        " = Θ(n" +
-        "<sup>" +
-        logarithm_element +
-        "</sup>" +
-        ")";
-      document.getElementById("eset").innerHTML = ", Eset: " + eset;
-      document.getElementById("seged").innerHTML =
-        "Epszilon érték(ε): " +
-        epszilon +
-        " => Θ(nlog " +
-        "<sup>" +
-        epszilon +
-        "</sup>" +
-        ")";
-      document.getElementById("result").innerHTML =
-        "A mester tétel " +
-        eset +
-        ". esetét alkalmazzuk : " +
-        "Θ(nlog " +
-        "<sup>" +
+        "Képlet : n<sup>" + "log" + "<sub>b</sub>" + "a" + "</sup>";
+      document.getElementById("eset").innerHTML = "Eset : ";
+      document.getElementById("esetresult").innerHTML = eset;
+      document.getElementById("segedresult").innerHTML =
+        epszilon + " => Θ(nlog " + "<sup>" + epszilon + "</sup>" + ")";
+      document.getElementById("seged").innerHTML = "Epszilon érték(ε) : ";
+      document.getElementById("resultresult").innerHTML =
+        "Θ(nlog <sup>" +
         logarithm_element +
         "</sup>" +
         "<sup>" +
@@ -89,19 +74,20 @@ function MasterTheorem() {
         "</sup>" +
         "<sup>" +
         epszilon +
-        "</sup>" +
-        ")=" +
-        "Θ(nlog " +
-        "<sup>" +
+        "</sup>)= Θ(nlog <sup>" +
         final_result +
-        "</sup>" +
-        ")";
+        "</sup>)";
+      document.getElementById("result").innerHTML =
+        "A mester tétel " + eset + ". esetét alkalmazzuk : ";
       if (n_element === "2" || n_element === "3") {
         if (eset === 3) {
+          document.getElementById("solution").innerHTML = "Megoldás : ";
+          document.getElementById("solutionresult").innerHTML =
+            "T(n)= Θ(" + n_element + ")";
           document.getElementById("final").innerHTML =
             "Megoldás: T(n)= Θ(" +
             n_element +
-            ") </br> Ellenőrzés: </br> Képlet: a * f(n/b)<= c * f(n) </br>" +
+            ") </br> Regularitási feltétel: a * f(n/b)<= c * f(n) </br>" +
             a_element +
             " * (n/" +
             b_element +
@@ -115,15 +101,17 @@ function MasterTheorem() {
             b_element ** n_element +
             " <= c < 1 ";
         } else {
+          document.getElementById("solution").innerHTML = "Megoldás: ";
+          document.getElementById("solutionresult").innerHTML =
+            " Θ(n" + "<sup>" + logarithm_element + "</sup>" + ")";
+
           document.getElementById("final").innerHTML =
-            "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
+            "Regularitási feltétel nem szükséges";
+          document.getElementById("finalresult ").innerHTML = "-";
         }
       } else {
         if (eset === 3) {
-          document.getElementById("final").innerHTML =
-            "Megoldás: T(n)= Θ(" +
-            n_element +
-            ") </br> Ellenőrzés: </br> Képlet: a * f(n/b)<= c * f(n) </br>" +
+          document.getElementById("finalresult").innerHTML =
             a_element +
             " * (n/" +
             b_element +
@@ -136,9 +124,20 @@ function MasterTheorem() {
             "/" +
             b_element +
             " <= c < 1 ";
-        } else {
+          document.getElementById("solution").innerHTML = "Megoldás: ";
+          document.getElementById("solutionresult").innerHTML =
+            "T(n)= Θ(" + n_element + ") ";
           document.getElementById("final").innerHTML =
-            "Megoldás: T(n)= Θ(" + n_element + ")";
+            "Regularitási feltétel : ";
+          document.getElementById("finalresult").innerHTML =
+            "Regularitási feltétel : a * f(n/b)<= c * f(n) </br>";
+        } else {
+          document.getElementById("solution").innerHTML = "Megoldás: ";
+          document.getElementById("solutionresult").innerHTML =
+            " T(n)= Θ(" + n_element + ")";
+          document.getElementById("final").innerHTML =
+            "Regularitási feltétel nem szükséges";
+          document.getElementById("finalresult").innerHTML = "-";
         }
       }
     }
@@ -159,9 +158,11 @@ function MasterTheorem() {
         logarithm_element +
         "</sup>" +
         ")";
-      document.getElementById("eset").innerHTML = ", Eset: " + eset;
-      document.getElementById("seged").innerHTML = "";
-      document.getElementById("result").innerHTML = "";
+      document.getElementById("eset").innerHTML = "Eset: " + eset;
+      document.getElementById("seged").innerHTML =
+        "Ebben az esetben nem szükséges";
+      document.getElementById("result").innerHTML =
+        "Ebben az esetben nem szükséges";
       if (differencial === 2 || differencial === 3) {
         document.getElementById("final").innerHTML =
           "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
@@ -174,7 +175,7 @@ function MasterTheorem() {
   }
 
   return (
-    <form style={{ background: "#000027", height: "100vh" }}>
+    <form style={{ background: "#000027", height: "100%" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
@@ -224,17 +225,67 @@ function MasterTheorem() {
           </div>
         </div>
       </div>
-      <div style={{ color: "white", paddingLeft: "40%" }}>
-        <br />
-
-        <b id="logarithm"></b>
-        <b id="eset" />
-        <br />
-        <b id="seged" />
-        <br />
-        <b id="result" />
-        <br />
-        <b id="final" style={{}} />
+      <div style={{ color: "white", paddingLeft: "31%" }}>
+        <table className="table-style">
+          <tbody>
+            <tr>
+              <td>
+                <b id="feladat"></b>
+              </td>
+              <td style={{ textAlign: "center" }}>
+                <b id="feladatleiras"></b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b id="logarithm"></b>
+              </td>
+              <td style={{ textAlign: "center" }}>
+                <b id="logarithmresult"></b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b id="eset"></b>
+              </td>
+              <td style={{ textAlign: "center" }}>
+                <b id="esetresult"></b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b id="seged"></b>
+              </td>
+              <td style={{ textAlign: "center" }}>
+                <b id="segedresult"></b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b id="result"></b>
+              </td>
+              <td style={{ textAlign: "center" }}>
+                <b id="resultresult"></b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b id="solution"></b>
+              </td>
+              <td style={{ textAlign: "center" }}>
+                <b id="solutionresult"></b>
+              </td>
+            </tr>
+            <tr>
+              <td>
+                <b id="final"></b>
+              </td>
+              <td>
+                <b id="finalresult"></b>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
       <br />
     </form>

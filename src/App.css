@@ -11,20 +11,20 @@ a {
 }
 
 .tree-red {
-  width: 40px; 
-  height: 40px; 
+  width: 40px;
+  height: 40px;
   background-color: #8c0000;
   color: white;
   text-align: center;
   line-height: 40px;
-  border-radius: 50%; 
+  border-radius: 50%;
   border: 1px solid gold;
   display: inline-block;
-  margin: 5px; 
+  margin: 5px;
 }
 .tree-black {
-  width: 40px; 
-  height: 40px; 
+  width: 40px;
+  height: 40px;
   background-color: #000000;
   color: white;
   text-align: center;
@@ -32,11 +32,11 @@ a {
   border-radius: 50%;
   border: 1px solid gold;
   display: inline-block;
-  margin: 5px; 
+  margin: 5px;
 }
-.tree-none{
-  width: 40px; 
-  height: 40px; 
+.tree-none {
+  width: 40px;
+  height: 40px;
   background-color: #000027;
   color: #000027;
   text-align: center;
@@ -44,7 +44,7 @@ a {
   border-radius: 50%;
   border: 1px solid #000027;
   display: inline-block;
-  margin: 5px; 
+  margin: 5px;
 }
 .horizontal-space {
   margin-right: 29.4%;
@@ -53,9 +53,9 @@ a {
   margin-right: 12.6%;
 }
 .horizontal-space-third-line {
-  margin-right:4.5%;
+  margin-right: 4.5%;
 }
-.horizontal-space-third-line-fix{
+.horizontal-space-third-line-fix {
   margin-left: 4%;
 }
 
@@ -66,7 +66,7 @@ a {
   left: 50%;
   transform: translate(-50%, -50%);
   color: white;
-  border: 2px solid gold; 
+  border: 2px solid gold;
   font-weight: bold;
 }
 
@@ -80,7 +80,21 @@ a {
   border: 1px solid gold;
 }
 
-/* Define a container for the chatbot */
+.table-style {
+  width: 55%;
+  border-collapse: collapse;
+}
+
+.table-style td {
+  width: 50%;
+  padding: 10px;
+  border: 1px solid #ffffff;
+}
+
+.table-style b {
+  color: #ffffff;
+}
+
 .chatbot-container {
   position: fixed;
   bottom: 20px;
@@ -90,4 +104,3 @@ a {
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
-

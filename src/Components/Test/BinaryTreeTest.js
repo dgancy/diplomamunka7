@@ -837,7 +837,7 @@ export default function BinaryTreeTest() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "45%" /* Add this line */,
+            top: "50%" /* Add this line */,
             transform: "translateY(-50%)" /* Add this line */,
             left: "50%",
             transform: "translateX(-50%)",
@@ -851,7 +851,7 @@ export default function BinaryTreeTest() {
         <div
           style={{
             position: "absolute",
-            top: "45%" /* Add this line */,
+            top: "50%" /* Add this line */,
             transform: "translateY(-50%)" /* Add this line */,
             left: "50%",
             transform: "translateX(-50%)",
