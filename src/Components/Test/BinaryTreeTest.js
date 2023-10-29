@@ -814,9 +814,8 @@ export default function BinaryTreeTest() {
     } else {
       results =
         "Hibás megoldás, eltéveszetett elemeke száma: " + parseInt(mistakes);
-    }
-    alert(results);
-  }
+    }  
+    navigate("/hash-table-test");  }
 
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
@@ -930,7 +929,7 @@ export default function BinaryTreeTest() {
         <div className="row justify-content-center text-center">
           <div>
             <Button variant="outline-warning" onClick={Check}>
-              Ellenőriz
+              Következő
             </Button>
           </div>
         </div>

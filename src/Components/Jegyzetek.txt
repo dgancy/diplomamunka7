@@ -30,13 +30,17 @@ has table fix --done
 master Rework --done
 recursion Rework --done
 vonalakat megcsinálni a többi helyen is  //binkeresofaassignment test gondok mindkettoben rendbe rakni ezeket  --done
+
+jobb kínézet master --done és recursion-- done
 test oldalak
-
 tesztoldlalakat fixálni ~
-
 backend + hibakodok 
+--vegul a Chatbot
 
-vegul a Chatbot
+
+
+
+
 
 hosting
 

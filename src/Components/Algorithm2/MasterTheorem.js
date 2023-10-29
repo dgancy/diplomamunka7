@@ -3,6 +3,8 @@ import { Button } from "react-bootstrap";
 
 function MasterTheorem() {
   function Result() {
+    document.getElementById("resultTable").style.display = "block";
+
     var a_element = parseInt(document.getElementById("A_element").value);
     var b_element = parseInt(document.getElementById("B_element").value);
     var n_element = document.getElementById("N_element").value;
@@ -43,7 +45,14 @@ function MasterTheorem() {
     epszilon = epszilon.toFixed(3);
 
     document.getElementById("feladat").innerHTML = "Feladat : ";
-    document.getElementById("feladatleiras").innerHTML = "T(n) = ";
+    document.getElementById("feladatleiras").innerHTML =
+      "T(n) = " +
+      a_element +
+      "T(n/" +
+      b_element +
+      ") + n<sup>" +
+      differencial +
+      "</sup>";
 
     var muvelet;
     var final_result;
@@ -85,20 +94,21 @@ function MasterTheorem() {
           document.getElementById("solutionresult").innerHTML =
             "T(n)= Θ(" + n_element + ")";
           document.getElementById("final").innerHTML =
-            "Megoldás: T(n)= Θ(" +
-            n_element +
-            ") </br> Regularitási feltétel: a * f(n/b)<= c * f(n) </br>" +
+            "Regularitási feltétel: ";
+
+          document.getElementById("finalresult").innerHTML =
+            "a * f(n/b)<= c * f(n) </br>" +
             a_element +
             " * (n/" +
             b_element +
             ")<sup>" +
-            n_element +
+            differencial +
             "</sup> <= c * n<sup>" +
-            n_element +
+            differencial +
             "</sup> </br> " +
             a_element +
             "/" +
-            b_element ** n_element +
+            b_element ** differencial +
             " <= c < 1 ";
         } else {
           document.getElementById("solution").innerHTML = "Megoldás: ";
@@ -130,7 +140,19 @@ function MasterTheorem() {
           document.getElementById("final").innerHTML =
             "Regularitási feltétel : ";
           document.getElementById("finalresult").innerHTML =
-            "Regularitási feltétel : a * f(n/b)<= c * f(n) </br>";
+            "a * f(n/b)<= c * f(n) </br>" +
+            a_element +
+            " * (n/" +
+            b_element +
+            ")<sup>" +
+            differencial +
+            "</sup> <= c * n<sup>" +
+            differencial +
+            "</sup> </br> " +
+            a_element +
+            "/" +
+            b_element ** differencial +
+            " <= c < 1 ";
         } else {
           document.getElementById("solution").innerHTML = "Megoldás: ";
           document.getElementById("solutionresult").innerHTML =
@@ -175,7 +197,7 @@ function MasterTheorem() {
   }
 
   return (
-    <form style={{ background: "#000027", height: "100%" }}>
+    <form style={{ background: "#000027", height: "110vh" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
@@ -225,7 +247,10 @@ function MasterTheorem() {
           </div>
         </div>
       </div>
-      <div style={{ color: "white", paddingLeft: "31%" }}>
+      <div
+        id="resultTable"
+        style={{ color: "white", paddingLeft: "31%", display: "none" }}
+      >
         <table className="table-style">
           <tbody>
             <tr>
@@ -280,7 +305,7 @@ function MasterTheorem() {
               <td>
                 <b id="final"></b>
               </td>
-              <td>
+              <td style={{ textAlign: "center" }}>
                 <b id="finalresult"></b>
               </td>
             </tr>
