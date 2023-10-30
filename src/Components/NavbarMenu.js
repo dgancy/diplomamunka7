@@ -18,6 +18,9 @@ export default function NavbarMenu() {
       <Nav.Link as={Link} to="/test">
         <Nav.Item className="navelement">Teszt</Nav.Item>
       </Nav.Link>
+      <Nav.Link as={Link} to="/chatbot">
+        <Nav.Item className="navelement">Chatbot</Nav.Item>
+      </Nav.Link>
 
       <NavDropdown title={<span className="navelement">Algoritmus II</span>}>
         <NavDropdown.Item

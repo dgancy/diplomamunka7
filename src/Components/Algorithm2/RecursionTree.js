@@ -7,95 +7,110 @@ export default function RecursionTree() {
     var B = document.getElementById("B_element").value; //N
     var n = document.getElementById("N_element").value;
 
-    var n_elem = `n/${B}<sup>i</sup>`; //hiba javitas
-    var magassag = `log<sub>${B}</sub> n`;
-    var levelszameredmeny = `nlog<sub>${B}</sub><sup>${A}</sup>`;
+    if (A !== "" && B !== "") {
+      document.getElementById("resultTable").style.display = "block";
+      var n_elem = `n/${B}<sup>i</sup>`; //hiba javitas
+      var magassag = `log<sub>${B}</sub> n`;
+      var levelszameredmeny = `nlog<sub>${B}</sub><sup>${A}</sup>`;
 
-    if (n === "n2") {
-      n_elem = `${n_elem}<sup>2</sup>`;
-    }
-    if (n === "n3") {
-      n_elem = `${n_elem}<sup>3</sup>`;
-    }
-    if (n === "n4") {
-      n_elem = `${n_elem}<sup>4</sup>`;
-    }
-    if (n === "n5") {
-      n_elem = `${n_elem}<sup>5</sup>`;
-    }
+      if (n === "n2") {
+        n_elem = `${n_elem}<sup>2</sup>`;
+      }
+      if (n === "n3") {
+        n_elem = `${n_elem}<sup>3</sup>`;
+      }
+      if (n === "n4") {
+        n_elem = `${n_elem}<sup>4</sup>`;
+      }
+      if (n === "n5") {
+        n_elem = `${n_elem}<sup>5</sup>`;
+      }
 
-    var typeChoose;
-    console.log(parseInt(A) / parseInt(B));
-    if (parseInt(A) / parseInt(B) < 1) {
-      typeChoose = `1-${A}/${B}`;
+      document.getElementById("feladat").innerHTML = "Feladat : ";
+      document.getElementById("feladatleiras").innerHTML =
+        "T(n) = " + A + "T(n/" + B + ")+" + n;
+
+      var typeChoose;
+      console.log(parseInt(A) / parseInt(B));
+      if (parseInt(A) / parseInt(B) < 1) {
+        typeChoose = `1-${A}/${B}`;
+        document.getElementById(
+          "finalStepTwo"
+        ).innerHTML = ` n * [(${A}/${B})<sup>${magassag}</sup> -1/ (${typeChoose})] + ${levelszameredmeny} `;
+        document.getElementById(
+          "finalStepTwoOne"
+        ).innerHTML = ` n * [${Math.pow(
+          A / B,
+          0
+        )}/ (${typeChoose})] + ${levelszameredmeny}`;
+
+        document.getElementById("finalStepThree").innerHTML = `${
+          Math.pow(A / B, 0) * B
+        }n + ${levelszameredmeny} = Θ(${levelszameredmeny}) = Θ( n<sup>${Math.pow(
+          Math.log(B) / Math.log(A),
+          0
+        )}</sup> )`;
+      }
+      if (parseInt(A) / parseInt(B) > 1) {
+        typeChoose = `${parseInt(A) - 1 * B}/${B}`;
+
+        document.getElementById(
+          "finalStepTwo"
+        ).innerHTML = ` n * [(${A}/${B})<sup>${magassag}</sup> -1/ (${typeChoose})] + ${levelszameredmeny} = ${B}/${
+          parseInt(A) - 1 * B
+        } n * [(${A}/${B})<sup>${magassag}</sup>/ (${typeChoose})) -1] + ${levelszameredmeny}`;
+
+        document.getElementById("finalStepThree").innerHTML = `${B}/${
+          parseInt(A) - 1 * B
+        } n * [((${A}/${B})<sup>${magassag}</sup>/ (${B}<sup>${magassag}</sup>)) -1] + ${levelszameredmeny} = ${B}/${
+          parseInt(A) - 1 * B
+        } n * [((${A}/${B})<sup>${magassag}</sup>/ (n)) -1] + ${levelszameredmeny}`;
+
+        document.getElementById("finalStepFour").innerHTML = `${B}/${
+          parseInt(A) - 1 * B
+        } * ${A}<sup>${magassag}</sup> + ${B}/${
+          parseInt(A) - 1 * B
+        } n + ${levelszameredmeny} = ${B}/${
+          parseInt(A) - 1 * B
+        } * ${levelszameredmeny}+ ${levelszameredmeny} = Θ( ${levelszameredmeny} )`;
+      }
+      if (parseInt(A) / parseInt(B) === 1) {
+        typeChoose = ``;
+        document.getElementById(
+          "finalStepTwo"
+        ).innerHTML = `= n * 1 + n = Θ( n * ${magassag} )`;
+
+        document.getElementById("finalStepThree").innerHTML = ``;
+
+        document.getElementById("finalStepFour").innerHTML = ``;
+      }
+
+      document.getElementById("one-edge").innerHTML = `${n_elem}`;
+      document.getElementById("edge-number").innerHTML = `${A}<sup>i</sup>`;
       document.getElementById(
-        "finalStepTwo"
-      ).innerHTML = ` n * [(${A}/${B})<sup>${magassag}</sup> -1/ (${typeChoose})] + ${levelszameredmeny} `;
-      document.getElementById(
-        "finalStepTwoOne"
-      ).innerHTML = ` n * [${Math.pow(
-        A / B,
-        0
-      )}/ (${typeChoose})] + ${levelszameredmeny}`;
-
-      document.getElementById("finalStepThree").innerHTML = `${
-        Math.pow(A / B, 0) * B
-      }n + ${levelszameredmeny} = Θ(${levelszameredmeny}) = Θ( n<sup>${Math.pow(
-        Math.log(B) / Math.log(A),
-        0
-      )}</sup> )`;
-    }
-    if (parseInt(A) / parseInt(B) > 1) {
-      typeChoose = `${parseInt(A) - 1 * B}/${B}`;
-
-      document.getElementById(
-        "finalStepTwo"
-      ).innerHTML = ` n * [(${A}/${B})<sup>${magassag}</sup> -1/ (${typeChoose})] + ${levelszameredmeny} = ${B}/${
-        parseInt(A) - 1 * B
-      } n * [(${A}/${B})<sup>${magassag}</sup>/ (${typeChoose})) -1] + ${levelszameredmeny}`;
-
-      document.getElementById("finalStepThree").innerHTML = `${B}/${
-        parseInt(A) - 1 * B
-      } n * [((${A}/${B})<sup>${magassag}</sup>/ (${B}<sup>${magassag}</sup>)) -1] + ${levelszameredmeny} = ${B}/${
-        parseInt(A) - 1 * B
-      } n * [((${A}/${B})<sup>${magassag}</sup>/ (n)) -1] + ${levelszameredmeny}`;
-
-      document.getElementById("finalStepFour").innerHTML = `${B}/${
-        parseInt(A) - 1 * B
-      } * ${A}<sup>${magassag}</sup> + ${B}/${
-        parseInt(A) - 1 * B
-      } n + ${levelszameredmeny} = ${B}/${
-        parseInt(A) - 1 * B
-      } * ${levelszameredmeny}+ ${levelszameredmeny} = Θ( ${levelszameredmeny} )`;
-    }
-    if (parseInt(A) / parseInt(B) === 1) {
-      typeChoose = ``;
-      document.getElementById(
-        "finalStepTwo"
-      ).innerHTML = `= n * 1 + n = Θ( n * ${magassag} )`;
-
-      document.getElementById("finalStepThree").innerHTML = ``;
-
-      document.getElementById("finalStepFour").innerHTML = ``;
-    }
-
-    document.getElementById("one-edge").innerHTML = `${n_elem}`;
-    document.getElementById("edge-number").innerHTML = `${A}<sup>i</sup>`;
-    document.getElementById(
-      "tree-high"
-    ).innerHTML = `${A}<sup>i</sup> * n/${B}<sup>i</sup>`;
-    document.getElementById("leaf-high").innerHTML = ` ${magassag}`;
-    document.getElementById("leaf-number").innerHTML = `
+        "tree-high"
+      ).innerHTML = `${A}<sup>i</sup> * n/${B}<sup>i</sup>`;
+      document.getElementById("leaf-high").innerHTML = ` ${magassag}`;
+      document.getElementById("leaf-number").innerHTML = `
     ${A}<sup>${magassag}</sup> = ${levelszameredmeny}`;
 
-    document.getElementById(
-      "logn"
-    ).innerHTML = `<sup>log<sub>${B}</sub></sup><sup> i-1</sup>`;
-    document.getElementById("iequal").innerHTML = `<sub>i=0</sub> `;
+      document.getElementById(
+        "logn"
+      ).innerHTML = `<sup>log<sub>${B}</sub></sup><sup> i-1</sup>`;
+      document.getElementById("iequal").innerHTML = `<sub>i=0</sub> `;
 
-    document.getElementById(
-      "finalStepOne"
-    ).innerHTML = ` ${A}<sup>i</sup> * ${n_elem} + ${levelszameredmeny} =  n * (${A}/${B})<sup>i</sup> + ${levelszameredmeny}`;
+      document.getElementById(
+        "finalStepOne"
+      ).innerHTML = ` ${A}<sup>i</sup> * ${n_elem} + ${levelszameredmeny} =  n * (${A}/${B})<sup>i</sup> + ${levelszameredmeny}`;
+    } else {
+      if (A === "" && B === "") {
+        alert("Az 'a' és 'b' elemnek nagyobbnak kell lennie, mint 0!");
+      } else if (B === "") {
+        alert("A 'b' elemnek nagyobbnak kell lennie, mint 0!");
+      } else if (A === "") {
+        alert("Az 'a' elemnek nagyobbnak kell lennie, mint 0!");
+      }
+    }
   }
 
   return (
@@ -152,8 +167,20 @@ export default function RecursionTree() {
           paddingLeft: "31%",
         }}
       >
-        <table className="table-style">
+        <table
+          id="resultTable"
+          style={{ display: "none" }}
+          className="table-style"
+        >
           <tbody>
+            <tr>
+              <td>
+                <b id="feladat"></b>
+              </td>
+              <td style={{ textAlign: "center" }}>
+                <b id="feladatleiras"></b>
+              </td>
+            </tr>
             <tr>
               <td>
                 <b>Egy csúcs költsége:</b>
