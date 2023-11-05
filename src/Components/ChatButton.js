@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import Chatbot from './ChatBottest';
+import Chatbot from './Chatbot';
 import { Button } from 'react-bootstrap';
 
 const ChatButton = () => {

@@ -24,7 +24,6 @@ import BackTrackingTest from "./Components/Test/BackTrackingTest";
 import RedBlackTreeTest from "./Components/Test/RedBlackTreeTest";
 import Home from "./Components/Home";
 import LogMoreData from "./Components/Login/LogMoreData";
-import ChatBottest from "./Components/ChatBottest";
 import ChatButton from "./Components/ChatButton";
 
 function App() {
@@ -32,12 +31,9 @@ function App() {
     <>
       <Router>
         <NavbarMenu />
-
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/signin" element={<Register />} />
-
-          <Route path="/chatbot" element={<ChatBottest />} />
 
           <Route path="/binary-tree" element={<BinaryTree />} />
           <Route path="/master-theorem" element={<MasterTheorem />} />
