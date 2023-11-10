@@ -114,7 +114,7 @@ export default function RecursionTree() {
   }
 
   return (
-    <form style={{ background: "#000027", height: "110vh" }}>
+    <form style={{ background: "#000027", height: "100%" }}>
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >

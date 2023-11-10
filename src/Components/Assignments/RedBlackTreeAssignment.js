@@ -56,11 +56,11 @@ export default function RedBlackTreeTest() {
     <Line key="line25" x1="910" y1="210" x2="860" y2="280" />, //25
     <Line key="line26" x1="910" y1="210" x2="970" y2="280" />, //26
 
-    <Line key="line25" x1="1060" y1="210" x2="1010" y2="280" />, //25
-    <Line key="line26" x1="1060" y1="210" x2="1110" y2="280" />, //26
+    <Line key="line27" x1="1060" y1="210" x2="1010" y2="280" />, //27
+    <Line key="line28" x1="1060" y1="210" x2="1110" y2="280" />, //28
 
-    <Line key="line25" x1="1210" y1="210" x2="1160" y2="280" />, //25
-    <Line key="line26" x1="1210" y1="210" x2="1260" y2="280" />, //26
+    <Line key="line29" x1="1210" y1="210" x2="1160" y2="280" />, //29
+    <Line key="line30" x1="1210" y1="210" x2="1260" y2="280" />, //30
   ];
 
   for (let i = 0; i < 30; i++) {
@@ -270,7 +270,7 @@ export default function RedBlackTreeTest() {
         id="tree-line"
         style={{
           position: "absolute",
-          top: "50%",
+          top: "55%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           height: "350px",
@@ -282,7 +282,7 @@ export default function RedBlackTreeTest() {
       <div
         style={{
           position: "absolute",
-          top: "50%",
+          top: "55%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           height: "350px",
@@ -670,10 +670,10 @@ export default function RedBlackTreeTest() {
       <div>
         <div
           className="row justify-content-center text-center"
-          style={{
-            top: "70%",
-            left: "50%",
-            transform: "translate(-50%, -50%)",
+          style={{ position: "absolute",
+          top: "75%",
+          left: "50%",
+          transform: "translate(-50%, -50%)",
           }}
         >
           <Button variant="outline-warning" onClick={Check}>

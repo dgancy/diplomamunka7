@@ -86,12 +86,12 @@ export default function Backtracking() {
               {" "}
               <b style={{ color: "white" }}>Érmék száma (db): </b>
               <input type="text" className="form-control" id="addnumber" />
-              <small className="form-text text-white">(For e.: 7)</small>
+              <small className="form-text text-white">(Például: 7)</small>
             </div>
             <div className="col-2">
               <b style={{ color: "white" }}>Megoldáskezdemény: </b>
               <input type="text" className="form-control" id="addarray" />{" "}
-              <small className="form-text text-white">(For e.: 1,2,4)</small>
+              <small className="form-text text-white">(Például: 1,2,4)</small>
             </div>
             <div className="col-2">
               <b style={{ color: "white" }} for="type">

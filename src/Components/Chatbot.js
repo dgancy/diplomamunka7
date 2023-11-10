@@ -6,6 +6,7 @@ let userName = "";
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
+  let imageSrc;
 
   const handleUserMessage = (messageText) => {
     setMessages((prevMessages) => [
@@ -51,36 +52,122 @@ const Chatbot = () => {
         }
       }
       if (messageText.toLowerCase().includes("mester")) {
-        response = "Mester tétel általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-      if (messageText.toLowerCase().includes("általános") && (messageText.toLowerCase().includes("magyarázata") || messageText.toLowerCase().includes("magyarázat"))){
-        response = "Mester tétel általános magyarázata a következő: ";
-      }
+        response =
+          "Mester tétel általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        if (
+          messageText.toLowerCase().includes("általános") &&
+          (messageText.toLowerCase().includes("magyarázata") ||
+            messageText.toLowerCase().includes("magyarázat"))
+        ) {
+          imageSrc = "./mestertetel.png";
+
+          response =
+            "Mester tétel általános magyarázata a következő: A mester tétel egy rekurzív egyenlet megoldására ad korlátot." +
+            "Az egyenletnél az A nagyobb egyenlő, mint 1 a B nagyobb mint 1 és f(n) pedig egy adott függvény. " +
+            " Példának ajánlom a következő egyenleteteket kipróbálni a webesfelületen: T(n)= 4T(n/3)+n , T(n)= 3T(n/5)+n , T(n)= 4T(n/4)+n. " +
+            "Három esete van ennek a módszernek:";
+        }
       }
       if (
         messageText.toLowerCase().includes("rekurzió") ||
         messageText.toLowerCase().includes("rekurziós")
       ) {
-        response = "Rekurziós módszer általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        response =
+          "Rekurziós módszer általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        if (
+          messageText.toLowerCase().includes("általános") &&
+          (messageText.toLowerCase().includes("magyarázata") ||
+            messageText.toLowerCase().includes("magyarázat"))
+        ) {
+          imageSrc = "./rekurzios.png";
+
+          response =
+            "A helyettesítő módszer használtához, ad segítséget a rekurziós fa módszer." +
+            "A helyettesítő módszer, egy kétlépésből álló megoldás sejtést teljes indukcióval igazoló módszer," +
+            " melynek célja megtalálni egy adott függvény esetében megtalálni az aszimptotikus korlátokat egy adott megoldásra. " +
+            " A módszer használata a következő: " +
+            "A rekurziós képletből felépítunk egy fát, melynek szintjein elhelyezkedő csúcsok felelnek meg az adott szint költségének." +
+            "A kapott sejtést, helyettesítő módszer használatával ellenőrizzük." +
+            " Példának ajánlom a következő egyenleteteket kipróbálni a weboldalon: T(n)= 4T(n/3)+n . ";
+        }
       }
       if (messageText.toLowerCase().includes("bináris")) {
-        response = "Bináris keresőfa általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        response =
+          "Bináris keresőfa általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        if (
+          messageText.toLowerCase().includes("általános") &&
+          (messageText.toLowerCase().includes("magyarázata") ||
+            messageText.toLowerCase().includes("magyarázat"))
+        ) {
+          imageSrc = "./bfa.png";
+
+          response =
+            "A bináris keresofák, ahogy azt a nevük is sugallja, bináris faként szervezett objektumok." +
+            "A keresofákat láncolt struktúraként ábrázolhatjuk, ahol minden csúcs egy önálló objektum." +
+            " Ez a feladat megoldás a bináris keresőfán végzett beszúrás és törlés műveleteinek végrehajtását hajtja végre, amely megváltoztatja a bináris keresőfával ábrázolt dinamikus halmazt. " +
+            " A módszer használata a következő: " +
+            " Ezt a feladatot jól szemlélteti a weboldalon kialakított feladatmegoldó.";
+        }
       }
       if (messageText.toLowerCase().includes("hash")) {
-        response = "Hash tábla általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        response =
+          "Hash tábla általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        if (
+          messageText.toLowerCase().includes("általános") &&
+          (messageText.toLowerCase().includes("magyarázata") ||
+            messageText.toLowerCase().includes("magyarázat"))
+        ) {
+          imageSrc = "./hash.png";
+
+          response =
+            "A hash táblát általában olyan adatszerkezet, amely a hasítófüggvények használatával állapítja meg, hogy melyik kulcshoz milyen érték tartozik." +
+            "4 darab hash függvénnyel találkoztál az oktatáson, amelyek a követezőek:" +
+            "Szimpla , Lineális , Dupla vagy Négyzetes." +
+            "Ezekre a függvényekre megnézheted, hogy hogyan is működik a weboldalon a következőkre: ";
+        }
       }
       if (
         messageText.toLowerCase().includes("piros") &&
         messageText.toLowerCase().includes("fekete")
       ) {
-        response = "Piros fekete fa általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        response =
+          "Piros fekete fa általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        if (
+          messageText.toLowerCase().includes("általános") &&
+          (messageText.toLowerCase().includes("magyarázata") ||
+            messageText.toLowerCase().includes("magyarázat"))
+        ) {
+          imageSrc = "./pirosfeketeda.png";
+
+          response =
+            "A piros-fekete fa olyan bináris keresofa, melynek minden csúcsa egy extra bit információt " +
+            "tartalmaz, ez a csúcs színe, amelynek értékei: piros vagy fekete. A csúcsok színezésének " +
+            " korlátozásával biztosítható, hogy piros-fekete fában bármely, a gyökért ol levélig vezető út " +
+            "hossza nem lehet nagyobb, mint a legrövidebb ilyen út hosszának kétszerese. Tehát az ilyen" +
+            "fák megközelítőleg kiegyensúlyozottak." +
+            " A feladatot akár az alábbi példára is megnézheti a weboldalon."+
+             " A példa: 29,39,44,9,77,82,60,98,7,11,33,49";
+        }
       }
       if (messageText.toLowerCase().includes("visszalépéses")) {
-        response = "Visszalépéses keresés általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-      }
+        response =
+          "Visszalépéses keresés általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
+        if (
+          messageText.toLowerCase().includes("általános") &&
+          (messageText.toLowerCase().includes("magyarázata") ||
+            messageText.toLowerCase().includes("magyarázat"))
+        ) {
+          imageSrc = "./visszalepeses.png";
 
+          response =
+            "A visszalépéses keresés egy általános algoritmus ami, bizonyos számítási problémák megoldására." +
+            " A feladat megoldás érme problémára is kiterjed amit szemléltet a weboldal adott pontja. " +
+            " Példa feladat: <2,4,5,6> Apa, ElsőFiú, Testvér esetekre.";
+        }
+      }
       setMessages((prevMessages) => [
         ...prevMessages,
-        { role: "system", content: response },
+        { role: "system", content: response, imageSrc },
       ]);
     }
   };
@@ -129,6 +216,11 @@ const Chatbot = () => {
             }}
           >
             {message.content}
+            {message.imageSrc && (
+              <div>
+                <img src={message.imageSrc} alt={message.imageAlt} />
+              </div>
+            )}
           </div>
         ))}
       </div>

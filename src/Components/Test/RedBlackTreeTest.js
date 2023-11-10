@@ -203,7 +203,7 @@ export default function RedBlackTreeTest() {
         <div className="container">
           <div
             className="row justify-content-center text-center"
-            style={{ color: "white" }}
+            style={{ color: "white", paddingTop:"2%" }}
           >
             {Generate()}
           </div>
@@ -246,7 +246,7 @@ export default function RedBlackTreeTest() {
         id="tree-line"
         style={{
           position: "absolute",
-          top: "50%",
+          top: "45%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           height: "350px",
@@ -258,7 +258,7 @@ export default function RedBlackTreeTest() {
       <div
         style={{
           position: "absolute",
-          top: "50%",
+          top: "45%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           height: "350px",
@@ -647,7 +647,7 @@ export default function RedBlackTreeTest() {
         <div
           className="row justify-content-center text-center"
           style={{ position: "absolute",
-          top: "70%",
+          top: "65%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           }}
