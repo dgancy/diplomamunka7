@@ -115,14 +115,14 @@ function MasterTheorem() {
               "/" +
               b_element ** differencial +
               " <= c < 1 ";
-          } else {
+          } else if (eset === 1) {
             document.getElementById("solution").innerHTML = "Megoldás: ";
             document.getElementById("solutionresult").innerHTML =
               " Θ(n" + "<sup>" + logarithm_element + "</sup>" + ")";
 
             document.getElementById("final").innerHTML =
               "Regularitási feltétel nem szükséges";
-            document.getElementById("finalresult ").innerHTML = "-";
+            document.getElementById("finalresult").innerHTML = "-";
           }
         } else {
           if (eset === 3) {

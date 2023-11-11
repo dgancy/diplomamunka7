@@ -1,6 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import mistakes_to_databse from "./RecursionTreeTest";
 
 export default function MasterTheoramTest() {
   const navigate = useNavigate();
@@ -8,64 +9,224 @@ export default function MasterTheoramTest() {
   var b_elem;
   var n;
   var nsup;
+  var eset;
+  let logarithm_element = [];
+  var helper_number;
+  var epsilon = [];
 
-  function first_answer_n() {
-    return `1`;
-  }
-  function second_answer_n() {
-    return `n`;
-  }
-  function third_answer_n() {
-    return `n<sup>2</sup>`;
-  }
-  function fourth_answer_n() {
-    return `n<sup>3</sup>`;
-  }
-
-  function fifth_answer_n() {
-    return `nlogn`;
-  }
-  
-  const epszilon_numbers=[];
-  epszilon_numbers.push();
-
+  console.log(mistakes_to_databse[0]);
 
   function Generate() {
-    var eset = Math.floor(Math.random() * 3) + 1;
+    eset = Math.floor(Math.random() * 3) + 1;
     var fea;
-    var tört;
-    nsup = Math.floor(Math.random() * 5);
+    nsup = Math.floor(Math.random() * 4);
     n = `n<sup>${nsup}</sup>`;
 
-    if (n === `n<sup>4</sup>`) {
-      n = `nlogn`;
-    }
     if (n === `n<sup>0</sup>`) {
       n = `1`;
+      helper_number = 0;
     }
     if (n === `n<sup>1</sup>`) {
       n = `n`;
+      helper_number = 1;
     }
+    if (n === `n<sup>2</sup>`) {
+      helper_number = 2;
+    }
+    if (n === `n<sup>3</sup>`) {
+      helper_number = 3;
+    }
+
     if (eset === 1) {
-      a_elem = Math.floor(Math.random() * 20) + 2;
-      b_elem = Math.floor(Math.random() * 10) + 1;
-      fea = "T(n)= " + a_elem + "T(n/" + b_elem + ")+" + n;
+      if (helper_number === 0) {
+        a_elem = 2;
+        b_elem = 3;
+      } else if (helper_number === 1) {
+        b_elem = Math.floor(Math.random() * 3) + 3;
+        if (b_elem === 3) {
+          a_elem = Math.floor(Math.random() * 5) + 4;
+        } else if (b_elem === 4) {
+          a_elem = Math.floor(Math.random() * 11) + 5;
+        } else if (b_elem === 5) {
+          a_elem = Math.floor(Math.random() * 19) + 6;
+        }
+      } else if (helper_number === 2) {
+        b_elem = Math.floor(Math.random() * 3) + 2;
+        if (b_elem === 2) {
+          a_elem = Math.floor(Math.random() * 3) + 5;
+        } else if (b_elem === 3) {
+          a_elem = Math.floor(Math.random() * 17) + 10;
+        } else if (b_elem === 4) {
+          a_elem = Math.floor(Math.random() * 63) + 17;
+        }
+      } else if (helper_number === 3) {
+        b_elem = Math.floor(Math.random() * 3) + 2;
+        if (b_elem === 2) {
+          a_elem = Math.floor(Math.random() * 5) + 9;
+        } else if (b_elem === 3) {
+          a_elem = Math.floor(Math.random() * 53) + 28;
+        } else if (b_elem === 4) {
+          a_elem = Math.floor(Math.random() * 191) + 65;
+        }
+        console.log("eset 2, B: " + b_elem);
+        console.log("eset 2, A: " + a_elem);
+      }
     }
     if (eset === 2) {
-      a_elem = Math.floor(Math.random() * 20) + 2; //számok közti összefüggés?
-      b_elem = Math.floor(Math.random() * 10) + 1;
-      tört = Math.floor(Math.random() * 10) + 1;
-      fea = "T(n)= " + a_elem + "T(" + tört + "n/" + b_elem + ")+" + n;
+      if (helper_number === 0) {
+        n = `n`;
+        helper_number = 1;
+      }
+      if (helper_number === 1) {
+        a_elem = Math.floor(Math.random() * 10) + 2;
+        b_elem = a_elem;
+      } else if (helper_number === 2) {
+        b_elem = Math.floor(Math.random() * 3) + 2;
+        if (b_elem === 2) {
+          a_elem = 4;
+        } else if (b_elem === 3) {
+          a_elem = 9;
+        } else if (b_elem === 4) {
+          a_elem = 16;
+        }
+      } else if (helper_number === 3) {
+        b_elem = Math.floor(Math.random() * 3) + 2;
+        if (b_elem === 2) {
+          a_elem = 8;
+        } else if (b_elem === 3) {
+          a_elem = 27;
+        } else if (b_elem === 4) {
+          a_elem = 64;
+        }
+      }
     }
     if (eset === 3) {
-      a_elem = Math.floor(Math.random() * 10) + 2; //számok közti összefüggés?
-      b_elem = Math.floor(Math.random() * 10) + 1;
-      fea = "T(n)= " + a_elem + "T(n/" + b_elem + ")+" + n;
+      if (helper_number === 0) {
+        n = `n`;
+        helper_number = 1;
+      }
+      if (helper_number === 1) {
+        a_elem = Math.floor(Math.random() * 20) + 1;
+        b_elem = a_elem + Math.floor(Math.random() * 10) + 1;
+      }
+      if (helper_number === 2) {
+        a_elem = Math.floor(Math.random() * 10) + 10;
+        b_elem = Math.floor(Math.random() * 10) + 1;
+      }
+      if (helper_number === 3) {
+        b_elem = Math.floor(Math.random() * 2) + 4;
+        if (b_elem === 4) {
+          a_elem = Math.floor(Math.random() * 10) + 17;
+        } else if (b_elem === 5) {
+          a_elem = Math.floor(Math.random() * 10) + 26;
+        }
+      }
+    }
+
+    fea = "T(n)= " + parseInt(a_elem) + "T(n/" + parseInt(b_elem) + ")+" + n;
+    console.log(
+      "A: " + a_elem + " B: " + b_elem + " f(n): " + n + " eset: " + eset
+    );
+
+    logarithm_element[0] = (Math.log(a_elem) / Math.log(b_elem)).toFixed(3);
+    epsilon[0] = (
+      parseFloat(helper_number) - parseFloat(logarithm_element[0])
+    ).toFixed(3);
+    for (let i = 0; i < 3; i++) {
+      let answer_randomizer = Math.random().toFixed(3);
+      if (i === 1) {
+        logarithm_element[1 + i] = (
+          parseFloat(1) + parseFloat(answer_randomizer)
+        ).toFixed(3);
+        epsilon[1 + i] = (
+          parseFloat(helper_number) - parseFloat(logarithm_element[1 + i])
+        ).toFixed(3);
+      } else {
+        logarithm_element[1 + i] = answer_randomizer;
+        epsilon[1 + i] = (
+          parseFloat(helper_number) - parseFloat(logarithm_element[1 + i])
+        ).toFixed(3);
+      }
+      console.log("epsilons: " + epsilon);
     }
 
     return `Oldja meg a következő feladatot Mester tétel használatával. ${fea}`;
   }
-  //
+
+  let place_switcher = Math.floor(Math.random() * 4);
+  let changer;
+
+  changer = logarithm_element[place_switcher];
+  logarithm_element[place_switcher] = logarithm_element[0];
+  logarithm_element[0] = changer;
+
+  function epsilon_answer_one() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[0] + ")";
+  }
+  function epsilon_answer_two() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[1] + ")";
+  }
+  function epsilon_answer_three() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[2] + ")";
+  }
+  function epsilon_answer_four() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[3] + ")";
+  }
+
+  function substitution_one() {
+    return (
+      "Θ(nlog " +
+      String.fromCharCode(94) +
+      logarithm_element[0] +
+      "+" +
+      epsilon[0] +
+      ")"
+    );
+  }
+  function substitution_two() {
+    return (
+      "Θ(nlog " +
+      String.fromCharCode(94) +
+      logarithm_element[1] +
+      "+" +
+      epsilon[1] +
+      ")"
+    );
+  }
+  function substitution_three() {
+    return (
+      "Θ(nlog " +
+      String.fromCharCode(94) +
+      logarithm_element[2] +
+      "+" +
+      epsilon[2] +
+      ")"
+    );
+  }
+  function substitution_four() {
+    return (
+      "Θ(nlog " +
+      String.fromCharCode(94) +
+      logarithm_element[3] +
+      "+" +
+      epsilon[3] +
+      ")"
+    );
+  }
+
+  function result_one() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[0] + ")";
+  }
+  function result_two() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[1] + ")";
+  }
+  function result_three() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[2] + ")";
+  }
+  function result_four() {
+    return " Θ(n" + String.fromCharCode(94) + logarithm_element[3] + ")";
+  }
+
   function Check() {
     var user_a_element = document.getElementById("quest2-a-elem").value;
     var user_b_element = document.getElementById("quest2-b-elem").value;
@@ -88,33 +249,6 @@ export default function MasterTheoramTest() {
     }
     if (nlog < 2 && nlog > 1 && n === "n2") {
       e = 2 - nlog;
-    }
-
-    if (
-      (nlog === 0 && n === "n") ||
-      (nlog === 1 && n === "n") ||
-      (nlog === 2 && n === "n2") ||
-      n === "1"
-    ) {
-      eset = 2;
-    }
-    if (nlog > 1 && nlog - e === 1 && n === "n") {
-      eset = 1;
-    }
-    if (nlog > 2 && n === "n2") {
-      eset = 1;
-      e -= 1;
-    }
-
-    if (nlog < 1 && nlog + e === 1 && n === "n") {
-      eset = 3;
-    }
-    if (nlog < 1 || (nlog === 1 && n === "n2")) {
-      eset = 3;
-      e += 1;
-    }
-    if (nlog < 2 && n === "n2" && nlog > 1) {
-      eset = 3;
     }
 
     if (
@@ -151,7 +285,7 @@ export default function MasterTheoramTest() {
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <div className="form-group" style={{ padding: "15px" }}>
         <div
           style={{ color: "white", textAlign: "center", padding: "10px" }}
@@ -194,11 +328,12 @@ export default function MasterTheoramTest() {
                   className="form-control"
                   type="text"
                 >
-                <option></option>
-                <option>n</option>
-                <option>n&sup2;</option>
-                <option>n&sup3;</option>
-                <option>nlogn</option>
+                  <option></option>
+                  <option>1</option>
+                  <option>n</option>
+                  <option>n&sup2;</option>
+                  <option>n&sup3;</option>
+                  <option>nlogn</option>
                 </select>
               </div>
             </div>
@@ -221,21 +356,25 @@ export default function MasterTheoramTest() {
             <div className="col-3">
               <div>
                 <b style={{ color: "white" }}>Kiegészítő érték(E):</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest2-E-kiegeszito-erteke"
-                />{" "}
+                <select id="type" name="epsilon" className="form-control">
+                  <option> </option>
+                  <option value="1-es-eset">{epsilon_answer_one()}</option>
+                  <option value="2-es-eset">{epsilon_answer_two()}</option>
+                  <option value="3-as-eset">{epsilon_answer_three()}</option>
+                  <option value="4-es-eset">{epsilon_answer_four()}</option>
+                </select>
               </div>
             </div>
             <div className="col-3">
               <div>
                 <b style={{ color: "white" }}>Képletbe helyettesítés:</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest2-keplet"
-                />{" "}
+                <select id="type" name="epsilon" className="form-control">
+                  <option> </option>
+                  <option value="1-es-eset">{substitution_one()}</option>
+                  <option value="2-es-eset">{substitution_two()}</option>
+                  <option value="3-as-eset">{substitution_three()}</option>
+                  <option value="4-es-eset">{substitution_four()}</option>
+                </select>
               </div>
             </div>
           </div>
@@ -247,11 +386,13 @@ export default function MasterTheoramTest() {
             <div className="col-3">
               <div>
                 <b style={{ color: "white" }}>Végeredmény:</b>
-                <input
-                  type="text"
-                  className="form-control"
-                  id="quest2-final"
-                />{" "}
+                <select id="type" name="epsilon" className="form-control">
+                  <option> </option>
+                  <option value="1-es-eset">{result_one()}</option>
+                  <option value="2-es-eset">{result_two()}</option>
+                  <option value="3-as-eset">{result_three()}</option>
+                  <option value="4-es-eset">{result_four()}</option>
+                </select>
               </div>
             </div>
           </div>

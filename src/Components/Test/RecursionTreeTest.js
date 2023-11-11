@@ -2,7 +2,9 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
+var mistakes_to_database = [];
 function RecursionTreeTest() {
+
   const navigate = useNavigate();
   var T_elem = Math.floor(Math.random() * 40) + 1;
   var N_elem = Math.floor(Math.random() * 9) + 1;
@@ -141,12 +143,69 @@ function RecursionTreeTest() {
     return `${numbers_of_answers_edge_number[3]} log${numbers_of_answers_tree_height[3]}n = nlog${numbers_of_answers_edge_number[3]} ${numbers_of_answers_tree_height[3]}`;
   }
 
+  //theta Θ
+  //Π
+  //Ω
+
+  let final_answers = [];
+  if (parseInt(T_elem) / parseInt(N_elem) < 1) {
+    final_answers.push(
+      `Θ( n${Math.pow(Math.log(N_elem) / Math.log(T_elem), 0)} )`
+    );
+  } else if (parseInt(T_elem) / parseInt(N_elem) > 1) {
+    final_answers.push(`Θ( nlog${N_elem}${T_elem} )`);
+  } else if (parseInt(T_elem) === parseInt(N_elem)) {
+    final_answers.push(`Θ( n * log${N_elem}n )`);
+  }
+
+  for (let i = 0; i < 5; i++) {
+    var random = Math.floor(Math.random() * 3);
+    var random_numbers = Math.floor(Math.random() * 5);
+    var sub_element_number = Math.floor(Math.random() * 100) + 1;
+    var elotag;
+    var belsotag;
+    if (random === 0) {
+      elotag = "Θ";
+    } else if (random === 1) {
+      elotag = "Π";
+    } else if (random === 2) {
+      elotag = "Ω";
+    }
+    if (random_numbers === 0) {
+      belsotag = `nlog${T_elem}${N_elem}`;
+    } else if (random_numbers !== 0) {
+      belsotag = `nlog0.${sub_element_number}`;
+    }
+    final_answers.push(`${elotag}(${belsotag})`);
+  }
+  var switch_place = Math.floor(Math.random() * 3);
+  var changer;
+  changer = final_answers[switch_place];
+  final_answers[switch_place] = final_answers[0];
+  final_answers[0] = changer;
+
+  function first_answer_final() {
+    return `${final_answers[0]}`;
+  }
+  function second_answer_final() {
+    return `${final_answers[1]}`;
+  }
+  function third_answer_final() {
+    return `${final_answers[2]}`;
+  }
+  function fourth_answer_final() {
+    return `${final_answers[3]}`;
+  }
+  function fifth_answer_final() {
+    return `${final_answers[4]}`;
+  }
+  function sixth_answer_final() {
+    return `${final_answers[5]}`;
+  }
+
   console.log(numbers_of_answers_tree_height);
 
   function General() {
-    if (n_rekurzios === `n<sup>4</sup>`) {
-      n_rekurzios = `nlogn`;
-    }
     if (n_rekurzios === `n<sup>1</sup>`) {
       n_rekurzios = `n`;
     }
@@ -163,6 +222,7 @@ function RecursionTreeTest() {
     var user_all_cost = document.getElementById("quest1-szintkoltseg").value;
     var user_tree_high = document.getElementById("quest1-famagassaga").value;
     var user_leaf_number = document.getElementById("quest1-levelekszama").value;
+    var user_final = document.getElementById("final").value;
 
     var one_edge_element = `(n/ ${N_elem} )<sup>i</sup>`;
     var magassag = `log<sub>${N_elem}</sub>n`;
@@ -170,6 +230,7 @@ function RecursionTreeTest() {
     var one_edge_element_result;
     var edge_number = T_elem + `<sup>i</sup>`;
     var all_cost = `(n/ + ${N_elem} )<sup>i</sup> * ${edge_number}`;
+    var final_answers;
 
     if (n_rekurzios === "n") {
       one_edge_element_result = one_edge_element;
@@ -185,11 +246,13 @@ function RecursionTreeTest() {
     }
 
     var mistakes = [];
+    var mistakes_temporary = [];
     if (
       user_T_element !== T_elem ||
       user_N_element !== N_elem ||
       user_n_element !== check_N
     ) {
+      mistakes_temporary.push(1000);
       mistakes.push(
         "Hibás leolvasás!" +
           " A helyes értékek: a: " +
@@ -204,6 +267,12 @@ function RecursionTreeTest() {
       user_1edge_element !== one_edge_element_result ||
       user_edge_number !== edge_number
     ) {
+      if (user_1edge_element !== one_edge_element_result) {
+        mistakes_temporary.push(1001);
+      }
+      if (user_edge_number !== edge_number) {
+        mistakes_temporary.push(1002);
+      }
       mistakes.push(
         "Hibás helyettesítés! " +
           "Egy csúcs költsége: " +
@@ -213,6 +282,12 @@ function RecursionTreeTest() {
       );
     }
     if (user_all_cost !== all_cost || user_tree_high !== magassag) {
+      if (user_all_cost !== all_cost) {
+        mistakes_temporary.push(1003);
+      }
+      if (user_tree_high !== magassag) {
+        mistakes_temporary.push(1004);
+      }
       mistakes.push(
         "Hibás helyettesítés!" +
           " Az i-edik szint összköltsége: " +
@@ -223,9 +298,32 @@ function RecursionTreeTest() {
       );
     }
     if (user_leaf_number !== levelszameredmeny) {
+      mistakes_temporary.push(1005);
       mistakes.push(`Hibás eredmény! Levelek száma: ${levelszameredmeny}`);
     }
+
+    if (parseInt(T_elem) / parseInt(N_elem) < 1) {
+      final_answers = `Θ( n<sup>${Math.pow(
+        Math.log(N_elem) / Math.log(T_elem),
+        0
+      )}</sup> )`;
+    } else if (parseInt(T_elem) / parseInt(N_elem) > 1) {
+      final_answers = `Θ( nlog<sub>${N_elem}</sub>${T_elem} )`;
+    } else if (parseInt(T_elem) === parseInt(N_elem)) {
+      final_answers = `Θ( n * log<sub>${N_elem}</sub>n )`;
+    }
+
+    if (user_final !== final_answers) {
+      mistakes_temporary.push(1006);
+      mistakes.push(`Hibás eredmény! Végeredmény értéke: ${final_answers}`);
+    }
+
     console.log(mistakes);
+    console.log(mistakes_temporary);
+    console.log(mistakes_temporary[0]);
+    mistakes_to_database[0] = mistakes_temporary[0];
+    console.log(mistakes_to_database[0]);   
+
     navigate("/master-theorem-test");
   }
 
@@ -268,7 +366,6 @@ function RecursionTreeTest() {
                 <option>n</option>
                 <option>n&sup2;</option>
                 <option>n&sup3;</option>
-                <option>nlogn</option>
               </select>
             </div>
           </div>
@@ -355,6 +452,27 @@ function RecursionTreeTest() {
               </select>
             </div>
           </div>
+
+          <div
+            style={{ padding: "10px" }}
+            className="row justify-content-center text-center"
+          >
+            {" "}
+            <div className="col-3">
+              <b style={{ color: "white" }}>Összegképlet erdménye:</b>
+
+              <select id="final" className="form-control" type="text">
+                <option></option>
+                <option>{first_answer_final()}</option>
+                <option>{second_answer_final()}</option>
+                <option>{third_answer_final()}</option>
+                <option>{fourth_answer_final()}</option>
+                <option>{fifth_answer_final()}</option>
+                <option>{sixth_answer_final()}</option>
+              </select>
+            </div>
+          </div>
+
           <div
             style={{ padding: "10px" }}
             className="row justify-content-center text-center"
@@ -368,4 +486,4 @@ function RecursionTreeTest() {
     </form>
   );
 }
-export default RecursionTreeTest;
+export default {RecursionTreeTest, mistakes_to_database};
