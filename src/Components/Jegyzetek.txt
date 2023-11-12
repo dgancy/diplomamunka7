@@ -45,3 +45,77 @@ backend + hibakodok
 hosting
 
 saját: hibakódok + Chatbot, backend köv 
+
+
+
+Piros fekete fa tests:
+
+A piros-fekete fa olyan bináris keresofa, melynek minden csúcsa egy extra bit információt ˝
+tartalmaz, ez a csúcs színe, amelynek értékei: piros vagy fekete. A csúcsok színezésének
+korlátozásával biztosítható, hogy piros-fekete fában bármely, a gyökért ol levélig vezet ˝ o út ˝
+hossza nem lehet nagyobb, mint a legrövidebb ilyen út hosszának kétszerese. Tehát az ilyen
+fák megközelítoleg ˝ kiegyensúlyozottak.
+A fa minden csúcsa tartalmazza a szín, kulcs, bal, jobb és szül˝o mezoket. Ha egy csúcs- ˝
+hoz tartozó gyerek vagy szülo nem létezik, akkor a megfelel ˝ o mez ˝ o a ˝ nil értéket tartalmazza.
+Úgy tekintjük, hogy az ilyen nil mutató értékek a bináris keres ofa küls ˝ o (levél) csúcsaira ˝
+mutatnak, míg a fa kulcsot tartalmazó csúcsai a belso csúcsok. ˝
+Egy bináris keresofa piros-fekete fa, ha teljesül rá a következ ˝ o˝ piros-fekete tulajdonság:
+
+1. Minden csúcs színe vagy piros, vagy fekete.
+2. A gyökércsúcs színe fekete.
+3. Minden levél (nil) színe fekete.
+4. Minden piros csúcsnak mindkét gyereke fekete.
+5. Bármely csúcsból bármely levélig vezeto úton ugyanannyi fekete csúcs van.
+
+példa kép + számsor mellé
+
+Mester tétel:
+
+kép az ált. feladatról
+
+A mester módszer alakú(1) rekurzív egyenletek megoldására, ahol a ≥ 1 és b > 1 állandók,
+ és az f(n) aszimptotikusan pozitív függvény. 
+
+ kép hozzá + példa
+
+
+ Rekurziós fa módszer:
+
+  A ˝ rekurziós fa minden egyes
+csúcsa egy részfeladatnak felel meg: a függvény kiértékelésekor végrehajtódó minden rekurziós híváshoz tartozik egy csúcs. Szintenként összegezzük a csúcsok költségét, majd az
+így kapott szintenkénti költségeket összegezzük, hogy megkapjuk a teljes költséget. Oszdmeg-és-uralkodj elvet használó algoritmusok elemzésénél a rekurziós fa nagyon kényelmes
+eszköznek bizonyul.
+A rekurziós fa módszert leginkább egy jó sejtés megtalálására érdemes használni, amit
+aztán a helyettesíto módszerrel ellen ˝ orzünk
+
+képek + példa
+
+Bfa:
+
+A bináris keresofák, ahogy azt a nevük is sugallja, bináris faként szervezett objektumok. ˝
+A 12.1. ábrán két példát is láthatunk rájuk. A keresofákat láncolt struktúraként ábrázolhat- ˝
+juk, ahol minden csúcs egy önálló objektum. Minden csúcs a kulcs mez o és a hozzákapcso- ˝
+lódó adatok mellett tartalmaz egy bal, egy jobb és egy szül˝o nev˝u mez ot is, amelyek rendre ˝
+a csúcs bal oldali és jobb oldali gyerekére, illetve szülojére mutatnak. Ha hiányzik valame- ˝
+lyik gyerek vagy a szülo, akkor a megfelel ˝ o mez ˝ o a ˝ nil értéket tartalmazza. A gyökér az
+egyedüli olyan csúcs a fában, melynek szülo mutatója ˝ nil.
+
+A beszúrás és törlés m˝uveleteinek végrehajtása megváltoztatja a bináris keres ofával ábrá- ˝
+zolt dinamikus halmazt. A módosítást természetesen úgy kell végrehajtani, hogy a bináriskeresofa tulajdonság megmaradjon. Amint látni fogjuk, egy új elem beszúrása viszonylag ˝
+egyszer˝u, a törlés kezelése azonban már kissé bonyolultabb.
+
+kép + példa
+
+Hash tábla:
+
+A hashtábla (vagy hashfa) egy olyan adatszerkezet, amely a kulcsokat egy hash-függvény segítségével tárolja el. A hashfa alkalmazása lehetővé teszi az optimális keresési időt (átlagos esetben O(1)), és hatékony kollíziókezelést biztosít. A hashfát gyakran használják gyors és hatékony kulcs-érték párok tárolására.
+
+Minden típusú hashfa saját alkalmazási területekkel rendelkezik, és a választott típus attól függ, hogy milyen konkrét problémát szeretnél megoldani az alkalmazásodban.
+
+kép + példa
+
+Visszalépéses keresés:
+
+A visszalépéses (backtracking) keresés egy algoritmus, amelyet általában problémák megoldására alkalmaznak, ahol szükség van egy döntéshozási fára. Az algoritmus "visszalép", amikor egy adott út nem vezet a megoldáshoz, és próbálkozik más útvonalakkal. Itt egy egyszerű példa egy visszalépéses keresésre egy mélységi keresési módszerrel
+
+kép+példa

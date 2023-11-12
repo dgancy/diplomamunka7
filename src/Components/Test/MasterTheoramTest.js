@@ -13,8 +13,13 @@ export default function MasterTheoramTest() {
   let logarithm_element = [];
   var helper_number;
   var epsilon = [];
+  var mistakes_temporary = [];
+  let place_switcher;
 
-  console.log(mistakes_to_databse[0]);
+  const adatokString = localStorage.getItem("mistakesToDbRekurzios");
+  const adatok = adatokString ? JSON.parse(adatokString) : [];
+
+  console.log("Mistakes to backend from recursiontree: " + adatok);
 
   function Generate() {
     eset = Math.floor(Math.random() * 3) + 1;
@@ -123,6 +128,19 @@ export default function MasterTheoramTest() {
       }
     }
 
+    if (n === `n<sup>0</sup>`) {
+      n = `1`;
+    }
+    if (n === `n<sup>1</sup>`) {
+      n = `n`;
+    }
+    if (n === `n<sup>2</sup>`) {
+      n = `n${String.fromCharCode(178)}`;
+    }
+    if (n === `n<sup>3</sup>`) {
+      n = `n${String.fromCharCode(179)}`;
+    }
+
     fea = "T(n)= " + parseInt(a_elem) + "T(n/" + parseInt(b_elem) + ")+" + n;
     console.log(
       "A: " + a_elem + " B: " + b_elem + " f(n): " + n + " eset: " + eset
@@ -153,12 +171,16 @@ export default function MasterTheoramTest() {
     return `Oldja meg a következő feladatot Mester tétel használatával. ${fea}`;
   }
 
-  let place_switcher = Math.floor(Math.random() * 4);
+  place_switcher = Math.floor(Math.random() * 4);
   let changer;
 
   changer = logarithm_element[place_switcher];
   logarithm_element[place_switcher] = logarithm_element[0];
   logarithm_element[0] = changer;
+
+  changer = epsilon[place_switcher];
+  epsilon[place_switcher] = epsilon[0];
+  epsilon[0] = changer;
 
   function epsilon_answer_one() {
     return " Θ(n" + String.fromCharCode(94) + logarithm_element[0] + ")";
@@ -231,56 +253,38 @@ export default function MasterTheoramTest() {
     var user_a_element = document.getElementById("quest2-a-elem").value;
     var user_b_element = document.getElementById("quest2-b-elem").value;
     var user_n_element = document.getElementById("quest2-f(n)-elem").value;
-    var user_keplet = document.getElementById("quest2-keplet").value;
     var user_eset = document.getElementById("type").value;
-    var user_E_element = document.getElementById(
-      "quest2-E-kiegeszito-erteke"
-    ).value;
+    var user_E_element = document.getElementById("epsilon").value;
+    var user_substitution = document.getElementById("substitution").value;
     var user_master_result = document.getElementById("quest2-final").value;
-    var mistakes = [];
 
     let nlog = (Math.log(a_elem) / Math.log(b_elem)).toFixed(3);
-    let e = 0;
-    var eset;
-    if (nlog < 1) {
-      e = 1 - nlog;
-    } else {
-      e = nlog - 1;
-    }
-    if (nlog < 2 && nlog > 1 && n === "n2") {
-      e = 2 - nlog;
-    }
 
     if (
       user_a_element !== a_elem ||
       user_b_element !== b_elem ||
-      user_n_element !== "n^" + nsup
+      user_n_element !== nsup
     ) {
-      mistakes.push(
-        "Hibás leolvasás!" +
-          " A helyes értékek: a: " +
-          a_elem +
-          " b: " +
-          b_elem +
-          " f(n): " +
-          n
-      );
+      mistakes_temporary.push(2000);
     }
-    if (user_keplet !== nlog) {
-      mistakes.push(` Hibás képlet felírás! A helyes értékek: ${nlog}`);
+    if (user_eset !== eset) {
+      mistakes_temporary.push(2001);
     }
-    if (user_eset !== eset || user_E_element !== e) {
-      mistakes.push(
-        " Hibás eset választás!" +
-          " A helyes eset: " +
-          eset +
-          " A helyes E :" +
-          e.toFixed(3)
-      );
+    if (user_E_element !== place_switcher) {
+      mistakes_temporary.push(2002);
     }
-    if (user_master_result !== n) {
-      mistakes.push(` Hibás eredmény! A helyes eredmény: O( ${n} )`);
+    if (user_substitution !== place_switcher) {
+      mistakes_temporary.push(2003);
     }
+    if (user_master_result !== place_switcher) {
+      mistakes_temporary.push(2004);
+    }
+
+    sessionStorage.setItem(
+      "mistakesToDbMester",
+      JSON.stringify(mistakes_temporary[0])
+    );
+
     navigate("/binary-tree-test");
   }
 
@@ -329,11 +333,10 @@ export default function MasterTheoramTest() {
                   type="text"
                 >
                   <option></option>
-                  <option>1</option>
-                  <option>n</option>
-                  <option>n&sup2;</option>
-                  <option>n&sup3;</option>
-                  <option>nlogn</option>
+                  <option value="0">1</option>
+                  <option value="1">n</option>
+                  <option value="2">n&sup2;</option>
+                  <option value="3">n&sup3;</option>
                 </select>
               </div>
             </div>
@@ -348,32 +351,36 @@ export default function MasterTheoramTest() {
               <b style={{ color: "white" }}>Feladat típusa :</b>
               <select id="type" name="type" className="form-control">
                 <option> </option>
-                <option value="1-es-eset">Első eset</option>
-                <option value="2-es-eset">Második eset</option>
-                <option value="3-as-eset">Harmadik eset</option>
+                <option value="1">Első eset</option>
+                <option value="2">Második eset</option>
+                <option value="3">Harmadik eset</option>
               </select>
             </div>
             <div className="col-3">
               <div>
                 <b style={{ color: "white" }}>Kiegészítő érték(E):</b>
-                <select id="type" name="epsilon" className="form-control">
+                <select id="epsilon" name="epsilon" className="form-control">
                   <option> </option>
-                  <option value="1-es-eset">{epsilon_answer_one()}</option>
-                  <option value="2-es-eset">{epsilon_answer_two()}</option>
-                  <option value="3-as-eset">{epsilon_answer_three()}</option>
-                  <option value="4-es-eset">{epsilon_answer_four()}</option>
+                  <option value="1">{epsilon_answer_one()}</option>
+                  <option value="2">{epsilon_answer_two()}</option>
+                  <option value="3">{epsilon_answer_three()}</option>
+                  <option value="4">{epsilon_answer_four()}</option>
                 </select>
               </div>
             </div>
             <div className="col-3">
               <div>
                 <b style={{ color: "white" }}>Képletbe helyettesítés:</b>
-                <select id="type" name="epsilon" className="form-control">
+                <select
+                  id="substitution"
+                  name="substitution"
+                  className="form-control"
+                >
                   <option> </option>
-                  <option value="1-es-eset">{substitution_one()}</option>
-                  <option value="2-es-eset">{substitution_two()}</option>
-                  <option value="3-as-eset">{substitution_three()}</option>
-                  <option value="4-es-eset">{substitution_four()}</option>
+                  <option value="1">{substitution_one()}</option>
+                  <option value="2">{substitution_two()}</option>
+                  <option value="3">{substitution_three()}</option>
+                  <option value="4">{substitution_four()}</option>
                 </select>
               </div>
             </div>
@@ -386,12 +393,16 @@ export default function MasterTheoramTest() {
             <div className="col-3">
               <div>
                 <b style={{ color: "white" }}>Végeredmény:</b>
-                <select id="type" name="epsilon" className="form-control">
+                <select
+                  id="quest2-final"
+                  name="quest2-final"
+                  className="form-control"
+                >
                   <option> </option>
-                  <option value="1-es-eset">{result_one()}</option>
-                  <option value="2-es-eset">{result_two()}</option>
-                  <option value="3-as-eset">{result_three()}</option>
-                  <option value="4-es-eset">{result_four()}</option>
+                  <option value="1">{result_one()}</option>
+                  <option value="2">{result_two()}</option>
+                  <option value="3">{result_three()}</option>
+                  <option value="4">{result_four()}</option>
                 </select>
               </div>
             </div>

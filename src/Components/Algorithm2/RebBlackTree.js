@@ -1203,4 +1203,3 @@ export default function RedBlackTree() {
     </form>
   );
 }
-//vonalakat rendbe rakni + kezellni megjelenését

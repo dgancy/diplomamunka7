@@ -8,6 +8,11 @@ export default function BackTrackingTest() {
   var kezdmo = [];
   var ÖsszesCimlet;
 
+  const adatokString = localStorage.getItem("mistakesToDbHash");
+  const adatok = adatokString ? JSON.parse(adatokString) : [];
+
+  console.log("Mistakes to backend from recursiontree: " + adatok);
+
   type = Math.floor(Math.random() * 3);
   if (type === 0) {
     type = "ElsőFiú";
@@ -72,18 +77,39 @@ export default function BackTrackingTest() {
     }
     console.log("Pont:" + point);
 
+    var mistakes_temporary;
+
     if (point === solve.length) {
       console.log("Jó megoldás!");
     } else {
       console.log("Hibás megoldás, a helyes megoldás: [ " + solve + " ].");
+      if (type === "ElsőFiú") {
+        mistakes_temporary = 6000;
+      } else if (type === "Testvér") {
+        mistakes_temporary = 6001;
+      } else if (type === "Apa") {
+        mistakes_temporary = 6002;
+      } else if (type === "Megoldás") {
+        mistakes_temporary = 6003;
+      } else if (type === "LehetségesMegoldás") {
+        mistakes_temporary = 6004;
+      } else if (type === "Visszaállit") {
+        mistakes_temporary = 6005;
+      }
     }
     console.log(userresult);
     console.log(solve);
+
+    localStorage.setItem(
+      "mistakesToDbBack",
+      JSON.stringify(mistakes_temporary)
+    );
+
     navigate("/red-black-tree-test");
   }
 
   return (
-    <form style={{ background: "#000027", height:"100vh" }}>
+    <form style={{ background: "#000027", height: "100vh" }}>
       <div style={{ padding: "15px" }} className="form-group">
         <div className="container">
           <div className="row justify-content-center text-center"></div>

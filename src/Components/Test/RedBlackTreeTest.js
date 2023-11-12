@@ -1,13 +1,22 @@
 import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-
 export default function RedBlackTreeTest() {
   const navigate = useNavigate();
 
+  const adatokString = localStorage.getItem("mistakesToDbBack");
+  const adatok = adatokString ? JSON.parse(adatokString) : [];
+
+  console.log("Mistakes to backend from recursiontree: " + adatok);
+
+  var mistakes_temporary;
+  var hossz;
   var array = [];
   var userarray = [];
   var usercolors = [];
+  var rootMistakes;
+  var colorMistakes = 0;
+  var numberMistakes = 0;
 
   const Line = ({ x1, y1, x2, y2 }) => (
     <line
@@ -72,10 +81,10 @@ export default function RedBlackTreeTest() {
   }
 
   function Generate() {
-    var hossz = Math.floor(Math.random() * 3) + 10;
+    hossz = Math.floor(Math.random() * 3) + 10;
     var arrayRandomNumber;
     for (let i = 0; i < hossz; i++) {
-      arrayRandomNumber = Math.floor(Math.random() * 100);
+      arrayRandomNumber = Math.floor(Math.random() * 100) + 1;
       if (!array.includes(arrayRandomNumber)) {
         array.push(arrayRandomNumber);
       }
@@ -110,7 +119,7 @@ export default function RedBlackTreeTest() {
       var changer = document.getElementById("inp" + i).value;
       if (changer !== "") {
         userarray[i] = changer;
-      }
+      } else userarray[i] = "NIL";
     }
     console.log("user: " + userarray);
 
@@ -118,25 +127,72 @@ export default function RedBlackTreeTest() {
     var errorNumbers = "Jó megoldás";
     if (usercolors[0] === "red") {
       errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+      rootMistakes = 1;
     }
+
+    for (let i = 0; i < usercolors.length; i++) {
+      if (usercolors[i] === "red" && userarray !== "NIL") {
+        if (
+          usercolors[2 * i + 1] === "red" ||
+          usercolors[2 * i + 2] === "red"
+        ) {
+          colorMistakes++;
+        }
+      }
+      if (usercolors[i] === "black" && userarray !== "NIL") {
+        if (
+          usercolors[2 * i + 1] === "black" ||
+          usercolors[2 * i + 2] === "black"
+        )
+          if (
+            usercolors[2 * (2 * i + 1) + 1] === "black" ||
+            usercolors[2 * (2 * i + 1) + 2] === "black" ||
+            usercolors[2 * (2 * i + 2) + 1] === "black" ||
+            usercolors[2 * (2 * i + 2) + 2] === "black"
+          ) {
+            colorMistakes++;
+          }
+      }
+      if (userarray !== "NIL") {
+        if (
+          userarray[2 * i + 1] > userarray[i] ||
+          userarray[2 * i + 2] < userarray[i]
+        )
+          numberMistakes++;
+      }
+    }
+    console.log("colorM:" + colorMistakes);
+    console.log("NumberM:" + numberMistakes);
+
+    numberMistakes += hossz - userarray.filter((elem) => elem !== "NIL").length;
+    colorMistakes +=
+      hossz - usercolors.filter((elem) => elem !== "white").length;
+
+    console.log("colorM:" + colorMistakes);
+    console.log("NumberM:" + numberMistakes);
+
     if (usercolors.length > 3) {
       if (usercolors[0] === "black" && usercolors[1] === "black") {
         if (usercolors[3] === "black" || usercolors[4] === "black") {
           errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+          colorMistakes++;
         }
       } else if (usercolors[2] === "black") {
         if (usercolors[5] === "black" || usercolors[6] === "black") {
           errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+          colorMistakes++;
         }
       }
       if (usercolors[1] === "black") {
         if (usercolors[3] === "black") {
           if (usercolors[7] === "black" || usercolors[8] === "black") {
             errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+            colorMistakes++;
           }
         } else if (usercolors[4] === "black") {
           if (usercolors[9] === "black" || usercolors[10] === "black") {
             errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+            colorMistakes++;
           }
         }
       }
@@ -145,10 +201,12 @@ export default function RedBlackTreeTest() {
         if (usercolors[5] === "black") {
           if (usercolors[11] === "black" || usercolors[12] === "black") {
             errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+            colorMistakes++;
           }
         } else if (usercolors[6] === "black") {
           if (usercolors[13] === "black" || usercolors[14] === "black") {
             errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
+            colorMistakes++;
           }
         }
       }
@@ -170,6 +228,7 @@ export default function RedBlackTreeTest() {
           non_nil += 1;
         }
       }
+
       errorNumbers = "Hibás megoldás, hiba oka: Hiányos számsor";
 
       if (non_nil !== 0) {
@@ -193,6 +252,49 @@ export default function RedBlackTreeTest() {
       }
 
       console.log(errors);
+
+      var resultNumber = hossz - numberMistakes + 2;
+      var resultColor = hossz - colorMistakes + 2;
+
+      if (rootMistakes === 0) {
+        if (resultColor < 4 && resultNumber < 4) {
+          mistakes_temporary = 5000;
+        }
+        if (resultColor < 4 && resultNumber > 4 && resultNumber < 8) {
+          mistakes_temporary = 5010;
+          if (resultNumber > 8) {
+            mistakes_temporary = 5020;
+          }
+        }
+        if (resultNumber < 4 && resultColor > 4 && resultColor < 8) {
+          mistakes_temporary = 5001;
+          if (resultColor > 8) {
+            mistakes_temporary = 5002;
+          }
+        }
+      } else if (rootMistakes === 1) {
+        if (resultColor < 4 && resultNumber < 4) {
+          mistakes_temporary = 5100;
+        }
+        if (resultColor < 4 && resultNumber > 4 && resultNumber < 8) {
+          mistakes_temporary = 5110;
+          if (resultNumber > 8) {
+            mistakes_temporary = 5120;
+          }
+        }
+        if (resultNumber < 4 && resultColor > 4 && resultColor < 8) {
+          mistakes_temporary = 5101;
+          if (resultColor > 8) {
+            mistakes_temporary = 5102;
+          }
+        }
+      }
+
+      localStorage.setItem(
+        "mistakesToDbRbtree",
+        JSON.stringify(mistakes_temporary)
+      );
+
       navigate("/test");
     }
   }
@@ -203,7 +305,7 @@ export default function RedBlackTreeTest() {
         <div className="container">
           <div
             className="row justify-content-center text-center"
-            style={{ color: "white", paddingTop:"2%" }}
+            style={{ color: "white", paddingTop: "2%" }}
           >
             {Generate()}
           </div>
@@ -646,10 +748,11 @@ export default function RedBlackTreeTest() {
       <div>
         <div
           className="row justify-content-center text-center"
-          style={{ position: "absolute",
-          top: "65%",
-          left: "50%",
-          transform: "translate(-50%, -50%)",
+          style={{
+            position: "absolute",
+            top: "65%",
+            left: "50%",
+            transform: "translate(-50%, -50%)",
           }}
         >
           <Button variant="outline-warning" onClick={Check}>

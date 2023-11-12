@@ -2,14 +2,11 @@ import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
-var mistakes_to_database = [];
 function RecursionTreeTest() {
-
   const navigate = useNavigate();
   var T_elem = Math.floor(Math.random() * 40) + 1;
-  var N_elem = Math.floor(Math.random() * 9) + 1;
-  var nsup = Math.floor(Math.random() * 4) + 1;
-  var check_N = `n^${nsup}`;
+  var N_elem = Math.floor(Math.random() * 10) + 2;
+  var nsup = Math.floor(Math.random() * 3) + 1;
   var n_rekurzios = `n<sup>${nsup}</sup>`;
 
   const numbers_of_answers = [];
@@ -150,18 +147,22 @@ function RecursionTreeTest() {
   let final_answers = [];
   if (parseInt(T_elem) / parseInt(N_elem) < 1) {
     final_answers.push(
-      `Θ( n${Math.pow(Math.log(N_elem) / Math.log(T_elem), 0)} )`
+      `Θ(n${String.fromCharCode(94)}${Math.pow(
+        Math.log(N_elem) / Math.log(T_elem),
+        0
+      )} )`
     );
   } else if (parseInt(T_elem) / parseInt(N_elem) > 1) {
-    final_answers.push(`Θ( nlog${N_elem}${T_elem} )`);
+    final_answers.push(
+      `Θ(nlog${String.fromCharCode(94)}0.${N_elem}${T_elem} )`
+    );
   } else if (parseInt(T_elem) === parseInt(N_elem)) {
-    final_answers.push(`Θ( n * log${N_elem}n )`);
+    final_answers.push(`Θ(n${String.fromCharCode(94)}${N_elem / N_elem})`);
   }
-
   for (let i = 0; i < 5; i++) {
     var random = Math.floor(Math.random() * 3);
     var random_numbers = Math.floor(Math.random() * 5);
-    var sub_element_number = Math.floor(Math.random() * 100) + 1;
+    var sub_element_number = Math.floor(Math.random() * 1000) + 1;
     var elotag;
     var belsotag;
     if (random === 0) {
@@ -172,9 +173,29 @@ function RecursionTreeTest() {
       elotag = "Ω";
     }
     if (random_numbers === 0) {
-      belsotag = `nlog${T_elem}${N_elem}`;
+      if (parseInt(T_elem) / parseInt(N_elem) < 1) {
+        belsotag = `n${String.fromCharCode(94)}0.${T_elem}${N_elem}`;
+      }
+      if (parseInt(T_elem) / parseInt(N_elem) > 1) {
+        belsotag = `nlog${String.fromCharCode(94)}0.${T_elem}${N_elem}`;
+      }
+      if (parseInt(T_elem) / parseInt(N_elem) === 1) {
+        random++;
+        belsotag = `n${String.fromCharCode(94)}0.${random}`;
+        random--;
+      }
     } else if (random_numbers !== 0) {
-      belsotag = `nlog0.${sub_element_number}`;
+      if (parseInt(T_elem) / parseInt(N_elem) < 1) {
+        belsotag = `n${String.fromCharCode(94)}0.${sub_element_number}`;
+      }
+      if (parseInt(T_elem) / parseInt(N_elem) > 1) {
+        belsotag = `nlog${String.fromCharCode(94)}0.${sub_element_number}`;
+      }
+      if (parseInt(T_elem) / parseInt(N_elem) === 1) {
+        random++;
+        belsotag = `n${String.fromCharCode(94)}0.${random}`;
+        random--;
+      }
     }
     final_answers.push(`${elotag}(${belsotag})`);
   }
@@ -209,120 +230,64 @@ function RecursionTreeTest() {
     if (n_rekurzios === `n<sup>1</sup>`) {
       n_rekurzios = `n`;
     }
-    return `Oldja meg a következő feladatot Rekurziós fa módszer használatával. T(n)= ${T_elem} T( n/${N_elem} ) ${n_rekurzios}`;
+    if (n_rekurzios === `n<sup>2</sup>`) {
+      n_rekurzios = `n${String.fromCharCode(178)}`;
+    }
+    if (n_rekurzios === `n<sup>3</sup>`) {
+      n_rekurzios = `n${String.fromCharCode(179)}`;
+    }
+
+    return `Oldja meg a következő feladatot Rekurziós fa módszer használatával. T(n)= ${T_elem} T( n/${N_elem} ) + ${n_rekurzios}`;
   }
 
   function Check() {
     var user_T_element = document.getElementById("quest1-T-elem").value;
     var user_N_element = document.getElementById("quest1-N-elem").value;
     var user_n_element = document.getElementById("quest1-f(n)-elem").value;
-
     var user_1edge_element = document.getElementById("quest1-1-csucs").value;
     var user_edge_number = document.getElementById("quest1-csucsszam").value;
     var user_all_cost = document.getElementById("quest1-szintkoltseg").value;
+
     var user_tree_high = document.getElementById("quest1-famagassaga").value;
     var user_leaf_number = document.getElementById("quest1-levelekszama").value;
     var user_final = document.getElementById("final").value;
-
-    var one_edge_element = `(n/ ${N_elem} )<sup>i</sup>`;
-    var magassag = `log<sub>${N_elem}</sub>n`;
-    var levelszameredmeny = `nlog<sub>${N_elem}</sub>${T_elem}`;
-    var one_edge_element_result;
-    var edge_number = T_elem + `<sup>i</sup>`;
-    var all_cost = `(n/ + ${N_elem} )<sup>i</sup> * ${edge_number}`;
-    var final_answers;
-
-    if (n_rekurzios === "n") {
-      one_edge_element_result = one_edge_element;
-    }
-    if (n_rekurzios === `n<sup>2</sup>`) {
-      one_edge_element_result = `(${one_edge_element})`;
-    }
-    if (n_rekurzios === `n<sup>3</sup>`) {
-      one_edge_element_result = `(${one_edge_element})`;
-    }
-    if (n_rekurzios === `nlog<sup>n</sup>`) {
-      one_edge_element_result = `(${one_edge_element})`;
-    }
 
     var mistakes = [];
     var mistakes_temporary = [];
     if (
       user_T_element !== T_elem ||
       user_N_element !== N_elem ||
-      user_n_element !== check_N
+      user_n_element !== nsup
     ) {
       mistakes_temporary.push(1000);
-      mistakes.push(
-        "Hibás leolvasás!" +
-          " A helyes értékek: a: " +
-          T_elem +
-          ", b: " +
-          N_elem +
-          ", f(n): " +
-          n_rekurzios
-      );
     }
-    if (
-      user_1edge_element !== one_edge_element_result ||
-      user_edge_number !== edge_number
-    ) {
-      if (user_1edge_element !== one_edge_element_result) {
-        mistakes_temporary.push(1001);
-      }
-      if (user_edge_number !== edge_number) {
-        mistakes_temporary.push(1002);
-      }
-      mistakes.push(
-        "Hibás helyettesítés! " +
-          "Egy csúcs költsége: " +
-          one_edge_element_result +
-          " , Az i-edik szint csúcs száma: " +
-          edge_number
-      );
+    if (user_1edge_element !== change_position) {
+      mistakes_temporary.push(1001);
     }
-    if (user_all_cost !== all_cost || user_tree_high !== magassag) {
-      if (user_all_cost !== all_cost) {
-        mistakes_temporary.push(1003);
-      }
-      if (user_tree_high !== magassag) {
-        mistakes_temporary.push(1004);
-      }
-      mistakes.push(
-        "Hibás helyettesítés!" +
-          " Az i-edik szint összköltsége: " +
-          all_cost +
-          " , A fa magassága: " +
-          magassag +
-          ", "
-      );
+    if (user_edge_number !== change_position) {
+      mistakes_temporary.push(1002);
     }
-    if (user_leaf_number !== levelszameredmeny) {
+    if (user_all_cost !== change_position) {
+      mistakes_temporary.push(1003);
+    }
+    if (user_tree_high !== change_position) {
+      mistakes_temporary.push(1004);
+    }
+    if (user_leaf_number !== change_position) {
       mistakes_temporary.push(1005);
-      mistakes.push(`Hibás eredmény! Levelek száma: ${levelszameredmeny}`);
     }
-
-    if (parseInt(T_elem) / parseInt(N_elem) < 1) {
-      final_answers = `Θ( n<sup>${Math.pow(
-        Math.log(N_elem) / Math.log(T_elem),
-        0
-      )}</sup> )`;
-    } else if (parseInt(T_elem) / parseInt(N_elem) > 1) {
-      final_answers = `Θ( nlog<sub>${N_elem}</sub>${T_elem} )`;
-    } else if (parseInt(T_elem) === parseInt(N_elem)) {
-      final_answers = `Θ( n * log<sub>${N_elem}</sub>n )`;
-    }
-
-    if (user_final !== final_answers) {
+    if (user_final !== switch_place) {
       mistakes_temporary.push(1006);
-      mistakes.push(`Hibás eredmény! Végeredmény értéke: ${final_answers}`);
     }
 
     console.log(mistakes);
     console.log(mistakes_temporary);
     console.log(mistakes_temporary[0]);
-    mistakes_to_database[0] = mistakes_temporary[0];
-    console.log(mistakes_to_database[0]);   
+
+    localStorage.setItem(
+      "mistakesToDbRekurzios",
+      JSON.stringify(mistakes_temporary[0])
+    );
 
     navigate("/master-theorem-test");
   }
@@ -363,9 +328,9 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option>n</option>
-                <option>n&sup2;</option>
-                <option>n&sup3;</option>
+                <option value="1">n</option>
+                <option value="2">n&sup2;</option>
+                <option value="3">n&sup3;</option>
               </select>
             </div>
           </div>
@@ -379,10 +344,10 @@ function RecursionTreeTest() {
 
               <select id="quest1-1-csucs" className="form-control" type="text">
                 <option></option>
-                <option>{first_answer_one_edge()}&#8305;</option>
-                <option>{second_answer_one_edge()}&#8305;</option>
-                <option>{third_answer_one_edge()}&#8305;</option>
-                <option>{fourth_answer_one_edge()}&#8305;</option>
+                <option value="1">{first_answer_one_edge()}&#8305;</option>
+                <option value="2">{second_answer_one_edge()}&#8305;</option>
+                <option value="3">{third_answer_one_edge()}&#8305;</option>
+                <option value="4">{fourth_answer_one_edge()}&#8305;</option>
               </select>
             </div>
             <div className="col-4">
@@ -396,10 +361,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option>{first_answer_edge_number()}&#8305;</option>
-                <option>{second_answer_edge_number()}&#8305;</option>
-                <option>{third_answer_edge_number()}&#8305;</option>
-                <option>{fourth_answer_edge_number()}&#8305;</option>
+                <option value="1">{first_answer_edge_number()}&#8305;</option>
+                <option value="2">{second_answer_edge_number()}&#8305;</option>
+                <option value="3">{third_answer_edge_number()}&#8305;</option>
+                <option value="4">{fourth_answer_edge_number()}&#8305;</option>
               </select>
             </div>
           </div>
@@ -416,10 +381,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option>{first_answer_one_edge()}&#8305;</option>
-                <option>{second_answer_one_edge()}&#8305;</option>
-                <option>{third_answer_one_edge()}&#8305;</option>
-                <option>{fourth_answer_one_edge()}&#8305;</option>
+                <option value="1">{first_answer_one_edge()}&#8305;</option>
+                <option value="2">{second_answer_one_edge()}&#8305;</option>
+                <option value="3">{third_answer_one_edge()}&#8305;</option>
+                <option value="4">{fourth_answer_one_edge()}&#8305;</option>
               </select>
             </div>
             <div className="col-2">
@@ -430,10 +395,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option>{first_answer_tree_height()}</option>
-                <option>{second_answer_tree_height()}</option>
-                <option>{third_answer_tree_height()}</option>
-                <option>{fourth_answer_tree_height()}</option>
+                <option value="1">{first_answer_tree_height()}</option>
+                <option value="2">{second_answer_tree_height()}</option>
+                <option value="3">{third_answer_tree_height()}</option>
+                <option value="4">{fourth_answer_tree_height()}</option>
               </select>
             </div>
             <div className="col-2">
@@ -445,10 +410,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option>{first_answer_leaf_number()}</option>
-                <option>{second_answer_leaf_number()}</option>
-                <option>{third_answer_leaf_number()}</option>
-                <option>{fourth_answer_leaf_number()}</option>
+                <option value="1">{first_answer_leaf_number()}</option>
+                <option value="2">{second_answer_leaf_number()}</option>
+                <option value="3">{third_answer_leaf_number()}</option>
+                <option value="4">{fourth_answer_leaf_number()}</option>
               </select>
             </div>
           </div>
@@ -463,12 +428,12 @@ function RecursionTreeTest() {
 
               <select id="final" className="form-control" type="text">
                 <option></option>
-                <option>{first_answer_final()}</option>
-                <option>{second_answer_final()}</option>
-                <option>{third_answer_final()}</option>
-                <option>{fourth_answer_final()}</option>
-                <option>{fifth_answer_final()}</option>
-                <option>{sixth_answer_final()}</option>
+                <option value="1">{first_answer_final()}</option>
+                <option value="2">{second_answer_final()}</option>
+                <option value="3">{third_answer_final()}</option>
+                <option value="4">{fourth_answer_final()}</option>
+                <option value="5">{fifth_answer_final()}</option>
+                <option value="6">{sixth_answer_final()}</option>
               </select>
             </div>
           </div>
@@ -486,4 +451,4 @@ function RecursionTreeTest() {
     </form>
   );
 }
-export default {RecursionTreeTest, mistakes_to_database};
+export default RecursionTreeTest;

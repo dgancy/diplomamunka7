@@ -17,7 +17,7 @@ import HashTableAssignment from "./Components/Assignments/HashTableAssignment";
 import RedBlackTreeAssignment from "./Components/Assignments/RedBlackTreeAssignment";
 import TestPage from "./Components/Test/TestPage";
 import RecursionTreeTest from "./Components/Test/RecursionTreeTest";
-import MasterTheoramTest from "./Components/Test/MaterTheoramTest";
+import MasterTheoramTest from "./Components/Test/MasterTheoramTest";
 import BinaryTreeTest from "./Components/Test/BinaryTreeTest";
 import HashTableTest from "./Components/Test/HashTableTest";
 import BackTrackingTest from "./Components/Test/BackTrackingTest";
@@ -25,6 +25,7 @@ import RedBlackTreeTest from "./Components/Test/RedBlackTreeTest";
 import Home from "./Components/Home";
 import LogMoreData from "./Components/Login/LogMoreData";
 import ChatButton from "./Components/ChatButton";
+import Jegyezetek from "./Components/Jegyezetek";
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <NavbarMenu />
         <Routes>
           <Route path="/login" element={<Login />} />
+          <Route path="/learning" element={<Jegyezetek />} />
           <Route path="/signin" element={<Register />} />
 
           <Route path="/binary-tree" element={<BinaryTree />} />

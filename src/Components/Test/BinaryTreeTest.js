@@ -5,6 +5,12 @@ import { useNavigate } from "react-router-dom";
 export default function BinaryTreeTest() {
   const navigate = useNavigate();
 
+  const adatokString = sessionStorage.getItem("mistakesToDbMester");
+  const adatok = adatokString ? JSON.parse(adatokString) : [];
+
+  console.log("Mistakes to backend from master: " + adatok);
+
+  var mistakes_temporary;
   var AllArray = [];
   var hossz;
   var fokszam = 2;
@@ -17,7 +23,7 @@ export default function BinaryTreeTest() {
     console.log("hossz: " + hossz);
     console.log("AllArray: " + AllArray);
 
-   return `Adott az alábbi B-fa, amelynek minimális fokszáma ${fokszam}. A következő számsoron alkalmazza a tanultakat. [ ${AllArray} ].`;
+    return `Adott az alábbi B-fa, amelynek minimális fokszáma ${fokszam}. A következő számsoron alkalmazza a tanultakat. [ ${AllArray} ].`;
   }
 
   const Line = ({ x1, y1, x2, y2 }) => (
@@ -807,15 +813,33 @@ export default function BinaryTreeTest() {
     console.log("Right21: " + OpArrayMiddle_28);
     console.log("Right22: " + OpArrayRight_2);
 
-    var results;
     var mistakes = parseInt(hossz) - parseInt(points);
-    if (points === hossz) {
-      results = "Jó megoldást!";
-    } else {
-      results =
-        "Hibás megoldás, eltéveszetett elemeke száma: " + parseInt(mistakes);
-    }  
-    navigate("/hash-table-test");  }
+    if (mistakes < 2) {
+      mistakes_temporary = 3000;
+    } else if (mistakes >= 2 && mistakes < 4) {
+      mistakes_temporary = 3001;
+    } else if (mistakes >= 4 && mistakes < 8) {
+      mistakes_temporary = 3002;
+    }else if (mistakes >= 8 && mistakes < parseInt(hossz)) {
+      mistakes_temporary = 3003;
+    }
+
+    localStorage.setItem(
+      "mistakesToDbBfa",
+      JSON.stringify(mistakes_temporary)
+    );
+    //átadom mindkettő mo-t és a chatbot a kettőt megmutatja és összehasonlitattja a userrel. pl: edge:[][]
+    localStorage.setItem(
+      "mistakesToDbBfaFeladatMo",
+      JSON.stringify(mistakes_temporary)
+    );
+    localStorage.setItem(
+      "mistakesToDbBfaFeladatUserMo",
+      JSON.stringify(mistakes_temporary)
+    );
+
+    navigate("/hash-table-test");
+  }
 
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
@@ -825,7 +849,7 @@ export default function BinaryTreeTest() {
       <div className="form-group" style={{ padding: "15px" }}>
         <div style={{ color: "white", textAlign: "center", padding: "10px" }}>
           {" "}
-          {Generate()}            
+          {Generate()}
         </div>
         <b
           style={{ color: "white", padding: "15px" }}
@@ -836,7 +860,7 @@ export default function BinaryTreeTest() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "50%" /* Add this line */,
+            top: "35%" /* Add this line */,
             transform: "translateY(-50%)" /* Add this line */,
             left: "50%",
             transform: "translateX(-50%)",
@@ -850,7 +874,7 @@ export default function BinaryTreeTest() {
         <div
           style={{
             position: "absolute",
-            top: "50%" /* Add this line */,
+            top: "35%" /* Add this line */,
             transform: "translateY(-50%)" /* Add this line */,
             left: "50%",
             transform: "translateX(-50%)",
@@ -927,7 +951,13 @@ export default function BinaryTreeTest() {
         </div>
 
         <div className="row justify-content-center text-center">
-          <div>
+          <div
+            style={{
+              position: "absolute",
+              top: "65%" /* Add this line */,
+              transform: "translateY(-50%)" /* Add this line */,
+            }}
+          >
             <Button variant="outline-warning" onClick={Check}>
               Következő
             </Button>
