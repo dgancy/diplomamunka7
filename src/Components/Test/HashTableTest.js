@@ -14,11 +14,6 @@ export default function HashTableTest() {
   var c2;
   var c1c2type;
 
-  const adatokString = sessionStorage.getItem("mistakesToDbBfa");
-  const adatok = adatokString ? JSON.parse(adatokString) : [];
-
-  console.log("Mistakes to backend from master: " + adatok);
-
   for (let i = 0; i < hossz; i++) {}
 
   function Generate() {
@@ -69,11 +64,11 @@ export default function HashTableTest() {
       if (oneortwo === 0) {
         c1 = "c1 = " + 0;
         c2 = "c2 = " + 1;
-        c1c2type=0;
+        c1c2type = 0;
       } else {
         c1 = "c1 = " + 1;
         c2 = "c2 = " + 2;
-        c1c2type=1;
+        c1c2type = 1;
       }
       for (let i = 0; i < elemszam; i++) {
         if (i === elemszam) {
@@ -155,12 +150,12 @@ export default function HashTableTest() {
       }
     }
     if (type === "square") {
-      if(c1c2type===0){
-        c1=0;
-        c2=1;
-      }else if(c1c2type===1){
-        c1=1;
-        c2=2;
+      if (c1c2type === 0) {
+        c1 = 0;
+        c2 = 1;
+      } else if (c1c2type === 1) {
+        c1 = 1;
+        c2 = 2;
       }
       var overLapping = 1;
       for (let j = 0; j < elemszam; j++) {
@@ -223,52 +218,59 @@ export default function HashTableTest() {
       }
     }
     console.log(counter);
-    if (counter === hossz && counter!==0) {
+    if (counter === hossz && counter !== 0) {
       console.log("Jó megoldás!");
     } else {
       console.log("Hibás megoldás, a helyes megoldás: [ " + arrayfinal + " ].");
-      if(counter <2){
-        if(type === "simple"){
-          mistakes_temporary=4000;
-        }else if(type === "lineal"){
-          mistakes_temporary=4001;
-        }else if(type === "double"){
-          mistakes_temporary=4002;
-        }else if(type === "square"){
-          mistakes_temporary=4003;
+      if (counter < 2) {
+        if (type === "simple") {
+          mistakes_temporary = 4000;
+        } else if (type === "lineal") {
+          mistakes_temporary = 4001;
+        } else if (type === "double") {
+          mistakes_temporary = 4002;
+        } else if (type === "square") {
+          mistakes_temporary = 4003;
         }
-      }else if(counter >2 && counter<4){
-        if(type === "simple"){
-          mistakes_temporary=4010;
-        }else if(type === "lineal"){
-          mistakes_temporary=4011;
-        }else if(type === "double"){
-          mistakes_temporary=4012;
-        }else if(type === "square"){
-          mistakes_temporary=4013;
+      } else if (counter > 2 && counter < 4) {
+        if (type === "simple") {
+          mistakes_temporary = 4010;
+        } else if (type === "lineal") {
+          mistakes_temporary = 4011;
+        } else if (type === "double") {
+          mistakes_temporary = 4012;
+        } else if (type === "square") {
+          mistakes_temporary = 4013;
         }
-      }else if(counter>4 && counter !== hossz){
-        if(type === "simple"){
-          mistakes_temporary=4020;
-        }else if(type === "lineal"){
-          mistakes_temporary=4022;
-        }else if(type === "double"){
-          mistakes_temporary=4022;
-        }else if(type === "square"){
-          mistakes_temporary=4023;
+      } else if (counter > 4 && counter !== hossz) {
+        if (type === "simple") {
+          mistakes_temporary = 4020;
+        } else if (type === "lineal") {
+          mistakes_temporary = 4022;
+        } else if (type === "double") {
+          mistakes_temporary = 4022;
+        } else if (type === "square") {
+          mistakes_temporary = 4023;
         }
       }
     }
-    
+
     localStorage.setItem(
       "mistakesToDbHash",
       JSON.stringify(mistakes_temporary)
     );
+    localStorage.setItem(
+      "mistakesToDbHashFeaMo",
+      JSON.stringify(arrayfinal)
+    );
+    localStorage.setItem(
+      "mistakesToDbHashFeaUserMo",
+      JSON.stringify(userresult)
+    );
+    navigate("/red-black-tree-test");
 
-
-    navigate("/backtracking-test");
   }
- 
+
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
       <div

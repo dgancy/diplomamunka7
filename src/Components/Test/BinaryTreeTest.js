@@ -5,11 +5,6 @@ import { useNavigate } from "react-router-dom";
 export default function BinaryTreeTest() {
   const navigate = useNavigate();
 
-  const adatokString = sessionStorage.getItem("mistakesToDbMester");
-  const adatok = adatokString ? JSON.parse(adatokString) : [];
-
-  console.log("Mistakes to backend from master: " + adatok);
-
   var mistakes_temporary;
   var AllArray = [];
   var hossz;
@@ -813,29 +808,60 @@ export default function BinaryTreeTest() {
     console.log("Right21: " + OpArrayMiddle_28);
     console.log("Right22: " + OpArrayRight_2);
 
-    var mistakes = parseInt(hossz) - parseInt(points);
-    if (mistakes < 2) {
+    if (parseInt(points)< 2) {
       mistakes_temporary = 3000;
-    } else if (mistakes >= 2 && mistakes < 4) {
+    } else if (parseInt(points)>= 2 && parseInt(points)< 4) {
       mistakes_temporary = 3001;
-    } else if (mistakes >= 4 && mistakes < 8) {
+    } else if (parseInt(points)>= 4 && parseInt(points)< 8) {
       mistakes_temporary = 3002;
-    }else if (mistakes >= 8 && mistakes < parseInt(hossz)) {
+    } else if (parseInt(points)>= 8 && parseInt(points)< parseInt(hossz)) {
       mistakes_temporary = 3003;
     }
+    console.log(mistakes_temporary);
+
+    localStorage.setItem("mistakesToDbBfa", JSON.stringify(mistakes_temporary));
+    //átadom mindkettő mo-t és a chatbot a kettőt megmutatja és összehasonlitattja a userrel. pl: edge:[][]
+
+    var solvedTask = [];
+    var userResult = [];
+
+    solvedTask.push(
+      OpArrayEdge,
+      OpArrayLeft_1,
+      OpArrayMiddle,
+      OpArrayRight_1,
+      OpArrayLeft_2,
+      OpArrayMiddle_1,
+      OpArrayMiddle_12,
+      OpArrayMiddle_14,
+      OpArrayMiddle_2,
+      OpArrayMiddle_26,
+      OpArrayMiddle_28,
+      OpArrayRight_2
+    );
+    userResult.push(
+      userEdgeArray,
+      userLeftArrayOne,
+      userMiddleArray,
+      userRightArrayOne,
+      userLeftArrayTwoZero,
+      userLeftArrayTwoOne,
+      userLeftArrayTwoTwo,
+      userMiddleArrayTwoZero,
+      userMiddleArrayTwoOne,
+      userRightArrayTwoZero,
+      userRightArrayTwoOne,
+      userRightArrayTwoTwo
+    );
 
     localStorage.setItem(
-      "mistakesToDbBfa",
-      JSON.stringify(mistakes_temporary)
-    );
-    //átadom mindkettő mo-t és a chatbot a kettőt megmutatja és összehasonlitattja a userrel. pl: edge:[][]
-    localStorage.setItem(
       "mistakesToDbBfaFeladatMo",
-      JSON.stringify(mistakes_temporary)
+      JSON.stringify(solvedTask)
     );
+
     localStorage.setItem(
       "mistakesToDbBfaFeladatUserMo",
-      JSON.stringify(mistakes_temporary)
+      JSON.stringify(userResult)
     );
 
     navigate("/hash-table-test");

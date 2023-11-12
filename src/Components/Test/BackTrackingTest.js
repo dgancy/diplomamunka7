@@ -8,11 +8,6 @@ export default function BackTrackingTest() {
   var kezdmo = [];
   var ÖsszesCimlet;
 
-  const adatokString = localStorage.getItem("mistakesToDbHash");
-  const adatok = adatokString ? JSON.parse(adatokString) : [];
-
-  console.log("Mistakes to backend from recursiontree: " + adatok);
-
   type = Math.floor(Math.random() * 3);
   if (type === 0) {
     type = "ElsőFiú";
@@ -104,8 +99,44 @@ export default function BackTrackingTest() {
       "mistakesToDbBack",
       JSON.stringify(mistakes_temporary)
     );
+    localStorage.setItem("mistakesToDbBackMo", JSON.stringify(kezdmo));
+    localStorage.setItem("mistakesToDbBackUserMo", JSON.stringify(userresult));
 
-    navigate("/red-black-tree-test");
+    const adatokRekurzios = localStorage.getItem("mistakesToDbRekurzios");
+    const adatokMester = localStorage.getItem("mistakesToDbMester");
+    const adatokHash = localStorage.getItem("mistakesToDbHash");
+    const adatokBfa = localStorage.getItem("mistakesToDbBfa");
+    const adatokBack = localStorage.getItem("mistakesToDbBack");
+    const adatokRbtree = localStorage.getItem("mistakesToDbRbtree");
+
+    console.log(adatokMester)
+
+    console.log(adatokRekurzios,adatokMester,adatokHash,adatokBfa,adatokBack,adatokRbtree)
+
+    const adatok = {
+      hash: JSON.parse(adatokHash),
+      rekurzios: JSON.parse(adatokRekurzios),
+      mester: JSON.parse(adatokMester),
+      bfa: JSON.parse(adatokBfa),
+      back: JSON.parse(adatokBack),
+      rbtree: JSON.parse(adatokRbtree),
+    };
+    console.log(adatok);
+
+    fetch("/saveMistakes", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ data: adatok }),
+    })
+      .then((response) => response.json())
+      .then((data) => {
+        console.log("Sikerült a mentés:", data);
+      })
+      .catch((error) => {
+        console.error("Hiba történt a mentés során:", error);
+      });
   }
 
   return (
@@ -133,7 +164,7 @@ export default function BackTrackingTest() {
         className="row justify-content-center text-center"
       >
         <Button id="btncheck" variant="outline-warning" onClick={Check}>
-          Következő
+          Befejez
         </Button>
       </div>
     </form>

@@ -4,11 +4,6 @@ import { useNavigate } from "react-router-dom";
 export default function RedBlackTreeTest() {
   const navigate = useNavigate();
 
-  const adatokString = localStorage.getItem("mistakesToDbBack");
-  const adatok = adatokString ? JSON.parse(adatokString) : [];
-
-  console.log("Mistakes to backend from recursiontree: " + adatok);
-
   var mistakes_temporary;
   var hossz;
   var array = [];
@@ -125,7 +120,7 @@ export default function RedBlackTreeTest() {
 
     var errorColor = "Jó megoldás";
     var errorNumbers = "Jó megoldás";
-    if (usercolors[0] === "red") {
+    if (usercolors[0] === "red" || usercolors[0] === "white") {
       errorColor = "Hibás megolodás, hiba oka: Hibás szinzés";
       rootMistakes = 1;
     }
@@ -289,13 +284,14 @@ export default function RedBlackTreeTest() {
           }
         }
       }
+      console.log(mistakes_temporary);
 
       localStorage.setItem(
         "mistakesToDbRbtree",
         JSON.stringify(mistakes_temporary)
       );
 
-      navigate("/test");
+      navigate("/backtracking-test");
     }
   }
 
@@ -756,7 +752,7 @@ export default function RedBlackTreeTest() {
           }}
         >
           <Button variant="outline-warning" onClick={Check}>
-            Befejez
+            Következő
           </Button>
         </div>
       </div>

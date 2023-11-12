@@ -16,11 +16,6 @@ export default function MasterTheoramTest() {
   var mistakes_temporary = [];
   let place_switcher;
 
-  const adatokString = localStorage.getItem("mistakesToDbRekurzios");
-  const adatok = adatokString ? JSON.parse(adatokString) : [];
-
-  console.log("Mistakes to backend from recursiontree: " + adatok);
-
   function Generate() {
     eset = Math.floor(Math.random() * 3) + 1;
     var fea;
@@ -279,8 +274,9 @@ export default function MasterTheoramTest() {
     if (user_master_result !== place_switcher) {
       mistakes_temporary.push(2004);
     }
-
-    sessionStorage.setItem(
+    console.log(mistakes_temporary[0]);
+    mistakes_temporary[0]=2000;
+    localStorage.setItem(
       "mistakesToDbMester",
       JSON.stringify(mistakes_temporary[0])
     );
