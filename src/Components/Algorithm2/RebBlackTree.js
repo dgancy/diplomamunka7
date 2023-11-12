@@ -1179,7 +1179,7 @@ export default function RedBlackTree() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "70%",
+            top: "60%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             height: "400px",
@@ -1192,7 +1192,7 @@ export default function RedBlackTree() {
           id="tree"
           style={{
             position: "absolute",
-            top: "70%",
+            top: "60%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             height: "400px",

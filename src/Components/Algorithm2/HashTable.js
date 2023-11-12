@@ -203,10 +203,6 @@ export default function Hashtable() {
     console.log("Értékh2: " + arraynumbersh2);
   }
 
-  /*
-
-*/
-
   return (
     <form style={{ background: "#000027", height: "90vh" }}>
       <h1
