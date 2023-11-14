@@ -40,7 +40,6 @@ app.post("/message", (req, res) => {
 
   const data = {
     id: requestData.key1,
-    neptunCode: requestData.key2,
     name: "New Hope Update",
   };
 
@@ -64,11 +63,7 @@ app.post("/message", (req, res) => {
 app.get("/message", (req, res) => {
   const requestData = req.query;
   res.status(200).json({
-    message:
-      "Message received : " +
-      JSON.stringify(requestData.key1) +
-      " and " +
-      JSON.stringify(requestData.key2),
+    message: "Message received : " + JSON.stringify(requestData.key1),
   });
 });
 app.post("/savemistakes", (req, res) => {
@@ -101,7 +96,7 @@ app.post("/savemistakes", (req, res) => {
   console.log("Firestore instance obtained");
 
   const data = {
-    neptunCode: requestData.key7,
+    id: requestData.key7,//uid
     rekurzios: requestData.key1,
     mester: requestData.key2,
     bfa: requestData.key3,
@@ -145,8 +140,6 @@ app.get("/savemistakes", (req, res) => {
       JSON.stringify(requestData.key6),
   });
 });
-
-
 
 app.listen(8080, () => {
   console.log("Server is running on http://localhost:8080");

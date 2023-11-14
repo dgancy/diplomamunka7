@@ -3,6 +3,43 @@ import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 
 export default function BackTrackingTest() {
+  const dataTransfer = async () => {
+    const adatokRekurzios = localStorage.getItem("mistakesToDbRekurzios");
+    const adatokMester = localStorage.getItem("mistakesToDbMester");
+    const adatokHash = localStorage.getItem("mistakesToDbHash");
+    const adatokBfa = localStorage.getItem("mistakesToDbBfa");
+    const adatokBack = localStorage.getItem("mistakesToDbBack");
+    const adatokRbtree = localStorage.getItem("mistakesToDbRbtree");
+    const uid = localStorage.getItem("uid");
+
+    const result = await fetch("http://localhost:8080/savemistakes", {
+      method: "POST",
+      mode: "cors",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        key1: adatokRekurzios,
+        key2: adatokMester,
+        key3: adatokBfa,
+        key4: adatokHash,
+        key5: adatokRbtree,
+        key6: adatokBack,
+        key7: uid,
+      }),
+    });
+    console.log(
+      adatokRekurzios,
+      adatokMester,
+      adatokHash,
+      adatokBfa,
+      adatokBack,
+      adatokRbtree,
+      uid
+    );
+  };
+
   const navigate = useNavigate();
   var type;
   var kezdmo = [];
@@ -102,34 +139,7 @@ export default function BackTrackingTest() {
     localStorage.setItem("mistakesToDbBackMo", JSON.stringify(kezdmo));
     localStorage.setItem("mistakesToDbBackUserMo", JSON.stringify(userresult));
 
-    const dataTransfer = async () => {
-      const adatokRekurzios = localStorage.getItem("mistakesToDbRekurzios");
-      const adatokMester = localStorage.getItem("mistakesToDbMester");
-      const adatokHash = localStorage.getItem("mistakesToDbHash");
-      const adatokBfa = localStorage.getItem("mistakesToDbBfa");
-      const adatokBack = localStorage.getItem("mistakesToDbBack");
-      const adatokRbtree = localStorage.getItem("mistakesToDbRbtree");
-      const neptunCode = localStorage.getItem("neptunCode");
-
-      const result = await fetch("http://localhost:8080/savemistakes", {
-        method: "POST",
-        mode: "cors",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          key1: adatokRekurzios,
-          key2: adatokMester,
-          key3: adatokBfa,
-          key4: adatokHash,
-          key5: adatokRbtree,
-          key6: adatokBack,
-          key7: neptunCode,
-        }),
-      });
-      console.log("test: " + neptunCode);
-    };
+    dataTransfer();
   }
 
   return (

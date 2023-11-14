@@ -3,10 +3,13 @@ import { onAuthStateChanged } from "firebase/auth";
 import { auth } from "../firebase";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Button, Nav, Navbar, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 
 export default function NavbarMenu() {
   const [isLoggedIn, setLoggedIn] = useState(false); // Alapértelmezetten nincs bejelentkezve
+
+  const location = useLocation();
+  const isLoginPage = location.pathname === "/login";
 
   function handleLogout() {
     setLoggedIn(false);
@@ -33,7 +36,7 @@ export default function NavbarMenu() {
       <Nav.Link as={Link} to="/">
         <Nav.Item className="navelement">Kezdőlap</Nav.Item>
       </Nav.Link>
-      {isLoggedIn && (
+      {isLoggedIn && !isLoginPage && (
         <>
           <Nav.Link as={Link} to="/learning">
             <Nav.Item className="navelement">Jegyzetek</Nav.Item>

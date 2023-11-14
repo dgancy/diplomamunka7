@@ -1,17 +1,22 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
+import { onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase";
 
 export default function TestPage() {
   const navigate = useNavigate();
 
   function TestBegin() {
-    var neptunCode = document.getElementById("neptuncode").value;
-
-    localStorage.setItem(
-      "neptunCode",
-      JSON.stringify(neptunCode)
-    );
+    onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const uid = user.uid;
+        console.log("nav uid", uid);
+        localStorage.setItem("uid", JSON.stringify(uid));
+      } else if (!user) {
+        console.log("nav user is logged out");
+      }
+    });
 
     navigate("/recursion-tree-test");
   }
@@ -22,18 +27,6 @@ export default function TestPage() {
       >
         Tesztoldal
       </h1>
-      <div className="row justify-content-center text-center">
-        <div className="col-2" style={{marginBottom:"2%"}}>
-          <b style={{ color: "white" }} htmlFor="exampleInputPassword1">
-            NeptunKód:
-          </b>
-          <input
-            type="text"
-            id="neptuncode"
-            className="form-control"
-          />
-        </div>
-      </div>{" "}
       <div className="row justify-content-center text-center">
         <Button onClick={TestBegin} variant="outline-warning">
           Új Feladatsor

@@ -7,7 +7,6 @@ import { Button } from "react-bootstrap";
 const LogIn = () => {
   const navigate = useNavigate();
   const [email, setEmail] = useState("");
-  const [neptunCode, setNeptunCode] = useState("");
   const [password, setPassword] = useState("");
 
   const dataTransfer = async () => {
@@ -18,19 +17,22 @@ const LogIn = () => {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ key1: email, key2: neptunCode }),
+      body: JSON.stringify({ key1: email }),
     });
-    console.log("test: " + email + " , " + neptunCode);
+    console.log("test: " + email);
   };
-
+  var logged;
   const onLogin = (e) => {
     e.preventDefault();
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
         dataTransfer();
+        
         navigate("/home");
         console.log(user);
+        logged = "logged";
+        localStorage.setItem("logged", JSON.stringify(logged));
       })
       .catch((error) => {
         const errorCode = error.code;
@@ -68,25 +70,6 @@ const LogIn = () => {
                         required
                         placeholder="Az email címed"
                         onChange={(e) => setEmail(e.target.value)}
-                      />
-                    </div>
-                  </div>
-                </div>
-                <br />
-                <div>
-                  <div className="row justify-content-center text-center">
-                    <div className="col-4 ">
-                      <b style={{ color: "white" }} htmlFor="neptuncode">
-                        Neptunkód:
-                      </b>
-                      <input
-                        id="neptuncode"
-                        name="neptuncode"
-                        type="neptuncode"
-                        className="form-control"
-                        required
-                        placeholder="Az neptun kódod"
-                        onChange={(e) => setNeptunCode(e.target.value)}
                       />
                     </div>
                   </div>
