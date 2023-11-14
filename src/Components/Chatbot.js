@@ -1,13 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import mesterTetelFeladat from "./Photos/mestertetelpelda.PNG";
-import rekurziosFaFeladat from "./Photos/rekurziosfafeladat.PNG";
-import pirosFeketeFaFeladat from "./Photos/pirosfeketefafeladat.PNG";
-import bfaFeladat from "./Photos/bfafeladat.PNG";
-import visszalepesesFeladat from "./Photos/visszalfeladat.PNG";
-import hashFeladat from "./Photos/hashfeladat.png";
 
 let userName = "";
+let qNumber = "";
 
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
@@ -69,6 +64,8 @@ const Chatbot = () => {
             "Mester tétel általános magyarázata a következő: A mester tétel egy rekurzív egyenlet megoldására ad korlátot." +
             "Az egyenletnél az A nagyobb egyenlő, mint 1 a B nagyobb mint 1 és f(n) pedig egy adott függvény. " +
             " Példának ajánlom a következő egyenleteteket kipróbálni a webesfelületen: T(n)= 4T(n/3)+n , T(n)= 3T(n/5)+n , T(n)= 4T(n/4)+n. ";
+        } else {
+          qNumber = 2;
         }
       }
       if (
@@ -90,9 +87,14 @@ const Chatbot = () => {
             "A rekurziós képletből felépítunk egy fát, melynek szintjein elhelyezkedő csúcsok felelnek meg az adott szint költségének." +
             "A kapott sejtést, helyettesítő módszer használatával ellenőrizzük." +
             " Példának ajánlom a következő egyenleteteket kipróbálni a weboldalon: T(n)= 4T(n/3)+n . ";
+        } else {
+          qNumber = 1;
         }
       }
-      if (messageText.toLowerCase().includes("bináris")) {
+      if (
+        messageText.toLowerCase().includes("bináris") ||
+        messageText.toLowerCase().includes("bfa")
+      ) {
         response =
           "Bináris keresőfa általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
         if (
@@ -105,6 +107,8 @@ const Chatbot = () => {
             "A keresofákat láncolt struktúraként ábrázolhatjuk, ahol minden csúcs egy önálló objektum." +
             " Ez a feladat megoldás a bináris keresőfán végzett beszúrás és törlés műveleteinek végrehajtását" +
             "hajtja végre, amely megváltoztatja a bináris keresőfával ábrázolt dinamikus halmazt. ";
+        } else {
+          qNumber = 3;
         }
       }
       if (messageText.toLowerCase().includes("hash")) {
@@ -120,6 +124,8 @@ const Chatbot = () => {
             "4 darab hash függvénnyel találkoztál az oktatáson, amelyek a követezőek:" +
             "Szimpla , Lineális , Dupla vagy Négyzetes." +
             "Ezekre a függvényekre megnézheted, hogy hogyan is működik a weboldalon a következőkre: ";
+        } else {
+          qNumber = 4;
         }
       }
       if (
@@ -141,6 +147,8 @@ const Chatbot = () => {
             "fák megközelítőleg kiegyensúlyozottak." +
             " A feladatot akár az alábbi példára is megnézheti a weboldalon." +
             " A példa: 29,39,44,9,77,82,60,98,7,11,33,49";
+        } else {
+          qNumber = 5;
         }
       }
       if (messageText.toLowerCase().includes("visszalépéses")) {
@@ -155,8 +163,30 @@ const Chatbot = () => {
             "A visszalépéses keresés egy általános algoritmus ami, bizonyos számítási problémák megoldására." +
             " A feladat megoldás érme problémára is kiterjed amit szemléltet a weboldal adott pontja. " +
             " Példa feladat: <2,4,5,6> Apa, ElsőFiú, Testvér esetekre.";
+        } else {
+          qNumber = 6;
         }
       }
+      if (
+        messageText.toLowerCase().includes("legutóbbi") &&
+        (messageText.toLowerCase().includes("érdekel") ||
+          messageText.toLowerCase().includes("feladatmegoldás") ||
+          messageText.toLowerCase().includes("feladatmegoldást"))
+      ) {
+        if (qNumber === 1) {
+        }
+        if (qNumber === 2) {
+        }
+        if (qNumber === 3) {
+        }
+        if (qNumber === 4) {
+        }
+        if (qNumber === 5) {
+        }
+        if (qNumber === 6) {
+        }
+      }
+
       setMessages((prevMessages) => [
         ...prevMessages,
         { role: "system", content: response, imageSrc },

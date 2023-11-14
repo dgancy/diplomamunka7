@@ -102,41 +102,34 @@ export default function BackTrackingTest() {
     localStorage.setItem("mistakesToDbBackMo", JSON.stringify(kezdmo));
     localStorage.setItem("mistakesToDbBackUserMo", JSON.stringify(userresult));
 
-    const adatokRekurzios = localStorage.getItem("mistakesToDbRekurzios");
-    const adatokMester = localStorage.getItem("mistakesToDbMester");
-    const adatokHash = localStorage.getItem("mistakesToDbHash");
-    const adatokBfa = localStorage.getItem("mistakesToDbBfa");
-    const adatokBack = localStorage.getItem("mistakesToDbBack");
-    const adatokRbtree = localStorage.getItem("mistakesToDbRbtree");
+    const dataTransfer = async () => {
+      const adatokRekurzios = localStorage.getItem("mistakesToDbRekurzios");
+      const adatokMester = localStorage.getItem("mistakesToDbMester");
+      const adatokHash = localStorage.getItem("mistakesToDbHash");
+      const adatokBfa = localStorage.getItem("mistakesToDbBfa");
+      const adatokBack = localStorage.getItem("mistakesToDbBack");
+      const adatokRbtree = localStorage.getItem("mistakesToDbRbtree");
+      const neptunCode = localStorage.getItem("neptunCode");
 
-    console.log(adatokMester)
-
-    console.log(adatokRekurzios,adatokMester,adatokHash,adatokBfa,adatokBack,adatokRbtree)
-
-    const adatok = {
-      hash: JSON.parse(adatokHash),
-      rekurzios: JSON.parse(adatokRekurzios),
-      mester: JSON.parse(adatokMester),
-      bfa: JSON.parse(adatokBfa),
-      back: JSON.parse(adatokBack),
-      rbtree: JSON.parse(adatokRbtree),
-    };
-    console.log(adatok);
-
-    fetch("/saveMistakes", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ data: adatok }),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log("Sikerült a mentés:", data);
-      })
-      .catch((error) => {
-        console.error("Hiba történt a mentés során:", error);
+      const result = await fetch("http://localhost:8080/savemistakes", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          key1: adatokRekurzios,
+          key2: adatokMester,
+          key3: adatokBfa,
+          key4: adatokHash,
+          key5: adatokRbtree,
+          key6: adatokBack,
+          key7: neptunCode,
+        }),
       });
+      console.log("test: " + neptunCode);
+    };
   }
 
   return (

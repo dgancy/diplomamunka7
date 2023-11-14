@@ -63,14 +63,31 @@ app.post("/message", (req, res) => {
 
 app.get("/message", (req, res) => {
   const requestData = req.query;
-  res.status(200).json({ message: "Message received : " + JSON.stringify(requestData.key1) +" and "+ JSON.stringify(requestData.key2)});
+  res.status(200).json({
+    message:
+      "Message received : " +
+      JSON.stringify(requestData.key1) +
+      " and " +
+      JSON.stringify(requestData.key2),
+  });
 });
-
-app.post("/saveMistakes", (req, res) => {
+app.post("/savemistakes", (req, res) => {
   const requestData = req.body;
   console.log(
     "Data received from frontend:",
-    requestData.key1 + " and " + requestData.key2
+    requestData.key1 +
+      " and " +
+      requestData.key2 +
+      " and " +
+      requestData.key3 +
+      " and " +
+      requestData.key4 +
+      " and " +
+      requestData.key5 +
+      " and " +
+      requestData.key6 +
+      " and neptun" +
+      requestData.key7
   );
 
   if (!admin.apps.length) {
@@ -84,19 +101,23 @@ app.post("/saveMistakes", (req, res) => {
   console.log("Firestore instance obtained");
 
   const data = {
-    id: requestData.key1,
-    neptunCode: requestData.key2,
-    name: "New Hope Update",
+    neptunCode: requestData.key7,
+    rekurzios: requestData.key1,
+    mester: requestData.key2,
+    bfa: requestData.key3,
+    hash: requestData.key4,
+    rbtree: requestData.key5,
+    back: requestData.key6,
   };
 
-  db.collection("users")
+  db.collection("mistakes")
     .doc(data.id.toString())
     .set(data)
     .then(() => {
       console.log("Data uploaded to Firestore successfully");
       res.status(200).json({
         message: "POST request received",
-        data: requestData.key1,
+        data: requestData.key7,
       });
     })
     .catch((error) => {
@@ -106,10 +127,26 @@ app.post("/saveMistakes", (req, res) => {
   //new hope end
 });
 
-app.get("/saveMistakes", (req, res) => {
+app.get("/savemistakes", (req, res) => {
   const requestData = req.query;
-  res.status(200).json({ message: "Message received : " + JSON.stringify(requestData.key1) +" and "+ JSON.stringify(requestData.key2)});
+  res.status(200).json({
+    message:
+      "Mistakes received : " +
+      JSON.stringify(requestData.key1) +
+      " and " +
+      JSON.stringify(requestData.key2) +
+      " and " +
+      JSON.stringify(requestData.key3) +
+      " and " +
+      JSON.stringify(requestData.key4) +
+      " and " +
+      JSON.stringify(requestData.key5) +
+      " and neptun " +
+      JSON.stringify(requestData.key6),
+  });
 });
+
+
 
 app.listen(8080, () => {
   console.log("Server is running on http://localhost:8080");
