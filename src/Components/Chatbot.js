@@ -10,14 +10,11 @@ const Chatbot = () => {
   const firebaseUser = localStorage.getItem("uid");
   console.log(firebaseUser);
 
-  dataTransfer();
-
   const handleUserMessage = (messageText) => {
     setMessages((prevMessages) => [
       ...prevMessages,
       { role: "user", content: messageText },
     ]);
-    dataTransfer();
 
     let response;
 
