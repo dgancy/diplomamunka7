@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
-import { auth, firestore } from "../firebase";
 
 let userName = "";
 let qNumber = "";
@@ -9,33 +8,16 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const firebaseUser = localStorage.getItem("uid");
+  console.log(firebaseUser);
 
-  const [data, setData] = useState([]);
-
-  useEffect(() => {  
-    const fetchData = async () => {
-      const documentName = firebaseUser;
-      const documentRef = firestore.collection('mistakes').doc(documentName);
-      const doc = await documentRef.get();
-      
-      if (doc.exists) {
-        const data = doc.data();
-        setData(data);
-      } else {
-        console.log('A dokumentum nem létezik!');
-      }
-    };
-  
-    fetchData();
-  }, [firebaseUser]);
-  
-  console.log(data);
+  dataTransfer();
 
   const handleUserMessage = (messageText) => {
     setMessages((prevMessages) => [
       ...prevMessages,
       { role: "user", content: messageText },
     ]);
+    dataTransfer();
 
     let response;
 

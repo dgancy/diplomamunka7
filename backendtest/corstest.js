@@ -66,6 +66,7 @@ app.get("/message", (req, res) => {
     message: "Message received : " + JSON.stringify(requestData.key1),
   });
 });
+
 app.post("/savemistakes", (req, res) => {
   const requestData = req.body;
   console.log(
@@ -96,7 +97,7 @@ app.post("/savemistakes", (req, res) => {
   console.log("Firestore instance obtained");
 
   const data = {
-    id: requestData.key7,//uid
+    id: requestData.key7, //uid
     rekurzios: requestData.key1,
     mester: requestData.key2,
     bfa: requestData.key3,
@@ -123,7 +124,7 @@ app.post("/savemistakes", (req, res) => {
 });
 
 app.get("/savemistakes", (req, res) => {
-  const requestData = req.query;
+  const requestData = req.body;
   res.status(200).json({
     message:
       "Mistakes received : " +
@@ -136,8 +137,50 @@ app.get("/savemistakes", (req, res) => {
       JSON.stringify(requestData.key4) +
       " and " +
       JSON.stringify(requestData.key5) +
-      " and neptun " +
-      JSON.stringify(requestData.key6),
+      " and " +
+      JSON.stringify(requestData.key6) +
+      JSON.stringify(requestData.key7),
+  });
+});
+
+app.post("/userid", (req, res) => {
+  const requestData = req.body;
+  const uid = requestData.key1;
+
+  var admin = require("firebase-admin");
+  var serviceAccount = require("./serviceAccountKeys.json");
+
+  if (!admin.apps.length) {
+    admin.initializeApp({
+      credential: admin.credential.cert(serviceAccount),
+    });
+  }
+
+  const db = admin.firestore();
+
+  let testRef = db.collection("mistakes").doc(uid);
+
+  testRef
+    .get()
+    .then((docSnapshot) => {
+      if (docSnapshot.exists) {
+        console.log(docSnapshot.data());
+        res.status(200).json(docSnapshot.data()); // Válasz küldése a kliensnek
+      } else {
+        console.log("Document not found");
+        res.status(404).json({ message: "Document not found" }); // Válasz küldése a kliensnek
+      }
+    })
+    .catch((error) => {
+      console.error("Error getting document:", error);
+      res.status(500).json({ message: "Internal Server Error" }); // Válasz küldése a kliensnek
+    });
+});
+
+app.get("/userid", (req, res) => {
+  const requestData = req.query;
+  res.status(200).json({
+    message: "Message received uid: " + JSON.stringify(requestData.key1),
   });
 });
 
