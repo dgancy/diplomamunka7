@@ -8,7 +8,15 @@ const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
   const firebaseUser = localStorage.getItem("uid");
-  console.log(firebaseUser);
+
+  const userMistakes = localStorage.getItem("usermistakes");
+  console.log(userMistakes);
+
+  const jsonObject = JSON.parse(userMistakes);
+
+  const mistakesArray = [];
+  mistakesArray.push(jsonObject);
+  console.log(mistakesArray);
 
   const handleUserMessage = (messageText) => {
     setMessages((prevMessages) => [
@@ -25,7 +33,6 @@ const Chatbot = () => {
         ...prevMessages,
         { role: "system", content: response },
       ]);
-      console.log(userName);
     } else {
       if (
         messageText.toLowerCase().includes("tárgy") ||
@@ -175,16 +182,214 @@ const Chatbot = () => {
           messageText.toLowerCase().includes("feladatmegoldást"))
       ) {
         if (qNumber === 1) {
+          if (mistakesArray.some((item) => item.mester === "1000")) {
+            response =
+              "A feladat értékeit nem sikerült helyesen leolvasnod." +
+              "Ennek módja a következő példa szerint: " +
+              "T(n) = 3T(n/4) + n esetében az A elem lesz: 3, a B elem lesz: 4 és az f(n) elem lesz: n." +
+              "Ez a szabály minden ilyen rekurziós módszer feladatra." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "1001")) {
+            response =
+              "A feladatmegoldásod közben rosszul számoltad ki egy csúcs költségét." +
+              "Ennek az értéknek a megadása úgy történik, hogy például egy T(n) = 3T(n/4)+n esetében" +
+              "az n/4-et az i-edik hatványra kell emelni és a továbbiakban ezzel tovább dolgozni. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "1002")) {
+            response =
+              "A feladatmegoldásod közben rosszul számoltad ki az i-edik szinten elhelyezkedő a csúcsok számát." +
+              "Ennek az értéknek a megadása úgy történik, hogy például egy T(n) = 3T(n/4)+n esetében" +
+              "a 3T-ből a 3-ast i-edik hatványra kell emelni és azzal tovább dolgozni." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "1003")) {
+            response =
+              "A feladatmegoldásod közben rosszul számoltad ki az i-edik szint összköltségét." +
+              "Ennek az értéknek a megadása úgy történik, hogy például egy T(n) = 3T(n/4)+n esetében" +
+              "Egy csúcs költségét és az  i-edik szinten elhelyezkedő csúcsok számát kell összeszorozni. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "1004")) {
+            response =
+              "A feladatmegoldásodnál rosszul számoltad ki a fa magasságát." +
+              "A famagasságát úgy tudod kiszámolni, hogy logaritmizálod T(n) = 3T(n/4)+n esetében az (n/4)-es elemet " +
+              "vagyis jelen esetben a helyes eredmény log4n lesz. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "1005")) {
+            response =
+              "A feladatmegoldásodnál rosszul számoltad ki a levelek számát." +
+              "A levelek számát úgy tudod kiszámolni, hogy T(n) = 3T(n/4)+n esetében A^log˘Bn " +
+              "ki kell számolni a 3-t a 4-es alapú logaritmus n-t számolom, ami nlogˇ4^3 lesz az eredménye. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "1006")) {
+            response =
+              "A feladatmegoldásodnál rosszul számoltad ki az összegképletet." +
+              "A összegképletnek egy általános felírását követően kell vizsgálnunk, ????" +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
         }
         if (qNumber === 2) {
+          if (mistakesArray.some((item) => item.mester === "2000")) {
+            response =
+              "A feladat értékeit nem sikerült helyesen leolvasnod." +
+              "Ennek módja a következő példa szerint: " +
+              "T(n) = 3T(n/4) + n esetében az A elem lesz: 3, a B elem lesz: 4 és az f(n) elem lesz: n." +
+              "Ez a szabály minden ilyen mester módszer feladatra." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "2001")) {
+            response =
+              "A feladatmegoldásod közben rossz esetet választottál." +
+              "Ennek szemléltetését a jegyzetek menüponton belül találod meg ahol szabály szinten" +
+              "részletesebben le van írva, hogy nlogˇa ^b képlet elvégzését követően" +
+              "összekell hasonlítani az értéket az n hatvány kitevőjének az értékével." +
+              "Ha ez az érték nagyobb mint a kitevő akkor 1-es eset, ha egyenlő vele akkor 2-es, ha kisebb akkor pedig 3-as." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "2002")) {
+            response =
+              "A feladatmegoldásod közben rosszul választottál Epsilonnak értéket." +
+              "Epsilonnak értéket úgy választunk," +
+              " hogy az az eset függvényében kiegészítse az nlogˇa ^b képlet által kapott értéket." +
+              "A korábbi példából kiindulva: T(n) = 3T(n/4) + n , ez 3-as eset és nlogˇa ^b képlet értéke" +
+              "0.792, amihez az epsilon értéke:0.208, mivel így 0.792+0.208 = 1 vagyis megegyezik az n kitevőjével" +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "2003")) {
+            response =
+              "A feladatmegoldásod közben rosszul használtad az adott esetet." +
+              "Ha 2.-es az adott feladat akkor nem kell alkalmaznunk rá az 1-es vagy 3-as eset műveleteit." +
+              "Ha 1-es esetet választottál és hozzáadtál, akkor nem jól használtad az esetet," +
+              "mivel 1-es eset esetében kivonni kell az nlogˇa ^b képlet eredméynéből, mivel alapból nagyobb mint az n kitevője." +
+              "0.792, amihez az epsilon értéke:0.208, mivel így 0.792+0.208 = 1 vagyis megegyezik az n kitevőjével" +
+              ", így ez 3-as eset lesz. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "2004")) {
+            response =
+              "A feladatmegoldásodnál rosszul számoltad a végeredményt." +
+              "????" +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
         }
         if (qNumber === 3) {
+          if (mistakesArray.some((item) => item.mester === "3000")) {
+            response =
+              "Az adott feladatnál kevesebb mint, 2 elemet sem sikerült eltalálnod. " +
+              "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
+              " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
+              "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
+              "Akár a feszítőfák esetében. Ezt követően pedig a számsor többi elemét is hasonló módon kell elhelyezni a korábbi szabályoknak megfelelően. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "3001")) {
+            response =
+              "Az adott feladatnál a feladat nagyjából a harmadát sikerült eltalálnod. " +
+              "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
+              " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
+              "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
+              "Akár a feszítőfák esetében. Ezt követően pedig a számsor többi elemét is hasonló módon kell elhelyezni a korábbi szabályoknak megfelelően. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "3002")) {
+            response =
+              "Az adott feladatnál a feladat nagyjából a felét sikerült eltalálnod. " +
+              "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
+              " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
+              "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
+              "Akár a feszítőfák esetében. Ezt követően pedig a számsor többi elemét is hasonló módon kell elhelyezni a korábbi szabályoknak megfelelően. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "3003")) {
+            response =
+              "Az adott feladatnál a feladat nagyjából a három negyedét sikerült eltalálnod. " +
+              "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
+              " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
+              "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
+              "Akár a feszítőfák esetében. Ezt követően pedig a számsor többi elemét is hasonló módon kell elhelyezni a korábbi szabályoknak megfelelően. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
         }
         if (qNumber === 4) {
+          if (mistakesArray.some((item) => item.mester === "4000")) {
+            response =
+              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
+              "A Szimpla hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
+              "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
+              "Szimpla hash esetében ha az adott mező már telített, akkor a ????" +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "4001")) {
+            response =
+              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
+              "A Lineális hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
+              "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
+              "Lineális hash esetében ha az adott mező már telített, akkor a ????" +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "4002")) {
+            response =
+              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
+              "A Dupla hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
+              "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
+              "Dupla hash esetében ha az adott mező már telített, akkor a ????" +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "4003")) {
+            response =
+              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
+              "A Négyzetes hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
+              "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
+              "Négyzetes hash esetében ha az adott mező már telített, akkor a ????" +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
         }
         if (qNumber === 5) {
+          if (mistakesArray.some((item) => item.mester === "5001")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az elemeket 4-nél kevesebb számot helyeztél" +
+              " megfelelő helyre és 4-nél kevebbnek állítottál megfelelő színt. " +
+              " A piros fekete fáknak 5 szabálya van. - Minden csúcsnak van színe ami piros vagy fekete lehet." +
+              " - A gyökércsúcs színe mindig fekete." +
+              " - Minden levél vagyis NIL elem színe mindig fekete." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete." +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van." +
+              " Ezeket a szabályokat betartva kell megalkotni a piros fekete fát. " +
+              " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
+              "melyek feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              " az adott szülő csúcshoz képest." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
         }
         if (qNumber === 6) {
+          if (mistakesArray.some((item) => item.mester === "6000")) {
+            response =
+              "Az adott Visszalépéses keresés feladatnál elrontotta az Elsőgyerek feladatot. " +
+              " Ebben a feladatban, ha a megoldás kezdeményed például <1,4,5>, " +
+              " akkor abban az esetben az Elsőgyerek feladat megoldása <1,4,5,6> vagyis " +
+              " maga a <megoldáskezdemény> + <megoldáskezdemény utolsó elemének értéke + 1> " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "6001")) {
+            response =
+              "Az adott Visszalépéses keresés feladatnál elrontotta az Apa feladatot. " +
+              " Ebben a feladatban, ha a megoldás kezdeményed például <1,4,5>, " +
+              " akkor abban az esetben az Apa feladat megoldása <1,4> vagyis " +
+              " maga a <megoldáskezdemény> - <megoldáskezdemény utolsó elemének értéke> " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.mester === "6002")) {
+            response =
+              "Az adott Visszalépéses keresés feladatnál elrontotta a Testvér feladatot. " +
+              " Ebben a feladatban, ha a megoldás kezdeményed például <1,4,6>, " +
+              " akkor abban az esetben a Testvér feladat megoldása <1,4,5> vagyis " +
+              " maga a <megoldáskezdemény utolsó elemének értéke - 1> " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
         }
       }
 

@@ -6,41 +6,59 @@ import { auth } from "../firebase";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
 
-const dataTransfer = async () => {
-  await new Promise((resolve) => {
-    onAuthStateChanged(auth, (user) => {
-      if (user) {
-        const uid = user.uid;
-        console.log("uid:", uid);
-        localStorage.setItem("uid", JSON.stringify(uid));
-        resolve(); // Megvárja, amíg az aszinkron művelet befejeződik
-      } else if (!user) {
-        console.log("user is logged out");
-        resolve(); // Megvárja, amíg az aszinkron művelet befejeződik
+const useDataTransfer = () => {
+  const [message, setMessage] = useState("");
+
+  useEffect(() => {
+    const fetchData = async () => {
+      await new Promise((resolve) => {
+        onAuthStateChanged(auth, (user) => {
+          if (user) {
+            const uid = user.uid;
+            console.log("uid:", uid);
+            localStorage.setItem("uid", JSON.stringify(uid));
+            resolve();
+          } else if (!user) {
+            console.log("user is logged out");
+            resolve();
+          }
+        });
+      });
+
+      const uid = localStorage.getItem("uid");
+
+      const result = await fetch("http://localhost:8080/userid", {
+        method: "POST",
+        mode: "cors",
+        credentials: "include",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ key1: uid }),
+      });
+
+      try {
+        const data = await result.json();
+        console.log("Kapott adatok:", data);
+        setMessage(data.message);
+        const userMistakes = JSON.stringify(data);
+        localStorage.setItem("usermistakes", userMistakes);
+      } catch (error) {
+        console.error("Fetch error:", error);
       }
-    });
-  });
+    };
 
-  const uid = localStorage.getItem("uid");
+    fetchData();
+  }, []);
 
-  const result = await fetch("http://localhost:8080/userid", {
-    method: "POST",
-    mode: "cors",
-    credentials: "include",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({ key1: uid }),
-  });
-
-  console.log(uid);
+  return message;
 };
 
 const ChatButton = () => {
   const [isChatOpen, setIsChatOpen] = useState(false);
+  const message = useDataTransfer();
 
   const handleChatToggle = () => {
-    dataTransfer();
     setIsChatOpen(!isChatOpen);
   };
 
@@ -52,7 +70,7 @@ const ChatButton = () => {
       >
         Open Chat
       </Button>
-      {isChatOpen && <Chatbot />}
+      {isChatOpen && <Chatbot message={message} />}
     </div>
   );
 };

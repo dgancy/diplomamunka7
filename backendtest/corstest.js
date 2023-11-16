@@ -143,6 +143,7 @@ app.get("/savemistakes", (req, res) => {
   });
 });
 
+var downDatas;
 app.post("/userid", (req, res) => {
   const requestData = req.body;
   const uid = requestData.key1;
@@ -164,8 +165,8 @@ app.post("/userid", (req, res) => {
     .get()
     .then((docSnapshot) => {
       if (docSnapshot.exists) {
-        console.log(docSnapshot.data());
-        res.status(200).json(docSnapshot.data()); // Válasz küldése a kliensnek
+        downDatas = docSnapshot.data();
+        res.status(200).json(downDatas); // Válasz küldése a kliensnek
       } else {
         console.log("Document not found");
         res.status(404).json({ message: "Document not found" }); // Válasz küldése a kliensnek
@@ -179,8 +180,23 @@ app.post("/userid", (req, res) => {
 
 app.get("/userid", (req, res) => {
   const requestData = req.query;
+  const { rekurzios, mester, back, id, bfa, rbtree, hash } = downDatas;
+
   res.status(200).json({
-    message: "Message received uid: " + JSON.stringify(requestData.key1),
+    message:
+      id +
+      "," +
+      mester +
+      "," +
+      back +
+      "," +
+      bfa +
+      "," +
+      rbtree +
+      "," +
+      hash +
+      "," +
+      rekurzios,
   });
 });
 
