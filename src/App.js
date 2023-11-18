@@ -69,7 +69,7 @@ function App() {
             element={<BackTrackAssignment />}
           />
 
-          <Route path="/home" element={<Home />} />
+          <Route path="/" element={<Home />} />
 
           <Route path="/test" element={<TestPage />} />
 
