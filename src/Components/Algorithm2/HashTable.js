@@ -193,7 +193,7 @@ export default function Hashtable() {
       }
     }
     tbl.appendChild(tblBody);
-    document.body.appendChild(tbl);
+    document.getElementById("generate").appendChild(tbl);
     tbl.setAttribute("class", "table-container");
 
     console.log("Index: " + arrayindex);
@@ -280,6 +280,12 @@ export default function Hashtable() {
           >
             Kidolgoz
           </Button>
+        </div>
+        <div
+          style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
+          id="generate"
+        >
+          {/* Tartalom */}
         </div>
       </div>
       <br />
