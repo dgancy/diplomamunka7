@@ -48,8 +48,7 @@ const Home = () => {
   };
 
   return (
-    <form style={{          paddingTop:"1%"
-  }}>
+    <form style={{ paddingTop: "1%" }}>
       <section
         style={{
           border: "1px solid black",
