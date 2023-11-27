@@ -9,6 +9,28 @@ import rbtree from "./Photos/Slider/rbtree.png";
 import binarytfea from "./Photos/Slider/binarytfea.png";
 import backfea from "./Photos/Slider/backfea.PNG";
 import hashfea from "./Photos/Slider/hashfea.jpg";
+import { useNavigate } from "react-router-dom";
+
+const navigate = useNavigate();
+
+function goToRekurzios() {
+  navigate("/recursion-tree-assignment");
+}
+function goToMester() {
+  navigate("/master-theorem-assignment");
+}
+function goToHash() {
+  navigate("/hash-table-assignment");
+}
+function goToPffa() {
+  navigate("/red-black-tree-assignment");
+}
+function goToVissza() {
+  navigate("/backtracking-assignment");
+}
+function goToBfa() {
+  navigate("/binary-tree-assignment");
+}
 
 const Home = () => {
   const settings = {
@@ -65,7 +87,7 @@ const Home = () => {
               <div style={textContainerStyle}>
                 <h3>Rekurziós fa</h3>
                 <p>Próbáld ki a Rekurziós fa módszert!</p>
-                <Button>Irány a feladat</Button>
+                <Button onClick={goToRekurzios}>Irány a feladat</Button>
               </div>
               <img src={recfa} style={imgStyle} alt="Rekurziós fa" />
             </div>
@@ -75,7 +97,7 @@ const Home = () => {
               <div style={textContainerStyle}>
                 <h3>Mester tétel</h3>
                 <p>Próbáld ki a Mester módszert!</p>
-                <Button>Irány a feladat</Button>
+                <Button onClick={goToMester}>Irány a feladat</Button>
               </div>
               <img src={masterfea} style={imgStyle} alt="Rekurziós fa" />
             </div>
@@ -85,7 +107,7 @@ const Home = () => {
               <div style={textContainerStyle}>
                 <h3>Bfa</h3>
                 <p>Próbáld ki a Bfa feladatot!</p>
-                <Button>Irány a feladat</Button>
+                <Button onClick={goToBfa}>Irány a feladat</Button>
               </div>
               <img src={binarytfea} style={imgStyle} alt="Rekurziós fa" />
             </div>
@@ -95,7 +117,7 @@ const Home = () => {
               <div style={textContainerStyle}>
                 <h3>Hash tábla</h3>
                 <p>Próbáld ki a Hash tábla feladatot!</p>
-                <Button>Irány a feladat</Button>
+                <Button onClick={goToHash}>Irány a feladat</Button>
               </div>
               <img src={hashfea} style={imgStyle} alt="Rekurziós fa" />
             </div>
@@ -105,7 +127,7 @@ const Home = () => {
               <div style={textContainerStyle}>
                 <h3>Piros-fekete fa</h3>
                 <p>Próbáld ki a Piros-fekete fa feladatot!</p>
-                <Button>Irány a feladat</Button>
+                <Button onClick={goToPffa}>Irány a feladat</Button>
               </div>
               <img src={rbtree} style={imgStyle} alt="Rekurziós fa" />
             </div>
@@ -115,7 +137,7 @@ const Home = () => {
               <div style={textContainerStyle}>
                 <h3>Visszalépéses keresés</h3>
                 <p>Próbáld ki a Visszalépéses keresést!</p>
-                <Button>Irány a feladat</Button>
+                <Button onClick={goToVissza}>Irány a feladat</Button>
               </div>
               <img src={backfea} style={imgStyle} alt="Rekurziós fa" />
             </div>

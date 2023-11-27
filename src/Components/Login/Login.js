@@ -29,7 +29,7 @@ const LogIn = () => {
         const user = userCredential.user;
         dataTransfer();
         
-        navigate("/home");
+        navigate("/");
         console.log(user);
         logged = "logged";
         localStorage.setItem("logged", JSON.stringify(logged));

@@ -13,6 +13,7 @@ export default function HashTableAssignment() {
   var c1c2type;
   
   function Generate() {
+    document.getElementById("btncheck").style.display="block";
     var chars = "QWERTZUIOPLKJHGFDSAYXCVBNM";
     var h1 = "";
     var különbözet = 0;
@@ -260,7 +261,7 @@ export default function HashTableAssignment() {
       <h1
         style={{ color: "white", textAlign: "center", paddingBottom: "20px" }}
       >
-        Hash table assignment
+        Hash tábla feladatok
       </h1>
       <div class="form-group">
         <div class="container">
@@ -295,6 +296,7 @@ export default function HashTableAssignment() {
       <div>
         <div class="row justify-content-center text-center">
           <Button
+          style={{display:"none"}}
             id="btncheck"
             variant="btn btn-outline-warning"
             onClick={Check}
