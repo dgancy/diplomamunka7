@@ -171,7 +171,7 @@ export default function MasterTheoramAssignment() {
             </div>
             <div class="col-2">
               <div>
-                <b style={{ color: "white" }}>n-értéke :</b>
+                <b style={{ color: "white" }}>f(n):</b>
                 <input
                   type="text"
                   class="form-control"
@@ -184,7 +184,7 @@ export default function MasterTheoramAssignment() {
             {" "}
             <div class="col-2">
               {" "}
-              <b style={{ color: "white" }}>Feladat típusa :</b>
+              <b style={{ color: "white" }}>Képlet:</b>
               <select id="type" name="type" class="form-control">
                 <option> </option>
                 <option value="1-es-eset">Első eset</option>
@@ -194,7 +194,7 @@ export default function MasterTheoramAssignment() {
             </div>
             <div class="col-3">
               <div>
-                <b style={{ color: "white" }}>Kiegészítő érték(E):</b>
+                <b style={{ color: "white" }}>Epsilon érték(E):</b>
                 <input
                   type="text"
                   class="form-control"

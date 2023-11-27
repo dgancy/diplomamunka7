@@ -305,7 +305,7 @@ function RecursionTreeTest() {
           >
             {" "}
             <div className="col-2">
-              <b style={{ color: "white" }}>T-értéke :</b>
+              <b style={{ color: "white" }}>A-értéke :</b>
               <input
                 type="number"
                 className="form-control"
@@ -313,7 +313,7 @@ function RecursionTreeTest() {
               />{" "}
             </div>
             <div className="col-2">
-              <b style={{ color: "white" }}>N-értéke :</b>
+              <b style={{ color: "white" }}>B-értéke :</b>
               <input
                 type="number"
                 className="form-control"
@@ -321,7 +321,7 @@ function RecursionTreeTest() {
               />{" "}
             </div>
             <div className="col-2">
-              <b style={{ color: "white" }}>n-értéke :</b>
+              <b style={{ color: "white" }}>f(n):</b>
               <select
                 id="quest1-f(n)-elem"
                 className="form-control"
@@ -339,8 +339,8 @@ function RecursionTreeTest() {
             className="row justify-content-center text-center"
           >
             {" "}
-            <div className="col-2">
-              <b style={{ color: "white" }}>Egy csúcs költsége:</b>
+            <div className="col-3">
+              <b style={{ color: "white" }}>Egy csúcs költsége, az i-edik szinten:</b>
 
               <select id="quest1-1-csucs" className="form-control" type="text">
                 <option></option>
@@ -424,7 +424,7 @@ function RecursionTreeTest() {
           >
             {" "}
             <div className="col-3">
-              <b style={{ color: "white" }}>Összegképlet erdménye:</b>
+              <b style={{ color: "white" }}>A Rekurzió nagyságrendje:</b>
 
               <select id="final" className="form-control" type="text">
                 <option></option>

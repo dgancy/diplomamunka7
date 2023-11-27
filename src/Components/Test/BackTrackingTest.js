@@ -140,6 +140,8 @@ export default function BackTrackingTest() {
     localStorage.setItem("mistakesToDbBackUserMo", JSON.stringify(userresult));
 
     dataTransfer();
+
+    navigate("/test");
   }
 
   return (

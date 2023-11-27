@@ -823,7 +823,7 @@ export default function BinaryTreeAssignment() {
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
       <h1 style={{ color: "white", textAlign: "center", paddingTop: "10px" }}>
-        Bináris kereső fa
+        Bfa
       </h1>
       <div className="form-group" style={{ padding: "15px" }}>
         <div style={{ color: "white", textAlign: "center", padding: "10px" }}>

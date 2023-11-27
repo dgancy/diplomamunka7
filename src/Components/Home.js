@@ -64,7 +64,7 @@ const Home = () => {
             <div style={containerStyle}>
               <div style={textContainerStyle}>
                 <h3>Rekurziós fa</h3>
-                <p>asd asd asd asd asd asd asd asd asd asd</p>
+                <p>Próbáld ki a Rekurziós fa módszert!</p>
                 <Button>Irány a feladat</Button>
               </div>
               <img src={recfa} style={imgStyle} alt="Rekurziós fa" />
@@ -74,7 +74,7 @@ const Home = () => {
             <div style={containerStyle}>
               <div style={textContainerStyle}>
                 <h3>Mester tétel</h3>
-                <p>asd asd asd asd asd asd asd asd asd asd</p>
+                <p>Próbáld ki a Mester módszert!</p>
                 <Button>Irány a feladat</Button>
               </div>
               <img src={masterfea} style={imgStyle} alt="Rekurziós fa" />
@@ -83,8 +83,8 @@ const Home = () => {
           <section>
             <div style={containerStyle}>
               <div style={textContainerStyle}>
-                <h3>Bináris keresőfa</h3>
-                <p>asd asd asd asd asd asd asd asd asd asd</p>
+                <h3>Bfa</h3>
+                <p>Próbáld ki a Bfa feladatot!</p>
                 <Button>Irány a feladat</Button>
               </div>
               <img src={binarytfea} style={imgStyle} alt="Rekurziós fa" />
@@ -94,7 +94,7 @@ const Home = () => {
             <div style={containerStyle}>
               <div style={textContainerStyle}>
                 <h3>Hash tábla</h3>
-                <p>asd asd asd asd asd asd asd asd asd asd</p>
+                <p>Próbáld ki a Hash tábla feladatot!</p>
                 <Button>Irány a feladat</Button>
               </div>
               <img src={hashfea} style={imgStyle} alt="Rekurziós fa" />
@@ -103,8 +103,8 @@ const Home = () => {
           <section>
             <div style={containerStyle}>
               <div style={textContainerStyle}>
-                <h3>Piros fekete fa</h3>
-                <p>asd asd asd asd asd asd asd asd asd asd</p>
+                <h3>Piros-fekete fa</h3>
+                <p>Próbáld ki a Piros-fekete fa feladatot!</p>
                 <Button>Irány a feladat</Button>
               </div>
               <img src={rbtree} style={imgStyle} alt="Rekurziós fa" />
@@ -114,7 +114,7 @@ const Home = () => {
             <div style={containerStyle}>
               <div style={textContainerStyle}>
                 <h3>Visszalépéses keresés</h3>
-                <p>asd asd asd asd asd asd asd asd asd asd</p>
+                <p>Próbáld ki a Visszalépéses keresést!</p>
                 <Button>Irány a feladat</Button>
               </div>
               <img src={backfea} style={imgStyle} alt="Rekurziós fa" />

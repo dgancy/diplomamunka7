@@ -694,7 +694,7 @@ export default function BinaryTree() {
   return (
     <form style={{ background: "#000027", height: "100vh", color: "white" }}>
       <h1 style={{ textAlign: "center", paddingBottom: "20px" }}>
-        Bináris kereső-fa
+        Bfa
       </h1>
       <div>
         <div className="form-group">
@@ -711,7 +711,6 @@ export default function BinaryTree() {
                 {" "}
                 <b style={{ color: "white" }}>Elem: </b>
                 <input type="number" className="form-control" id="elements" />
-                <small className="form-text text-white">(Input items)</small>
               </div>
             </div>
           </div>

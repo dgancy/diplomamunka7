@@ -133,7 +133,7 @@ function RecursionTreeAssignment() {
             {" "}
             <div className="col-2">
               <div>
-                <b style={{ color: "white" }}>T-értéke :</b>
+                <b style={{ color: "white" }}>A-értéke :</b>
                 <input
                   type="number"
                   className="form-control"
@@ -143,7 +143,7 @@ function RecursionTreeAssignment() {
             </div>
             <div className="col-2">
               <div>
-                <b style={{ color: "white" }}>N-értéke :</b>
+                <b style={{ color: "white" }}>B-értéke :</b>
                 <input
                   type="text"
                   className="form-control"
@@ -153,7 +153,7 @@ function RecursionTreeAssignment() {
             </div>
             <div className="col-2">
               <div>
-                <b style={{ color: "white" }}>n-értéke :</b>
+                <b style={{ color: "white" }}>f(n):</b>
                 <input
                   type="text"
                   className="form-control"
@@ -167,9 +167,9 @@ function RecursionTreeAssignment() {
             className="row justify-content-center text-center"
           >
             {" "}
-            <div className="col-2">
+            <div className="col-3">
               <div>
-                <b style={{ color: "white" }}>1 csúcs költsége:</b>
+                <b style={{ color: "white" }}>Egy csúcs költsége az i-edik szinten:</b>
                 <input
                   type="text"
                   className="form-control"

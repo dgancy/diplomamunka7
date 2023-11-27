@@ -191,44 +191,16 @@ export default function MasterTheoramTest() {
   }
 
   function substitution_one() {
-    return (
-      "Θ(nlog " +
-      String.fromCharCode(94) +
-      logarithm_element[0] +
-      "+" +
-      epsilon[0] +
-      ")"
-    );
+    return String.fromCharCode(94) + logarithm_element[0] + "+" + epsilon[0];
   }
   function substitution_two() {
-    return (
-      "Θ(nlog " +
-      String.fromCharCode(94) +
-      logarithm_element[1] +
-      "+" +
-      epsilon[1] +
-      ")"
-    );
+    return String.fromCharCode(94) + logarithm_element[1] + "+" + epsilon[1];
   }
   function substitution_three() {
-    return (
-      "Θ(nlog " +
-      String.fromCharCode(94) +
-      logarithm_element[2] +
-      "+" +
-      epsilon[2] +
-      ")"
-    );
+    return String.fromCharCode(94) + logarithm_element[2] + "+" + epsilon[2];
   }
   function substitution_four() {
-    return (
-      "Θ(nlog " +
-      String.fromCharCode(94) +
-      logarithm_element[3] +
-      "+" +
-      epsilon[3] +
-      ")"
-    );
+    return String.fromCharCode(94) + logarithm_element[3] + "+" + epsilon[3];
   }
 
   function result_one() {
@@ -275,7 +247,7 @@ export default function MasterTheoramTest() {
       mistakes_temporary.push(2004);
     }
     console.log(mistakes_temporary[0]);
-    mistakes_temporary[0]=2000;
+    mistakes_temporary[0] = 2000;
     localStorage.setItem(
       "mistakesToDbMester",
       JSON.stringify(mistakes_temporary[0])
@@ -322,7 +294,7 @@ export default function MasterTheoramTest() {
             </div>
             <div className="col-2">
               <div>
-                <b style={{ color: "white" }}>n-értéke :</b>
+                <b style={{ color: "white" }}>f(n):</b>
                 <select
                   id="quest2-f(n)-elem"
                   className="form-control"
@@ -344,7 +316,7 @@ export default function MasterTheoramTest() {
             {" "}
             <div className="col-2">
               {" "}
-              <b style={{ color: "white" }}>Feladat típusa :</b>
+              <b style={{ color: "white" }}>Képlet:</b>
               <select id="type" name="type" className="form-control">
                 <option> </option>
                 <option value="1">Első eset</option>
@@ -354,7 +326,7 @@ export default function MasterTheoramTest() {
             </div>
             <div className="col-3">
               <div>
-                <b style={{ color: "white" }}>Kiegészítő érték(E):</b>
+                <b style={{ color: "white" }}>Epsilon érték:</b>
                 <select id="epsilon" name="epsilon" className="form-control">
                   <option> </option>
                   <option value="1">{epsilon_answer_one()}</option>

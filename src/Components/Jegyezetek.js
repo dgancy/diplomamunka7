@@ -78,9 +78,9 @@ export default function Jegyezetek() {
         </div>
 
         <div className="section">
-          <h2>Bináris kereső fa</h2>
+          <h2>Bfa</h2>
           <p>
-            A bináris keresőfák, ahogy azt a nevük is sugallja, bináris faként
+            A bfa, ahogy azt a nevük is sugallja, bináris faként
             szervezett objektumok. A keresofákat láncolt struktúraként
             ábrázolhatjuk, ahol minden csúcs egy önálló objektum. Minden csúcs a
             kulcs mező és a hozzákapcsolódó adatok mellett tartalmaz egy bal,
