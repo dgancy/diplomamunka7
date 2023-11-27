@@ -11,24 +11,28 @@ import backfea from "./Photos/Slider/backfea.PNG";
 import hashfea from "./Photos/Slider/hashfea.jpg";
 import { useNavigate } from "react-router-dom";
 
-const navigate = useNavigate();
-
 function goToRekurzios() {
+  const navigate = useNavigate();
   navigate("/recursion-tree-assignment");
 }
 function goToMester() {
+  const navigate = useNavigate();
   navigate("/master-theorem-assignment");
 }
 function goToHash() {
+  const navigate = useNavigate();
   navigate("/hash-table-assignment");
 }
 function goToPffa() {
+  const navigate = useNavigate();
   navigate("/red-black-tree-assignment");
 }
 function goToVissza() {
+  const navigate = useNavigate();
   navigate("/backtracking-assignment");
 }
 function goToBfa() {
+  const navigate = useNavigate();
   navigate("/binary-tree-assignment");
 }
 
