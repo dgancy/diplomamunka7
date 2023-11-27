@@ -11,31 +11,6 @@ import backfea from "./Photos/Slider/backfea.PNG";
 import hashfea from "./Photos/Slider/hashfea.jpg";
 import { useNavigate } from "react-router-dom";
 
-function goToRekurzios() {
-  const navigate = useNavigate();
-  navigate("/recursion-tree-assignment");
-}
-function goToMester() {
-  const navigate = useNavigate();
-  navigate("/master-theorem-assignment");
-}
-function goToHash() {
-  const navigate = useNavigate();
-  navigate("/hash-table-assignment");
-}
-function goToPffa() {
-  const navigate = useNavigate();
-  navigate("/red-black-tree-assignment");
-}
-function goToVissza() {
-  const navigate = useNavigate();
-  navigate("/backtracking-assignment");
-}
-function goToBfa() {
-  const navigate = useNavigate();
-  navigate("/binary-tree-assignment");
-}
-
 const Home = () => {
   const settings = {
     dots: true,
@@ -71,6 +46,32 @@ const Home = () => {
     paddingTop: "2%",
     paddingLeft: "35%",
     paddingRight: "25%",
+  };
+
+  const navigate = useNavigate();
+
+  const goToRekurzios = () => {
+    navigate("/recursion-tree-assignment");
+  };
+
+  const goToMester = () => {
+    navigate("/master-theorem-assignment");
+  };
+
+  const goToBfa = () => {
+    navigate("/binary-tree-assignment");
+  };
+
+  const goToHash = () => {
+    navigate("/hash-table-assignment");
+  };
+
+  const goToPffa = () => {
+    navigate("/red-black-tree-assignment");
+  };
+
+  const goToVissza = () => {
+    navigate("/backtracking-assignment");
   };
 
   return (
