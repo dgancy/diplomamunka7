@@ -66,7 +66,7 @@ export default function NavbarMenu() {
               as={Link}
               to={"/binary-tree"}
             >
-              Bináris kereső fa
+              Bfa
             </NavDropdown.Item>
             <NavDropdown.Item
               style={{ color: "black" }}

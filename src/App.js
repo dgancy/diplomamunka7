@@ -23,7 +23,6 @@ import HashTableTest from "./Components/Test/HashTableTest";
 import BackTrackingTest from "./Components/Test/BackTrackingTest";
 import RedBlackTreeTest from "./Components/Test/RedBlackTreeTest";
 import Home from "./Components/Home";
-import LogMoreData from "./Components/Login/LogMoreData";
 import ChatButton from "./Components/ChatButton";
 import Jegyezetek from "./Components/Jegyezetek";
 
@@ -79,9 +78,6 @@ function App() {
           <Route path="/hash-table-test" element={<HashTableTest />} />
           <Route path="/backtracking-test" element={<BackTrackingTest />} />
           <Route path="/red-black-tree-test" element={<RedBlackTreeTest />} />
-
-          <Route path="/logdata" element={<LogMoreData />} />
-
         </Routes>
       </Router>
 

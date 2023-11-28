@@ -1,7 +1,6 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import mistakes_to_databse from "./RecursionTreeTest";
 
 export default function MasterTheoramTest() {
   const navigate = useNavigate();
@@ -319,9 +318,9 @@ export default function MasterTheoramTest() {
               <b style={{ color: "white" }}>Képlet:</b>
               <select id="type" name="type" className="form-control">
                 <option> </option>
-                <option value="1">Első eset</option>
-                <option value="2">Második eset</option>
-                <option value="3">Harmadik eset</option>
+                <option value="1">Egyes eset : f(n) = O(n log(b⁽ᵃ⁻ᵉ⁾))</option>
+                <option value="2">Kettes eset : f(n) = Θ(n log(b⁽ᵃ⁾))</option>
+                <option value="3">Hármas eset : f(n) = Ω(n log(b⁽ᵃ⁺ᵉ⁾))</option>
               </select>
             </div>
             <div className="col-3">

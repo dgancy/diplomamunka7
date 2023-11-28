@@ -22,15 +22,13 @@ export default function HashTableAssignment() {
     elemszam = Math.floor(Math.random() * 4) + 4;
     //var cs = hossz * 70;
 
-    type = Math.floor(Math.random() * 100) % 4;
+    type = Math.floor(Math.random() * 100) % 3;
 
-    if (type === 0) {
-      type = "simple";
-    } else if (type === 1) {
+    if (type === 1) {
       type = "lineal";
     } else if (type === 2) {
       type = "square";
-    } else if (type === 3) {
+    } else if (type === 0) {
       type = "double";
     }
     console.log("Típus: " + type);
@@ -50,19 +48,7 @@ export default function HashTableAssignment() {
       charakters.push(chars.charAt(Math.floor(Math.random() * 26)));
     }
 
-    if (type === "simple" || type === "lineal") {
-      for (let i = 0; i < elemszam; i++) {
-        if (i === elemszam) {
-          h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + " ";
-        }
-        h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + ", ";
-      }
-      document.getElementById(
-        "hossz"
-      ).innerHTML = `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat 
-        ${type} hasítás alkalmazásával.<br/>`;
-      document.getElementById("h").innerHTML = h1 + " .";
-    } else if (type === "square") {
+    if (type === "square") {
       var oneortwo = Math.floor(Math.random() * 1);
       if (oneortwo === 0) {
         c1 = "c1 = " + 0;
@@ -81,7 +67,7 @@ export default function HashTableAssignment() {
       }
       document.getElementById(
         "hossz"
-      ).innerHTML = `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat ${type} ( ${c1} , ${c2} ) hasítás alkalmazásával.`;
+      ).innerHTML = `Szúrja be egy ${hossz} hosszúságú hash táblába a következő objektumokat négyzetes ( ${c1} , ${c2} ) hasítás alkalmazásával.`;
       document.getElementById("h").innerHTML = h1 + " .";
     } else if (type === "double") {
       for (let i = 0; i < elemszam; i++) {
@@ -113,9 +99,7 @@ export default function HashTableAssignment() {
       document.getElementById("hossz").innerHTML =
         "Szúrja be egy " +
         hossz +
-        " hosszúságú hash táblába a következő objektumokat " +
-        type +
-        " hasítás alkalmazásával.";
+        " hosszúságú hash táblába a következő objektumokat dupla hasítás alkalmazásával.";
       document.getElementById("h").innerHTML = h1 + " .";
     }
     console.log("H1: " + h1);
@@ -143,16 +127,6 @@ export default function HashTableAssignment() {
       arrayfinal[j] = " ";
     }
 
-    if (type === "simple") {
-      for (let j = 0; j < elemszam; j++) {
-        leftover = numbers[j] % hossz;
-        if (arrayfinal[leftover] === " ") {
-          arrayfinal[leftover] = charakters[j];
-        } else {
-          arrayfinal[leftover] += charakters[j];
-        }
-      }
-    }
     if (type === "lineal") {
       for (let j = 0; j < elemszam; j++) {
         leftover = numbers[j] % hossz;
@@ -263,19 +237,19 @@ export default function HashTableAssignment() {
       >
         Hash tábla feladatok
       </h1>
-      <div class="form-group">
-        <div class="container">
-          <div class="row justify-content-center text-center">
+      <div className="form-group">
+        <div className="container">
+          <div className="row justify-content-center text-center">
             <Button
               variant="btn btn-outline-warning"
               id="btngen"
               onClick={Generate}
             >
-              New Assignment
+              Új feladat
             </Button>
           </div>
           <div
-            class="row justify-content-center text-center"
+            className="row justify-content-center text-center"
             style={{ paddingTop: "15px" }}
           >
             <b id="hossz" style={{ color: "white" }}></b>
@@ -294,14 +268,14 @@ export default function HashTableAssignment() {
         </div>
       </div>
       <div>
-        <div class="row justify-content-center text-center">
+        <div className="row justify-content-center text-center">
           <Button
           style={{display:"none"}}
             id="btncheck"
             variant="btn btn-outline-warning"
             onClick={Check}
           >
-            Solve
+            Ellenőriz
           </Button>
         </div>
         <br />

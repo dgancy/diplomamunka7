@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { Button } from "react-bootstrap";
 
 export default function RecursionTree() {
@@ -113,6 +113,8 @@ export default function RecursionTree() {
     }
   }
 
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <form style={{ background: "#000027", height: "100vh" }}>
       <h1
@@ -153,6 +155,44 @@ export default function RecursionTree() {
               </select>
             </div>
           </div>
+          <div>
+        <Button
+          style={{
+            position: "absolute",
+            top: "18%",
+            left: "2%",
+            padding: "10px",
+            background: "white",
+            color: "black",
+            border: "none",
+            cursor: "pointer",
+          }}
+          variant="warning"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          Súgó
+        </Button>
+        {isHovered && (
+          <b
+            style={{
+              position: "absolute",
+              top: "30%",
+              left: "2%",
+              padding: "10px",
+              background: "white",
+              color: "black",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Az alábbi feladat megoldót egy példán<br/> keresztül szeretném
+            szemléltetni. <br />
+            T(n) = 4T(n/5)+n esetében az A elem értéke 4,
+            <br /> a B elem értéke: 5, valamint az f(n) értéke: n.
+          </b>
+        )}
+      </div>
           <br />
           <div className="row justify-content-center text-center">
             <Button variant="btn btn-outline-warning" onClick={Result}>

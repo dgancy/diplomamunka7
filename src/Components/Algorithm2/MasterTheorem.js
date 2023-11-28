@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Button } from "react-bootstrap";
 
 function MasterTheorem() {
@@ -210,6 +210,8 @@ function MasterTheorem() {
     }
   }
 
+  const [isHovered, setIsHovered] = useState(false);
+
   return (
     <form style={{ background: "#000027", height: "110vh" }}>
       <h1
@@ -217,6 +219,44 @@ function MasterTheorem() {
       >
         Mester-tétel
       </h1>
+      <div>
+        <Button
+          style={{
+            position: "absolute",
+            top: "18%",
+            left: "2%",
+            padding: "10px",
+            background: "white",
+            color: "black",
+            border: "none",
+            cursor: "pointer",
+          }}
+          variant="warning"
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
+        >
+          Súgó
+        </Button>
+        {isHovered && (
+          <b
+            style={{
+              position: "absolute",
+              top: "30%",
+              left: "2%",
+              padding: "10px",
+              background: "white",
+              color: "black",
+              border: "none",
+              cursor: "pointer",
+            }}
+          >
+            Az alábbi feladat megoldót egy példán<br/> keresztül szeretném
+            szemléltetni. <br />
+            T(n) = 4T(n/5)+n esetében az A elem értéke 4,
+            <br /> a B elem értéke: 5, valamint az f(n) értéke: n.
+          </b>
+        )}
+      </div>
       <div className="form-group">
         <div className="container">
           <div className="row justify-content-center text-center">
