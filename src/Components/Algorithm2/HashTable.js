@@ -14,7 +14,7 @@ export default function Hashtable() {
     console.log(type);
     console.log(elementnumber);
 
-    if (type === "simple" || type === "lineral" || type === "square") {
+    if (type === "lineral" || type === "square") {
       if (type === "square") {
         var c1c2 = document.getElementById("c1c2");
         c1c2.style.display = "flex";
@@ -75,7 +75,7 @@ export default function Hashtable() {
     var arrayindex = []; //tábla felsősora
     var arrayfinal = []; //tábla alsósora
 
-    if (type === "simple" || type === "square" || type === "lineral") {
+    if (type === "square" || type === "lineral") {
       for (let i = 0; i < elementnumber; i++) {
         arrayelements[i] = document.getElementById("inp" + i).value;
         arraynumbers[i] = document.getElementById("inp" + (i + 15)).value;
@@ -95,17 +95,6 @@ export default function Hashtable() {
     for (let j = 0; j < range; j++) {
       arrayindex[j] = j;
       arrayfinal[j] = ".";
-    }
-
-    if (type === "simple") {
-      for (let j = 0; j < elementnumber; j++) {
-        finalindex = arraynumbers[j] % range;
-        if (arrayfinal[finalindex] === ".") {
-          arrayfinal[finalindex] = arrayelements[j];
-        } else {
-          arrayfinal[finalindex] += arrayelements[j];
-        }
-      }
     }
 
     if (type === "lineral") {
@@ -163,7 +152,7 @@ export default function Hashtable() {
             );
           }
         }
-      } //button deactivate
+      }
     }
 
     const tableContainer = document.createElement("div");
@@ -223,9 +212,6 @@ export default function Hashtable() {
               <b style={{ color: "white" }}>Feladat típusa :</b>
               <select id="type" name="type" className="form-control">
                 <option> </option>
-                <option value="simple" id="hash">
-                  Szimpla
-                </option>
                 <option value="lineral">Lineális</option>
                 <option value="square">Négyzetes</option>
                 <option value="double">Dupla</option>
@@ -243,7 +229,7 @@ export default function Hashtable() {
           </div>
           <div className="row justify-content-center text-center">
             <Button variant="btn btn-outline-warning col-1" onClick={Begin}>
-              Add
+              Megad
             </Button>
           </div>
         </div>

@@ -1053,30 +1053,29 @@ export default function RedBlackTree() {
         }
       }
 
-      for (var i = 0; i < secondLine.length; i++) {
-        if (secondLine[i] === "NIL") {
-          color[i * 2 + 3] = 7;
-          color[i * 2 + 4] = 7;
+      for (let j = 0; j < secondLine.length; j++) {
+        if (secondLine[j] === "NIL") {
+          color[j * 2 + 3] = 7;
+          color[j * 2 + 4] = 7;
         }
       }
 
-      for (var i = 0; i < thirdLine.length; i++) {
-        if (thirdLine[i] === "NIL") {
-          color[i * 2 + 7] = 7;
-          color[i * 2 + 8] = 7;
+      for (var j = 0; j < thirdLine.length; j++) {
+        if (thirdLine[j] === "NIL") {
+          color[j * 2 + 7] = 7;
+          color[j * 2 + 8] = 7;
         }
       }
 
-      for (var i = 0; i < fourthLine.length; i++) {
-        if (fourthLine[i] === "NIL") {
-          color[i * 2 + 15] = 7;
-          color[i * 2 + 16] = 7;
+      for (var j = 0; j < fourthLine.length; j++) {
+        if (fourthLine[j] === "NIL") {
+          color[j * 2 + 15] = 7;
+          color[j * 2 + 16] = 7;
         }
       }
 
       console.log("state: " + state);
       for (var i = 0; i < colorHelperArray.length; i++) {
-        //43,23,76,98,32,65,10,2,12,34,33,89,66,1
         if (edge !== "") {
           var element = document.getElementById("element_" + i);
           var breaks = document.getElementById("breaks_" + i);
@@ -1158,7 +1157,7 @@ export default function RedBlackTree() {
           <div className="row justify-content-center text-center">
             {" "}
             <div className="col-4 ">
-              <b style={{ color: "white" }}>Elem hozzáadás :</b>
+              <b style={{ color: "white" }}>Elem(ek) hozzáadás :</b>
               <input type="text" className="form-control" id="addnumber" />{" "}
               <small className="form-text text-white">
                 (pl.: 1,12,43,23,13)

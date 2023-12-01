@@ -1,9 +1,10 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 
+var kezdmo = [];
 export default function BackTrackAssignment() {
+  kezdmo = [];
   var type;
-  var kezdmo = [];
   var ÖsszesCimlet;
   function Generate() {
     type = Math.floor(Math.random() * 3);
@@ -22,7 +23,7 @@ export default function BackTrackAssignment() {
     }
     document.getElementById("hideShow").style.visibility = "visible";
 
-    ÖsszesCimlet = Math.floor(Math.random() * 15) + 1;
+    ÖsszesCimlet = Math.floor(Math.random() * 15) + 10;
     var number = Math.floor(Math.random() * 3) + 2;
     for (let i = 0; i <= number; i++) {
       var help = Math.floor(Math.random() * 8) + 1 + "";
@@ -42,7 +43,6 @@ export default function BackTrackAssignment() {
     console.log(ÖsszesCimlet);
     console.log(kezdmo);
     console.log(type);
-    kezdmo = [];
   }
 
   function Check() {
@@ -74,6 +74,9 @@ export default function BackTrackAssignment() {
       }
     }
     console.log("Pont:" + point);
+    
+    console.log("userres:" + userresult);
+    console.log("solved:" + parseInt(solve));
 
     if (point === solve.length) {
       console.log("Jó megoldás!");
@@ -85,6 +88,7 @@ export default function BackTrackAssignment() {
     }
     console.log(userresult);
     console.log(solve);
+    kezdmo = [];
   }
 
   return (

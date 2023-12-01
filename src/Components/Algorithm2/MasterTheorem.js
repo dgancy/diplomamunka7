@@ -32,21 +32,27 @@ function MasterTheorem() {
       } else if (n_element === "1") {
         differencial = 0;
       }
+
       console.log(differencial + " : " + logarithm_element);
+
       var eset;
       if (a_element >= 1 && b_element > 1) {
-        if (a_element === b_element || n_element === "1") {
+        if (
+          a_element === b_element &&
+          parseFloat(differencial) === parseFloat(logarithm_element)
+        ) {
           eset = 2;
         }
-        if (differencial < logarithm_element) {
+        if (parseFloat(differencial) < parseFloat(logarithm_element)) {
           eset = 1;
           epszilon = logarithm_element - differencial;
         }
-        if (differencial > logarithm_element) {
+        if (parseFloat(differencial) > parseFloat(logarithm_element)) {
           eset = 3;
           epszilon = differencial - logarithm_element;
         }
       }
+
       epszilon = epszilon.toFixed(3);
 
       document.getElementById("feladat").innerHTML = "Feladat : ";
@@ -68,17 +74,19 @@ function MasterTheorem() {
         muvelet = "+";
         final_result = Number(logarithm_element) + Number(epszilon);
       }
-      console.log("eset:" + eset);
+      document.getElementById("logarithm").innerHTML =
+        "Képlet : n<sup>" + "log" + "<sub>b</sub>" + "a" + "</sup>";
+      document.getElementById("logarithmresult").innerHTML =
+        " Θ(n" + "<sup>" + logarithm_element + "</sup>" + ")";
+      document.getElementById("eset").innerHTML = "Eset : ";
+      document.getElementById("esetresult").innerHTML = eset;
+      document.getElementById("seged").innerHTML = "Epszilon érték(ε) : ";
+      document.getElementById("segedresult").innerHTML =
+        epszilon + " => Θ(nlog " + "<sup>" + epszilon + "</sup>" + ")";
+
       if (eset !== 2) {
-        document.getElementById("logarithmresult").innerHTML =
-          " Θ(n" + "<sup>" + logarithm_element + "</sup>" + ")";
-        document.getElementById("logarithm").innerHTML =
-          "Képlet : n<sup>" + "log" + "<sub>b</sub>" + "a" + "</sup>";
-        document.getElementById("eset").innerHTML = "Eset : ";
-        document.getElementById("esetresult").innerHTML = eset;
-        document.getElementById("segedresult").innerHTML =
-          epszilon + " => Θ(nlog " + "<sup>" + epszilon + "</sup>" + ")";
-        document.getElementById("seged").innerHTML = "Epszilon érték(ε) : ";
+        document.getElementById("result").innerHTML =
+          "A mester tétel " + eset + ". esetét alkalmazzuk : ";
         document.getElementById("resultresult").innerHTML =
           "Θ(nlog <sup>" +
           logarithm_element +
@@ -91,121 +99,44 @@ function MasterTheorem() {
           "</sup>)= Θ(nlog <sup>" +
           final_result +
           "</sup>)";
+      } else {
         document.getElementById("result").innerHTML =
-          "A mester tétel " + eset + ". esetét alkalmazzuk : ";
-        if (n_element === "2" || n_element === "3") {
-          if (eset === 3) {
-            document.getElementById("solution").innerHTML = "Megoldás : ";
-            document.getElementById("solutionresult").innerHTML =
-              "T(n)= Θ(" + n_element + ")";
-            document.getElementById("final").innerHTML =
-              "Regularitási feltétel: ";
-
-            document.getElementById("finalresult").innerHTML =
-              "a * f(n/b)<= c * f(n) </br>" +
-              a_element +
-              " * (n/" +
-              b_element +
-              ")<sup>" +
-              differencial +
-              "</sup> <= c * n<sup>" +
-              differencial +
-              "</sup> </br> " +
-              a_element +
-              "/" +
-              b_element ** differencial +
-              " <= c < 1 ";
-          } else if (eset === 1) {
-            document.getElementById("solution").innerHTML = "Megoldás: ";
-            document.getElementById("solutionresult").innerHTML =
-              " Θ(n" + "<sup>" + logarithm_element + "</sup>" + ")";
-
-            document.getElementById("final").innerHTML =
-              "Regularitási feltétel nem szükséges";
-            document.getElementById("finalresult").innerHTML = "-";
-          }
-        } else {
-          if (eset === 3) {
-            document.getElementById("finalresult").innerHTML =
-              a_element +
-              " * (n/" +
-              b_element +
-              ")<sup>" +
-              n_element +
-              "</sup> <= c * n<sup>" +
-              n_element +
-              "</sup> </br> " +
-              a_element +
-              "/" +
-              b_element +
-              " <= c < 1 ";
-            document.getElementById("solution").innerHTML = "Megoldás: ";
-            document.getElementById("solutionresult").innerHTML =
-              "T(n)= Θ(" + n_element + ") ";
-            document.getElementById("final").innerHTML =
-              "Regularitási feltétel : ";
-            document.getElementById("finalresult").innerHTML =
-              "a * f(n/b)<= c * f(n) </br>" +
-              a_element +
-              " * (n/" +
-              b_element +
-              ")<sup>" +
-              differencial +
-              "</sup> <= c * n<sup>" +
-              differencial +
-              "</sup> </br> " +
-              a_element +
-              "/" +
-              b_element ** differencial +
-              " <= c < 1 ";
-          } else {
-            document.getElementById("solution").innerHTML = "Megoldás: ";
-            document.getElementById("solutionresult").innerHTML =
-              " T(n)= Θ(" + n_element + ")";
-            document.getElementById("final").innerHTML =
-              "Regularitási feltétel nem szükséges";
-            document.getElementById("finalresult").innerHTML = "-";
-          }
-        }
+          "A mester tétel " +
+          eset +
+          ". eseténél ezt a lépést nem kell megtenni.";
+        document.getElementById("resultresult").innerHTML = "-";
       }
-      if (eset === 2) {
-        console.log("befordulok");
-        document.getElementById("logarithm").innerHTML =
-          "Képlet: " +
-          "n" +
-          "<sup>" +
-          "log" +
-          "<sub>" +
-          "b" +
-          "</sub>" +
-          "a" +
-          "</sup>" +
-          " = Θ(n" +
-          "<sup>" +
-          logarithm_element +
-          "</sup>" +
-          ")";
-        document.getElementById("eset").innerHTML = "Eset: " + eset;
-        document.getElementById("seged").innerHTML =
-          "Ebben az esetben nem szükséges";
-        document.getElementById("result").innerHTML =
-          "Ebben az esetben nem szükséges";
-        if (differencial === 2 || differencial === 3) {
-          document.getElementById("final").innerHTML =
-            "Megoldás: T(n)= Θ(n<sup>" + n_element + "</sup>)";
-        } else {
-          document.getElementById("final").innerHTML =
-            "Megoldás: T(n)= Θ(" + n_element + "logn)";
-        }
-        console.log("nelem: " + n_element);
+      document.getElementById("solution").innerHTML = "Megoldás : ";
+
+      if (eset === 1) {
+        document.getElementById("solutionresult").innerHTML =
+          "Θ(n" + "<sup>log" + logarithm_element + "</sup>" + ")";
+      } else if (eset === 2) {
+        document.getElementById("solutionresult").innerHTML =
+          "Θ(n" + "<sup>log" + logarithm_element + "</sup>" + " lgn)";
+      } else if (eset === 3) {
+        document.getElementById("solutionresult").innerHTML =
+          "Θ(n" + "<sup>" + n_element + "</sup>" + ")";
       }
-    } else {
-      if (a_element === "" && b_element === "") {
-        alert("Az 'a' és 'b' elemnek nagyobbnak kell lennie, mint 0!");
-      } else if (b_element === "") {
-        alert("A 'b' elemnek nagyobbnak kell lennie, mint 0!");
-      } else if (a_element === "") {
-        alert("Az 'a' elemnek nagyobbnak kell lennie, mint 0!");
+      document.getElementById("final").innerHTML = "Regularitási feltétel: ";
+      if (eset === 3) {
+        document.getElementById("finalresult").innerHTML =
+          "a * f(n/b)<= c * f(n) </br>" +
+          a_element +
+          " * (n/" +
+          b_element +
+          ")<sup>" +
+          differencial +
+          "</sup> <= c * n<sup>" +
+          differencial +
+          "</sup> </br> " +
+          a_element +
+          "/" +
+          b_element ** differencial +
+          " <= c < 1 ";
+      } else {
+        document.getElementById("finalresult").innerHTML =
+          "Ebben az esetben nem kell elvégezni.";
       }
     }
   }
@@ -250,8 +181,8 @@ function MasterTheorem() {
               cursor: "pointer",
             }}
           >
-            Az alábbi feladat megoldót egy példán<br/> keresztül szeretném
-            szemléltetni. <br />
+            Az alábbi feladat megoldót egy példán
+            <br /> keresztül szeretném szemléltetni. <br />
             T(n) = 4T(n/5)+n esetében az A elem értéke 4,
             <br /> a B elem értéke: 5, valamint az f(n) értéke: n.
           </b>
@@ -268,7 +199,6 @@ function MasterTheorem() {
                 id="A_element"
                 placeholder="A elem"
               />{" "}
-              <small className="form-text text-white">(T elem szorzata)</small>
             </div>
             <div className="col-2">
               {" "}
@@ -279,7 +209,6 @@ function MasterTheorem() {
                 id="B_element"
                 placeholder="B elem"
               />
-              <small className="form-text text-white">(n elem szorzata)</small>
             </div>
             <div className="col-2">
               {" "}
@@ -290,7 +219,6 @@ function MasterTheorem() {
                 <option value="2">n&sup2;</option>
                 <option value="3">n&sup3;</option>
               </select>
-              <small className="form-text text-white">(n kitevős tag)</small>
             </div>
           </div>
           <br />

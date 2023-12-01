@@ -3,17 +3,17 @@ import { Button } from "react-bootstrap";
 
 export default function HashTableAssignment() {
   var charakters = [];
-  let type;
   var hossz;
+  let type;
   var elemszam;
   var numbers = [];
   var numbersh2 = [];
   var c1;
   var c2;
   var c1c2type;
-  
+
   function Generate() {
-    document.getElementById("btncheck").style.display="block";
+    document.getElementById("btncheck").style.display = "block";
     var chars = "QWERTZUIOPLKJHGFDSAYXCVBNM";
     var h1 = "";
     var különbözet = 0;
@@ -23,6 +23,7 @@ export default function HashTableAssignment() {
     //var cs = hossz * 70;
 
     type = Math.floor(Math.random() * 100) % 3;
+    console.log("Típus: " + type);
 
     if (type === 1) {
       type = "lineal";
@@ -53,11 +54,11 @@ export default function HashTableAssignment() {
       if (oneortwo === 0) {
         c1 = "c1 = " + 0;
         c2 = "c2 = " + 1;
-        c1c2type=0;
+        c1c2type = 0;
       } else {
         c1 = "c1 = " + 1;
         c2 = "c2 = " + 2;
-        c1c2type=1;
+        c1c2type = 1;
       }
       for (let i = 0; i < elemszam; i++) {
         if (i === elemszam) {
@@ -101,10 +102,22 @@ export default function HashTableAssignment() {
         hossz +
         " hosszúságú hash táblába a következő objektumokat dupla hasítás alkalmazásával.";
       document.getElementById("h").innerHTML = h1 + " .";
+    } else if (type === "lineal") {
+      for (let i = 0; i < elemszam; i++) {
+        if (i === elemszam) {
+          h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + ", ";
+        }
+        h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + ", ";
+      }
+      document.getElementById("hossz").innerHTML =
+        "Szúrja be egy " +
+        hossz +
+        " hosszúságú hash táblába a következő objektumokat lineális hasítás alkalmazásával.";
+      document.getElementById("h").innerHTML = h1 + " .";
     }
     console.log("H1: " + h1);
 
-    for (var i = 0; i < 11; i++) {
+    for (var i = 0; i < hossz; i++) {
       input.innerHTML +=
         '<input type="text" placeholder="' +
         i +
@@ -149,12 +162,12 @@ export default function HashTableAssignment() {
       }
     }
     if (type === "square") {
-      if(c1c2type===0){
-        c1=0;
-        c2=1;
-      }else if(c1c2type===1){
-        c1=1;
-        c2=2;
+      if (c1c2type === 0) {
+        c1 = 0;
+        c2 = 1;
+      } else if (c1c2type === 1) {
+        c1 = 1;
+        c2 = 2;
       }
       var overLapping = 1;
       for (let j = 0; j < elemszam; j++) {
@@ -188,7 +201,7 @@ export default function HashTableAssignment() {
           }
         }
       }
-      console.log("sq: "+ arrayfinal);
+      console.log("sq: " + arrayfinal);
     }
 
     console.log("type:" + type);
@@ -200,12 +213,10 @@ export default function HashTableAssignment() {
 
     var userresult = [];
 
-    for (let i = 0; i < 11; i++) {
-      if (document.getElementById("inp" + i).value !== " ") {
-        userresult[i] = document.getElementById("inp" + i).value;
-        if (userresult[i] === "") {
-          userresult[i] = " ";
-        }
+    for (let i = 0; i < hossz; i++) {
+      userresult[i] = document.getElementById("inp" + i).value;
+      if (userresult[i] === "") {
+        userresult[i] = " ";
       }
     }
     console.log(userresult);
@@ -217,7 +228,7 @@ export default function HashTableAssignment() {
       }
     }
     console.log(counter);
-    if (counter === hossz && counter!==0) {
+    if (counter === hossz && counter !== 0) {
       console.log("Jó megoldás!");
       document.getElementById("final").innerHTML = "Jó megoldás!";
     } else {
@@ -262,6 +273,10 @@ export default function HashTableAssignment() {
               paddingTop: "2%",
               paddingBottom: "2%",
               paddingRight: "10%",
+              margin: "auto",
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
             }}
             id="gen"
           ></div>
@@ -270,7 +285,7 @@ export default function HashTableAssignment() {
       <div>
         <div className="row justify-content-center text-center">
           <Button
-          style={{display:"none"}}
+            style={{ display: "none" }}
             id="btncheck"
             variant="btn btn-outline-warning"
             onClick={Check}
