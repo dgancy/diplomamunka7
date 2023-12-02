@@ -8,7 +8,7 @@ function RecursionTreeTest() {
   var N_elem = Math.floor(Math.random() * 10) + 2;
   var nsup = Math.floor(Math.random() * 3) + 1;
   var n_rekurzios = `n<sup>${nsup}</sup>`;
-
+  var n_number;
   const numbers_of_answers = [];
   numbers_of_answers.push(N_elem);
 
@@ -229,12 +229,15 @@ function RecursionTreeTest() {
   function General() {
     if (n_rekurzios === `n<sup>1</sup>`) {
       n_rekurzios = `n`;
+      n_number = 1;
     }
     if (n_rekurzios === `n<sup>2</sup>`) {
       n_rekurzios = `n${String.fromCharCode(178)}`;
+      n_number = 2;
     }
     if (n_rekurzios === `n<sup>3</sup>`) {
       n_rekurzios = `n${String.fromCharCode(179)}`;
+      n_number = 3;
     }
 
     return `Oldja meg a következő feladatot Rekurziós fa módszer használatával. T(n)= ${T_elem} T( n/${N_elem} ) + ${n_rekurzios}`;
@@ -255,28 +258,28 @@ function RecursionTreeTest() {
     var mistakes = [];
     var mistakes_temporary = [];
     if (
-      user_T_element !== T_elem ||
-      user_N_element !== N_elem ||
-      user_n_element !== nsup
+      parseInt(user_T_element) !== parseInt(T_elem) ||
+      parseInt(user_N_element) !== parseInt(N_elem) ||
+      parseInt(user_n_element) !== parseInt(n_number)
     ) {
       mistakes_temporary.push(1000);
     }
-    if (user_1edge_element !== change_position) {
+    if (parseInt(user_1edge_element) !== parseInt(change_position)) {
       mistakes_temporary.push(1001);
     }
-    if (user_edge_number !== change_position) {
+    if (parseInt(user_edge_number) !== parseInt(change_position)) {
       mistakes_temporary.push(1002);
     }
-    if (user_all_cost !== change_position) {
+    if (parseInt(user_all_cost) !== parseInt(change_position)) {
       mistakes_temporary.push(1003);
     }
-    if (user_tree_high !== change_position) {
+    if (parseInt(user_tree_high) !== parseInt(change_position)) {
       mistakes_temporary.push(1004);
     }
-    if (user_leaf_number !== change_position) {
+    if (parseInt(user_leaf_number) !== parseInt(change_position)) {
       mistakes_temporary.push(1005);
     }
-    if (user_final !== switch_place) {
+    if (parseInt(user_final) !== parseInt(switch_place)) {
       mistakes_temporary.push(1006);
     }
 
@@ -340,14 +343,16 @@ function RecursionTreeTest() {
           >
             {" "}
             <div className="col-3">
-              <b style={{ color: "white" }}>Egy csúcs költsége, az i-edik szinten:</b>
+              <b style={{ color: "white" }}>
+                Egy csúcs költsége, az i-edik szinten:
+              </b>
 
               <select id="quest1-1-csucs" className="form-control" type="text">
                 <option></option>
-                <option value="1">{first_answer_one_edge()}&#8305;</option>
-                <option value="2">{second_answer_one_edge()}&#8305;</option>
-                <option value="3">{third_answer_one_edge()}&#8305;</option>
-                <option value="4">{fourth_answer_one_edge()}&#8305;</option>
+                <option value="0">{first_answer_one_edge()}&#8305;</option>
+                <option value="1">{second_answer_one_edge()}&#8305;</option>
+                <option value="2">{third_answer_one_edge()}&#8305;</option>
+                <option value="3">{fourth_answer_one_edge()}&#8305;</option>
               </select>
             </div>
             <div className="col-4">
@@ -361,10 +366,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option value="1">{first_answer_edge_number()}&#8305;</option>
-                <option value="2">{second_answer_edge_number()}&#8305;</option>
-                <option value="3">{third_answer_edge_number()}&#8305;</option>
-                <option value="4">{fourth_answer_edge_number()}&#8305;</option>
+                <option value="0">{first_answer_edge_number()}&#8305;</option>
+                <option value="1">{second_answer_edge_number()}&#8305;</option>
+                <option value="2">{third_answer_edge_number()}&#8305;</option>
+                <option value="3">{fourth_answer_edge_number()}&#8305;</option>
               </select>
             </div>
           </div>
@@ -381,10 +386,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option value="1">{first_answer_one_edge()}&#8305;</option>
-                <option value="2">{second_answer_one_edge()}&#8305;</option>
-                <option value="3">{third_answer_one_edge()}&#8305;</option>
-                <option value="4">{fourth_answer_one_edge()}&#8305;</option>
+                <option value="0">{first_answer_one_edge()}&#8305;</option>
+                <option value="1">{second_answer_one_edge()}&#8305;</option>
+                <option value="2">{third_answer_one_edge()}&#8305;</option>
+                <option value="3">{fourth_answer_one_edge()}&#8305;</option>
               </select>
             </div>
             <div className="col-2">
@@ -395,10 +400,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option value="1">{first_answer_tree_height()}</option>
-                <option value="2">{second_answer_tree_height()}</option>
-                <option value="3">{third_answer_tree_height()}</option>
-                <option value="4">{fourth_answer_tree_height()}</option>
+                <option value="0">{first_answer_tree_height()}</option>
+                <option value="1">{second_answer_tree_height()}</option>
+                <option value="2">{third_answer_tree_height()}</option>
+                <option value="3">{fourth_answer_tree_height()}</option>
               </select>
             </div>
             <div className="col-2">
@@ -410,10 +415,10 @@ function RecursionTreeTest() {
                 type="text"
               >
                 <option></option>
-                <option value="1">{first_answer_leaf_number()}</option>
-                <option value="2">{second_answer_leaf_number()}</option>
-                <option value="3">{third_answer_leaf_number()}</option>
-                <option value="4">{fourth_answer_leaf_number()}</option>
+                <option value="0">{first_answer_leaf_number()}</option>
+                <option value="1">{second_answer_leaf_number()}</option>
+                <option value="2">{third_answer_leaf_number()}</option>
+                <option value="3">{fourth_answer_leaf_number()}</option>
               </select>
             </div>
           </div>
@@ -428,12 +433,12 @@ function RecursionTreeTest() {
 
               <select id="final" className="form-control" type="text">
                 <option></option>
-                <option value="1">{first_answer_final()}</option>
-                <option value="2">{second_answer_final()}</option>
-                <option value="3">{third_answer_final()}</option>
-                <option value="4">{fourth_answer_final()}</option>
-                <option value="5">{fifth_answer_final()}</option>
-                <option value="6">{sixth_answer_final()}</option>
+                <option value="0">{first_answer_final()}</option>
+                <option value="1">{second_answer_final()}</option>
+                <option value="2">{third_answer_final()}</option>
+                <option value="3">{fourth_answer_final()}</option>
+                <option value="4">{fifth_answer_final()}</option>
+                <option value="5">{sixth_answer_final()}</option>
               </select>
             </div>
           </div>

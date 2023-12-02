@@ -14,23 +14,31 @@ export default function HashTableTest() {
   var c2;
   var c1c2type;
 
-  for (let i = 0; i < hossz; i++) {}
+  window.onload = function() {
+    for (let i = hossz; i < 12; i++) {
+      console.log(hossz);
+      var elem = document.getElementById("inp" + i);
+  
+      if (elem) {
+        elem.style.display = "none";
+      } else {
+        console.error("Az elem nem található: inp" + i);
+      }
+    }
+  };   
 
   function Generate() {
     var chars = "QWERTZUIOPLKJHGFDSAYXCVBNM";
     var h1 = "";
     var különbözet = 0;
-    //var cs = hossz * 70;
 
-    type = Math.floor(Math.random() * 100) % 4;
+    type = Math.floor(Math.random() * 100) % 3;
 
-    if (type === 0) {
-      type = "simple";
-    } else if (type === 1) {
+    if (type === 1) {
       type = "lineal";
     } else if (type === 2) {
       type = "square";
-    } else if (type === 3) {
+    } else if (type === 0) {
       type = "double";
     }
     console.log("Típus: " + type);
@@ -50,7 +58,7 @@ export default function HashTableTest() {
       charakters.push(chars.charAt(Math.floor(Math.random() * 26)));
     }
 
-    if (type === "simple" || type === "lineal") {
+    if (type === "lineal") {
       for (let i = 0; i < elemszam; i++) {
         if (i === elemszam) {
           h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + " ";
@@ -118,16 +126,6 @@ export default function HashTableTest() {
       arrayfinal[j] = " ";
     }
 
-    if (type === "simple") {
-      for (let j = 0; j < elemszam; j++) {
-        leftover = numbers[j] % hossz;
-        if (arrayfinal[leftover] === " ") {
-          arrayfinal[leftover] = charakters[j];
-        } else {
-          arrayfinal[leftover] += charakters[j];
-        }
-      }
-    }
     if (type === "lineal") {
       for (let j = 0; j < elemszam; j++) {
         leftover = numbers[j] % hossz;
@@ -259,16 +257,12 @@ export default function HashTableTest() {
       "mistakesToDbHash",
       JSON.stringify(mistakes_temporary)
     );
-    localStorage.setItem(
-      "mistakesToDbHashFeaMo",
-      JSON.stringify(arrayfinal)
-    );
+    localStorage.setItem("mistakesToDbHashFeaMo", JSON.stringify(arrayfinal));
     localStorage.setItem(
       "mistakesToDbHashFeaUserMo",
       JSON.stringify(userresult)
     );
     navigate("/red-black-tree-test");
-
   }
 
   return (

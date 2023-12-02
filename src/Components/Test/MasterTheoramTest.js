@@ -14,6 +14,7 @@ export default function MasterTheoramTest() {
   var epsilon = [];
   var mistakes_temporary = [];
   let place_switcher;
+  var n_number;
 
   function Generate() {
     eset = Math.floor(Math.random() * 3) + 1;
@@ -35,6 +36,7 @@ export default function MasterTheoramTest() {
     if (n === `n<sup>3</sup>`) {
       helper_number = 3;
     }
+    n_number = helper_number;
 
     if (eset === 1) {
       if (helper_number === 0) {
@@ -224,25 +226,23 @@ export default function MasterTheoramTest() {
     var user_substitution = document.getElementById("substitution").value;
     var user_master_result = document.getElementById("quest2-final").value;
 
-    let nlog = (Math.log(a_elem) / Math.log(b_elem)).toFixed(3);
-
     if (
-      user_a_element !== a_elem ||
-      user_b_element !== b_elem ||
-      user_n_element !== nsup
+      parseInt(user_a_element) !== parseInt(a_elem) ||
+      parseInt(user_b_element) !== parseInt(b_elem) ||
+      parseInt(user_n_element) !== parseInt(n_number)
     ) {
       mistakes_temporary.push(2000);
     }
-    if (user_eset !== eset) {
+    if (parseInt(user_eset) !== parseInt(eset)) {
       mistakes_temporary.push(2001);
     }
-    if (user_E_element !== place_switcher) {
+    if (parseInt(user_E_element) !== parseInt(place_switcher)) {
       mistakes_temporary.push(2002);
     }
-    if (user_substitution !== place_switcher) {
+    if (parseInt(user_substitution) !== parseInt(place_switcher)) {
       mistakes_temporary.push(2003);
     }
-    if (user_master_result !== place_switcher) {
+    if (parseInt(user_master_result) !== parseInt(place_switcher)) {
       mistakes_temporary.push(2004);
     }
     console.log(mistakes_temporary[0]);

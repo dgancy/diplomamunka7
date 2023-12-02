@@ -89,24 +89,24 @@ export default function RedBlackTreeTest() {
     return `Oldja meg a piros-fekete fa használtával a feladatot, a következő adatsorra: [ ${array} ].`;
   }
 
+  let IdColors;
+  const handleInputClick = (event) => {
+    const currentInputId = event.target.id;
+    IdColors = currentInputId.substring(3);
+  };
+
   function BlackEdge() {
-    var IdColors = document.getElementById("idcolor").value;
     if (IdColors !== "") {
       document.getElementById("inp" + IdColors).style.background = "black";
       document.getElementById("inp" + IdColors).style.color = "white";
       usercolors[IdColors] = "black";
-      console.log(IdColors);
-      console.log("UColors: " + usercolors);
     }
   }
   function RedEdge() {
-    var IdColors = document.getElementById("idcolor").value;
     if (IdColors !== "") {
       document.getElementById("inp" + IdColors).style.background = "#700000";
       document.getElementById("inp" + IdColors).style.color = "white";
       usercolors[IdColors] = "red";
-      console.log(IdColors);
-      console.log("UColors: " + usercolors);
     }
   }
   function Check() {
@@ -377,6 +377,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
         </div>
         <div
@@ -394,6 +395,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "525px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp2"
@@ -405,6 +407,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
         </div>
         <div
@@ -422,6 +425,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "230px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp4"
@@ -434,6 +438,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "230px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp5"
@@ -446,6 +451,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "230px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp6"
@@ -457,6 +463,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
         </div>
         <div
@@ -474,6 +481,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "75px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp8"
@@ -486,6 +494,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "75px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp9"
@@ -498,6 +507,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "75px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp10"
@@ -510,6 +520,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "75px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp11"
@@ -522,6 +533,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "75px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp12"
@@ -534,6 +546,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "75px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp13"
@@ -546,6 +559,7 @@ export default function RedBlackTreeTest() {
               borderColor: "gold",
               marginRight: "75px",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp14"
@@ -557,6 +571,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
         </div>
         <div
@@ -573,6 +588,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp16"
@@ -584,6 +600,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp17"
@@ -595,6 +612,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp18"
@@ -606,6 +624,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp19"
@@ -617,6 +636,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp20"
@@ -628,6 +648,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp21"
@@ -639,6 +660,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp22"
@@ -650,6 +672,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp23"
@@ -661,6 +684,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp24"
@@ -672,6 +696,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp25"
@@ -683,6 +708,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp26"
@@ -694,6 +720,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp27"
@@ -705,6 +732,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp28"
@@ -716,6 +744,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp29"
@@ -727,6 +756,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
           <input
             id="inp30"
@@ -738,6 +768,7 @@ export default function RedBlackTreeTest() {
               width: "75px",
               borderColor: "gold",
             }}
+            onClick={handleInputClick}
           ></input>
         </div>
       </div>

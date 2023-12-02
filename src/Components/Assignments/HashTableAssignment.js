@@ -20,7 +20,6 @@ export default function HashTableAssignment() {
     var input = document.getElementById("gen");
     hossz = Math.floor(Math.random() * 8) + 4;
     elemszam = Math.floor(Math.random() * 4) + 4;
-    //var cs = hossz * 70;
 
     type = Math.floor(Math.random() * 100) % 3;
     console.log("Típus: " + type);

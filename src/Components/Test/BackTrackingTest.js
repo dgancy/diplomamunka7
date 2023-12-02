@@ -60,7 +60,8 @@ export default function BackTrackingTest() {
     type = "Visszaállit";
   }
   function Generate() {
-    ÖsszesCimlet = Math.floor(Math.random() * 4) + 9;
+    kezdmo = [];
+    ÖsszesCimlet = Math.floor(Math.random() * 15) + 10;
 
     var number = Math.floor(Math.random() * 3) + 2;
     for (let i = 0; i <= number; i++) {
