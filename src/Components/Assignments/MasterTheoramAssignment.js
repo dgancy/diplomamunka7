@@ -276,7 +276,7 @@ export default function MasterTheoramAssignment() {
       mistakes.push("Helyes leolvasás!");
     }
     if (parseInt(user_eset) !== parseInt(eset)) {
-      mistakes.push(" Hibás eset választás!" + " A helyes eset: " + eset);
+      mistakes.push(" Hibás eset választás! A helyes eset: " + eset);
     }else {
       mistakes.push("Helyes eset választás!");
     }

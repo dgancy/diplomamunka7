@@ -75,14 +75,14 @@ function MasterTheorem() {
         final_result = Number(logarithm_element) + Number(epszilon);
       }
       document.getElementById("logarithm").innerHTML =
-        "Képlet : n<sup>" + "log" + "<sub>b</sub>" + "a" + "</sup>";
+        "Képlet : n<sup>log<sub>b</sub>a</sup>";
       document.getElementById("logarithmresult").innerHTML =
-        " Θ(n" + "<sup>" + logarithm_element + "</sup>" + ")";
+        " Θ(n<sup>" + logarithm_element + "</sup>)";
       document.getElementById("eset").innerHTML = "Eset : ";
       document.getElementById("esetresult").innerHTML = eset;
       document.getElementById("seged").innerHTML = "Epszilon érték(ε) : ";
       document.getElementById("segedresult").innerHTML =
-        epszilon + " => Θ(nlog " + "<sup>" + epszilon + "</sup>" + ")";
+        epszilon + " => Θ(nlog <sup>" + epszilon + "</sup>)";
 
       if (eset !== 2) {
         document.getElementById("result").innerHTML =
@@ -110,13 +110,13 @@ function MasterTheorem() {
 
       if (eset === 1) {
         document.getElementById("solutionresult").innerHTML =
-          "Θ(n" + "<sup>log" + logarithm_element + "</sup>" + ")";
+          "Θ(n<sup>log" + logarithm_element + "</sup>)";
       } else if (eset === 2) {
         document.getElementById("solutionresult").innerHTML =
-          "Θ(n" + "<sup>log" + logarithm_element + "</sup>" + " lgn)";
+          "Θ(n<sup>log" + logarithm_element + "</sup> lgn)";
       } else if (eset === 3) {
         document.getElementById("solutionresult").innerHTML =
-          "Θ(n" + "<sup>" + differencial + "</sup>" + ")";
+          "Θ(n<sup>" + differencial + "</sup>)";
       }
       document.getElementById("final").innerHTML = "Regularitási feltétel: ";
       if (eset === 3) {

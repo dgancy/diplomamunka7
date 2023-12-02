@@ -33,6 +33,8 @@ const Chatbot = () => {
         { role: "system", content: response },
       ]);
     } else {
+      response = response || 'Nem értem a kérésedet, kérlek fogalmazd meg másképpen.';
+
       if (
         messageText.toLowerCase().includes("tárgy") ||
         messageText.toLowerCase().includes("tárgyról") ||

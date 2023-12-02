@@ -144,9 +144,6 @@ export default function NavbarMenu() {
 
       {!isLoggedIn && (
         <>
-          {/* ... (korábbi kód marad) */}
-
-          {/* Bejelentkezési gomb csak, ha nincs bejelentkezve */}
           <Nav.Link as={Link} to={"/login"}>
             <Button onClick={handleLogIn} variant="warning">
               Belépés
