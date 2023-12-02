@@ -263,7 +263,7 @@ export default function RecursionTree() {
             </tr>
             <tr>
               <td>
-                <b>Összegképlet: T(n): </b>
+                <b>A Rekurzió nagyságrendje: T(n): </b>
               </td>
               <td>
                 <span

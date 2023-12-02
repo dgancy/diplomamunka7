@@ -1,9 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
 export default function MasterTheoramAssignment() {
-  const navigate = useNavigate();
   var a_elem;
   var b_elem;
   var n;

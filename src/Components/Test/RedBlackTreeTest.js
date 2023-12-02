@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
 export default function RedBlackTreeTest() {
@@ -248,38 +248,57 @@ export default function RedBlackTreeTest() {
 
       console.log(errors);
 
-      var resultNumber = hossz - numberMistakes + 2;
-      var resultColor = hossz - colorMistakes + 2;
+      var resultNumber = parseInt(hossz) - parseInt(numberMistakes) + 2;
+      var resultColor = parseInt(hossz) - parseInt(colorMistakes) + 2;
 
-      if (rootMistakes === 0) {
-        if (resultColor < 4 && resultNumber < 4) {
+      if (parseInt(rootMistakes) === 0) {
+        //fekete a gyökér csucs
+        if (parseInt(resultColor) < 4 && parseInt(resultNumber) < 4) {
           mistakes_temporary = 5000;
         }
-        if (resultColor < 4 && resultNumber > 4 && resultNumber < 8) {
+        if (
+          parseInt(resultColor) < 4 &&
+          parseInt(resultNumber) > 4 &&
+          parseInt(resultNumber) < 8
+        ) {
           mistakes_temporary = 5010;
-          if (resultNumber > 8) {
+          if (parseInt(resultNumber) > 8) {
             mistakes_temporary = 5020;
           }
         }
-        if (resultNumber < 4 && resultColor > 4 && resultColor < 8) {
+        if (
+          parseInt(resultNumber) > 4 &&
+          parseInt(resultNumber) < 8 &&
+          parseInt(resultColor) > 4 &&
+          parseInt(resultColor) < 8
+        ) {
           mistakes_temporary = 5001;
-          if (resultColor > 8) {
+          if (parseInt(resultNumber) > 8 && parseInt(resultColor) > 8) {
             mistakes_temporary = 5002;
           }
         }
-      } else if (rootMistakes === 1) {
-        if (resultColor < 4 && resultNumber < 4) {
+      } else if (parseInt(rootMistakes) === 1) {
+        if (parseInt(resultColor) < 4 && parseInt(resultNumber) < 4) {
           mistakes_temporary = 5100;
         }
-        if (resultColor < 4 && resultNumber > 4 && resultNumber < 8) {
+        if (
+          parseInt(resultColor) < 4 &&
+          parseInt(resultNumber) > 4 &&
+          parseInt(resultNumber) < 8
+        ) {
           mistakes_temporary = 5110;
-          if (resultNumber > 8) {
+          if (parseInt(resultNumber) > 8) {
             mistakes_temporary = 5120;
           }
         }
-        if (resultNumber < 4 && resultColor > 4 && resultColor < 8) {
+        if (
+          parseInt(resultNumber) < 4 &&
+          parseInt(resultNumber) < 8 &&
+          parseInt(resultColor) > 4 &&
+          parseInt(resultColor) < 8
+        ) {
           mistakes_temporary = 5101;
-          if (resultColor > 8) {
+          if (parseInt(resultNumber) > 8 && parseInt(resultColor) > 8) {
             mistakes_temporary = 5102;
           }
         }

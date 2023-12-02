@@ -14,18 +14,18 @@ export default function HashTableTest() {
   var c2;
   var c1c2type;
 
-  window.onload = function() {
+  window.onload = function () {
     for (let i = hossz; i < 12; i++) {
       console.log(hossz);
       var elem = document.getElementById("inp" + i);
-  
+
       if (elem) {
         elem.style.display = "none";
       } else {
         console.error("Az elem nem található: inp" + i);
       }
     }
-  };   
+  };
 
   function Generate() {
     var chars = "QWERTZUIOPLKJHGFDSAYXCVBNM";
@@ -220,35 +220,29 @@ export default function HashTableTest() {
       console.log("Jó megoldás!");
     } else {
       console.log("Hibás megoldás, a helyes megoldás: [ " + arrayfinal + " ].");
-      if (counter < 2) {
-        if (type === "simple") {
+      if (parseInt(counter) < 2) {
+        if (type === "lineal") {
           mistakes_temporary = 4000;
-        } else if (type === "lineal") {
+        } else if (type === "double") {
           mistakes_temporary = 4001;
-        } else if (type === "double") {
+        } else if (type === "square") {
           mistakes_temporary = 4002;
-        } else if (type === "square") {
-          mistakes_temporary = 4003;
         }
-      } else if (counter > 2 && counter < 4) {
-        if (type === "simple") {
+      } else if (parseInt(counter) > 2 && parseInt(counter) < 4) {
+        if (type === "lineal") {
           mistakes_temporary = 4010;
-        } else if (type === "lineal") {
+        } else if (type === "double") {
           mistakes_temporary = 4011;
-        } else if (type === "double") {
+        } else if (type === "square") {
           mistakes_temporary = 4012;
-        } else if (type === "square") {
-          mistakes_temporary = 4013;
         }
-      } else if (counter > 4 && counter !== hossz) {
-        if (type === "simple") {
+      } else if (parseInt(counter) > 4 && parseInt(counter) !== hossz) {
+        if (type === "lineal") {
           mistakes_temporary = 4020;
-        } else if (type === "lineal") {
-          mistakes_temporary = 4022;
         } else if (type === "double") {
-          mistakes_temporary = 4022;
+          mistakes_temporary = 4021;
         } else if (type === "square") {
-          mistakes_temporary = 4023;
+          mistakes_temporary = 4022;
         }
       }
     }

@@ -808,19 +808,16 @@ export default function BinaryTreeTest() {
     console.log("Right21: " + OpArrayMiddle_28);
     console.log("Right22: " + OpArrayRight_2);
 
-    if (parseInt(points)< 2) {
+    if (parseInt(points) < 4) {
       mistakes_temporary = 3000;
-    } else if (parseInt(points)>= 2 && parseInt(points)< 4) {
+    } else if (parseInt(points) >= 4 && parseInt(points) < 8) {
       mistakes_temporary = 3001;
-    } else if (parseInt(points)>= 4 && parseInt(points)< 8) {
+    } else if (parseInt(points) >= 8 && parseInt(points) < parseInt(hossz)) {
       mistakes_temporary = 3002;
-    } else if (parseInt(points)>= 8 && parseInt(points)< parseInt(hossz)) {
-      mistakes_temporary = 3003;
     }
     console.log(mistakes_temporary);
 
     localStorage.setItem("mistakesToDbBfa", JSON.stringify(mistakes_temporary));
-    //átadom mindkettő mo-t és a chatbot a kettőt megmutatja és összehasonlitattja a userrel. pl: edge:[][]
 
     var solvedTask = [];
     var userResult = [];
@@ -884,9 +881,8 @@ export default function BinaryTreeTest() {
           style={{
             position: "absolute",
             top: "35%",
-            transform: "translateY(-50%)",
             left: "50%",
-            transform: "translateX(-50%)",
+            transform: "translate(-50%, -50%)",
             paddingBottom: "25px",
             height: "350px",
             width: "1400px",
@@ -898,9 +894,8 @@ export default function BinaryTreeTest() {
           style={{
             position: "absolute",
             top: "35%",
-            transform: "translateY(-50%)",
             left: "50%",
-            transform: "translateX(-50%)",
+            transform: "translate(-50%, -50%)",
             paddingBottom: "25px",
             width: "1400px",
             height: "350px",

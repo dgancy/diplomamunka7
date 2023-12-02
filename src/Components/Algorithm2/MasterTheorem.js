@@ -116,7 +116,7 @@ function MasterTheorem() {
           "Θ(n" + "<sup>log" + logarithm_element + "</sup>" + " lgn)";
       } else if (eset === 3) {
         document.getElementById("solutionresult").innerHTML =
-          "Θ(n" + "<sup>" + n_element + "</sup>" + ")";
+          "Θ(n" + "<sup>" + differencial + "</sup>" + ")";
       }
       document.getElementById("final").innerHTML = "Regularitási feltétel: ";
       if (eset === 3) {
