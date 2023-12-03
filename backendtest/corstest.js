@@ -166,15 +166,15 @@ app.post("/userid", (req, res) => {
     .then((docSnapshot) => {
       if (docSnapshot.exists) {
         downDatas = docSnapshot.data();
-        res.status(200).json(downDatas); // Válasz küldése a kliensnek
+        res.status(200).json(downDatas); 
       } else {
         console.log("Document not found");
-        res.status(404).json({ message: "Document not found" }); // Válasz küldése a kliensnek
+        res.status(404).json({ message: "Document not found" }); 
       }
     })
     .catch((error) => {
       console.error("Error getting document:", error);
-      res.status(500).json({ message: "Internal Server Error" }); // Válasz küldése a kliensnek
+      res.status(500).json({ message: "Internal Server Error" }); 
     });
 });
 
