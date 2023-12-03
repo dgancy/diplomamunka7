@@ -7,7 +7,6 @@ let qNumber = "";
 const Chatbot = () => {
   const [messages, setMessages] = useState([]);
   const [inputValue, setInputValue] = useState("");
-  const firebaseUser = localStorage.getItem("uid");
 
   const userMistakes = localStorage.getItem("usermistakes");
   console.log(userMistakes);
@@ -34,13 +33,16 @@ const Chatbot = () => {
         { role: "system", content: response },
       ]);
     } else {
+      response = response || 'Nem értem a kérésedet, kérlek fogalmazd meg másképpen.';
+
       if (
         messageText.toLowerCase().includes("tárgy") ||
         messageText.toLowerCase().includes("tárgyról") ||
         messageText.toLowerCase().includes("téma") ||
         messageText.toLowerCase().includes("témában")
       ) {
-        response = "Algo2";
+        response =
+          "Adatstruktúrák és Algoritmusok 2 tárggyal kapcsolatban tudlak informálni, kérlek válassz feladatot.";
       }
       if (
         messageText.toLowerCase().includes("feladatokat") ||
@@ -63,18 +65,18 @@ const Chatbot = () => {
       if (messageText.toLowerCase().includes("mester")) {
         response =
           "Mester tétel általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-        if (
-          messageText.toLowerCase().includes("általános") &&
-          (messageText.toLowerCase().includes("magyarázata") ||
-            messageText.toLowerCase().includes("magyarázat"))
-        ) {
-          response =
-            "Mester tétel általános magyarázata a következő: A mester tétel egy rekurzív egyenlet megoldására ad korlátot." +
-            "Az egyenletnél az A nagyobb egyenlő, mint 1 a B nagyobb mint 1 és f(n) pedig egy adott függvény. " +
-            " Példának ajánlom a következő egyenleteteket kipróbálni a webesfelületen: T(n)= 4T(n/3)+n , T(n)= 3T(n/5)+n , T(n)= 4T(n/4)+n. ";
-        } else {
-          qNumber = 2;
-        }
+        qNumber = 2;
+      }
+      if (
+        (messageText.toLowerCase().includes("általános") ||
+          messageText.toLowerCase().includes("magyarázata") ||
+          messageText.toLowerCase().includes("magyarázat")) &&
+        qNumber === 2
+      ) {
+        response =
+          "Mester tétel általános magyarázata a következő: A mester tétel egy rekurzív egyenlet megoldására ad korlátot." +
+          "Az egyenletnél az A nagyobb egyenlő, mint 1 a B nagyobb mint 1 és f(n) pedig egy adott függvény. " +
+          " Példának ajánlom a következő egyenleteteket kipróbálni a webesfelületen: T(n)= 4T(n/3)+n , T(n)= 3T(n/5)+n , T(n)= 4T(n/4)+n. ";
       }
       if (
         messageText.toLowerCase().includes("rekurzió") ||
@@ -82,22 +84,22 @@ const Chatbot = () => {
       ) {
         response =
           "Rekurziós módszer általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-        if (
-          messageText.toLowerCase().includes("általános") &&
-          (messageText.toLowerCase().includes("magyarázata") ||
-            messageText.toLowerCase().includes("magyarázat"))
-        ) {
-          response =
-            "A helyettesítő módszer használtához, ad segítséget a rekurziós fa módszer." +
-            "A helyettesítő módszer, egy kétlépésből álló megoldás sejtést teljes indukcióval igazoló módszer," +
-            " melynek célja megtalálni egy adott függvény esetében megtalálni az aszimptotikus korlátokat egy adott megoldásra. " +
-            " A módszer használata a következő: " +
-            "A rekurziós képletből felépítunk egy fát, melynek szintjein elhelyezkedő csúcsok felelnek meg az adott szint költségének." +
-            "A kapott sejtést, helyettesítő módszer használatával ellenőrizzük." +
-            " Példának ajánlom a következő egyenleteteket kipróbálni a weboldalon: T(n)= 4T(n/3)+n . ";
-        } else {
-          qNumber = 1;
-        }
+        qNumber = 1;
+      }
+      if (
+        (messageText.toLowerCase().includes("általános") ||
+          messageText.toLowerCase().includes("magyarázata") ||
+          messageText.toLowerCase().includes("magyarázat")) &&
+        qNumber === 1
+      ) {
+        response =
+          "A helyettesítő módszer használtához, ad segítséget a rekurziós fa módszer." +
+          "A helyettesítő módszer, egy kétlépésből álló megoldás sejtést teljes indukcióval igazoló módszer," +
+          " melynek célja megtalálni egy adott függvény esetében megtalálni az aszimptotikus korlátokat egy adott megoldásra. " +
+          " A módszer használata a következő: " +
+          "A rekurziós képletből felépítunk egy fát, melynek szintjein elhelyezkedő csúcsok felelnek meg az adott szint költségének." +
+          "A kapott sejtést, helyettesítő módszer használatával ellenőrizzük." +
+          " Példának ajánlom a következő egyenleteteket kipróbálni a weboldalon: T(n)= 4T(n/3)+n . ";
       }
       if (
         messageText.toLowerCase().includes("bináris") ||
@@ -105,36 +107,36 @@ const Chatbot = () => {
       ) {
         response =
           "Bináris keresőfa általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-        if (
-          messageText.toLowerCase().includes("általános") &&
-          (messageText.toLowerCase().includes("magyarázata") ||
-            messageText.toLowerCase().includes("magyarázat"))
-        ) {
-          response =
-            "A bináris keresofák, ahogy azt a nevük is sugallja, bináris faként szervezett objektumok." +
-            "A keresofákat láncolt struktúraként ábrázolhatjuk, ahol minden csúcs egy önálló objektum." +
-            " Ez a feladat megoldás a bináris keresőfán végzett beszúrás és törlés műveleteinek végrehajtását" +
-            "hajtja végre, amely megváltoztatja a bináris keresőfával ábrázolt dinamikus halmazt. ";
-        } else {
-          qNumber = 3;
-        }
+        qNumber = 3;
+      }
+      if (
+        (messageText.toLowerCase().includes("általános") ||
+          messageText.toLowerCase().includes("magyarázata") ||
+          messageText.toLowerCase().includes("magyarázat")) &&
+        qNumber === 3
+      ) {
+        response =
+          "A bináris keresofák, ahogy azt a nevük is sugallja, bináris faként szervezett objektumok." +
+          "A keresofákat láncolt struktúraként ábrázolhatjuk, ahol minden csúcs egy önálló objektum." +
+          " Ez a feladat megoldás a bináris keresőfán végzett beszúrás és törlés műveleteinek végrehajtását" +
+          "hajtja végre, amely megváltoztatja a bináris keresőfával ábrázolt dinamikus halmazt. ";
       }
       if (messageText.toLowerCase().includes("hash")) {
         response =
           "Hash tábla általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-        if (
-          messageText.toLowerCase().includes("általános") &&
-          (messageText.toLowerCase().includes("magyarázata") ||
-            messageText.toLowerCase().includes("magyarázat"))
-        ) {
-          response =
-            "A hash táblát általában olyan adatszerkezet, amely a hasítófüggvények használatával állapítja meg, hogy melyik kulcshoz milyen érték tartozik." +
-            "4 darab hash függvénnyel találkoztál az oktatáson, amelyek a követezőek:" +
-            "Szimpla , Lineális , Dupla vagy Négyzetes." +
-            "Ezekre a függvényekre megnézheted, hogy hogyan is működik a weboldalon a következőkre: ";
-        } else {
-          qNumber = 4;
-        }
+        qNumber = 4;
+      }
+      if (
+        (messageText.toLowerCase().includes("általános") ||
+          messageText.toLowerCase().includes("magyarázata") ||
+          messageText.toLowerCase().includes("magyarázat")) &&
+        qNumber === 4
+      ) {
+        response =
+          "A hash táblát általában olyan adatszerkezet, amely a hasítófüggvények használatával állapítja meg, hogy melyik kulcshoz milyen érték tartozik." +
+          "4 darab hash függvénnyel találkoztál az oktatáson, amelyek a követezőek:" +
+          "Szimpla , Lineális , Dupla vagy Négyzetes." +
+          "Ezekre a függvényekre megnézheted, hogy hogyan is működik a weboldalon a következőkre: ";
       }
       if (
         messageText.toLowerCase().includes("piros") &&
@@ -142,47 +144,47 @@ const Chatbot = () => {
       ) {
         response =
           "Piros fekete fa általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-        if (
-          messageText.toLowerCase().includes("általános") &&
-          (messageText.toLowerCase().includes("magyarázata") ||
-            messageText.toLowerCase().includes("magyarázat"))
-        ) {
-          response =
-            "A piros-fekete fa olyan bináris keresofa, melynek minden csúcsa egy extra bit információt " +
-            "tartalmaz, ez a csúcs színe, amelynek értékei: piros vagy fekete. A csúcsok színezésének " +
-            " korlátozásával biztosítható, hogy piros-fekete fában bármely, a gyökért ol levélig vezető út " +
-            "hossza nem lehet nagyobb, mint a legrövidebb ilyen út hosszának kétszerese. Tehát az ilyen" +
-            "fák megközelítőleg kiegyensúlyozottak." +
-            " A feladatot akár az alábbi példára is megnézheti a weboldalon." +
-            " A példa: 29,39,44,9,77,82,60,98,7,11,33,49";
-        } else {
-          qNumber = 5;
-        }
+        qNumber = 5;
+      }
+      if (
+        (messageText.toLowerCase().includes("általános") ||
+          messageText.toLowerCase().includes("magyarázata") ||
+          messageText.toLowerCase().includes("magyarázat")) &&
+        qNumber === 5
+      ) {
+        response =
+          "A piros-fekete fa olyan bináris keresofa, melynek minden csúcsa egy extra bit információt " +
+          "tartalmaz, ez a csúcs színe, amelynek értékei: piros vagy fekete. A csúcsok színezésének " +
+          " korlátozásával biztosítható, hogy piros-fekete fában bármely, a gyökért ol levélig vezető út " +
+          "hossza nem lehet nagyobb, mint a legrövidebb ilyen út hosszának kétszerese. Tehát az ilyen" +
+          "fák megközelítőleg kiegyensúlyozottak." +
+          " A feladatot akár az alábbi példára is megnézheti a weboldalon." +
+          " A példa: 29,39,44,9,77,82,60,98,7,11,33,49";
       }
       if (messageText.toLowerCase().includes("visszalépéses")) {
         response =
           "Visszalépéses keresés általános magyarázat érdekel vagy pedig a legutóbbi feladatmegoldásod, kérlek egész mondatban válaszolj.";
-        if (
-          messageText.toLowerCase().includes("általános") &&
-          (messageText.toLowerCase().includes("magyarázata") ||
-            messageText.toLowerCase().includes("magyarázat"))
-        ) {
-          response =
-            "A visszalépéses keresés egy általános algoritmus ami, bizonyos számítási problémák megoldására." +
-            " A feladat megoldás érme problémára is kiterjed amit szemléltet a weboldal adott pontja. " +
-            " Példa feladat: <2,4,5,6> Apa, ElsőFiú, Testvér esetekre.";
-        } else {
-          qNumber = 6;
-        }
+        qNumber = 6;
       }
       if (
-        messageText.toLowerCase().includes("legutóbbi") &&
+        (messageText.toLowerCase().includes("általános") ||
+          messageText.toLowerCase().includes("magyarázata") ||
+          messageText.toLowerCase().includes("magyarázat")) &&
+        qNumber === 6
+      ) {
+        response =
+          "A visszalépéses keresés egy általános algoritmus ami, bizonyos számítási problémák megoldására." +
+          " A feladat megoldás érme problémára is kiterjed amit szemléltet a weboldal adott pontja. " +
+          " Példa feladat: <2,4,5,6> Apa, ElsőFiú, Testvér esetekre.";
+      }
+      if (
+        messageText.toLowerCase().includes("legutóbbi") ||
         (messageText.toLowerCase().includes("érdekel") ||
           messageText.toLowerCase().includes("feladatmegoldás") ||
           messageText.toLowerCase().includes("feladatmegoldást"))
       ) {
         if (qNumber === 1) {
-          if (mistakesArray.some((item) => item.mester === "1000")) {
+          if (mistakesArray.some((item) => item.rekurzios === "1000")) {
             response =
               "A feladat értékeit nem sikerült helyesen leolvasnod." +
               "Ennek módja a következő példa szerint: " +
@@ -190,45 +192,46 @@ const Chatbot = () => {
               "Ez a szabály minden ilyen rekurziós módszer feladatra." +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "1001")) {
+          if (mistakesArray.some((item) => item.rekurzios === "1001")) {
             response =
-              "A feladatmegoldásod közben rosszul számoltad ki egy csúcs költségét." +
+              "A feladatmegoldásod közben rosszul számoltad ki, hogy mennyi is egy csúcs költsége." +
               "Ennek az értéknek a megadása úgy történik, hogy például egy T(n) = 3T(n/4)+n esetében" +
               "az n/4-et az i-edik hatványra kell emelni és a továbbiakban ezzel tovább dolgozni. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "1002")) {
+          if (mistakesArray.some((item) => item.rekurzios === "1002")) {
             response =
               "A feladatmegoldásod közben rosszul számoltad ki az i-edik szinten elhelyezkedő a csúcsok számát." +
               "Ennek az értéknek a megadása úgy történik, hogy például egy T(n) = 3T(n/4)+n esetében" +
               "a 3T-ből a 3-ast i-edik hatványra kell emelni és azzal tovább dolgozni." +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "1003")) {
+          if (mistakesArray.some((item) => item.rekurzios === "1003")) {
             response =
               "A feladatmegoldásod közben rosszul számoltad ki az i-edik szint összköltségét." +
               "Ennek az értéknek a megadása úgy történik, hogy például egy T(n) = 3T(n/4)+n esetében" +
-              "Egy csúcs költségét és az  i-edik szinten elhelyezkedő csúcsok számát kell összeszorozni. " +
+              "Egy csúcs költségét és az i-edik szinten elhelyezkedő csúcsok számát kell összeszorozni, vagyis 3^i * n/4^i. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "1004")) {
+          if (mistakesArray.some((item) => item.rekurzios === "1004")) {
             response =
               "A feladatmegoldásodnál rosszul számoltad ki a fa magasságát." +
               "A famagasságát úgy tudod kiszámolni, hogy logaritmizálod T(n) = 3T(n/4)+n esetében az (n/4)-es elemet " +
               "vagyis jelen esetben a helyes eredmény log4n lesz. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "1005")) {
+          if (mistakesArray.some((item) => item.rekurzios === "1005")) {
             response =
               "A feladatmegoldásodnál rosszul számoltad ki a levelek számát." +
-              "A levelek számát úgy tudod kiszámolni, hogy T(n) = 3T(n/4)+n esetében A^log˘Bn " +
-              "ki kell számolni a 3-t a 4-es alapú logaritmus n-t számolom, ami nlogˇ4^3 lesz az eredménye. " +
+              "A levelek számát úgy tudod kiszámolni, hogy A^log˘Bn. Ez T(n) = 3T(n/4)+n esetében a következőképpen néz ki" +
+              "Először is ki kell számolni a 3-t a 4-es alapú logaritmus n-t, ami nlogˇ4^3. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "1006")) {
+          if (mistakesArray.some((item) => item.rekurzios === "1006")) {
             response =
-              "A feladatmegoldásodnál rosszul számoltad ki az összegképletet." +
-              "A összegképletnek egy általános felírását követően kell vizsgálnunk, ????" +
+              "A feladatmegoldásodnál rosszul számoltad ki a Rekurzió nagyságrendjét." +
+              "A Rekurzió nagyságrendje T(n) = 3T(n/4)+n esetében az egyenlet levezetést követően Θ(n) lesz." +
+              "Ennek levezetését célravezetőbb tanulmányoznod a rekurziós fa oldalon." +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
         }
@@ -237,7 +240,7 @@ const Chatbot = () => {
             response =
               "A feladat értékeit nem sikerült helyesen leolvasnod." +
               "Ennek módja a következő példa szerint: " +
-              "T(n) = 3T(n/4) + n esetében az A elem lesz: 3, a B elem lesz: 4 és az f(n) elem lesz: n." +
+              "T(n) = 3T(n/4) + n esetében az A elem lesz: 3, a B elem lesz: 4, valamint az f(n) elem lesz: n." +
               "Ez a szabály minden ilyen mester módszer feladatra." +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
@@ -252,9 +255,9 @@ const Chatbot = () => {
           }
           if (mistakesArray.some((item) => item.mester === "2002")) {
             response =
-              "A feladatmegoldásod közben rosszul választottál Epsilonnak értéket." +
+              "A feladatmegoldásod közben rosszul választottad meg az Epsilon értékét." +
               "Epsilonnak értéket úgy választunk," +
-              " hogy az az eset függvényében kiegészítse az nlogˇa ^b képlet által kapott értéket." +
+              " hogy az adott eset függvényében kiegészítse az nlogˇa ^b képlet által kapott értéket." +
               "A korábbi példából kiindulva: T(n) = 3T(n/4) + n , ez 3-as eset és nlogˇa ^b képlet értéke" +
               "0.792, amihez az epsilon értéke:0.208, mivel így 0.792+0.208 = 1 vagyis megegyezik az n kitevőjével" +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
@@ -264,49 +267,41 @@ const Chatbot = () => {
               "A feladatmegoldásod közben rosszul használtad az adott esetet." +
               "Ha 2.-es az adott feladat akkor nem kell alkalmaznunk rá az 1-es vagy 3-as eset műveleteit." +
               "Ha 1-es esetet választottál és hozzáadtál, akkor nem jól használtad az esetet," +
-              "mivel 1-es eset esetében kivonni kell az nlogˇa ^b képlet eredméynéből, mivel alapból nagyobb mint az n kitevője." +
+              "mivel 1-es eset esetében kivonni kell az nlogˇa ^b képlet eredményéből, mivel alapból nagyobb mint az n kitevője." +
               "0.792, amihez az epsilon értéke:0.208, mivel így 0.792+0.208 = 1 vagyis megegyezik az n kitevőjével" +
               ", így ez 3-as eset lesz. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
           if (mistakesArray.some((item) => item.mester === "2004")) {
             response =
-              "A feladatmegoldásodnál rosszul számoltad a végeredményt." +
-              "????" +
+              "A feladatmegoldásodnál rosszul számoltad a Regularitási feltétel." +
+              "Ennek számolása az eset alkalmazást követően történik és a Jegyzetek fül alatt található " +
+              "adott esetre vonatkozóan kell megadni." +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
         }
         if (qNumber === 3) {
-          if (mistakesArray.some((item) => item.mester === "3000")) {
+          if (mistakesArray.some((item) => item.bfa === "3000")) {
             response =
-              "Az adott feladatnál kevesebb mint, 2 elemet sem sikerült eltalálnod. " +
+              "Az adott feladatnál kevesebb mint, 4 elemet sem sikerült megoldanod. " +
               "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
               " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
               "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
               "Akár a feszítőfák esetében. Ezt követően pedig a számsor többi elemét is hasonló módon kell elhelyezni a korábbi szabályoknak megfelelően. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "3001")) {
+          if (mistakesArray.some((item) => item.bfa === "3001")) {
             response =
-              "Az adott feladatnál a feladat nagyjából a harmadát sikerült eltalálnod. " +
+              "Az adott feladatnál a feladat nagyjából a felét sikerült megoldanod. " +
               "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
               " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
               "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
               "Akár a feszítőfák esetében. Ezt követően pedig a számsor többi elemét is hasonló módon kell elhelyezni a korábbi szabályoknak megfelelően. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "3002")) {
+          if (mistakesArray.some((item) => item.bfa === "3002")) {
             response =
-              "Az adott feladatnál a feladat nagyjából a felét sikerült eltalálnod. " +
-              "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
-              " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
-              "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
-              "Akár a feszítőfák esetében. Ezt követően pedig a számsor többi elemét is hasonló módon kell elhelyezni a korábbi szabályoknak megfelelően. " +
-              "Ha van még kérdésed kérlek írd le egész mondtaban.";
-          }
-          if (mistakesArray.some((item) => item.mester === "3003")) {
-            response =
-              "Az adott feladatnál a feladat nagyjából a három negyedét sikerült eltalálnod. " +
+              "Az adott feladatnál a feladat majdnem egészét sikerült megoldanod. " +
               "Az adott feladat 2-es fokszámmal volt megadva tehát a gyökér elemenek maximum 3 eleme lehet" +
               " amíg a gyerek elemeknek pedig 4 a maximum száma az adott csúcsban. " +
               "A feladat számsorának mindig az első eleme kerül a gyökér csúcsba, majd a tőle kisebbek balra és a tőle nagyobbak jobbra. " +
@@ -315,56 +310,141 @@ const Chatbot = () => {
           }
         }
         if (qNumber === 4) {
-          if (mistakesArray.some((item) => item.mester === "4000")) {
+          if (mistakesArray.some((item) => item.hash === "4000")) {
             response =
-              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
-              "A Szimpla hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
+              "Az adott feladatnál az adott elemeket lineális hash függvénny szerint kellett rendezni. " +
+              "A Lineális hashelésnél az elemek értkékét leosztjuk a hashtábla hosszával, " +
               "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
-              "Szimpla hash esetében ha az adott mező már telített, akkor a ????" +
+              "Lineális hash esetében ha az adott mező már telített, akkor az adott mezőtől " +
+              "jobbra haladunk addig ameddig nem találunk egy üres mezőt, majd azt feltöltjük az elemmel. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "4001")) {
+          if (mistakesArray.some((item) => item.hash === "4001")) {
             response =
-              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
-              "A Lineális hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
+              "Az adott feladatnál az adott elemeket Dupla hash függvénny szerint kellett rendezni. " +
+              "A Dupla hashelésnél az elemek értkékét leosztjuk a hashtábla hosszával " +
               "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
-              "Lineális hash esetében ha az adott mező már telített, akkor a ????" +
+              "Dupla hash esetében ha az adott mező már telített, akkor az adott elemhez tartozó 'h2'-es " +
+              "értéket vesszük alapul és ugyanúgy kezeljük, mint az alapértéket. " +
+              "Leosztunk és a maradék szerint helyezzük el az értéket." +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
-          if (mistakesArray.some((item) => item.mester === "4002")) {
+          if (mistakesArray.some((item) => item.hash === "4002")) {
             response =
-              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
-              "A Dupla hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
+              "Az adott feladatnál az adott elemeket Négyzetes hash függvénny szerint kellett rendezni. " +
+              "A Négyzetes hashelésnél az elemek értkékét leosztjuk a hashtábla hosszával " +
               "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
-              "Dupla hash esetében ha az adott mező már telített, akkor a ????" +
-              "Ha van még kérdésed kérlek írd le egész mondtaban.";
-          }
-          if (mistakesArray.some((item) => item.mester === "4003")) {
-            response =
-              "Az adott feladatnál az adott elemeket Szimpla hash táblával kellett rendezni. " +
-              "A Négyzetes hash-nél az elemeket mindenek elött értküket leosztjuk a hashtábla hosszával " +
-              "majd az osztás maradéka alapján helyezzük el az elemeket a hash táblában. " +
-              "Négyzetes hash esetében ha az adott mező már telített, akkor a ????" +
+              "Négyzetes hash esetében ha az adott mező már telített, akkor a c0 és c1 elemeket használjuk fel. " +
+              "Ezt tesszük, oly módon, hogy először a c0 0.ik kitevőjét adjuk hozzá az értékhez, majd a c1 első kitevőjét " +
+              "és így tovább, amíg nem találunk egy üres cellát az értéknek. " +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
         }
         if (qNumber === 5) {
-          if (mistakesArray.some((item) => item.mester === "5001")) {
+          if (
+            mistakesArray.some(
+              (item) =>
+                item.rbtree === "5000" ||
+                mistakesArray.some((item) => item.rbtree === "5100")
+            )
+          ) {
             response =
-              "Az adott Piros fekete fa feladatnál az elemeket 4-nél kevesebb számot helyeztél" +
-              " megfelelő helyre és 4-nél kevebbnek állítottál megfelelő színt. " +
+              "Az adott Piros fekete fa feladatnál az adott elemekből 4-nél kevesebb helyeztél el helyesen, és helyes színnel." +
               " A piros fekete fáknak 5 szabálya van. - Minden csúcsnak van színe ami piros vagy fekete lehet." +
-              " - A gyökércsúcs színe mindig fekete." +
-              " - Minden levél vagyis NIL elem színe mindig fekete." +
-              " - A piros csúcsoknak mindkét gyereke mindig fekete." +
-              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van." +
+              " - A gyökércsúcs színe mindig fekete. Amit helyesen is szineztél." +
+              " - Minden levél vagyis NIL elem színe mindig fekete. Ez a feladat szempontjából nem releváns, mivel a felület alapból kezeli, ha nincs kitöltve." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
               " Ezeket a szabályokat betartva kell megalkotni a piros fekete fát. " +
               " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
-              "melyek feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              "mely feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
               " az adott szülő csúcshoz képest." +
               "Ha van még kérdésed kérlek írd le egész mondtaban.";
           }
+          if (mistakesArray.some((item) => item.rbtree === "5010")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek felét helyeztél el helyesen, és 4 elemnél kevesebbet helyes színnel." +
+              " A piros fekete fáknak 5 szabálya van. Amelyből a következőket érdemes átnézned." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
+              "mely feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              " az adott szülő csúcshoz képest." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.rbtree === "5020")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek majdnem mindegyikét sikerült helyesen elhelyezned, szép munka, de 4 elemnél kevesebbet helyes színnel." +
+              " A piros fekete fáknak 5 szabálya van. Amelyből a következőket érdemes átnézned." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
+              "mely feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              " az adott szülő csúcshoz képest." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.rbtree === "5001")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek felét sikerült helyesen elhelyezned helyes színnel." +
+              " A piros fekete fáknak 5 szabálya van. Amelyből a következőket érdemes átnézned." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
+              "mely feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              " az adott szülő csúcshoz képest." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.rbtree === "5002")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek majdnem mindegyikét sikerült helyesen elhelyezned helyes színnel." +
+              " Szép munka! Némi gyakorlással és a megoldásod ellenőrzésével, nem lesz hibád." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.rbtree === "5110")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek felét helyeztél el helyesen, és 4 elemnél kevesebbet helyes színnel." +
+              " A piros fekete fáknak 5 szabálya van. Amelyből a következőket érdemes átnézned." +
+              " - A gyökércsúcs színe mindig fekete. Amit elvétettél." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
+              "mely feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              " az adott szülő csúcshoz képest." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.rbtree === "5020")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek majdnem mindegyikét sikerült helyesen elhelyezned, szép munka, de 4 elemnél kevesebbet helyes színnel." +
+              " A piros fekete fáknak 5 szabálya van. Amelyből a következőket érdemes átnézned." +
+              " - A gyökércsúcs színe mindig fekete. Amit elvétettél." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
+              "mely feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              " az adott szülő csúcshoz képest." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.rbtree === "5001")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek felét sikerült helyesen elhelyezned helyes színnel." +
+              " A piros fekete fáknak 5 szabálya van. Amelyből a következőket érdemes átnézned." +
+              " - A gyökércsúcs színe mindig fekete. Amit elvétettél." +
+              " - A piros csúcsoknak mindkét gyereke mindig fekete. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " - Bármely csúcsból bármely levélig vezető úton ugyanannyi fekete csúcs van. Ezt a szabályt érdemes jobban áttanulmányoznod. " +
+              " Ezenkívül pedig a balra és jobbra forgatást kell szem elött tartani, " +
+              "mely feladata egyensúlyba hozni a fát, ha a jobb vagy bal oldalon 2-vel több elem lenne" +
+              " az adott szülő csúcshoz képest." +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
+          if (mistakesArray.some((item) => item.rbtree === "5001")) {
+            response =
+              "Az adott Piros fekete fa feladatnál az adott elemek majdnem mindegyikét sikerült helyesen elhelyezned helyes színnel." +
+              " Szép munka! Némi gyakorlással és a megoldásod ellenőrzésével, nem lesz hibád." +
+              " De viszont a gyökércsúcs szinét elvétetted, mivel annak színe mindig fekete. " +
+              "Ha van még kérdésed kérlek írd le egész mondtaban.";
+          }
         }
+
         if (qNumber === 6) {
           if (mistakesArray.some((item) => item.mester === "6000")) {
             response =
@@ -444,11 +524,6 @@ const Chatbot = () => {
             }}
           >
             {message.content}
-            {message.imageSrc && (
-              <div>
-                <img src={message.imageSrc} />
-              </div>
-            )}
           </div>
         ))}
       </div>

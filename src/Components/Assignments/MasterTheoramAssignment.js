@@ -1,9 +1,7 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
 export default function MasterTheoramAssignment() {
-  const navigate = useNavigate();
   var a_elem;
   var b_elem;
   var n;
@@ -278,7 +276,7 @@ export default function MasterTheoramAssignment() {
       mistakes.push("Helyes leolvasás!");
     }
     if (parseInt(user_eset) !== parseInt(eset)) {
-      mistakes.push(" Hibás eset választás!" + " A helyes eset: " + eset);
+      mistakes.push(" Hibás eset választás! A helyes eset: " + eset);
     }else {
       mistakes.push("Helyes eset választás!");
     }

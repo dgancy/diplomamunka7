@@ -1,6 +1,5 @@
 import React from "react";
 import { Button } from "react-bootstrap";
-import { useNavigate } from "react-router-dom";
 
 function RecursionTreeTest() {
   var T_elem = Math.floor(Math.random() * 40) + 1;
