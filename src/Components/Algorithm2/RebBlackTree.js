@@ -1060,22 +1060,22 @@ export default function RedBlackTree() {
         }
       }
 
-      for (var j = 0; j < thirdLine.length; j++) {
-        if (thirdLine[j] === "NIL") {
-          color[j * 2 + 7] = 7;
-          color[j * 2 + 8] = 7;
+      for (var z = 0; z < thirdLine.length; z++) {
+        if (thirdLine[z] === "NIL") {
+          color[z * 2 + 7] = 7;
+          color[z * 2 + 8] = 7;
         }
       }
 
-      for (var j = 0; j < fourthLine.length; j++) {
-        if (fourthLine[j] === "NIL") {
-          color[j * 2 + 15] = 7;
-          color[j * 2 + 16] = 7;
+      for (z = 0; z < fourthLine.length; z++) {
+        if (fourthLine[z] === "NIL") {
+          color[z * 2 + 15] = 7;
+          color[z * 2 + 16] = 7;
         }
       }
 
       console.log("state: " + state);
-      for (var i = 0; i < colorHelperArray.length; i++) {
+      for (i = 0; i < colorHelperArray.length; i++) {
         if (edge !== "") {
           var element = document.getElementById("element_" + i);
           var breaks = document.getElementById("breaks_" + i);
@@ -1178,7 +1178,7 @@ export default function RedBlackTree() {
           id="tree-line"
           style={{
             position: "absolute",
-            top: "60%",
+            top: "85%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             height: "400px",
@@ -1191,7 +1191,7 @@ export default function RedBlackTree() {
           id="tree"
           style={{
             position: "absolute",
-            top: "60%",
+            top: "85%",
             left: "50%",
             transform: "translate(-50%, -50%)",
             height: "400px",

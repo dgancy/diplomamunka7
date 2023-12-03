@@ -14,18 +14,20 @@ export default function HashTableTest() {
   var c2;
   var c1c2type;
 
-  window.onload = function () {
-    for (let i = hossz; i < 12; i++) {
-      console.log(hossz);
-      var elem = document.getElementById("inp" + i);
+  function hideShow() {
+    window.onload = function () {
+      for (let i = hossz; i < 12; i++) {
+        console.log(hossz);
+        var elem = document.getElementById("inp" + i);
 
-      if (elem) {
-        elem.style.display = "none";
-      } else {
-        console.error("Az elem nem található: inp" + i);
+        if (elem) {
+          elem.style.display = "none";
+        } else {
+          console.error("Az elem nem található: inp" + i);
+        }
       }
-    }
-  };
+    };
+  }
 
   function Generate() {
     var chars = "QWERTZUIOPLKJHGFDSAYXCVBNM";
@@ -344,7 +346,7 @@ export default function HashTableTest() {
                 ></input>
               </div>
             </div>
-          </div>
+          </div>{" "}
           <div>
             <div
               style={{ padding: "20px" }}
@@ -366,6 +368,8 @@ export default function HashTableTest() {
           </div>
         </div>
       </div>
+      {hideShow()}
+
       <br />
     </form>
   );

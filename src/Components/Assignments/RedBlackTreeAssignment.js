@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Button } from "react-bootstrap";
 
 export default function RedBlackTreeTest() {
@@ -208,7 +208,7 @@ export default function RedBlackTreeTest() {
   }
 
   return (
-    <form style={{ background: "#000027", height: "100vh" }}>
+    <form style={{ background: "#000027", height: "110vh" }}>
       <br />
       <div className="form-group">
         <div className="container">
@@ -242,14 +242,14 @@ export default function RedBlackTreeTest() {
             variant="dark"
             onClick={BlackEdge}
           >
-            Black
+            Fekete
           </Button>
           <Button
             style={{ color: "white", margin: "10px" }}
             variant="danger"
             onClick={RedEdge}
           >
-            Red
+            Piros
           </Button>
         </div>
       </div>
@@ -257,7 +257,7 @@ export default function RedBlackTreeTest() {
         id="tree-line"
         style={{
           position: "absolute",
-          top: "55%",
+          top: "85%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           height: "350px",
@@ -269,7 +269,7 @@ export default function RedBlackTreeTest() {
       <div
         style={{
           position: "absolute",
-          top: "55%",
+          top: "85%",
           left: "50%",
           transform: "translate(-50%, -50%)",
           height: "350px",
@@ -283,7 +283,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp0"
             type="number"
-            placeholder="0"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -300,7 +299,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp1"
             type="number"
-            placeholder="1"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -313,7 +311,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp2"
             type="number"
-            placeholder="2"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -330,7 +327,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp3"
             type="number"
-            placeholder="3"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -343,7 +339,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp4"
             type="number"
-            placeholder="4"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -356,7 +351,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp5"
             type="number"
-            placeholder="5"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -369,7 +363,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp6"
             type="number"
-            placeholder="6"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -386,7 +379,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp7"
             type="number"
-            placeholder="7"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -399,7 +391,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp8"
             type="number"
-            placeholder="8"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -412,7 +403,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp9"
             type="number"
-            placeholder="9"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -425,7 +415,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp10"
             type="number"
-            placeholder="10"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -438,7 +427,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp11"
             type="number"
-            placeholder="11"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -451,7 +439,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp12"
             type="number"
-            placeholder="12"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -464,7 +451,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp13"
             type="number"
-            placeholder="13"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -477,7 +463,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp14"
             type="number"
-            placeholder="14"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -494,7 +479,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp15"
             type="number"
-            placeholder="15"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -506,7 +490,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp16"
             type="number"
-            placeholder="16"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -518,7 +501,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp17"
             type="number"
-            placeholder="17"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -530,7 +512,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp18"
             type="number"
-            placeholder="18"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -542,7 +523,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp19"
             type="number"
-            placeholder="19"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -554,7 +534,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp20"
             type="number"
-            placeholder="20"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -566,7 +545,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp21"
             type="number"
-            placeholder="21"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -578,7 +556,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp22"
             type="number"
-            placeholder="22"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -590,7 +567,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp23"
             type="number"
-            placeholder="23"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -602,7 +578,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp24"
             type="number"
-            placeholder="24"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -614,7 +589,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp25"
             type="number"
-            placeholder="25"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -626,7 +600,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp26"
             type="number"
-            placeholder="26"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -638,7 +611,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp27"
             type="number"
-            placeholder="27"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -650,7 +622,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp28"
             type="number"
-            placeholder="28"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -662,7 +633,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp29"
             type="number"
-            placeholder="29"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -674,7 +644,6 @@ export default function RedBlackTreeTest() {
           <input
             id="inp30"
             type="number"
-            placeholder="30"
             className="form-control"
             style={{
               borderRadius: "50px",
@@ -690,7 +659,7 @@ export default function RedBlackTreeTest() {
           className="row justify-content-center text-center"
           style={{
             position: "absolute",
-            top: "75%",
+            top: "115%",
             left: "50%",
             transform: "translate(-50%, -50%)",
           }}

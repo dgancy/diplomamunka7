@@ -178,7 +178,7 @@ const Chatbot = () => {
           " Példa feladat: <2,4,5,6> Apa, ElsőFiú, Testvér esetekre.";
       }
       if (
-        messageText.toLowerCase().includes("legutóbbi") &&
+        messageText.toLowerCase().includes("legutóbbi") ||
         (messageText.toLowerCase().includes("érdekel") ||
           messageText.toLowerCase().includes("feladatmegoldás") ||
           messageText.toLowerCase().includes("feladatmegoldást"))
