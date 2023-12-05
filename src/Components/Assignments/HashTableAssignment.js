@@ -25,7 +25,7 @@ export default function HashTableAssignment() {
     console.log("Típus: " + type);
 
     if (type === 1) {
-      type = "lineal";
+      type = "linear";
     } else if (type === 2) {
       type = "square";
     } else if (type === 0) {
@@ -101,7 +101,7 @@ export default function HashTableAssignment() {
         hossz +
         " hosszúságú hash táblába a következő objektumokat dupla hasítás alkalmazásával.";
       document.getElementById("h").innerHTML = h1 + " .";
-    } else if (type === "lineal") {
+    } else if (type === "linear") {
       for (let i = 0; i < elemszam; i++) {
         if (i === elemszam) {
           h1 += "h1:( " + charakters[i] + " ) = " + numbers[i] + ", ";
@@ -111,7 +111,7 @@ export default function HashTableAssignment() {
       document.getElementById("hossz").innerHTML =
         "Szúrja be egy " +
         hossz +
-        " hosszúságú hash táblába a következő objektumokat lineális hasítás alkalmazásával.";
+        " hosszúságú hash táblába a következő objektumokat lineáris hasítás alkalmazásával.";
       document.getElementById("h").innerHTML = h1 + " .";
     }
     console.log("H1: " + h1);
@@ -139,7 +139,7 @@ export default function HashTableAssignment() {
       arrayfinal[j] = " ";
     }
 
-    if (type === "lineal") {
+    if (type === "linear") {
       for (let j = 0; j < elemszam; j++) {
         leftover = numbers[j] % hossz;
         if (arrayfinal[leftover] === " ") {
